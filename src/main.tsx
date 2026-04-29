@@ -18,7 +18,12 @@ import "@fontsource/pirata-one/latin-400.css";
 
 import "./index.css";
 
-const router = createRouter({ routeTree });
+// `basepath` mirrors Vite's `base` so the router strips `/evillious-chronicles/`
+// (or whatever Pages serves under) before matching routes. In dev it's "/".
+const router = createRouter({
+  routeTree,
+  basepath: import.meta.env.BASE_URL,
+});
 
 declare module "@tanstack/react-router" {
   interface Register {
