@@ -27,7 +27,7 @@ const illustrations: Record<string, ImageAsset> = {
   },
   "illustration-2": {
     src: "/cloture-of-yellow/illustration-2.jpg",
-    alt: "Allen's vow — \"I will become evil for you\"",
+    alt: 'Allen\'s vow — "I will become evil for you"',
   },
   "illustration-3": {
     src: "/cloture-of-yellow/illustration-3.jpg",
