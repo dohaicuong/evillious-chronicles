@@ -1,10 +1,11 @@
 import { ScrollArea as BaseScrollArea } from "@base-ui/react/scroll-area";
-import type { ComponentProps, ReactNode } from "react";
+import type { ComponentProps, ReactNode, Ref } from "react";
 import { cn } from "../../lib/cn";
 
 type ScrollAreaProps = ComponentProps<typeof BaseScrollArea.Root> & {
   children?: ReactNode;
   viewportClassName?: string;
+  viewportRef?: Ref<HTMLDivElement>;
 };
 
 const scrollbarBase = [
@@ -18,10 +19,17 @@ const scrollbarBase = [
 
 const thumbBase = "flex-1 rounded-full bg-border hover:bg-fg-muted transition-colors";
 
-export function ScrollArea({ className, children, viewportClassName, ...props }: ScrollAreaProps) {
+export function ScrollArea({
+  className,
+  children,
+  viewportClassName,
+  viewportRef,
+  ...props
+}: ScrollAreaProps) {
   return (
     <BaseScrollArea.Root className={cn("relative overflow-hidden", className)} {...props}>
       <BaseScrollArea.Viewport
+        ref={viewportRef}
         className={cn("h-full w-full overscroll-contain outline-none", viewportClassName)}
       >
         <BaseScrollArea.Content>{children}</BaseScrollArea.Content>
