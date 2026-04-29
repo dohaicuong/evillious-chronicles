@@ -1,0 +1,54 @@
+{
+  "name": "evillious-chronicles",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "vp dev",
+    "build": "tsc -b && vp build",
+    "lint": "eslint .",
+    "preview": "vp preview",
+    "prepare": "vp config"
+  },
+  "dependencies": {
+    "@base-ui/react": "^1.4.1",
+    "@fontsource/eb-garamond": "^5.2.7",
+    "@fontsource/im-fell-english-sc": "^5.2.6",
+    "@fontsource/inter": "^5.2.8",
+    "@fontsource/marcellus-sc": "^5.2.8",
+    "@fontsource/pirata-one": "^5.2.8",
+    "@phosphor-icons/react": "^2.1.10",
+    "@tanstack/react-router": "^1.168.25",
+    "clsx": "^2.1.1",
+    "react": "^19.2.5",
+    "react-dom": "^19.2.5",
+    "react-markdown": "^10.1.0",
+    "tailwind-merge": "^3.5.0"
+  },
+  "devDependencies": {
+    "@eslint/js": "^10.0.1",
+    "@tailwindcss/vite": "^4.2.4",
+    "@tanstack/react-router-devtools": "^1.166.13",
+    "@tanstack/router-plugin": "^1.167.28",
+    "@types/node": "^24.12.2",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
+    "@vitejs/plugin-react": "^6.0.1",
+    "eslint": "^10.2.1",
+    "eslint-plugin-react-hooks": "^7.1.1",
+    "eslint-plugin-react-refresh": "^0.5.2",
+    "globals": "^17.5.0",
+    "tailwindcss": "^4.2.4",
+    "typescript": "~6.0.2",
+    "typescript-eslint": "^8.58.2",
+    "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+    "vite-plus": "latest"
+  },
+  "packageManager": "pnpm@10.33.2",
+  "pnpm": {
+    "overrides": {
+      "vite": "npm:@voidzero-dev/vite-plus-core@latest",
+      "vitest": "npm:@voidzero-dev/vite-plus-test@latest"
+    }
+  }
+}

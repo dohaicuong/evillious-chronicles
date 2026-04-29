@@ -1,0 +1,35 @@
+Prologue
+
+A long time ago, far, far away, there lived a capricious princess.
+
+The princess spent a lot of money, and played all day long.
+
+One by one, she killed the people who were against her.
+
+Because she was so brutal,
+
+People began to call her the “Daughter of Evil”.
+
+Because of lack of money and food, the lives of the people were full of depression.
+
+At that moment, a female swordsman wearing a red armour, declared war to the “Daughter of Evil”.
+
+After experiencing brutal combat, the female swordsman finally caught the “Daughter of Evil”.
+
+Thus, the “Daughter of Evil” was sentenced to death in front of the people.
+
+The people were very happy with this.
+
+But the one who had the hardest laugh of them all was the “Daughter of Evil”, standing on the execution platform. The girl left saying:
+
+“Oh, it’s snack time!”
+
+When the church bells rang three times,
+
+The head of the “Daughter of Evil” was chopped down.
+
+In this way, the country had peace once again.
+
+And everyone lived happily ever after.
+
+—— From the Freesis fairytale,《Daughter of Evil》——
