@@ -2,6 +2,7 @@ import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
 import { cn } from "../../lib/cn";
 import { ScrollArea } from "../primitives/scroll-area";
+import { ThemeToggle } from "./theme-toggle";
 
 const navLinkBase = cn(
   "text-style-eyebrow transition-colors",
@@ -27,10 +28,11 @@ export function AppShell() {
             <span className="text-fg">Evillious</span>
             <span className="text-fg-muted">Chronicles</span>
           </Link>
-          <nav className="flex items-center gap-6">
+          <nav className="flex items-center gap-4">
             <Link to="/library" className={navLinkBase}>
               Library
             </Link>
+            <ThemeToggle />
           </nav>
         </div>
       </header>

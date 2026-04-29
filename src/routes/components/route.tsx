@@ -1,5 +1,6 @@
 import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
 import { cn } from "../../lib/cn";
+import { ThemeToggle } from "../../components/shell/theme-toggle";
 
 export const Route = createFileRoute("/components")({
   component: ComponentsLayout,
@@ -33,12 +34,12 @@ function ComponentsLayout() {
   return (
     <div className="min-h-screen flex">
       <aside className="w-56 shrink-0 border-r border-border px-6 py-12 flex flex-col gap-1">
-        <Link
-          to="/"
-          className="text-style-eyebrow text-fg-muted hover:text-fg transition-colors mb-8"
-        >
-          ← Reader
-        </Link>
+        <div className="flex items-center justify-between mb-8">
+          <Link to="/" className="text-style-eyebrow text-fg-muted hover:text-fg transition-colors">
+            ← Reader
+          </Link>
+          <ThemeToggle />
+        </div>
         <h2 className="text-style-eyebrow text-fg-muted mb-3">Components</h2>
         {navItems.map((item) => (
           <Link

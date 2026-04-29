@@ -1,5 +1,6 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
 import { Button } from "../components/primitives/button";
+import { ThemeToggle } from "../components/shell/theme-toggle";
 
 export const Route = createFileRoute("/")({
   component: Home,
@@ -7,7 +8,10 @@ export const Route = createFileRoute("/")({
 
 function Home() {
   return (
-    <main className="min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20">
+    <main className="min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20 relative">
+      <div className="absolute top-4 right-4">
+        <ThemeToggle />
+      </div>
       <span className="text-style-eyebrow text-fg-muted">A multimedia chronicle by mothy</span>
 
       <h1 className="text-style-display text-fg text-center">Evillious Chronicles</h1>

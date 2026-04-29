@@ -80,15 +80,17 @@
     --accent-fg: #1a1325; /* readable text color when filled with --accent */
   }
 
-  /* Court / night theme — apply with <html data-theme="dark"> */
+  /* Aged-leather / night theme — apply with <html data-theme="dark">.
+     Warm brown bg pairs with the candle-gold accent (pocket-watch leather)
+     and the bone foreground reads like cream ink on aged-parchment cover. */
   [data-theme="dark"] {
-    --bg: #14101c;
-    --surface: #1f1830;
+    --bg: #2d2418;
+    --surface: #3a3022;
     --fg: #e8d5a3;
-    --fg-muted: #8a7a9c;
-    --border: #2d2440;
+    --fg-muted: #a89678;
+    --border: #4a3e2c;
     --accent: #c9a961;
-    --accent-fg: #1a1325;
+    --accent-fg: #1f1610;
   }
 
   /* ---------------------------------------------------------------------
