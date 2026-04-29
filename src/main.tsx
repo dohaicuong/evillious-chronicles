@@ -2,6 +2,7 @@ import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
+import { PendingScreen } from "./components/thematic/pending-screen";
 
 // Self-hosted fonts (latin subset). Vite bundles these so they ship from our
 // own origin — removes the Google Fonts critical-path chain.
@@ -23,6 +24,12 @@ import "./index.css";
 const router = createRouter({
   routeTree,
   basepath: import.meta.env.BASE_URL,
+  // Loading UI: shown when a route's loader / lazy chunk takes longer than
+  // pendingMs to resolve. Kept on screen for at least pendingMinMs to avoid
+  // a flash on fast loads.
+  defaultPendingComponent: PendingScreen,
+  defaultPendingMs: 200,
+  defaultPendingMinMs: 400,
 });
 
 declare module "@tanstack/react-router" {

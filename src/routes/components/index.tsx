@@ -96,6 +96,16 @@ const components = [
     name: "Scroll Area",
     description: "Themed scrollbars that auto-reveal on hover or while scrolling. Both axes.",
   },
+  {
+    to: "/components/audio",
+    name: "Audio",
+    description: "Persistent audio dock for YouTube + native audio. Triggered via useAudio().",
+  },
+  {
+    to: "/components/thematic",
+    name: "Thematic",
+    description: "Sin glyphs, clockwork spinner, ornamental dividers — chronicle flourishes.",
+  },
 ] as const;
 
 function ComponentsOverview() {

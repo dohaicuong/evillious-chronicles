@@ -1,6 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Card } from "../primitives/card";
 import { Badge } from "../primitives/badge";
+import { SinGlyph } from "../thematic/sin-glyph";
 import type { Series, Sin } from "../../data/library";
 
 export function SeriesCard({ series }: { series: Series }) {
@@ -27,7 +28,12 @@ export function SeriesCard({ series }: { series: Series }) {
             {sins.length > 0 ? (
               sins.map((sin) => (
                 <span key={sin} data-sin={sin}>
-                  <Badge variant="soft" size="sm" className="capitalize">
+                  <Badge
+                    variant="soft"
+                    size="sm"
+                    className="capitalize"
+                    icon={<SinGlyph sin={sin} weight="light" />}
+                  >
                     {sin}
                   </Badge>
                 </span>

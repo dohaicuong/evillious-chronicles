@@ -4,6 +4,7 @@ import { series } from "../../../../../data/library";
 import { getVolume } from "../../../../../data/volumes";
 import { PageView } from "../../../../../components/reader/page-view";
 import { ChapterNav } from "../../../../../components/reader/chapter-nav";
+import { SinGlyph } from "../../../../../components/thematic/sin-glyph";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapterId")({
   component: ChapterReader,
@@ -41,7 +42,10 @@ function ChapterReader() {
       </Link>
 
       <header className="mb-10 flex flex-col gap-2 border-b border-border pb-6">
-        <span className="text-style-eyebrow text-fg-muted">
+        <span className="inline-flex items-center gap-2 text-style-eyebrow text-fg-muted">
+          {volume.sin ? (
+            <SinGlyph sin={volume.sin} size={14} weight="light" className="text-accent" />
+          ) : null}
           Volume {volume.number} · Chapter {chapter.number}
         </span>
         <h1 className="text-style-heading-1 text-fg">{chapter.title}</h1>

@@ -9,6 +9,7 @@ import { VolumeHero } from "../../../../../components/volume/volume-hero";
 import { TitlePageSection } from "../../../../../components/volume/title-page-section";
 import { PoetrySection } from "../../../../../components/volume/poetry-section";
 import { GallerySection } from "../../../../../components/volume/gallery-section";
+import { Ornament } from "../../../../../components/thematic/ornament";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/")({
   component: VolumePage,
@@ -74,13 +75,26 @@ function VolumePage() {
           <ChapterList seriesId={s.id} volumeId={slim.id} chapters={slim.chapters} />
         </section>
 
-        {full?.openingPoetry ? <PoetrySection poetry={full.openingPoetry} /> : null}
-
-        {full?.openingGallery && full.openingGallery.length > 0 ? (
-          <GallerySection gallery={full.openingGallery} label="Opening Gallery" />
+        {full?.openingPoetry ? (
+          <>
+            <Ornament />
+            <PoetrySection poetry={full.openingPoetry} />
+          </>
         ) : null}
 
-        {full ? <TitlePageSection volume={full} /> : null}
+        {full?.openingGallery && full.openingGallery.length > 0 ? (
+          <>
+            <Ornament />
+            <GallerySection gallery={full.openingGallery} label="Opening Gallery" />
+          </>
+        ) : null}
+
+        {full ? (
+          <>
+            <Ornament />
+            <TitlePageSection volume={full} />
+          </>
+        ) : null}
       </div>
     </div>
   );

@@ -21,6 +21,9 @@ export type Series = {
   title: string;
   description: string;
   volumes: Volume[];
+  // Songs from the global catalog (`src/data/songs.ts`) associated with this
+  // series. Rendered as a list on the series detail page.
+  songIds?: string[];
 };
 
 function makeChapters(prefix: string, titles: string[], progressPattern: number[] = []): Chapter[] {
@@ -39,6 +42,7 @@ export const series: Series[] = [
     title: "The Daughter of Evil",
     description:
       "A four-volume light-novel chronicle of Riliane Lucifen d'Autriche — the tyrant princess at the heart of the Story of Evil. Each volume retells the kingdom's fall from a different perspective, color-coded by the role its narrator plays in the cycle.",
+    songIds: ["daughter-of-evil", "servant-of-evil", "regret-message"],
     volumes: [
       {
         id: "cloture-of-yellow",

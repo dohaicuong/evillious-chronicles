@@ -3,6 +3,7 @@ import { BookOpenIcon } from "@phosphor-icons/react";
 import { Badge } from "../primitives/badge";
 import { Button } from "../primitives/button";
 import { asset } from "../../lib/asset";
+import { SinGlyph } from "../thematic/sin-glyph";
 import type { Volume } from "../../data/schema";
 
 export function VolumeHero({ volume }: { volume: Volume }) {
@@ -30,7 +31,12 @@ export function VolumeHero({ volume }: { volume: Volume }) {
 
         {volume.sin ? (
           <div>
-            <Badge variant="soft" size="md" className="capitalize">
+            <Badge
+              variant="soft"
+              size="md"
+              className="capitalize"
+              icon={<SinGlyph sin={volume.sin} weight="light" />}
+            >
               {volume.sin}
             </Badge>
           </div>

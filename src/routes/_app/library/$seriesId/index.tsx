@@ -2,6 +2,8 @@ import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { CaretLeftIcon } from "@phosphor-icons/react";
 import { series } from "../../../../data/library";
 import { VolumeCard } from "../../../../components/library/volume-card";
+import { SongList } from "../../../../components/audio/song-list";
+import { Ornament } from "../../../../components/thematic/ornament";
 
 export const Route = createFileRoute("/_app/library/$seriesId/")({
   component: SeriesPage,
@@ -33,6 +35,16 @@ function SeriesPage() {
           <VolumeCard key={v.id} seriesId={s.id} volume={v} />
         ))}
       </div>
+
+      {s.songIds && s.songIds.length > 0 ? (
+        <>
+          <Ornament />
+          <section className="flex flex-col gap-4 max-w-3xl">
+            <h2 className="text-style-eyebrow text-fg-muted">Songs</h2>
+            <SongList songIds={s.songIds} />
+          </section>
+        </>
+      ) : null}
     </div>
   );
 }

@@ -27,6 +27,9 @@ const ComponentsTooltipLazyRouteImport = createFileRoute(
   '/components/tooltip',
 )()
 const ComponentsToastLazyRouteImport = createFileRoute('/components/toast')()
+const ComponentsThematicLazyRouteImport = createFileRoute(
+  '/components/thematic',
+)()
 const ComponentsTabsLazyRouteImport = createFileRoute('/components/tabs')()
 const ComponentsSwitchLazyRouteImport = createFileRoute('/components/switch')()
 const ComponentsSliderLazyRouteImport = createFileRoute('/components/slider')()
@@ -50,6 +53,7 @@ const ComponentsDialogLazyRouteImport = createFileRoute('/components/dialog')()
 const ComponentsCardLazyRouteImport = createFileRoute('/components/card')()
 const ComponentsButtonLazyRouteImport = createFileRoute('/components/button')()
 const ComponentsBadgeLazyRouteImport = createFileRoute('/components/badge')()
+const ComponentsAudioLazyRouteImport = createFileRoute('/components/audio')()
 
 const ComponentsRouteRoute = ComponentsRouteRouteImport.update({
   id: '/components',
@@ -91,6 +95,13 @@ const ComponentsToastLazyRoute = ComponentsToastLazyRouteImport.update({
   getParentRoute: () => ComponentsRouteRoute,
 } as any).lazy(() =>
   import('./routes/components/toast.lazy').then((d) => d.Route),
+)
+const ComponentsThematicLazyRoute = ComponentsThematicLazyRouteImport.update({
+  id: '/thematic',
+  path: '/thematic',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any).lazy(() =>
+  import('./routes/components/thematic.lazy').then((d) => d.Route),
 )
 const ComponentsTabsLazyRoute = ComponentsTabsLazyRouteImport.update({
   id: '/tabs',
@@ -199,6 +210,13 @@ const ComponentsBadgeLazyRoute = ComponentsBadgeLazyRouteImport.update({
 } as any).lazy(() =>
   import('./routes/components/badge.lazy').then((d) => d.Route),
 )
+const ComponentsAudioLazyRoute = ComponentsAudioLazyRouteImport.update({
+  id: '/audio',
+  path: '/audio',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any).lazy(() =>
+  import('./routes/components/audio.lazy').then((d) => d.Route),
+)
 const AppLibraryIndexRoute = AppLibraryIndexRouteImport.update({
   id: '/library/',
   path: '/library/',
@@ -225,6 +243,7 @@ const AppLibrarySeriesIdVolumeIdChapterIdRoute =
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/components': typeof ComponentsRouteRouteWithChildren
+  '/components/audio': typeof ComponentsAudioLazyRoute
   '/components/badge': typeof ComponentsBadgeLazyRoute
   '/components/button': typeof ComponentsButtonLazyRoute
   '/components/card': typeof ComponentsCardLazyRoute
@@ -240,6 +259,7 @@ export interface FileRoutesByFullPath {
   '/components/slider': typeof ComponentsSliderLazyRoute
   '/components/switch': typeof ComponentsSwitchLazyRoute
   '/components/tabs': typeof ComponentsTabsLazyRoute
+  '/components/thematic': typeof ComponentsThematicLazyRoute
   '/components/toast': typeof ComponentsToastLazyRoute
   '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
@@ -251,6 +271,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/components/audio': typeof ComponentsAudioLazyRoute
   '/components/badge': typeof ComponentsBadgeLazyRoute
   '/components/button': typeof ComponentsButtonLazyRoute
   '/components/card': typeof ComponentsCardLazyRoute
@@ -266,6 +287,7 @@ export interface FileRoutesByTo {
   '/components/slider': typeof ComponentsSliderLazyRoute
   '/components/switch': typeof ComponentsSwitchLazyRoute
   '/components/tabs': typeof ComponentsTabsLazyRoute
+  '/components/thematic': typeof ComponentsThematicLazyRoute
   '/components/toast': typeof ComponentsToastLazyRoute
   '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
@@ -280,6 +302,7 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/_app': typeof AppRouteRouteWithChildren
   '/components': typeof ComponentsRouteRouteWithChildren
+  '/components/audio': typeof ComponentsAudioLazyRoute
   '/components/badge': typeof ComponentsBadgeLazyRoute
   '/components/button': typeof ComponentsButtonLazyRoute
   '/components/card': typeof ComponentsCardLazyRoute
@@ -295,6 +318,7 @@ export interface FileRoutesById {
   '/components/slider': typeof ComponentsSliderLazyRoute
   '/components/switch': typeof ComponentsSwitchLazyRoute
   '/components/tabs': typeof ComponentsTabsLazyRoute
+  '/components/thematic': typeof ComponentsThematicLazyRoute
   '/components/toast': typeof ComponentsToastLazyRoute
   '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
@@ -309,6 +333,7 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/components'
+    | '/components/audio'
     | '/components/badge'
     | '/components/button'
     | '/components/card'
@@ -324,6 +349,7 @@ export interface FileRouteTypes {
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
+    | '/components/thematic'
     | '/components/toast'
     | '/components/tooltip'
     | '/components/typography'
@@ -335,6 +361,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/components/audio'
     | '/components/badge'
     | '/components/button'
     | '/components/card'
@@ -350,6 +377,7 @@ export interface FileRouteTypes {
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
+    | '/components/thematic'
     | '/components/toast'
     | '/components/tooltip'
     | '/components/typography'
@@ -363,6 +391,7 @@ export interface FileRouteTypes {
     | '/'
     | '/_app'
     | '/components'
+    | '/components/audio'
     | '/components/badge'
     | '/components/button'
     | '/components/card'
@@ -378,6 +407,7 @@ export interface FileRouteTypes {
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
+    | '/components/thematic'
     | '/components/toast'
     | '/components/tooltip'
     | '/components/typography'
@@ -443,6 +473,13 @@ declare module '@tanstack/react-router' {
       path: '/toast'
       fullPath: '/components/toast'
       preLoaderRoute: typeof ComponentsToastLazyRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/thematic': {
+      id: '/components/thematic'
+      path: '/thematic'
+      fullPath: '/components/thematic'
+      preLoaderRoute: typeof ComponentsThematicLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/tabs': {
@@ -550,6 +587,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsBadgeLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
+    '/components/audio': {
+      id: '/components/audio'
+      path: '/audio'
+      fullPath: '/components/audio'
+      preLoaderRoute: typeof ComponentsAudioLazyRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
     '/_app/library/': {
       id: '/_app/library/'
       path: '/library'
@@ -601,6 +645,7 @@ const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
 )
 
 interface ComponentsRouteRouteChildren {
+  ComponentsAudioLazyRoute: typeof ComponentsAudioLazyRoute
   ComponentsBadgeLazyRoute: typeof ComponentsBadgeLazyRoute
   ComponentsButtonLazyRoute: typeof ComponentsButtonLazyRoute
   ComponentsCardLazyRoute: typeof ComponentsCardLazyRoute
@@ -616,6 +661,7 @@ interface ComponentsRouteRouteChildren {
   ComponentsSliderLazyRoute: typeof ComponentsSliderLazyRoute
   ComponentsSwitchLazyRoute: typeof ComponentsSwitchLazyRoute
   ComponentsTabsLazyRoute: typeof ComponentsTabsLazyRoute
+  ComponentsThematicLazyRoute: typeof ComponentsThematicLazyRoute
   ComponentsToastLazyRoute: typeof ComponentsToastLazyRoute
   ComponentsTooltipLazyRoute: typeof ComponentsTooltipLazyRoute
   ComponentsTypographyLazyRoute: typeof ComponentsTypographyLazyRoute
@@ -623,6 +669,7 @@ interface ComponentsRouteRouteChildren {
 }
 
 const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
+  ComponentsAudioLazyRoute: ComponentsAudioLazyRoute,
   ComponentsBadgeLazyRoute: ComponentsBadgeLazyRoute,
   ComponentsButtonLazyRoute: ComponentsButtonLazyRoute,
   ComponentsCardLazyRoute: ComponentsCardLazyRoute,
@@ -638,6 +685,7 @@ const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsSliderLazyRoute: ComponentsSliderLazyRoute,
   ComponentsSwitchLazyRoute: ComponentsSwitchLazyRoute,
   ComponentsTabsLazyRoute: ComponentsTabsLazyRoute,
+  ComponentsThematicLazyRoute: ComponentsThematicLazyRoute,
   ComponentsToastLazyRoute: ComponentsToastLazyRoute,
   ComponentsTooltipLazyRoute: ComponentsTooltipLazyRoute,
   ComponentsTypographyLazyRoute: ComponentsTypographyLazyRoute,

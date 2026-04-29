@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { Card } from "../primitives/card";
 import { Badge } from "../primitives/badge";
 import { Progress } from "../primitives/progress";
+import { SinGlyph } from "../thematic/sin-glyph";
 import type { Volume } from "../../data/library";
 
 export function VolumeCard({ seriesId, volume }: { seriesId: string; volume: Volume }) {
@@ -27,7 +28,12 @@ export function VolumeCard({ seriesId, volume }: { seriesId: string; volume: Vol
                 <Card.Title className="mt-1">{volume.title}</Card.Title>
               </div>
               {volume.sin ? (
-                <Badge variant="soft" size="sm" className="capitalize shrink-0">
+                <Badge
+                  variant="soft"
+                  size="sm"
+                  className="capitalize shrink-0"
+                  icon={<SinGlyph sin={volume.sin} weight="light" />}
+                >
                   {volume.sin}
                 </Badge>
               ) : null}
