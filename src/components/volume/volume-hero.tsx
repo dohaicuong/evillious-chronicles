@@ -2,6 +2,7 @@ import { Link } from "@tanstack/react-router";
 import { BookOpenIcon } from "@phosphor-icons/react";
 import { Badge } from "../primitives/badge";
 import { Button } from "../primitives/button";
+import { asset } from "../../lib/asset";
 import type { Volume } from "../../data/schema";
 
 export function VolumeHero({ volume }: { volume: Volume }) {
@@ -10,7 +11,7 @@ export function VolumeHero({ volume }: { volume: Volume }) {
   return (
     <section className="flex flex-col gap-10">
       <img
-        src={volume.cover.src}
+        src={asset(volume.cover.src)}
         alt={volume.cover.alt}
         className="w-full rounded-sm border border-border shadow-md shadow-ink/30"
       />

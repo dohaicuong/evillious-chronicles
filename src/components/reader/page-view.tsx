@@ -1,3 +1,4 @@
+import { asset } from "../../lib/asset";
 import type { Page } from "../../data/schema";
 import { ProseRenderer } from "./prose-renderer";
 
@@ -10,7 +11,7 @@ export function PageView({ page }: { page: Page }) {
     return (
       <figure className="flex flex-col gap-3 my-8">
         <img
-          src={page.illustration.src}
+          src={asset(page.illustration.src)}
           alt={page.illustration.alt}
           className="w-full rounded-sm border border-border bg-surface"
         />
@@ -28,7 +29,7 @@ export function PageView({ page }: { page: Page }) {
     <div className="flex flex-col gap-6">
       <figure className="flex flex-col gap-3">
         <img
-          src={page.illustration.src}
+          src={asset(page.illustration.src)}
           alt={page.illustration.alt}
           className="w-full rounded-sm border border-border bg-surface"
         />

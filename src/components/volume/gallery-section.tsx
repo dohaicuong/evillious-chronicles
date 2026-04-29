@@ -1,3 +1,4 @@
+import { asset } from "../../lib/asset";
 import type { ArtworkPage } from "../../data/schema";
 
 export function GallerySection({ gallery, label }: { gallery: ArtworkPage[]; label: string }) {
@@ -8,7 +9,7 @@ export function GallerySection({ gallery, label }: { gallery: ArtworkPage[]; lab
         {gallery.map((art, i) => (
           <figure key={i} className="flex flex-col gap-2">
             <img
-              src={art.illustration.src}
+              src={asset(art.illustration.src)}
               alt={art.illustration.alt}
               className="w-full rounded-sm border border-border bg-surface"
             />
