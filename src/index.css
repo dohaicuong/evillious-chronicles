@@ -85,10 +85,10 @@
      and the bone foreground reads like cream ink on aged-parchment cover. */
   [data-theme="dark"] {
     --bg: #2d2418;
-    --surface: #3a3022;
+    --surface: #463a26; /* lighter for card separation against bg */
     --fg: #e8d5a3;
-    --fg-muted: #a89678;
-    --border: #4a3e2c;
+    --fg-muted: #c4ad88; /* lighter for legible eyebrow / muted body */
+    --border: #5a4d38; /* more visible border */
     --accent: #c9a961;
     --accent-fg: #1f1610;
   }
