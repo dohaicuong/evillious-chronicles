@@ -6,6 +6,7 @@ import { getVolume } from "../../../../../data/volumes";
 import { PageView } from "../../../../../components/reader/page-view";
 import { PageProgressMark } from "../../../../../components/reader/page-progress-mark";
 import { ChapterNav } from "../../../../../components/reader/chapter-nav";
+import { NextChapterCTA } from "../../../../../components/reader/next-chapter-cta";
 import { SinGlyph } from "../../../../../components/thematic/sin-glyph";
 import {
   readerSettingsCssVars,
@@ -96,6 +97,8 @@ function ChapterReader() {
           ))
         )}
       </article>
+
+      {next ? <NextChapterCTA seriesId={s.id} volumeId={volume.id} next={next} /> : null}
 
       <ChapterNav seriesId={s.id} volumeId={volume.id} prev={prev} next={next} />
     </div>

@@ -9,6 +9,7 @@ import { Button } from "../components/primitives/button";
 import { IconButton } from "../components/primitives/icon-button";
 import { BookmarksDrawer } from "../components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "../components/library/continue-reading-drawer";
+import { ContinueReadingRow } from "../components/library/continue-reading-row";
 import { NotesDrawer } from "../components/library/notes-drawer";
 import { ThemeToggle } from "../components/shell/theme-toggle";
 
@@ -69,6 +70,8 @@ function Home() {
           Open the Library
         </Button>
       </div>
+
+      <ContinueReadingRow />
     </main>
   );
 }
