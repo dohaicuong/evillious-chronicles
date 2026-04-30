@@ -3,8 +3,7 @@
 ## Persistence (roadmap #4)
 
 - ✅ Dexie set up (`src/lib/db.ts`), `chapterProgress` table, auto-tracked via IntersectionObserver in the reader
-- ✅ Bookmarks — `bookmarks` table, per-page toggle in reader, top-nav drawer with deep-link to `#page-N`
-- Bookmark labels — inline rename UI (currently always unlabeled)
+- ✅ Bookmarks — `bookmarks` table, per-page toggle in reader, top-nav drawer with deep-link to `#page-N`, inline rename
 - Notes — `notes` table (volumeId, chapterId, pageIndex, body, createdAt, updatedAt)
 - Manual "mark chapter complete" + reset-progress controls (no UI yet)
 

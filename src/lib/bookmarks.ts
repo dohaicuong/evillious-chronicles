@@ -30,3 +30,10 @@ export async function toggleBookmark(args: ToggleArgs): Promise<void> {
 export async function removeBookmark(id: number): Promise<void> {
   await db.bookmarks.delete(id);
 }
+
+export async function setBookmarkLabel(id: number, label: string): Promise<void> {
+  // Empty / whitespace-only clears the label entirely. Dexie deletes the key
+  // when the patch value is undefined.
+  const trimmed = label.trim();
+  await db.bookmarks.update(id, { label: trimmed || undefined });
+}
