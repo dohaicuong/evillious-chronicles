@@ -5,7 +5,8 @@
 - ✅ Dexie set up (`src/lib/db.ts`), `chapterProgress` table, auto-tracked via IntersectionObserver in the reader
 - ✅ Bookmarks — `bookmarks` table, per-page toggle in reader, top-nav drawer with deep-link to `#page-N`, inline rename
 - ✅ Manual progress controls — per-chapter "Mark complete" / "Reset progress" overflow menu in chapter list; per-volume "Mark all" / "Reset all" next to the volume progress bar
-- Notes — `notes` table (volumeId, chapterId, pageIndex, body, createdAt, updatedAt)
+- ✅ Notes — `notes` table, per-page note editor dialog, top-nav drawer, deep-link to `#page-N`
+- Notes: markdown body / preview (currently plain text)
 
 ### Future: TanStack DB
 
@@ -16,8 +17,6 @@
 ## Reader tools (roadmap #5)
 
 - `SettingsPanel` — theme (already done) + font size + line-height + reader width
-- `NotesPanel` — note list, edit, delete; per-page anchored notes
-- Settings + Notes live in a Drawer triggered from a TopBar `Gear` icon (Bookmarks already has its own drawer)
 
 ## Artistic touch-ups
 

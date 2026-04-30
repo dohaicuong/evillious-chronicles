@@ -1,9 +1,15 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { BookOpenTextIcon, BookmarkSimpleIcon, PaletteIcon } from "@phosphor-icons/react";
+import {
+  BookOpenTextIcon,
+  BookmarkSimpleIcon,
+  NotebookIcon,
+  PaletteIcon,
+} from "@phosphor-icons/react";
 import { Button } from "../components/primitives/button";
 import { IconButton } from "../components/primitives/icon-button";
 import { BookmarksDrawer } from "../components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "../components/library/continue-reading-drawer";
+import { NotesDrawer } from "../components/library/notes-drawer";
 import { ThemeToggle } from "../components/shell/theme-toggle";
 
 export const Route = createFileRoute("/")({
@@ -33,6 +39,13 @@ function Home() {
           trigger={
             <IconButton variant="ghost" size="sm" aria-label="Open bookmarks">
               <BookmarkSimpleIcon weight="light" />
+            </IconButton>
+          }
+        />
+        <NotesDrawer
+          trigger={
+            <IconButton variant="ghost" size="sm" aria-label="Open notes">
+              <NotebookIcon weight="light" />
             </IconButton>
           }
         />

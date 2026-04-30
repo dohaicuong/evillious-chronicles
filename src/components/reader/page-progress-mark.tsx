@@ -1,8 +1,10 @@
-import { useEffect, useRef, type ReactNode } from "react";
-import { BookmarkSimpleIcon } from "@phosphor-icons/react";
+import { useEffect, useRef, useState, type ReactNode } from "react";
+import { BookmarkSimpleIcon, NotePencilIcon } from "@phosphor-icons/react";
 import { bumpChapterProgress } from "../../lib/progress";
 import { toggleBookmark, useBookmark } from "../../lib/bookmarks";
+import { useNote } from "../../lib/notes";
 import { IconButton } from "../primitives/icon-button";
+import { NoteEditorDialog } from "../library/note-editor-dialog";
 
 type Props = {
   seriesId: string;
@@ -15,11 +17,12 @@ type Props = {
 };
 
 /*
- * Wraps a single rendered page. Two responsibilities:
+ * Wraps a single rendered page. Three responsibilities:
  *   1. Bumps reading progress when the page scrolls into the upper half of
  *      the viewport (one-shot per mount).
- *   2. Renders a bookmark toggle and a `#page-{n}` anchor for deep-links
- *      from the bookmarks drawer.
+ *   2. Renders bookmark + note toggles and a `#page-{n}` anchor for deep-links
+ *      from the bookmarks/notes drawers.
+ *   3. Hosts the per-page note editor dialog.
  */
 export function PageProgressMark({
   seriesId,
@@ -32,7 +35,10 @@ export function PageProgressMark({
 }: Props) {
   const ref = useRef<HTMLDivElement>(null);
   const bookmark = useBookmark(chapterId, pageNumber);
+  const note = useNote(chapterId, pageNumber);
   const bookmarked = !!bookmark;
+  const hasNote = !!note;
+  const [editorOpen, setEditorOpen] = useState(false);
 
   useEffect(() => {
     const el = ref.current;
@@ -52,19 +58,37 @@ export function PageProgressMark({
 
   return (
     <div ref={ref} id={`page-${pageNumber}`} className="relative scroll-mt-20">
-      <IconButton
-        size="sm"
-        variant="ghost"
-        className="absolute top-2 right-2 z-10"
-        aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
-        aria-pressed={bookmarked}
-        onClick={() => {
-          void toggleBookmark({ seriesId, volumeId, chapterId, pageNumber });
-        }}
-      >
-        <BookmarkSimpleIcon weight={bookmarked ? "fill" : "light"} />
-      </IconButton>
+      <div className="absolute top-2 right-2 z-10 flex items-center gap-0.5">
+        <IconButton
+          size="sm"
+          variant="ghost"
+          aria-label={hasNote ? "Edit note" : "Add note"}
+          aria-pressed={hasNote}
+          onClick={() => setEditorOpen(true)}
+        >
+          <NotePencilIcon weight={hasNote ? "fill" : "light"} />
+        </IconButton>
+        <IconButton
+          size="sm"
+          variant="ghost"
+          aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
+          aria-pressed={bookmarked}
+          onClick={() => {
+            void toggleBookmark({ seriesId, volumeId, chapterId, pageNumber });
+          }}
+        >
+          <BookmarkSimpleIcon weight={bookmarked ? "fill" : "light"} />
+        </IconButton>
+      </div>
       {children}
+      <NoteEditorDialog
+        seriesId={seriesId}
+        volumeId={volumeId}
+        chapterId={chapterId}
+        pageNumber={pageNumber}
+        open={editorOpen}
+        onOpenChange={setEditorOpen}
+      />
     </div>
   );
 }
