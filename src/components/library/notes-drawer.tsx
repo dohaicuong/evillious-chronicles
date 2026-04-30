@@ -1,4 +1,4 @@
-import { useState, type ReactElement } from "react";
+import { useState } from "react";
 import { Link } from "@tanstack/react-router";
 import { NotePencilIcon, PencilSimpleIcon, TrashIcon, XIcon } from "@phosphor-icons/react";
 import { Drawer } from "@src/components/primitives/drawer";
@@ -9,15 +9,19 @@ import { series as seriesList } from "@src/data/library";
 import { NoteEditorDialog } from "./note-editor-dialog";
 import type { Note } from "@src/lib/db";
 
-export function NotesDrawer({ trigger }: { trigger: ReactElement }) {
-  const [open, setOpen] = useState(false);
+export function NotesDrawer({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
   const [editing, setEditing] = useState<Note | null>(null);
   const notes = useAllNotes();
 
   return (
     <>
-      <Drawer open={open} onOpenChange={setOpen}>
-        <Drawer.Trigger render={trigger} />
+      <Drawer open={open} onOpenChange={onOpenChange}>
         <Drawer.Portal>
           <Drawer.Backdrop />
           <Drawer.Popup side="right" className="gap-0 p-0">
@@ -27,7 +31,7 @@ export function NotesDrawer({ trigger }: { trigger: ReactElement }) {
                 variant="ghost"
                 size="sm"
                 aria-label="Close notes"
-                onClick={() => setOpen(false)}
+                onClick={() => onOpenChange(false)}
               >
                 <XIcon weight="light" />
               </IconButton>
@@ -44,7 +48,7 @@ export function NotesDrawer({ trigger }: { trigger: ReactElement }) {
                     <NoteRow
                       key={n.id}
                       note={n}
-                      onNavigate={() => setOpen(false)}
+                      onNavigate={() => onOpenChange(false)}
                       onEdit={() => setEditing(n)}
                     />
                   ))}

@@ -1,4 +1,5 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
+import { useState } from "react";
 import {
   BookOpenTextIcon,
   BookmarkSimpleIcon,
@@ -18,6 +19,10 @@ export const Route = createFileRoute("/")({
 });
 
 function Home() {
+  const [continueOpen, setContinueOpen] = useState(false);
+  const [bookmarksOpen, setBookmarksOpen] = useState(false);
+  const [notesOpen, setNotesOpen] = useState(false);
+
   return (
     <main className="min-h-screen flex flex-col items-center justify-center gap-8 px-6 py-20 relative">
       <div className="absolute top-4 right-4 flex items-center gap-1">
@@ -29,29 +34,35 @@ function Home() {
         >
           <PaletteIcon weight="light" />
         </IconButton>
-        <ContinueReadingDrawer
-          trigger={
-            <IconButton variant="ghost" size="sm" aria-label="Continue reading">
-              <BookOpenTextIcon weight="light" />
-            </IconButton>
-          }
-        />
-        <BookmarksDrawer
-          trigger={
-            <IconButton variant="ghost" size="sm" aria-label="Open bookmarks">
-              <BookmarkSimpleIcon weight="light" />
-            </IconButton>
-          }
-        />
-        <NotesDrawer
-          trigger={
-            <IconButton variant="ghost" size="sm" aria-label="Open notes">
-              <NotebookIcon weight="light" />
-            </IconButton>
-          }
-        />
+        <IconButton
+          variant="ghost"
+          size="sm"
+          aria-label="Continue reading"
+          onClick={() => setContinueOpen(true)}
+        >
+          <BookOpenTextIcon weight="light" />
+        </IconButton>
+        <IconButton
+          variant="ghost"
+          size="sm"
+          aria-label="Open bookmarks"
+          onClick={() => setBookmarksOpen(true)}
+        >
+          <BookmarkSimpleIcon weight="light" />
+        </IconButton>
+        <IconButton
+          variant="ghost"
+          size="sm"
+          aria-label="Open notes"
+          onClick={() => setNotesOpen(true)}
+        >
+          <NotebookIcon weight="light" />
+        </IconButton>
         <ThemeToggle />
       </div>
+      <ContinueReadingDrawer open={continueOpen} onOpenChange={setContinueOpen} />
+      <BookmarksDrawer open={bookmarksOpen} onOpenChange={setBookmarksOpen} />
+      <NotesDrawer open={notesOpen} onOpenChange={setNotesOpen} />
 
       <span className="text-style-eyebrow text-fg-muted">A multimedia chronicle by mothy</span>
 

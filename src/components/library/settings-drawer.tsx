@@ -1,4 +1,4 @@
-import { useState, type ReactElement, type ReactNode } from "react";
+import type { ReactNode } from "react";
 import { XIcon } from "@phosphor-icons/react";
 import { Drawer } from "@src/components/primitives/drawer";
 import { Button } from "@src/components/primitives/button";
@@ -10,15 +10,19 @@ const PREVIEW_TEXT = `The princess of Lucifenia, only fourteen years old, watche
 
 "Now, kneel before me." Her voice was small, but Allen heard it as if it filled the throne room.`;
 
-export function SettingsDrawer({ trigger }: { trigger: ReactElement }) {
-  const [open, setOpen] = useState(false);
+export function SettingsDrawer({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
   const { settings, set, reset } = useReaderSettings();
 
   const cssVars = readerSettingsCssVars(settings);
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
-      <Drawer.Trigger render={trigger} />
+    <Drawer open={open} onOpenChange={onOpenChange}>
       <Drawer.Portal>
         <Drawer.Backdrop />
         <Drawer.Popup side="right" className="gap-0 p-0">
@@ -28,7 +32,7 @@ export function SettingsDrawer({ trigger }: { trigger: ReactElement }) {
               variant="ghost"
               size="sm"
               aria-label="Close settings"
-              onClick={() => setOpen(false)}
+              onClick={() => onOpenChange(false)}
             >
               <XIcon weight="light" />
             </IconButton>

@@ -1,4 +1,3 @@
-import { useState, type ReactElement } from "react";
 import { Link } from "@tanstack/react-router";
 import { XIcon } from "@phosphor-icons/react";
 import { Drawer } from "@src/components/primitives/drawer";
@@ -7,13 +6,17 @@ import { Progress } from "@src/components/primitives/progress";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
 import { useInProgressVolumes, type VolumeInProgress } from "@src/lib/progress";
 
-export function ContinueReadingDrawer({ trigger }: { trigger: ReactElement }) {
-  const [open, setOpen] = useState(false);
+export function ContinueReadingDrawer({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
   const volumes = useInProgressVolumes();
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
-      <Drawer.Trigger render={trigger} />
+    <Drawer open={open} onOpenChange={onOpenChange}>
       <Drawer.Portal>
         <Drawer.Backdrop />
         <Drawer.Popup side="right" className="gap-0 p-0">
@@ -23,7 +26,7 @@ export function ContinueReadingDrawer({ trigger }: { trigger: ReactElement }) {
               variant="ghost"
               size="sm"
               aria-label="Close continue reading"
-              onClick={() => setOpen(false)}
+              onClick={() => onOpenChange(false)}
             >
               <XIcon weight="light" />
             </IconButton>
@@ -40,7 +43,7 @@ export function ContinueReadingDrawer({ trigger }: { trigger: ReactElement }) {
                   <VolumeRow
                     key={`${v.seriesId}:${v.volumeId}`}
                     volume={v}
-                    onNavigate={() => setOpen(false)}
+                    onNavigate={() => onOpenChange(false)}
                   />
                 ))}
               </ul>

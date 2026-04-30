@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState, type ReactElement } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Link } from "@tanstack/react-router";
 import {
   BookmarkSimpleIcon,
@@ -15,13 +15,17 @@ import { useAllBookmarks, removeBookmark, setBookmarkLabel } from "@src/lib/book
 import { series as seriesList } from "@src/data/library";
 import type { Bookmark } from "@src/lib/db";
 
-export function BookmarksDrawer({ trigger }: { trigger: ReactElement }) {
-  const [open, setOpen] = useState(false);
+export function BookmarksDrawer({
+  open,
+  onOpenChange,
+}: {
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+}) {
   const bookmarks = useAllBookmarks();
 
   return (
-    <Drawer open={open} onOpenChange={setOpen}>
-      <Drawer.Trigger render={trigger} />
+    <Drawer open={open} onOpenChange={onOpenChange}>
       <Drawer.Portal>
         <Drawer.Backdrop />
         <Drawer.Popup side="right" className="gap-0 p-0">
@@ -31,7 +35,7 @@ export function BookmarksDrawer({ trigger }: { trigger: ReactElement }) {
               variant="ghost"
               size="sm"
               aria-label="Close bookmarks"
-              onClick={() => setOpen(false)}
+              onClick={() => onOpenChange(false)}
             >
               <XIcon weight="light" />
             </IconButton>
@@ -45,7 +49,7 @@ export function BookmarksDrawer({ trigger }: { trigger: ReactElement }) {
             <ScrollArea className="flex-1">
               <ul className="flex flex-col px-6 py-2">
                 {bookmarks.map((b) => (
-                  <BookmarkRow key={b.id} bookmark={b} onNavigate={() => setOpen(false)} />
+                  <BookmarkRow key={b.id} bookmark={b} onNavigate={() => onOpenChange(false)} />
                 ))}
               </ul>
             </ScrollArea>
