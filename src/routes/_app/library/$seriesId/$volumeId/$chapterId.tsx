@@ -1,4 +1,5 @@
-import { Link, createFileRoute, notFound } from "@tanstack/react-router";
+import { Link, createFileRoute, notFound, useLocation } from "@tanstack/react-router";
+import { useEffect } from "react";
 import { CaretLeftIcon } from "@phosphor-icons/react";
 import { series } from "../../../../../data/library";
 import { getVolume } from "../../../../../data/volumes";
@@ -30,6 +31,18 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
 
 function ChapterReader() {
   const { series: s, volume, chapter, prev, next } = Route.useLoaderData();
+  const { hash } = useLocation();
+
+  // Hash deep-link to a specific page (e.g. from the bookmarks drawer).
+  // Re-runs when the route's hash changes; rAF lets the page elements paint first.
+  useEffect(() => {
+    if (!hash) return;
+    const id = hash.startsWith("#") ? hash.slice(1) : hash;
+    if (!/^page-\d+$/.test(id)) return;
+    requestAnimationFrame(() => {
+      document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }, [hash, chapter.id]);
 
   return (
     <div data-sin={volume.sin ?? undefined} className="mx-auto max-w-2xl px-6 py-12 sm:py-16">
@@ -61,8 +74,11 @@ function ChapterReader() {
           chapter.pages.map((page, i) => (
             <PageProgressMark
               key={page.number}
+              seriesId={s.id}
+              volumeId={volume.id}
               chapterId={chapter.id}
               pageIndex={i}
+              pageNumber={page.number}
               totalPages={chapter.pages.length}
             >
               <PageView page={page} />

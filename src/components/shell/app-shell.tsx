@@ -1,7 +1,10 @@
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
+import { BookmarkSimpleIcon } from "@phosphor-icons/react";
 import { cn } from "../../lib/cn";
 import { ScrollArea } from "../primitives/scroll-area";
+import { IconButton } from "../primitives/icon-button";
+import { BookmarksDrawer } from "../library/bookmarks-drawer";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLinkBase = cn(
@@ -32,6 +35,13 @@ export function AppShell() {
             <Link to="/library" className={navLinkBase}>
               Library
             </Link>
+            <BookmarksDrawer
+              trigger={
+                <IconButton variant="ghost" size="sm" aria-label="Open bookmarks">
+                  <BookmarkSimpleIcon weight="light" />
+                </IconButton>
+              }
+            />
             <ThemeToggle />
           </nav>
         </div>

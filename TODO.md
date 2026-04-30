@@ -3,7 +3,8 @@
 ## Persistence (roadmap #4)
 
 - ✅ Dexie set up (`src/lib/db.ts`), `chapterProgress` table, auto-tracked via IntersectionObserver in the reader
-- Bookmarks — `bookmarks` table (volumeId, chapterId, pageIndex, label, createdAt)
+- ✅ Bookmarks — `bookmarks` table, per-page toggle in reader, top-nav drawer with deep-link to `#page-N`
+- Bookmark labels — inline rename UI (currently always unlabeled)
 - Notes — `notes` table (volumeId, chapterId, pageIndex, body, createdAt, updatedAt)
 - Manual "mark chapter complete" + reset-progress controls (no UI yet)
 
@@ -16,9 +17,8 @@
 ## Reader tools (roadmap #5)
 
 - `SettingsPanel` — theme (already done) + font size + line-height + reader width
-- `BookmarksPanel` — list bookmarks across volume / current chapter, jump-to
 - `NotesPanel` — note list, edit, delete; per-page anchored notes
-- All three live in a Drawer triggered from a TopBar `Gear` icon
+- Settings + Notes live in a Drawer triggered from a TopBar `Gear` icon (Bookmarks already has its own drawer)
 
 ## Artistic touch-ups
 
@@ -36,3 +36,4 @@
 - ✅ Deploy — GitHub Pages via Actions
 - ✅ Mobile fixes — series page overflow (song list `truncate` → `line-clamp-1`), audio dock collapse toggle
 - ✅ Reading progress — Dexie + IntersectionObserver, live aggregate on cards/volume page
+- ✅ Bookmarks — per-page toggle, top-nav drawer (home + app shell), `#page-N` deep-link with smooth scroll

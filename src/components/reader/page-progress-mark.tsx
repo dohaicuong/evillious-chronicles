@@ -1,21 +1,38 @@
 import { useEffect, useRef, type ReactNode } from "react";
+import { BookmarkSimpleIcon } from "@phosphor-icons/react";
 import { bumpChapterProgress } from "../../lib/progress";
+import { toggleBookmark, useBookmark } from "../../lib/bookmarks";
+import { IconButton } from "../primitives/icon-button";
 
 type Props = {
+  seriesId: string;
+  volumeId: string;
   chapterId: string;
   pageIndex: number;
+  pageNumber: number;
   totalPages: number;
   children: ReactNode;
 };
 
 /*
- * Wraps a single rendered page. When the page is more than half-scrolled
- * past the viewport top, marks `pageIndex + 1` as the highest page reached
- * for this chapter. Self-disconnects after firing — we only need the first
- * "user reached this page" signal.
+ * Wraps a single rendered page. Two responsibilities:
+ *   1. Bumps reading progress when the page scrolls into the upper half of
+ *      the viewport (one-shot per mount).
+ *   2. Renders a bookmark toggle and a `#page-{n}` anchor for deep-links
+ *      from the bookmarks drawer.
  */
-export function PageProgressMark({ chapterId, pageIndex, totalPages, children }: Props) {
+export function PageProgressMark({
+  seriesId,
+  volumeId,
+  chapterId,
+  pageIndex,
+  pageNumber,
+  totalPages,
+  children,
+}: Props) {
   const ref = useRef<HTMLDivElement>(null);
+  const bookmark = useBookmark(chapterId, pageNumber);
+  const bookmarked = !!bookmark;
 
   useEffect(() => {
     const el = ref.current;
@@ -33,5 +50,21 @@ export function PageProgressMark({ chapterId, pageIndex, totalPages, children }:
     return () => observer.disconnect();
   }, [chapterId, pageIndex, totalPages]);
 
-  return <div ref={ref}>{children}</div>;
+  return (
+    <div ref={ref} id={`page-${pageNumber}`} className="relative scroll-mt-20">
+      <IconButton
+        size="sm"
+        variant="ghost"
+        className="absolute top-2 right-2 z-10"
+        aria-label={bookmarked ? "Remove bookmark" : "Add bookmark"}
+        aria-pressed={bookmarked}
+        onClick={() => {
+          void toggleBookmark({ seriesId, volumeId, chapterId, pageNumber });
+        }}
+      >
+        <BookmarkSimpleIcon weight={bookmarked ? "fill" : "light"} />
+      </IconButton>
+      {children}
+    </div>
+  );
 }

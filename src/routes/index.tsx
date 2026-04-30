@@ -1,7 +1,8 @@
 import { Link, createFileRoute } from "@tanstack/react-router";
-import { PaletteIcon } from "@phosphor-icons/react";
+import { BookmarkSimpleIcon, PaletteIcon } from "@phosphor-icons/react";
 import { Button } from "../components/primitives/button";
 import { IconButton } from "../components/primitives/icon-button";
+import { BookmarksDrawer } from "../components/library/bookmarks-drawer";
 import { ThemeToggle } from "../components/shell/theme-toggle";
 
 export const Route = createFileRoute("/")({
@@ -20,6 +21,13 @@ function Home() {
         >
           <PaletteIcon weight="light" />
         </IconButton>
+        <BookmarksDrawer
+          trigger={
+            <IconButton variant="ghost" size="sm" aria-label="Open bookmarks">
+              <BookmarkSimpleIcon weight="light" />
+            </IconButton>
+          }
+        />
         <ThemeToggle />
       </div>
 
