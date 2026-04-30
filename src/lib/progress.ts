@@ -70,10 +70,7 @@ export async function bumpChapterProgress(
   });
 }
 
-export async function markChapterComplete(
-  chapterId: string,
-  totalPages: number,
-): Promise<void> {
+export async function markChapterComplete(chapterId: string, totalPages: number): Promise<void> {
   await db.chapterProgress.put({
     chapterId,
     pagesRead: totalPages,

@@ -4,11 +4,7 @@ import { Drawer } from "@src/components/primitives/drawer";
 import { Button } from "@src/components/primitives/button";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { Slider } from "@src/components/primitives/slider";
-import {
-  READER_BOUNDS,
-  readerSettingsCssVars,
-  useReaderSettings,
-} from "@src/lib/reader-settings";
+import { READER_BOUNDS, readerSettingsCssVars, useReaderSettings } from "@src/lib/reader-settings";
 
 const PREVIEW_TEXT = `The princess of Lucifenia, only fourteen years old, watched her kingdom turn to ruin while the servant who shared her face stood at her side.
 

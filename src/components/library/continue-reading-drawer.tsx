@@ -52,18 +52,9 @@ export function ContinueReadingDrawer({ trigger }: { trigger: ReactElement }) {
   );
 }
 
-function VolumeRow({
-  volume,
-  onNavigate,
-}: {
-  volume: VolumeInProgress;
-  onNavigate: () => void;
-}) {
+function VolumeRow({ volume, onNavigate }: { volume: VolumeInProgress; onNavigate: () => void }) {
   return (
-    <li
-      data-sin={volume.sin ?? undefined}
-      className="border-b border-border last:border-b-0 py-2"
-    >
+    <li data-sin={volume.sin ?? undefined} className="border-b border-border last:border-b-0 py-2">
       <Link
         to="/library/$seriesId/$volumeId/$chapterId"
         params={{

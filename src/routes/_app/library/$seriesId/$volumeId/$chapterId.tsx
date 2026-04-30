@@ -8,10 +8,7 @@ import { PageProgressMark } from "@src/components/reader/page-progress-mark";
 import { ChapterNav } from "@src/components/reader/chapter-nav";
 import { NextChapterCTA } from "@src/components/reader/next-chapter-cta";
 import { SinGlyph } from "@src/components/thematic/sin-glyph";
-import {
-  readerSettingsCssVars,
-  useReaderSettings,
-} from "@src/lib/reader-settings";
+import { readerSettingsCssVars, useReaderSettings } from "@src/lib/reader-settings";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapterId")({
   component: ChapterReader,

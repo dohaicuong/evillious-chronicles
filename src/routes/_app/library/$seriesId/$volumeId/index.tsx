@@ -13,11 +13,7 @@ import { Ornament } from "@src/components/thematic/ornament";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { Menu } from "@src/components/primitives/menu";
 import { DotsThreeVerticalIcon } from "@phosphor-icons/react";
-import {
-  markVolumeComplete,
-  resetVolumeProgress,
-  useVolumeProgress,
-} from "@src/lib/progress";
+import { markVolumeComplete, resetVolumeProgress, useVolumeProgress } from "@src/lib/progress";
 import type { Chapter } from "@src/data/library";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/")({
@@ -120,10 +116,7 @@ function VolumeProgressMenu({ chapters, percent }: { chapters: Chapter[]; percen
       <Menu.Portal>
         <Menu.Positioner align="end">
           <Menu.Popup>
-            <Menu.Item
-              disabled={percent === 100}
-              onClick={() => void markVolumeComplete(chapters)}
-            >
+            <Menu.Item disabled={percent === 100} onClick={() => void markVolumeComplete(chapters)}>
               Mark all complete
             </Menu.Item>
             <Menu.Item

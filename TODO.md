@@ -3,27 +3,34 @@
 ## Pending
 
 ### Reader / content
+
 - **Audio cues** — wire `Page.songCue` to the audio dock. Schema already in place at three levels (no changes needed): `Series.songIds` (rendered on series page), `Chapter.songIds` (a "tracks in this chapter" list — not rendered yet), `Page.songCue` (single id, intended to pin/highlight the song in the dock when the page is reached). Plan: IntersectionObserver on the page like progress; opt-in via a new `autoplaySongCues` toggle in `SettingsDrawer`.
 - **Per-chapter annotation chips** on the volume page — small chips next to each chapter showing bookmark / note counts.
 
 ### Notes
+
 - Markdown body / preview in the editor (`react-markdown` already a dep).
 
 ### Settings
+
 - Font family picker, justify/hyphenation, per-volume overrides.
 
 ### Discoverability
+
 - **Search** — title-only across volumes / chapters / notes / bookmarks; library-page search box.
 - **Keyboard shortcuts** in the reader (`b` bookmark, `n` note, `g` settings, `?` cheatsheet); global discovery dialog.
 
 ### Data hygiene
+
 - **Export / import** — one JSON file from the three Dexie tables (`chapterProgress`, `bookmarks`, `notes`). Cheap insurance against site-data clears.
 
 ### Artistic touch-ups
+
 - **Home page** — old leather-bound book cover (texture, embossed title, raised hub bands via SVG).
 - **Reader pages** — old rotten paper feel (paper grain, yellowing/foxing, vignette). Watch the dark-mode palette interaction.
 
 ### Future: TanStack DB
+
 - Worth considering if we ever add a sync server (multi-device reading, cross-device bookmark sync). Has a Dexie-backed collection adapter, so the migration would be mechanical. Skip for now — local-only personal reader doesn't benefit from the sync engine.
 
 ## Resolved

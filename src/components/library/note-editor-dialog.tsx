@@ -69,8 +69,8 @@ export function NoteEditorDialog({
             className="mt-4 w-full font-serif text-style-body bg-surface text-fg placeholder:text-fg-muted border border-border rounded-sm p-3 resize-y focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
           />
           <div className="mt-1 text-style-caption text-fg-muted">
-            <kbd>⌘/Ctrl</kbd> + <kbd>Enter</kbd> to save · <kbd>Esc</kbd> to cancel · empty saves
-            to delete
+            <kbd>⌘/Ctrl</kbd> + <kbd>Enter</kbd> to save · <kbd>Esc</kbd> to cancel · empty saves to
+            delete
           </div>
           <div className="mt-5 flex items-center justify-end gap-2">
             <Button variant="ghost" size="sm" onClick={cancel}>
