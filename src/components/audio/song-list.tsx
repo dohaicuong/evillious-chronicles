@@ -31,8 +31,8 @@ export function SongList({ songIds }: { songIds: string[] }) {
               {i + 1}
             </span>
             <div className="flex-1 flex flex-col gap-0.5 min-w-0">
-              <span className="text-style-body text-fg truncate">{song.title}</span>
-              <span className="text-style-caption text-fg-muted truncate">
+              <span className="text-style-body text-fg line-clamp-1">{song.title}</span>
+              <span className="text-style-caption text-fg-muted line-clamp-1">
                 {song.originalTitle ? <>{song.originalTitle} · </> : null}
                 {song.vocalist}
                 {song.composer ? <> · {song.composer}</> : null}
