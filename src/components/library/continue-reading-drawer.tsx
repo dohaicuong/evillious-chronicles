@@ -1,11 +1,11 @@
 import { useState, type ReactElement } from "react";
 import { Link } from "@tanstack/react-router";
 import { XIcon } from "@phosphor-icons/react";
-import { Drawer } from "../primitives/drawer";
-import { IconButton } from "../primitives/icon-button";
-import { Progress } from "../primitives/progress";
-import { ScrollArea } from "../primitives/scroll-area";
-import { useInProgressVolumes, type VolumeInProgress } from "../../lib/progress";
+import { Drawer } from "@src/components/primitives/drawer";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { Progress } from "@src/components/primitives/progress";
+import { ScrollArea } from "@src/components/primitives/scroll-area";
+import { useInProgressVolumes, type VolumeInProgress } from "@src/lib/progress";
 
 export function ContinueReadingDrawer({ trigger }: { trigger: ReactElement }) {
   const [open, setOpen] = useState(false);

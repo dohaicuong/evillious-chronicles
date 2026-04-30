@@ -1,6 +1,6 @@
 import { Menu as BaseMenu } from "@base-ui/react/menu";
 import type { ComponentProps } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from "@src/lib/cn";
 
 const Root = BaseMenu.Root;
 const Trigger = BaseMenu.Trigger;

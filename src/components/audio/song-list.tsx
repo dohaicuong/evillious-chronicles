@@ -1,7 +1,7 @@
 import { PlayIcon } from "@phosphor-icons/react";
-import { IconButton } from "../primitives/icon-button";
-import { useAudio } from "../../lib/audio";
-import { getSong } from "../../data/songs";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { useAudio } from "@src/lib/audio";
+import { getSong } from "@src/data/songs";
 
 const durationFmt = new Intl.DurationFormat("en", { style: "digital" });
 

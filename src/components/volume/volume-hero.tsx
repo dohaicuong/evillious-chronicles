@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
 import { BookOpenIcon } from "@phosphor-icons/react";
-import { Badge } from "../primitives/badge";
-import { Button } from "../primitives/button";
-import { asset } from "../../lib/asset";
-import { SinGlyph } from "../thematic/sin-glyph";
-import type { Volume } from "../../data/schema";
+import { Badge } from "@src/components/primitives/badge";
+import { Button } from "@src/components/primitives/button";
+import { asset } from "@src/lib/asset";
+import { SinGlyph } from "@src/components/thematic/sin-glyph";
+import type { Volume } from "@src/data/schema";
 
 export function VolumeHero({ volume }: { volume: Volume }) {
   const firstChapter = volume.chapters[0];

@@ -1,24 +1,24 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { CaretLeftIcon } from "@phosphor-icons/react";
-import { series } from "../../../../../data/library";
-import { getVolume } from "../../../../../data/volumes";
-import { ChapterList } from "../../../../../components/library/chapter-list";
-import { Badge } from "../../../../../components/primitives/badge";
-import { Progress } from "../../../../../components/primitives/progress";
-import { VolumeHero } from "../../../../../components/volume/volume-hero";
-import { TitlePageSection } from "../../../../../components/volume/title-page-section";
-import { PoetrySection } from "../../../../../components/volume/poetry-section";
-import { GallerySection } from "../../../../../components/volume/gallery-section";
-import { Ornament } from "../../../../../components/thematic/ornament";
-import { IconButton } from "../../../../../components/primitives/icon-button";
-import { Menu } from "../../../../../components/primitives/menu";
+import { series } from "@src/data/library";
+import { getVolume } from "@src/data/volumes";
+import { ChapterList } from "@src/components/library/chapter-list";
+import { Badge } from "@src/components/primitives/badge";
+import { Progress } from "@src/components/primitives/progress";
+import { VolumeHero } from "@src/components/volume/volume-hero";
+import { TitlePageSection } from "@src/components/volume/title-page-section";
+import { PoetrySection } from "@src/components/volume/poetry-section";
+import { GallerySection } from "@src/components/volume/gallery-section";
+import { Ornament } from "@src/components/thematic/ornament";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { Menu } from "@src/components/primitives/menu";
 import { DotsThreeVerticalIcon } from "@phosphor-icons/react";
 import {
   markVolumeComplete,
   resetVolumeProgress,
   useVolumeProgress,
-} from "../../../../../lib/progress";
-import type { Chapter } from "../../../../../data/library";
+} from "@src/lib/progress";
+import type { Chapter } from "@src/data/library";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/")({
   component: VolumePage,

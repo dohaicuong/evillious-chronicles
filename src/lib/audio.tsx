@@ -1,5 +1,5 @@
 import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
-import type { Song } from "../data/schema";
+import type { Song } from "@src/data/schema";
 
 type AudioContextValue = {
   currentSong: Song | null;

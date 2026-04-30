@@ -1,3 +1,4 @@
+import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite-plus";
 import react from "@vitejs/plugin-react";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
@@ -8,6 +9,12 @@ export default defineConfig({
   // GitHub Pages serves the site under /<repo-name>/. The deploy workflow sets
   // BASE_URL accordingly; locally it falls back to "/".
   base: process.env.BASE_URL ?? "/",
+  // Path aliases — keep in sync with tsconfig.app.json compilerOptions.paths.
+  resolve: {
+    alias: {
+      "@src": fileURLToPath(new URL("./src", import.meta.url)),
+    },
+  },
   staged: {
     "*": "vp check --fix",
   },

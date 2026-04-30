@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { series } from "../../../data/library";
-import { SeriesCard } from "../../../components/library/series-card";
+import { series } from "@src/data/library";
+import { SeriesCard } from "@src/components/library/series-card";
 
 export const Route = createFileRoute("/_app/library/")({
   component: LibraryPage,

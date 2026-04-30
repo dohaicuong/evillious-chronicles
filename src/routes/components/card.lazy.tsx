@@ -1,7 +1,7 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { BookOpenIcon, BookmarkSimpleIcon } from "@phosphor-icons/react";
-import { Button } from "../../components/primitives/button";
-import { Card } from "../../components/primitives/card";
+import { Button } from "@src/components/primitives/button";
+import { Card } from "@src/components/primitives/card";
 
 export const Route = createLazyFileRoute("/components/card")({
   component: CardPage,

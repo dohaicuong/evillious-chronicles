@@ -1,6 +1,6 @@
 import { Dialog as BaseDialog } from "@base-ui/react/dialog";
 import type { ComponentProps } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from "@src/lib/cn";
 
 const Root = BaseDialog.Root;
 const Trigger = BaseDialog.Trigger;

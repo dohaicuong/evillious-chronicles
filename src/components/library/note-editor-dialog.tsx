@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from "react";
-import { Dialog } from "../primitives/dialog";
-import { Button } from "../primitives/button";
-import { upsertNote, useNote } from "../../lib/notes";
+import { Dialog } from "@src/components/primitives/dialog";
+import { Button } from "@src/components/primitives/button";
+import { upsertNote, useNote } from "@src/lib/notes";
 
 type Props = {
   seriesId: string;

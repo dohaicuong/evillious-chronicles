@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { Button } from "../../components/primitives/button";
-import { Dialog } from "../../components/primitives/dialog";
+import { Button } from "@src/components/primitives/button";
+import { Dialog } from "@src/components/primitives/dialog";
 
 export const Route = createLazyFileRoute("/components/dialog")({
   component: DialogPage,

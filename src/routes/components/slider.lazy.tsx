@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Slider } from "../../components/primitives/slider";
+import { Slider } from "@src/components/primitives/slider";
 
 export const Route = createLazyFileRoute("/components/slider")({
   component: SliderPage,

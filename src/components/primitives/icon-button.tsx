@@ -1,6 +1,6 @@
 import { Button as BaseButton } from "@base-ui/react/button";
 import { cloneElement, isValidElement, type ComponentProps, type ReactElement } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from "@src/lib/cn";
 
 type Variant = "primary" | "secondary" | "outline" | "ghost";
 type Size = "sm" | "md" | "lg";

@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { Button } from "../../components/primitives/button";
-import { Menu } from "../../components/primitives/menu";
+import { Button } from "@src/components/primitives/button";
+import { Menu } from "@src/components/primitives/menu";
 
 export const Route = createLazyFileRoute("/components/menu")({
   component: MenuPage,

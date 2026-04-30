@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
-import { Progress } from "../primitives/progress";
-import { useInProgressVolumes, type VolumeInProgress } from "../../lib/progress";
+import { Progress } from "@src/components/primitives/progress";
+import { useInProgressVolumes, type VolumeInProgress } from "@src/lib/progress";
 
 const MAX_ROWS = 3;
 

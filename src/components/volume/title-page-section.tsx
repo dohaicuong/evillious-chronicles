@@ -1,4 +1,4 @@
-import type { Volume } from "../../data/schema";
+import type { Volume } from "@src/data/schema";
 
 export function TitlePageSection({ volume }: { volume: Volume }) {
   const { titlePage, translation } = volume;

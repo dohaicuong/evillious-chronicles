@@ -1,7 +1,7 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { BookOpenIcon } from "@phosphor-icons/react";
-import { ScrollArea } from "../../components/primitives/scroll-area";
-import { Card } from "../../components/primitives/card";
+import { ScrollArea } from "@src/components/primitives/scroll-area";
+import { Card } from "@src/components/primitives/card";
 
 export const Route = createLazyFileRoute("/components/scroll-area")({
   component: ScrollAreaPage,

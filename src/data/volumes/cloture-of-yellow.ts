@@ -1,4 +1,4 @@
-import type { ImageAsset, Page, Volume } from "../schema";
+import type { ImageAsset, Page, Volume } from "@src/data/schema";
 
 import prologueText from "./cloture-of-yellow/chapters/00-prologue.md?raw";
 import ch1s1Text from "./cloture-of-yellow/chapters/01-ch1-s1-fourteenth-birthday.md?raw";

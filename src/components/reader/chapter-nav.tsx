@@ -1,6 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import type { Chapter } from "../../data/schema";
+import type { Chapter } from "@src/data/schema";
 
 type Props = {
   seriesId: string;

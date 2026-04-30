@@ -7,13 +7,13 @@ import {
   TrashIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { Drawer } from "../primitives/drawer";
-import { IconButton } from "../primitives/icon-button";
-import { Input } from "../primitives/input";
-import { ScrollArea } from "../primitives/scroll-area";
-import { useAllBookmarks, removeBookmark, setBookmarkLabel } from "../../lib/bookmarks";
-import { series as seriesList } from "../../data/library";
-import type { Bookmark } from "../../lib/db";
+import { Drawer } from "@src/components/primitives/drawer";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { Input } from "@src/components/primitives/input";
+import { ScrollArea } from "@src/components/primitives/scroll-area";
+import { useAllBookmarks, removeBookmark, setBookmarkLabel } from "@src/lib/bookmarks";
+import { series as seriesList } from "@src/data/library";
+import type { Bookmark } from "@src/lib/db";
 
 export function BookmarksDrawer({ trigger }: { trigger: ReactElement }) {
   const [open, setOpen] = useState(false);

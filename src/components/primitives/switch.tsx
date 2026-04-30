@@ -1,6 +1,6 @@
 import { Switch as BaseSwitch } from "@base-ui/react/switch";
 import type { ComponentProps } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from "@src/lib/cn";
 
 type SwitchProps = ComponentProps<typeof BaseSwitch.Root>;
 

@@ -1,8 +1,8 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { ClockworkSpinner } from "../../components/thematic/clockwork-spinner";
-import { Ornament } from "../../components/thematic/ornament";
-import { SinGlyph } from "../../components/thematic/sin-glyph";
-import type { Sin } from "../../data/schema";
+import { ClockworkSpinner } from "@src/components/thematic/clockwork-spinner";
+import { Ornament } from "@src/components/thematic/ornament";
+import { SinGlyph } from "@src/components/thematic/sin-glyph";
+import type { Sin } from "@src/data/schema";
 
 export const Route = createLazyFileRoute("/components/thematic")({
   component: ThematicPage,

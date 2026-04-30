@@ -1,8 +1,8 @@
 import { useMemo } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db, type ChapterProgress } from "./db";
-import { series } from "../data/library";
-import type { Chapter, Sin, Series, Volume } from "../data/library";
+import { series } from "@src/data/library";
+import type { Chapter, Sin, Series, Volume } from "@src/data/library";
 
 type SlimChapter = { id: string; pageCount: number };
 

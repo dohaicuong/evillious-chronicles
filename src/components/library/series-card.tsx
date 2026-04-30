@@ -1,8 +1,8 @@
 import { Link } from "@tanstack/react-router";
-import { Card } from "../primitives/card";
-import { Badge } from "../primitives/badge";
-import { SinGlyph } from "../thematic/sin-glyph";
-import type { Series, Sin } from "../../data/library";
+import { Card } from "@src/components/primitives/card";
+import { Badge } from "@src/components/primitives/badge";
+import { SinGlyph } from "@src/components/thematic/sin-glyph";
+import type { Series, Sin } from "@src/data/library";
 
 export function SeriesCard({ series }: { series: Series }) {
   const sins = [...new Set(series.volumes.map((v) => v.sin).filter((s): s is Sin => Boolean(s)))];

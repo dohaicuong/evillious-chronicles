@@ -1,9 +1,9 @@
 import { Link, createFileRoute, notFound } from "@tanstack/react-router";
 import { CaretLeftIcon } from "@phosphor-icons/react";
-import { series } from "../../../../data/library";
-import { VolumeCard } from "../../../../components/library/volume-card";
-import { SongList } from "../../../../components/audio/song-list";
-import { Ornament } from "../../../../components/thematic/ornament";
+import { series } from "@src/data/library";
+import { VolumeCard } from "@src/components/library/volume-card";
+import { SongList } from "@src/components/audio/song-list";
+import { Ornament } from "@src/components/thematic/ornament";
 
 export const Route = createFileRoute("/_app/library/$seriesId/")({
   component: SeriesPage,

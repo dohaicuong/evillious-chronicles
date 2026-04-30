@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { useState } from "react";
-import { Tabs } from "../../components/primitives/tabs";
+import { Tabs } from "@src/components/primitives/tabs";
 
 export const Route = createLazyFileRoute("/components/tabs")({
   component: TabsPage,

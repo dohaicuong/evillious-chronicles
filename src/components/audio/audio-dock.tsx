@@ -1,8 +1,8 @@
 import { useState } from "react";
 import { CaretDownIcon, CaretUpIcon, XIcon } from "@phosphor-icons/react";
-import { extractYouTubeId, useAudio } from "../../lib/audio";
-import { IconButton } from "../primitives/icon-button";
-import { cn } from "../../lib/cn";
+import { extractYouTubeId, useAudio } from "@src/lib/audio";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { cn } from "@src/lib/cn";
 
 export function AudioDock() {
   const { currentSong, close } = useAudio();

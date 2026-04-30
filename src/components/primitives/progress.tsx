@@ -1,6 +1,6 @@
 import { Progress as BaseProgress } from "@base-ui/react/progress";
 import type { ComponentProps } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from "@src/lib/cn";
 
 type Size = "sm" | "md" | "lg";
 

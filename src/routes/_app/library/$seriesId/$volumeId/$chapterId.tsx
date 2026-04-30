@@ -1,17 +1,17 @@
 import { Link, createFileRoute, notFound, useLocation } from "@tanstack/react-router";
 import { useEffect } from "react";
 import { CaretLeftIcon } from "@phosphor-icons/react";
-import { series } from "../../../../../data/library";
-import { getVolume } from "../../../../../data/volumes";
-import { PageView } from "../../../../../components/reader/page-view";
-import { PageProgressMark } from "../../../../../components/reader/page-progress-mark";
-import { ChapterNav } from "../../../../../components/reader/chapter-nav";
-import { NextChapterCTA } from "../../../../../components/reader/next-chapter-cta";
-import { SinGlyph } from "../../../../../components/thematic/sin-glyph";
+import { series } from "@src/data/library";
+import { getVolume } from "@src/data/volumes";
+import { PageView } from "@src/components/reader/page-view";
+import { PageProgressMark } from "@src/components/reader/page-progress-mark";
+import { ChapterNav } from "@src/components/reader/chapter-nav";
+import { NextChapterCTA } from "@src/components/reader/next-chapter-cta";
+import { SinGlyph } from "@src/components/thematic/sin-glyph";
 import {
   readerSettingsCssVars,
   useReaderSettings,
-} from "../../../../../lib/reader-settings";
+} from "@src/lib/reader-settings";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapterId")({
   component: ChapterReader,

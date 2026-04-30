@@ -5,13 +5,13 @@ import {
   NotebookIcon,
   PaletteIcon,
 } from "@phosphor-icons/react";
-import { Button } from "../components/primitives/button";
-import { IconButton } from "../components/primitives/icon-button";
-import { BookmarksDrawer } from "../components/library/bookmarks-drawer";
-import { ContinueReadingDrawer } from "../components/library/continue-reading-drawer";
-import { ContinueReadingRow } from "../components/library/continue-reading-row";
-import { NotesDrawer } from "../components/library/notes-drawer";
-import { ThemeToggle } from "../components/shell/theme-toggle";
+import { Button } from "@src/components/primitives/button";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
+import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
+import { ContinueReadingRow } from "@src/components/library/continue-reading-row";
+import { NotesDrawer } from "@src/components/library/notes-drawer";
+import { ThemeToggle } from "@src/components/shell/theme-toggle";
 
 export const Route = createFileRoute("/")({
   component: Home,

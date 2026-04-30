@@ -8,7 +8,7 @@ import {
   PlayIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { IconButton } from "../../components/primitives/icon-button";
+import { IconButton } from "@src/components/primitives/icon-button";
 
 export const Route = createLazyFileRoute("/components/icon-button")({
   component: IconButtonPage,

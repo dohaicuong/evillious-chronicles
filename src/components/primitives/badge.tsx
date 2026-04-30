@@ -1,5 +1,5 @@
 import type { ComponentProps, ReactNode } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from "@src/lib/cn";
 
 type Variant = "solid" | "soft" | "outline";
 type Size = "sm" | "md";

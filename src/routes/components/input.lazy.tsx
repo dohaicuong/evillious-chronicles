@@ -1,7 +1,7 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { MagnifyingGlassIcon, XIcon } from "@phosphor-icons/react";
 import { useState } from "react";
-import { Input } from "../../components/primitives/input";
+import { Input } from "@src/components/primitives/input";
 
 export const Route = createLazyFileRoute("/components/input")({
   component: InputPage,

@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { BookmarkSimpleIcon, HourglassIcon, NoteIcon } from "@phosphor-icons/react";
-import { Badge } from "../../components/primitives/badge";
+import { Badge } from "@src/components/primitives/badge";
 
 export const Route = createLazyFileRoute("/components/badge")({
   component: BadgePage,

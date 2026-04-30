@@ -1,12 +1,12 @@
 import { Outlet, createRootRoute } from "@tanstack/react-router";
 import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
 import { IconContext } from "@phosphor-icons/react";
-import { Tooltip } from "../components/primitives/tooltip";
-import { Toast } from "../components/primitives/toast";
-import { AudioProvider } from "../lib/audio";
-import { AudioDock } from "../components/audio/audio-dock";
-import { ThemeProvider } from "../lib/theme";
-import { ReaderSettingsProvider } from "../lib/reader-settings";
+import { Tooltip } from "@src/components/primitives/tooltip";
+import { Toast } from "@src/components/primitives/toast";
+import { AudioProvider } from "@src/lib/audio";
+import { AudioDock } from "@src/components/audio/audio-dock";
+import { ThemeProvider } from "@src/lib/theme";
+import { ReaderSettingsProvider } from "@src/lib/reader-settings";
 
 export const Route = createRootRoute({
   component: RootLayout,

@@ -1,5 +1,5 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { Progress } from "../../components/primitives/progress";
+import { Progress } from "@src/components/primitives/progress";
 
 export const Route = createLazyFileRoute("/components/progress")({
   component: ProgressPage,

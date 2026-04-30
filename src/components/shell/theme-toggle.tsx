@@ -1,7 +1,7 @@
 import { MoonIcon, SunIcon } from "@phosphor-icons/react";
 import { useEffect, useState } from "react";
-import { useTheme } from "../../lib/theme";
-import { IconButton } from "../primitives/icon-button";
+import { useTheme } from "@src/lib/theme";
+import { IconButton } from "@src/components/primitives/icon-button";
 
 export function ThemeToggle() {
   const { resolvedTheme, setTheme } = useTheme();

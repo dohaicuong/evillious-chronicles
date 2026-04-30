@@ -1,13 +1,13 @@
 import { useState, type ReactElement } from "react";
 import { Link } from "@tanstack/react-router";
 import { NotePencilIcon, PencilSimpleIcon, TrashIcon, XIcon } from "@phosphor-icons/react";
-import { Drawer } from "../primitives/drawer";
-import { IconButton } from "../primitives/icon-button";
-import { ScrollArea } from "../primitives/scroll-area";
-import { useAllNotes, removeNote } from "../../lib/notes";
-import { series as seriesList } from "../../data/library";
+import { Drawer } from "@src/components/primitives/drawer";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { ScrollArea } from "@src/components/primitives/scroll-area";
+import { useAllNotes, removeNote } from "@src/lib/notes";
+import { series as seriesList } from "@src/data/library";
 import { NoteEditorDialog } from "./note-editor-dialog";
-import type { Note } from "../../lib/db";
+import type { Note } from "@src/lib/db";
 
 export function NotesDrawer({ trigger }: { trigger: ReactElement }) {
   const [open, setOpen] = useState(false);

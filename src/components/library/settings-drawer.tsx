@@ -1,14 +1,14 @@
 import { useState, type ReactElement, type ReactNode } from "react";
 import { XIcon } from "@phosphor-icons/react";
-import { Drawer } from "../primitives/drawer";
-import { Button } from "../primitives/button";
-import { IconButton } from "../primitives/icon-button";
-import { Slider } from "../primitives/slider";
+import { Drawer } from "@src/components/primitives/drawer";
+import { Button } from "@src/components/primitives/button";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { Slider } from "@src/components/primitives/slider";
 import {
   READER_BOUNDS,
   readerSettingsCssVars,
   useReaderSettings,
-} from "../../lib/reader-settings";
+} from "@src/lib/reader-settings";
 
 const PREVIEW_TEXT = `The princess of Lucifenia, only fourteen years old, watched her kingdom turn to ruin while the servant who shared her face stood at her side.
 

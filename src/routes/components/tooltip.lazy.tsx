@@ -8,8 +8,8 @@ import {
   SunIcon,
   XIcon,
 } from "@phosphor-icons/react";
-import { IconButton } from "../../components/primitives/icon-button";
-import { Tooltip } from "../../components/primitives/tooltip";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { Tooltip } from "@src/components/primitives/tooltip";
 
 export const Route = createLazyFileRoute("/components/tooltip")({
   component: TooltipPage,

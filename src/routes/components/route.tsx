@@ -1,6 +1,6 @@
 import { Link, Outlet, createFileRoute } from "@tanstack/react-router";
-import { cn } from "../../lib/cn";
-import { ThemeToggle } from "../../components/shell/theme-toggle";
+import { cn } from "@src/lib/cn";
+import { ThemeToggle } from "@src/components/shell/theme-toggle";
 
 export const Route = createFileRoute("/components")({
   component: ComponentsLayout,

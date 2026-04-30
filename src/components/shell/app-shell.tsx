@@ -6,13 +6,13 @@ import {
   GearIcon,
   NotebookIcon,
 } from "@phosphor-icons/react";
-import { cn } from "../../lib/cn";
-import { ScrollArea } from "../primitives/scroll-area";
-import { IconButton } from "../primitives/icon-button";
-import { BookmarksDrawer } from "../library/bookmarks-drawer";
-import { ContinueReadingDrawer } from "../library/continue-reading-drawer";
-import { NotesDrawer } from "../library/notes-drawer";
-import { SettingsDrawer } from "../library/settings-drawer";
+import { cn } from "@src/lib/cn";
+import { ScrollArea } from "@src/components/primitives/scroll-area";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
+import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
+import { NotesDrawer } from "@src/components/library/notes-drawer";
+import { SettingsDrawer } from "@src/components/library/settings-drawer";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLinkBase = cn(

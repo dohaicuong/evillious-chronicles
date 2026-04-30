@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { BookmarkSimpleIcon, NotePencilIcon } from "@phosphor-icons/react";
-import { bumpChapterProgress } from "../../lib/progress";
-import { toggleBookmark, useBookmark } from "../../lib/bookmarks";
-import { useNote } from "../../lib/notes";
-import { IconButton } from "../primitives/icon-button";
-import { NoteEditorDialog } from "../library/note-editor-dialog";
+import { bumpChapterProgress } from "@src/lib/progress";
+import { toggleBookmark, useBookmark } from "@src/lib/bookmarks";
+import { useNote } from "@src/lib/notes";
+import { IconButton } from "@src/components/primitives/icon-button";
+import { NoteEditorDialog } from "@src/components/library/note-editor-dialog";
 
 type Props = {
   seriesId: string;

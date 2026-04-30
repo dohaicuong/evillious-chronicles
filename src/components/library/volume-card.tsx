@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Card } from "../primitives/card";
-import { Badge } from "../primitives/badge";
-import { Progress } from "../primitives/progress";
-import { SinGlyph } from "../thematic/sin-glyph";
-import { useVolumeProgress } from "../../lib/progress";
-import type { Volume } from "../../data/library";
+import { Card } from "@src/components/primitives/card";
+import { Badge } from "@src/components/primitives/badge";
+import { Progress } from "@src/components/primitives/progress";
+import { SinGlyph } from "@src/components/thematic/sin-glyph";
+import { useVolumeProgress } from "@src/lib/progress";
+import type { Volume } from "@src/data/library";
 
 export function VolumeCard({ seriesId, volume }: { seriesId: string; volume: Volume }) {
   const { percent: overall } = useVolumeProgress(volume.chapters);

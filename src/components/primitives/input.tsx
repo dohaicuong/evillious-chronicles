@@ -1,6 +1,6 @@
 import { Input as BaseInput } from "@base-ui/react/input";
 import type { ComponentProps, ReactNode } from "react";
-import { cn } from "../../lib/cn";
+import { cn } from "@src/lib/cn";
 
 type Size = "sm" | "md" | "lg";
 
