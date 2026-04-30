@@ -3,6 +3,7 @@ import { CaretLeftIcon } from "@phosphor-icons/react";
 import { series } from "../../../../../data/library";
 import { getVolume } from "../../../../../data/volumes";
 import { PageView } from "../../../../../components/reader/page-view";
+import { PageProgressMark } from "../../../../../components/reader/page-progress-mark";
 import { ChapterNav } from "../../../../../components/reader/chapter-nav";
 import { SinGlyph } from "../../../../../components/thematic/sin-glyph";
 
@@ -57,7 +58,16 @@ function ChapterReader() {
             This chapter has no content yet — translation in progress.
           </p>
         ) : (
-          chapter.pages.map((page) => <PageView key={page.number} page={page} />)
+          chapter.pages.map((page, i) => (
+            <PageProgressMark
+              key={page.number}
+              chapterId={chapter.id}
+              pageIndex={i}
+              totalPages={chapter.pages.length}
+            >
+              <PageView page={page} />
+            </PageProgressMark>
+          ))
         )}
       </article>
 

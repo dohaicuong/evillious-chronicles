@@ -2,9 +2,10 @@
 
 ## Persistence (roadmap #4)
 
-- IndexedDB via **Dexie** — wire progress, bookmarks, notes
-- Tables roughly: `progress` (volumeId, chapterId, pageIndex, updatedAt), `bookmarks` (volumeId, chapterId, pageIndex, label, createdAt), `notes` (volumeId, chapterId, pageIndex, body, createdAt, updatedAt)
-- Live queries via `dexie-react-hooks` `useLiveQuery` for reactive UI
+- ✅ Dexie set up (`src/lib/db.ts`), `chapterProgress` table, auto-tracked via IntersectionObserver in the reader
+- Bookmarks — `bookmarks` table (volumeId, chapterId, pageIndex, label, createdAt)
+- Notes — `notes` table (volumeId, chapterId, pageIndex, body, createdAt, updatedAt)
+- Manual "mark chapter complete" + reset-progress controls (no UI yet)
 
 ### Future: TanStack DB
 
@@ -33,3 +34,5 @@
 - ✅ Thematic polish — sin glyphs, clockwork spinner, ornaments
 - ✅ Dark mode — aged-leather palette via `next-themes`
 - ✅ Deploy — GitHub Pages via Actions
+- ✅ Mobile fixes — series page overflow (song list `truncate` → `line-clamp-1`), audio dock collapse toggle
+- ✅ Reading progress — Dexie + IntersectionObserver, live aggregate on cards/volume page

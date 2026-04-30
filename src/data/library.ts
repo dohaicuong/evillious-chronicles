@@ -5,7 +5,6 @@ export type Chapter = {
   number: number;
   title: string;
   pageCount: number;
-  progress: number;
 };
 
 export type Volume = {
@@ -26,13 +25,12 @@ export type Series = {
   songIds?: string[];
 };
 
-function makeChapters(prefix: string, titles: string[], progressPattern: number[] = []): Chapter[] {
+function makeChapters(prefix: string, titles: string[]): Chapter[] {
   return titles.map((title, i) => ({
     id: `${prefix}-${i + 1}`,
     number: i + 1,
     title,
     pageCount: 16 + ((i * 7) % 14),
-    progress: progressPattern[i] ?? 0,
   }));
 }
 
@@ -50,55 +48,48 @@ export const series: Series[] = [
         title: "Clôture of Yellow",
         sin: "pride",
         chapters: [
-          { id: "cy-prologue", number: 0, title: "Prologue", pageCount: 2, progress: 100 },
+          { id: "cy-prologue", number: 0, title: "Prologue", pageCount: 2 },
           {
             id: "cy-ch1-s1",
             number: 1,
             title: "Chapter 1 · The Fourteenth Birthday",
             pageCount: 38,
-            progress: 64,
           },
           {
             id: "cy-ch1-s2",
             number: 2,
             title: "Chapter 1 · Lodging in the Hearts of Evil",
             pageCount: 42,
-            progress: 0,
           },
           {
             id: "cy-ch2-s1",
             number: 3,
             title: "Chapter 2 · The Yearning of a Twin",
             pageCount: 48,
-            progress: 0,
           },
           {
             id: "cy-ch2-s2",
             number: 4,
             title: "Chapter 2 · The Gear's Direction",
             pageCount: 34,
-            progress: 0,
           },
           {
             id: "cy-ch3-s1",
             number: 5,
             title: "Chapter 3 · Assembly of Allies",
             pageCount: 38,
-            progress: 0,
           },
           {
             id: "cy-ch3-s2",
             number: 6,
             title: "Chapter 3 · The Wish for an End",
             pageCount: 46,
-            progress: 0,
           },
           {
             id: "cy-ch4",
             number: 7,
             title: "Chapter 4 · True Evil?",
             pageCount: 54,
-            progress: 0,
           },
         ],
       },
@@ -107,18 +98,14 @@ export const series: Series[] = [
         number: 2,
         title: "Wiegenlied of Green",
         sin: "pride",
-        chapters: makeChapters(
-          "wg",
-          [
-            "Forest of Bewilderment",
-            "Michaela's Lullaby",
-            "Held's Whisper",
-            "The Green-Cloaked Visitor",
-            "Sweet Songs of Elphegort",
-            "A Body Made of Wood",
-          ],
-          [38, 0, 0, 0, 0, 0],
-        ),
+        chapters: makeChapters("wg", [
+          "Forest of Bewilderment",
+          "Michaela's Lullaby",
+          "Held's Whisper",
+          "The Green-Cloaked Visitor",
+          "Sweet Songs of Elphegort",
+          "A Body Made of Wood",
+        ]),
       },
       {
         id: "praeludium-of-red",
@@ -161,18 +148,14 @@ export const series: Series[] = [
         number: 1,
         title: "The Lunacy of Duke Venomania",
         sin: "lust",
-        chapters: makeChapters(
-          "ven",
-          [
-            "The Duke's Mansion",
-            "The Mirror's Promise",
-            "Seven Brides",
-            "The Hunter's Knife",
-            "Banica's Ruin",
-            "The Final Hymn",
-          ],
-          [100, 100, 22, 0, 0, 0],
-        ),
+        chapters: makeChapters("ven", [
+          "The Duke's Mansion",
+          "The Mirror's Promise",
+          "Seven Brides",
+          "The Hunter's Knife",
+          "Banica's Ruin",
+          "The Final Hymn",
+        ]),
       },
       {
         id: "conchita",
@@ -194,20 +177,16 @@ export const series: Series[] = [
         number: 3,
         title: "Judgment of Corruption",
         sin: "greed",
-        chapters: makeChapters(
-          "jc",
-          [
-            "Master of the Court",
-            "The Black Box of Held",
-            "Coin and Conscience",
-            "The Daughter Gallerian Found",
-            "Verdicts in Gold",
-            "The Witch of Merrigod",
-            "Levia's Bargain",
-            "Hellish Yard",
-          ],
-          [100, 100, 100, 80, 12, 0, 0, 0],
-        ),
+        chapters: makeChapters("jc", [
+          "Master of the Court",
+          "The Black Box of Held",
+          "Coin and Conscience",
+          "The Daughter Gallerian Found",
+          "Verdicts in Gold",
+          "The Witch of Merrigod",
+          "Levia's Bargain",
+          "Hellish Yard",
+        ]),
       },
       {
         id: "muzzle",
@@ -227,18 +206,14 @@ export const series: Series[] = [
         number: 5,
         title: "The Tailor of Enbizaka",
         sin: "wrath",
-        chapters: makeChapters(
-          "enb",
-          [
-            "The Shop on Enbizaka Street",
-            "The Red Kimono",
-            "The Green Obi",
-            "The Yellow Hairpin",
-            "The Blue Geta",
-            "Kayo's Stitches",
-          ],
-          [100, 100, 100, 100, 45, 0],
-        ),
+        chapters: makeChapters("enb", [
+          "The Shop on Enbizaka Street",
+          "The Red Kimono",
+          "The Green Obi",
+          "The Yellow Hairpin",
+          "The Blue Geta",
+          "Kayo's Stitches",
+        ]),
       },
       {
         id: "capriccio-farce",
@@ -266,16 +241,12 @@ export const series: Series[] = [
         number: 1,
         title: "Clockwork Lullaby",
         sin: null,
-        chapters: makeChapters(
-          "cl",
-          [
-            "The Master Winds the Watch",
-            "Twin Hands of the Clock",
-            "Echoes Across Bolganio",
-            "The Final Tick",
-          ],
-          [100, 50, 0, 0],
-        ),
+        chapters: makeChapters("cl", [
+          "The Master Winds the Watch",
+          "Twin Hands of the Clock",
+          "Echoes Across Bolganio",
+          "The Final Tick",
+        ]),
       },
     ],
   },

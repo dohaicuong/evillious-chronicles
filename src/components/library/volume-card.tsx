@@ -3,15 +3,11 @@ import { Card } from "../primitives/card";
 import { Badge } from "../primitives/badge";
 import { Progress } from "../primitives/progress";
 import { SinGlyph } from "../thematic/sin-glyph";
+import { useVolumeProgress } from "../../lib/progress";
 import type { Volume } from "../../data/library";
 
 export function VolumeCard({ seriesId, volume }: { seriesId: string; volume: Volume }) {
-  const totalPages = volume.chapters.reduce((sum, c) => sum + c.pageCount, 0);
-  const completedPages = volume.chapters.reduce(
-    (sum, c) => sum + (c.pageCount * c.progress) / 100,
-    0,
-  );
-  const overall = totalPages ? Math.round((completedPages / totalPages) * 100) : 0;
+  const { percent: overall } = useVolumeProgress(volume.chapters);
 
   return (
     <div data-sin={volume.sin ?? undefined}>

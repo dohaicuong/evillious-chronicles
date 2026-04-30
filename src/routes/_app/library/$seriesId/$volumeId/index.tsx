@@ -10,6 +10,7 @@ import { TitlePageSection } from "../../../../../components/volume/title-page-se
 import { PoetrySection } from "../../../../../components/volume/poetry-section";
 import { GallerySection } from "../../../../../components/volume/gallery-section";
 import { Ornament } from "../../../../../components/thematic/ornament";
+import { useVolumeProgress } from "../../../../../lib/progress";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/")({
   component: VolumePage,
@@ -25,12 +26,7 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/")({
 function VolumePage() {
   const { series: s, slim, full } = Route.useLoaderData();
 
-  const totalPages = slim.chapters.reduce((sum, c) => sum + c.pageCount, 0);
-  const completedPages = slim.chapters.reduce(
-    (sum, c) => sum + (c.pageCount * c.progress) / 100,
-    0,
-  );
-  const overall = totalPages ? Math.round((completedPages / totalPages) * 100) : 0;
+  const { totalPages, percent: overall } = useVolumeProgress(slim.chapters);
 
   return (
     <div data-sin={slim.sin ?? undefined} className="mx-auto max-w-4xl px-6 py-12 sm:py-16">
