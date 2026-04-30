@@ -190,6 +190,18 @@
   font-feature-settings: "liga", "kern";
 }
 
+/*
+ * Body text inside the chapter reader. Reads CSS vars set on the reader root
+ * (or the SettingsDrawer's preview block) so the font-size / line-height
+ * sliders only affect prose, not the surrounding UI.
+ */
+@utility text-style-reader-prose {
+  font-family: var(--font-serif);
+  font-size: var(--reader-font-size, 1.0625rem);
+  line-height: var(--reader-line-height, 1.7);
+  font-feature-settings: "liga", "kern";
+}
+
 @utility text-style-quote {
   font-family: var(--font-serif);
   font-style: italic;

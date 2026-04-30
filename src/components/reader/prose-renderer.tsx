@@ -4,7 +4,7 @@ export function ProseRenderer({ text }: { text: string }) {
   return (
     <ReactMarkdown
       components={{
-        p: ({ children }) => <p className="text-style-body text-fg mb-5">{children}</p>,
+        p: ({ children }) => <p className="text-style-reader-prose text-fg mb-5">{children}</p>,
         h1: ({ children }) => (
           <h1 className="text-style-heading-1 text-fg mt-12 mb-6">{children}</h1>
         ),
@@ -27,7 +27,7 @@ export function ProseRenderer({ text }: { text: string }) {
         hr: () => <hr className="my-8 border-border" />,
         ul: ({ children }) => <ul className="list-disc pl-6 mb-5 space-y-1">{children}</ul>,
         ol: ({ children }) => <ol className="list-decimal pl-6 mb-5 space-y-1">{children}</ol>,
-        li: ({ children }) => <li className="text-style-body text-fg">{children}</li>,
+        li: ({ children }) => <li className="text-style-reader-prose text-fg">{children}</li>,
       }}
     >
       {text}

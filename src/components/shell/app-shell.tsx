@@ -1,12 +1,18 @@
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import { useEffect, useRef } from "react";
-import { BookOpenTextIcon, BookmarkSimpleIcon, NotebookIcon } from "@phosphor-icons/react";
+import {
+  BookOpenTextIcon,
+  BookmarkSimpleIcon,
+  GearIcon,
+  NotebookIcon,
+} from "@phosphor-icons/react";
 import { cn } from "../../lib/cn";
 import { ScrollArea } from "../primitives/scroll-area";
 import { IconButton } from "../primitives/icon-button";
 import { BookmarksDrawer } from "../library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "../library/continue-reading-drawer";
 import { NotesDrawer } from "../library/notes-drawer";
+import { SettingsDrawer } from "../library/settings-drawer";
 import { ThemeToggle } from "./theme-toggle";
 
 const navLinkBase = cn(
@@ -55,6 +61,13 @@ export function AppShell() {
               trigger={
                 <IconButton variant="ghost" size="sm" aria-label="Open notes">
                   <NotebookIcon weight="light" />
+                </IconButton>
+              }
+            />
+            <SettingsDrawer
+              trigger={
+                <IconButton variant="ghost" size="sm" aria-label="Reader settings">
+                  <GearIcon weight="light" />
                 </IconButton>
               }
             />

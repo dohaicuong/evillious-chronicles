@@ -7,6 +7,10 @@ import { PageView } from "../../../../../components/reader/page-view";
 import { PageProgressMark } from "../../../../../components/reader/page-progress-mark";
 import { ChapterNav } from "../../../../../components/reader/chapter-nav";
 import { SinGlyph } from "../../../../../components/thematic/sin-glyph";
+import {
+  readerSettingsCssVars,
+  useReaderSettings,
+} from "../../../../../lib/reader-settings";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapterId")({
   component: ChapterReader,
@@ -32,6 +36,8 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
 function ChapterReader() {
   const { series: s, volume, chapter, prev, next } = Route.useLoaderData();
   const { hash } = useLocation();
+  const { settings } = useReaderSettings();
+  const cssVars = readerSettingsCssVars(settings);
 
   // Hash deep-link to a specific page (e.g. from the bookmarks drawer).
   // Re-runs when the route's hash changes; rAF lets the page elements paint first.
@@ -45,7 +51,11 @@ function ChapterReader() {
   }, [hash, chapter.id]);
 
   return (
-    <div data-sin={volume.sin ?? undefined} className="mx-auto max-w-2xl px-6 py-12 sm:py-16">
+    <div
+      data-sin={volume.sin ?? undefined}
+      style={cssVars}
+      className="mx-auto max-w-[var(--reader-max-width,42rem)] px-6 py-12 sm:py-16"
+    >
       <Link
         to="/library/$seriesId/$volumeId"
         params={{ seriesId: s.id, volumeId: volume.id }}

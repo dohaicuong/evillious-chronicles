@@ -16,7 +16,8 @@
 
 ## Reader tools (roadmap #5)
 
-- `SettingsPanel` — theme (already done) + font size + line-height + reader width
+- ✅ `SettingsDrawer` — font size, line-height, reader width sliders with live preview, reset; scoped to chapter prose only
+- Future: font family picker, justify/hyphenation, per-volume overrides
 
 ## Artistic touch-ups
 

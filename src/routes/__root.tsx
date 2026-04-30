@@ -6,6 +6,7 @@ import { Toast } from "../components/primitives/toast";
 import { AudioProvider } from "../lib/audio";
 import { AudioDock } from "../components/audio/audio-dock";
 import { ThemeProvider } from "../lib/theme";
+import { ReaderSettingsProvider } from "../lib/reader-settings";
 
 export const Route = createRootRoute({
   component: RootLayout,
@@ -16,18 +17,20 @@ const iconDefaults = { size: 20, weight: "light" as const };
 function RootLayout() {
   return (
     <ThemeProvider>
-      <Tooltip.Provider>
-        <Toast.Provider>
-          <AudioProvider>
-            <IconContext.Provider value={iconDefaults}>
-              <Outlet />
-              <AudioDock />
-              <Toast.Viewport />
-              <TanStackRouterDevtools />
-            </IconContext.Provider>
-          </AudioProvider>
-        </Toast.Provider>
-      </Tooltip.Provider>
+      <ReaderSettingsProvider>
+        <Tooltip.Provider>
+          <Toast.Provider>
+            <AudioProvider>
+              <IconContext.Provider value={iconDefaults}>
+                <Outlet />
+                <AudioDock />
+                <Toast.Viewport />
+                <TanStackRouterDevtools />
+              </IconContext.Provider>
+            </AudioProvider>
+          </Toast.Provider>
+        </Tooltip.Provider>
+      </ReaderSettingsProvider>
     </ThemeProvider>
   );
 }
