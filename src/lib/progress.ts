@@ -52,3 +52,37 @@ export async function bumpChapterProgress(
     });
   });
 }
+
+export async function markChapterComplete(
+  chapterId: string,
+  totalPages: number,
+): Promise<void> {
+  await db.chapterProgress.put({
+    chapterId,
+    pagesRead: totalPages,
+    totalPages,
+    lastReadAt: Date.now(),
+  });
+}
+
+export async function resetChapterProgress(chapterId: string): Promise<void> {
+  await db.chapterProgress.delete(chapterId);
+}
+
+export async function markVolumeComplete(chapters: SlimChapter[]): Promise<void> {
+  const now = Date.now();
+  await db.transaction("rw", db.chapterProgress, async () => {
+    for (const c of chapters) {
+      await db.chapterProgress.put({
+        chapterId: c.id,
+        pagesRead: c.pageCount,
+        totalPages: c.pageCount,
+        lastReadAt: now,
+      });
+    }
+  });
+}
+
+export async function resetVolumeProgress(chapterIds: string[]): Promise<void> {
+  await db.chapterProgress.bulkDelete(chapterIds);
+}

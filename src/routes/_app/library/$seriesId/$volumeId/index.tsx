@@ -10,7 +10,15 @@ import { TitlePageSection } from "../../../../../components/volume/title-page-se
 import { PoetrySection } from "../../../../../components/volume/poetry-section";
 import { GallerySection } from "../../../../../components/volume/gallery-section";
 import { Ornament } from "../../../../../components/thematic/ornament";
-import { useVolumeProgress } from "../../../../../lib/progress";
+import { IconButton } from "../../../../../components/primitives/icon-button";
+import { Menu } from "../../../../../components/primitives/menu";
+import { DotsThreeVerticalIcon } from "@phosphor-icons/react";
+import {
+  markVolumeComplete,
+  resetVolumeProgress,
+  useVolumeProgress,
+} from "../../../../../lib/progress";
+import type { Chapter } from "../../../../../data/library";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/")({
   component: VolumePage,
@@ -64,7 +72,10 @@ function VolumePage() {
                 {slim.chapters.length} chapter{slim.chapters.length !== 1 ? "s" : ""} · {totalPages}{" "}
                 pages
               </span>
-              <span>{overall}%</span>
+              <div className="flex items-center gap-1">
+                <span>{overall}%</span>
+                <VolumeProgressMenu chapters={slim.chapters} percent={overall} />
+              </div>
             </div>
             <Progress value={overall} aria-label={`${slim.title} reading progress`} />
           </div>
@@ -93,5 +104,37 @@ function VolumePage() {
         ) : null}
       </div>
     </div>
+  );
+}
+
+function VolumeProgressMenu({ chapters, percent }: { chapters: Chapter[]; percent: number }) {
+  return (
+    <Menu>
+      <Menu.Trigger
+        render={
+          <IconButton size="sm" variant="ghost" aria-label="Volume progress actions">
+            <DotsThreeVerticalIcon weight="bold" />
+          </IconButton>
+        }
+      />
+      <Menu.Portal>
+        <Menu.Positioner align="end">
+          <Menu.Popup>
+            <Menu.Item
+              disabled={percent === 100}
+              onClick={() => void markVolumeComplete(chapters)}
+            >
+              Mark all complete
+            </Menu.Item>
+            <Menu.Item
+              disabled={percent === 0}
+              onClick={() => void resetVolumeProgress(chapters.map((c) => c.id))}
+            >
+              Reset all progress
+            </Menu.Item>
+          </Menu.Popup>
+        </Menu.Positioner>
+      </Menu.Portal>
+    </Menu>
   );
 }

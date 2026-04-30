@@ -1,6 +1,13 @@
 import { Link } from "@tanstack/react-router";
+import { DotsThreeVerticalIcon } from "@phosphor-icons/react";
 import { Badge } from "../primitives/badge";
-import { useChapterPercent } from "../../lib/progress";
+import { IconButton } from "../primitives/icon-button";
+import { Menu } from "../primitives/menu";
+import {
+  markChapterComplete,
+  resetChapterProgress,
+  useChapterPercent,
+} from "../../lib/progress";
 import type { Chapter } from "../../data/library";
 
 type Props = {
@@ -31,11 +38,11 @@ function ChapterRow({
   const progress = useChapterPercent(chapter.id, chapter.pageCount);
 
   return (
-    <li className="border-t border-border last:border-b">
+    <li className="flex items-center gap-1 border-t border-border last:border-b">
       <Link
         to="/library/$seriesId/$volumeId/$chapterId"
         params={{ seriesId, volumeId, chapterId: chapter.id }}
-        className="flex items-center gap-4 py-4 -mx-3 px-3 rounded-sm hover:bg-accent-soft transition-colors"
+        className="flex-1 flex items-center gap-4 py-4 -ml-3 pl-3 pr-2 rounded-sm hover:bg-accent-soft transition-colors"
       >
         <span className="text-style-caption text-fg-muted w-8 text-right tabular-nums">
           {chapter.number}
@@ -46,7 +53,40 @@ function ChapterRow({
         </span>
         <ChapterStatus progress={progress} />
       </Link>
+      <ChapterRowMenu chapter={chapter} progress={progress} />
     </li>
+  );
+}
+
+function ChapterRowMenu({ chapter, progress }: { chapter: Chapter; progress: number }) {
+  return (
+    <Menu>
+      <Menu.Trigger
+        render={
+          <IconButton size="sm" variant="ghost" aria-label={`Actions for ${chapter.title}`}>
+            <DotsThreeVerticalIcon weight="bold" />
+          </IconButton>
+        }
+      />
+      <Menu.Portal>
+        <Menu.Positioner align="end">
+          <Menu.Popup>
+            <Menu.Item
+              disabled={progress === 100}
+              onClick={() => void markChapterComplete(chapter.id, chapter.pageCount)}
+            >
+              Mark complete
+            </Menu.Item>
+            <Menu.Item
+              disabled={progress === 0}
+              onClick={() => void resetChapterProgress(chapter.id)}
+            >
+              Reset progress
+            </Menu.Item>
+          </Menu.Popup>
+        </Menu.Positioner>
+      </Menu.Portal>
+    </Menu>
   );
 }
 

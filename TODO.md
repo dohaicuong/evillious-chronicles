@@ -4,8 +4,8 @@
 
 - ✅ Dexie set up (`src/lib/db.ts`), `chapterProgress` table, auto-tracked via IntersectionObserver in the reader
 - ✅ Bookmarks — `bookmarks` table, per-page toggle in reader, top-nav drawer with deep-link to `#page-N`, inline rename
+- ✅ Manual progress controls — per-chapter "Mark complete" / "Reset progress" overflow menu in chapter list; per-volume "Mark all" / "Reset all" next to the volume progress bar
 - Notes — `notes` table (volumeId, chapterId, pageIndex, body, createdAt, updatedAt)
-- Manual "mark chapter complete" + reset-progress controls (no UI yet)
 
 ### Future: TanStack DB
 
