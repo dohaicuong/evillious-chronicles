@@ -28,7 +28,13 @@ export function PwaUpdateToast() {
         children: "Reload",
         onClick: () => {
           setNeedRefresh(false);
-          void updateServiceWorker(true);
+          // updateServiceWorker(true)'s reload-page argument is a no-op in
+          // vite-plugin-pwa v1; the library only reloads via the workbox
+          // `controlling` listener, which can stall. Send the skip-waiting
+          // message ourselves and force the reload so the click is guaranteed.
+          void updateServiceWorker().finally(() => {
+            window.location.reload();
+          });
         },
       },
       onClose: () => {
