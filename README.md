@@ -45,6 +45,8 @@ English text comes from three different fan translations, one per volume:
   I can attribute it properly.
 - **Vol 3 — Praeludium of Red:** the chapter-by-chapter translation posted at
   **[doe-praeludiumofred.tumblr.com](https://doe-praeludiumofred.tumblr.com/directory)**.
+- **Vol 4 — Praefacio of Blue:** the chapter-by-chapter translation posted at
+  **[doe-praefacioofblue.tumblr.com](https://doe-praefacioofblue.tumblr.com/directory)**.
 
 Full credit and gratitude to every translator and proof-reader involved;
 without their work this project would not exist. If you're one of these
@@ -107,6 +109,7 @@ public/
   cloture-of-yellow/     Vol 1 cover, artwork, illustrations
   wiegenlied-of-green/   Vol 2 cover, artwork, illustrations, source PDF
   praeludium-of-red/     Vol 3 cover (illustrations pending)
+  praefacio-of-blue/     Vol 4 (cover and illustrations pending)
 ```
 
 ## License

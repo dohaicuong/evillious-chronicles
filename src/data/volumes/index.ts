@@ -10,6 +10,7 @@ const loaders: Record<string, () => Promise<Volume>> = {
   "cloture-of-yellow": () => import("./cloture-of-yellow").then((m) => m.clotureOfYellow),
   "wiegenlied-of-green": () => import("./wiegenlied-of-green").then((m) => m.wiegenliedOfGreen),
   "praeludium-of-red": () => import("./praeludium-of-red").then((m) => m.praeludiumOfRed),
+  "praefacio-of-blue": () => import("./praefacio-of-blue").then((m) => m.praefacioOfBlue),
 };
 
 export async function getVolume(id: string): Promise<Volume | undefined> {

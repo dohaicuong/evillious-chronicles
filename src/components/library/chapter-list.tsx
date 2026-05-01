@@ -38,7 +38,7 @@ function ChapterRow({
       <Link
         to="/library/$seriesId/$volumeId/$chapterId"
         params={{ seriesId, volumeId, chapterId: chapter.id }}
-        className="flex-1 flex items-center gap-4 py-4 -ml-3 pl-3 pr-2 rounded-sm hover:bg-accent-soft transition-colors"
+        className="flex flex-1 items-center gap-4 px-3 py-4 transition-colors hover:bg-accent-soft"
       >
         <span className="text-style-caption text-fg-muted w-8 text-right tabular-nums">
           {chapter.number}
