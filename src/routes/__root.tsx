@@ -5,6 +5,7 @@ import { Tooltip } from "@src/components/primitives/tooltip";
 import { Toast } from "@src/components/primitives/toast";
 import { AudioProvider } from "@src/lib/audio";
 import { AudioDock } from "@src/components/audio/audio-dock";
+import { PwaUpdateToast } from "@src/components/shell/pwa-update-toast";
 import { ThemeProvider } from "@src/lib/theme";
 import { ReaderSettingsProvider } from "@src/lib/reader-settings";
 
@@ -25,6 +26,7 @@ function RootLayout() {
                 <Outlet />
                 <AudioDock />
                 <Toast.Viewport />
+                <PwaUpdateToast />
                 <TanStackRouterDevtools />
               </IconContext.Provider>
             </AudioProvider>
