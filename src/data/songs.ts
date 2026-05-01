@@ -96,6 +96,95 @@ const all: Song[] = [
     title: "Reach for the Stars ~The Letter She Kept Waiting For~",
     composer: "Akuno-P (mothy)",
   },
+
+  // --- Deadly Sins of Evil song series ---
+  {
+    id: "lunacy-of-duke-venomania",
+    title: "The Lunacy of Duke Venomania",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "evil-food-eater-conchita",
+    title: "Evil Food Eater Conchita",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "gift-from-princess-sleep",
+    title: "Gift from the Princess who Brought Sleep",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "tailor-of-enbizaka",
+    title: "The Tailor of Enbizaka",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "judgment-of-corruption",
+    title: "Judgment of Corruption",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "muzzle-of-nemesis",
+    title: "The Muzzle of Nemesis",
+    composer: "Akuno-P (mothy)",
+  },
+
+  // --- Original Sin Story songs ---
+  {
+    id: "queen-of-the-glass",
+    title: "Queen of the Glass",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "project-ma",
+    title: "Project 'Ma'",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "escape-of-salmhofer",
+    title: "Escape of Salmhofer the Witch",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "moonlit-bear",
+    title: "Moonlit Bear",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "barisols-child",
+    title: "Barisol's Child is an Only Child",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "ma-survival",
+    title: "Ma Survival",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "whereabouts-of-miracle",
+    title: "Whereabouts of the Miracle",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "recollective-musicbox",
+    title: "Recollective Musicbox",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "song-i-heard-somewhere",
+    title: "The Song I Heard Somewhere",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "tale-of-abandonment-moonlit",
+    title: "Tale of Abandonment on a Moonlit Night",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "chrono-story",
+    title: "Chrono Story",
+    composer: "Akuno-P (mothy)",
+  },
 ];
 
 export const songs: Record<string, Song> = Object.fromEntries(all.map((s) => [s.id, s]));

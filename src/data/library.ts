@@ -264,6 +264,15 @@ export const series: Series[] = [
     title: "Deadly Sins of Evil",
     description:
       "Eight novels chronicling the demons that haunt Evillious — one per sin, with a finale that draws every cycle home. Spans a thousand years of the continent of Bolganio.",
+    songIds: [
+      "lunacy-of-duke-venomania",
+      "evil-food-eater-conchita",
+      "daughter-of-evil",
+      "gift-from-princess-sleep",
+      "tailor-of-enbizaka",
+      "judgment-of-corruption",
+      "muzzle-of-nemesis",
+    ],
     volumes: [
       {
         id: "venomania",
@@ -382,6 +391,19 @@ export const series: Series[] = [
     title: "Original Sin Story",
     description:
       "The genesis arc of Evillious — Eve Moonlit's crime in the forest, the splitting of the Original Sin into the seven vessels, and the corruption that birthed an entire continent's cycle.",
+    songIds: [
+      "queen-of-the-glass",
+      "project-ma",
+      "escape-of-salmhofer",
+      "moonlit-bear",
+      "barisols-child",
+      "ma-survival",
+      "whereabouts-of-miracle",
+      "recollective-musicbox",
+      "song-i-heard-somewhere",
+      "tale-of-abandonment-moonlit",
+      "chrono-story",
+    ],
     volumes: [
       {
         id: "oss-crime",
