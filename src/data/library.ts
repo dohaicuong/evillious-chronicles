@@ -40,7 +40,7 @@ export const series: Series[] = [
     title: "The Daughter of Evil",
     description:
       "A four-volume light-novel chronicle of Riliane Lucifen d'Autriche — the tyrant princess at the heart of the Story of Evil. Each volume retells the kingdom's fall from a different perspective, color-coded by the role its narrator plays in the cycle.",
-    songIds: ["daughter-of-evil", "servant-of-evil", "regret-message"],
+    songIds: ["daughter-of-evil", "servant-of-evil", "regret-message", "daughter-of-white"],
     volumes: [
       {
         id: "cloture-of-yellow",
@@ -98,14 +98,46 @@ export const series: Series[] = [
         number: 2,
         title: "Wiegenlied of Green",
         sin: "pride",
-        chapters: makeChapters("wg", [
-          "Forest of Bewilderment",
-          "Michaela's Lullaby",
-          "Held's Whisper",
-          "The Green-Cloaked Visitor",
-          "Sweet Songs of Elphegort",
-          "A Body Made of Wood",
-        ]),
+        chapters: [
+          { id: "wg-prologue", number: 0, title: "Prologue", pageCount: 2 },
+          { id: "wg-ch1", number: 1, title: "Chapter 1 · Dream of a Mage", pageCount: 28 },
+          {
+            id: "wg-ch2-s1",
+            number: 2,
+            title: "Chapter 2 · The So-called Humans",
+            pageCount: 55,
+          },
+          {
+            id: "wg-ch2-s2",
+            number: 3,
+            title: "Chapter 2 · Wooden Girl and White-Haired Girl",
+            pageCount: 49,
+          },
+          {
+            id: "wg-ch3-s1",
+            number: 4,
+            title: "Chapter 3 · Waltz of the Diva",
+            pageCount: 48,
+          },
+          {
+            id: "wg-ch3-s2",
+            number: 5,
+            title: "Chapter 3 · The Lady Who Staggered",
+            pageCount: 74,
+          },
+          {
+            id: "wg-ch4-s1",
+            number: 6,
+            title: "Chapter 4 · Lost Destination",
+            pageCount: 41,
+          },
+          {
+            id: "wg-ch4-s2",
+            number: 7,
+            title: "Chapter 4 · Seaside's Small Bottle",
+            pageCount: 38,
+          },
+        ],
       },
       {
         id: "praeludium-of-red",

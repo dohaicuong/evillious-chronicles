@@ -40,6 +40,17 @@ const all: Song[] = [
     composer: "Akuno-P (mothy)",
     releaseYear: 2008,
   },
+  {
+    id: "daughter-of-white",
+    title: "Daughter of White",
+    originalTitle: "白ノ娘",
+    romanizedTitle: "Shiro no Musume",
+    youtubeUrl: "https://www.youtube.com/watch?v=LMIsQWvgEUM",
+    duration: 360,
+    vocalist: "Hatsune Miku",
+    composer: "Akuno-P (mothy)",
+    releaseYear: 2009,
+  },
 ];
 
 export const songs: Record<string, Song> = Object.fromEntries(all.map((s) => [s.id, s]));
