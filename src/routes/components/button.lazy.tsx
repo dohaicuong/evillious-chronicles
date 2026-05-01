@@ -5,7 +5,7 @@ export const Route = createLazyFileRoute("/components/button")({
   component: ButtonPage,
 });
 
-const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy"] as const;
+const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy", "origin"] as const;
 
 function ButtonPage() {
   return (

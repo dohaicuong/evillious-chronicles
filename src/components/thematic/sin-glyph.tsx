@@ -1,4 +1,5 @@
 import {
+  AppleLogoIcon,
   BedIcon,
   CoinsIcon,
   CrownIcon,
@@ -18,6 +19,7 @@ const map = {
   greed: CoinsIcon,
   wrath: ScissorsIcon,
   envy: EyeIcon,
+  origin: AppleLogoIcon, // Eve and the apple — original sin
 } as const;
 
 type Props = { sin: Sin } & Omit<ComponentProps<typeof CrownIcon>, "ref">;

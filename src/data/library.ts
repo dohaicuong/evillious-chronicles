@@ -1,4 +1,4 @@
-export type Sin = "pride" | "lust" | "sloth" | "gluttony" | "greed" | "wrath" | "envy";
+export type Sin = "pride" | "lust" | "sloth" | "gluttony" | "greed" | "wrath" | "envy" | "origin"; // Eve Moonlit / Original Sin Story — precursor to the seven
 
 export type Chapter = {
   id: string;
@@ -246,10 +246,10 @@ export const series: Series[] = [
     ],
   },
   {
-    id: "seven-deadly-sins",
-    title: "The Seven Deadly Sins Series",
+    id: "deadly-sins-of-evil",
+    title: "Deadly Sins of Evil",
     description:
-      "Seven novels chronicling the demons that haunt Evillious — one per sin, woven across a thousand years of the continent of Bolganio.",
+      "Eight novels chronicling the demons that haunt Evillious — one per sin, with a finale that draws every cycle home. Spans a thousand years of the continent of Bolganio.",
     volumes: [
       {
         id: "venomania",
@@ -281,8 +281,48 @@ export const series: Series[] = [
         ]),
       },
       {
-        id: "judgment",
+        id: "princess-sleep",
         number: 3,
+        title: "Gift from the Princess Who Brought Sleep",
+        sin: "sloth",
+        chapters: makeChapters("ps", [
+          "Margarita's Garden",
+          "The Sleeping Princess Gift",
+          "A Country Without Pain",
+          "The Doctor's Wife",
+          "The Final Cup",
+        ]),
+      },
+      {
+        id: "fifth-pierrot",
+        number: 4,
+        title: "Fifth Pierrot",
+        sin: "pride",
+        chapters: makeChapters("fp", [
+          "The Travelling Troupe",
+          "Behind the Mask",
+          "A Pierrot's Confession",
+          "The Stage at Lucifenia",
+          "The Final Bow",
+        ]),
+      },
+      {
+        id: "enbizaka",
+        number: 5,
+        title: "The Tailor of Enbizaka",
+        sin: "envy",
+        chapters: makeChapters("enb", [
+          "The Shop on Enbizaka Street",
+          "The Red Kimono",
+          "The Green Obi",
+          "The Yellow Hairpin",
+          "The Blue Geta",
+          "Kayo's Stitches",
+        ]),
+      },
+      {
+        id: "judgment",
+        number: 6,
         title: "Judgment of Corruption",
         sin: "greed",
         chapters: makeChapters("jc", [
@@ -298,62 +338,27 @@ export const series: Series[] = [
       },
       {
         id: "muzzle",
-        number: 4,
+        number: 7,
         title: "The Muzzle of Nemesis",
-        sin: "sloth",
-        chapters: makeChapters("mn", [
-          "Margarita's Garden",
-          "The Sleeping Princess Gift",
-          "A Country Without Pain",
-          "The Doctor's Wife",
-          "The Final Cup",
-        ]),
-      },
-      {
-        id: "enbizaka",
-        number: 5,
-        title: "The Tailor of Enbizaka",
         sin: "wrath",
-        chapters: makeChapters("enb", [
-          "The Shop on Enbizaka Street",
-          "The Red Kimono",
-          "The Green Obi",
-          "The Yellow Hairpin",
-          "The Blue Geta",
-          "Kayo's Stitches",
-        ]),
-      },
-      {
-        id: "capriccio-farce",
-        number: 6,
-        title: "Capriccio Farce",
-        sin: "envy",
-        chapters: makeChapters("cf", [
-          "Mikulia's Mirror",
-          "The Theater Troupe",
-          "A Sister's Envy",
-          "The Twin's Curtain",
+        chapters: makeChapters("mn", [
           "Nemesis Sudou",
+          "The Père Noël Contract",
+          "The Sniper's Vow",
+          "A Father's Reckoning",
+          "The Final Shot",
         ]),
       },
-    ],
-  },
-  {
-    id: "clockwork-lullaby",
-    title: "Clockwork Lullaby",
-    description:
-      "The pocket watch that ticks behind every story — the song that ties demons, masters, and souls into a thousand-year cycle of sin.",
-    volumes: [
       {
-        id: "lullaby-1",
-        number: 1,
-        title: "Clockwork Lullaby",
-        sin: null,
-        chapters: makeChapters("cl", [
-          "The Master Winds the Watch",
-          "Twin Hands of the Clock",
-          "Echoes Across Bolganio",
-          "The Final Tick",
+        id: "heavenly-yard",
+        number: 8,
+        title: "Master of the Heavenly Yard",
+        sin: "pride",
+        chapters: makeChapters("hy", [
+          "The Master Returns",
+          "All Seven Vessels",
+          "Allen's Reckoning",
+          "The Last Chapter",
         ]),
       },
     ],
@@ -362,20 +367,43 @@ export const series: Series[] = [
     id: "original-sin",
     title: "Original Sin Story",
     description:
-      "Before the seven sins, before the Master of the Court — the genesis arc of Levin's twins and the corruption that birthed an entire continent's evil.",
+      "The genesis arc of Evillious — Eve Moonlit's crime in the forest, the splitting of the Original Sin into the seven vessels, and the corruption that birthed an entire continent's cycle.",
     volumes: [
       {
-        id: "project-ma",
+        id: "oss-crime",
         number: 1,
-        title: "Project 'Ma'",
-        sin: null,
-        chapters: makeChapters("pm", [
-          "The Twin Goddesses",
-          "Held's Forest",
-          "The Black Box",
+        title: "Original Sin Story: Crime",
+        sin: "origin",
+        chapters: makeChapters("ossc", [
           "Eve and Adam",
-          "The Deliverance Root",
-          "First Cycle",
+          "Held's Forest",
+          "The Apple Falls",
+          "The Twins' Pact",
+          "A Sin Unspoken",
+        ]),
+      },
+      {
+        id: "oss-to",
+        number: 2,
+        title: "Original Sin Story: To",
+        sin: "origin",
+        chapters: makeChapters("osst", [
+          "Recollective Musicbox",
+          "Ma Survival",
+          "Between Crime and Punishment",
+        ]),
+      },
+      {
+        id: "oss-punishment",
+        number: 3,
+        title: "Original Sin Story: Punishment",
+        sin: "origin",
+        chapters: makeChapters("ossp", [
+          "Levia's Reckoning",
+          "Behemo's Fall",
+          "The Forest Decrees",
+          "The Curtain Rises",
+          "The First Demon",
         ]),
       },
     ],

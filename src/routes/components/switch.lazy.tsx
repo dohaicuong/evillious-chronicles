@@ -6,7 +6,7 @@ export const Route = createLazyFileRoute("/components/switch")({
   component: SwitchPage,
 });
 
-const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy"] as const;
+const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy", "origin"] as const;
 
 function SwitchPage() {
   const [on, setOn] = useState(true);

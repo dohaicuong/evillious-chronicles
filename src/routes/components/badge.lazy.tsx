@@ -6,7 +6,7 @@ export const Route = createLazyFileRoute("/components/badge")({
   component: BadgePage,
 });
 
-const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy"] as const;
+const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy", "origin"] as const;
 
 function BadgePage() {
   return (

@@ -5,7 +5,7 @@ export const Route = createLazyFileRoute("/components/progress")({
   component: ProgressPage,
 });
 
-const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy"] as const;
+const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy", "origin"] as const;
 const stops = [0, 25, 50, 75, 100] as const;
 
 function ProgressPage() {

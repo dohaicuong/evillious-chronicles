@@ -8,7 +8,7 @@ export const Route = createLazyFileRoute("/components/thematic")({
   component: ThematicPage,
 });
 
-const sins: Sin[] = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy"];
+const sins: Sin[] = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy", "origin"];
 
 function ThematicPage() {
   return (

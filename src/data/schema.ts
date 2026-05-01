@@ -13,7 +13,7 @@
  *         → closingGallery / afterword (rare)
  */
 
-export type Sin = "pride" | "lust" | "sloth" | "gluttony" | "greed" | "wrath" | "envy";
+export type Sin = "pride" | "lust" | "sloth" | "gluttony" | "greed" | "wrath" | "envy" | "origin"; // Eve Moonlit / Original Sin Story — precursor to the seven
 
 // ---------------------------------------------------------------------------
 // Visual assets

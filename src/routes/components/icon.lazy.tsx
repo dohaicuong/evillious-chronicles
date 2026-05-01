@@ -59,7 +59,7 @@ const sizes = [
   { px: 48, label: "48" },
 ];
 
-const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy"] as const;
+const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy", "origin"] as const;
 
 function IconPage() {
   return (

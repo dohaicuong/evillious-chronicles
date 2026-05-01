@@ -14,7 +14,7 @@ export const Route = createLazyFileRoute("/components/icon-button")({
   component: IconButtonPage,
 });
 
-const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy"] as const;
+const sins = ["pride", "lust", "sloth", "gluttony", "greed", "wrath", "envy", "origin"] as const;
 
 function IconButtonPage() {
   return (
