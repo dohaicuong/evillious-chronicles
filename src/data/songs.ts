@@ -51,6 +51,51 @@ const all: Song[] = [
     composer: "Akuno-P (mothy)",
     releaseYear: 2009,
   },
+  {
+    id: "twiright-prank",
+    title: "Twiright Prank",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "tree-maiden",
+    title: "Tree Maiden ~Millennium Wiegenlied~",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "handbeat-clocktower",
+    title: "Handbeat Clocktower",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "blink",
+    title: "Blink",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "heros-armor-crimson",
+    title: "A Hero's Armor is Always Crimson",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "neomaria-inverted-gravestone",
+    title: "Neomaria of the Inverted Gravestone",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "swear-oath-bridge",
+    title: "Swear an Oath on that Bridge",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "king-born-from-mud",
+    title: "That King was Born from Mud",
+    composer: "Akuno-P (mothy)",
+  },
+  {
+    id: "reach-for-the-stars",
+    title: "Reach for the Stars ~The Letter She Kept Waiting For~",
+    composer: "Akuno-P (mothy)",
+  },
 ];
 
 export const songs: Record<string, Song> = Object.fromEntries(all.map((s) => [s.id, s]));

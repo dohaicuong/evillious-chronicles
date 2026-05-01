@@ -21,34 +21,41 @@ export function SongList({ songIds }: { songIds: string[] }) {
         const song = getSong(id);
         if (!song) return null;
         const isCurrent = currentSong?.id === song.id;
+        const hasSource = Boolean(song.audio || song.youtubeUrl);
 
         return (
           <li
             key={id}
-            className="flex items-center gap-4 border-t border-border last:border-b py-3"
+            className="flex items-center gap-4 border-t border-border py-3 last:border-b"
           >
-            <span className="text-style-caption text-fg-muted w-6 text-right tabular-nums">
+            <span className="w-6 text-right text-style-caption text-fg-muted tabular-nums">
               {i + 1}
             </span>
-            <div className="flex-1 flex flex-col gap-0.5 min-w-0">
-              <span className="text-style-body text-fg line-clamp-1">{song.title}</span>
-              <span className="text-style-caption text-fg-muted line-clamp-1">
+            <div className="flex min-w-0 flex-1 flex-col gap-0.5">
+              <span className="line-clamp-1 text-style-body text-fg">{song.title}</span>
+              <span className="line-clamp-1 text-style-caption text-fg-muted">
                 {song.originalTitle ? <>{song.originalTitle} · </> : null}
                 {song.vocalist}
                 {song.composer ? <> · {song.composer}</> : null}
               </span>
             </div>
-            <span className="text-style-caption text-fg-muted hidden sm:inline tabular-nums">
-              {formatDuration(song.duration)}
-            </span>
-            <IconButton
-              size="sm"
-              variant={isCurrent ? "outline" : "ghost"}
-              aria-label={isCurrent ? `Now playing: ${song.title}` : `Play ${song.title}`}
-              onClick={() => play(song)}
-            >
-              <PlayIcon weight={isCurrent ? "fill" : "light"} />
-            </IconButton>
+            {song.duration ? (
+              <span className="hidden text-style-caption text-fg-muted tabular-nums sm:inline">
+                {formatDuration(song.duration)}
+              </span>
+            ) : null}
+            {hasSource ? (
+              <IconButton
+                size="sm"
+                variant={isCurrent ? "outline" : "ghost"}
+                aria-label={isCurrent ? `Now playing: ${song.title}` : `Play ${song.title}`}
+                onClick={() => play(song)}
+              >
+                <PlayIcon weight={isCurrent ? "fill" : "light"} />
+              </IconButton>
+            ) : (
+              <span className="h-8 w-8 shrink-0" aria-hidden="true" />
+            )}
           </li>
         );
       })}

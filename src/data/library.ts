@@ -40,7 +40,21 @@ export const series: Series[] = [
     title: "The Daughter of Evil",
     description:
       "A four-volume light-novel chronicle of Riliane Lucifen d'Autriche — the tyrant princess at the heart of the Story of Evil. Each volume retells the kingdom's fall from a different perspective, color-coded by the role its narrator plays in the cycle.",
-    songIds: ["daughter-of-evil", "servant-of-evil", "regret-message", "daughter-of-white"],
+    songIds: [
+      "daughter-of-evil",
+      "servant-of-evil",
+      "regret-message",
+      "daughter-of-white",
+      "twiright-prank",
+      "tree-maiden",
+      "handbeat-clocktower",
+      "blink",
+      "heros-armor-crimson",
+      "neomaria-inverted-gravestone",
+      "swear-oath-bridge",
+      "king-born-from-mud",
+      "reach-for-the-stars",
+    ],
     volumes: [
       {
         id: "cloture-of-yellow",

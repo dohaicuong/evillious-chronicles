@@ -49,7 +49,7 @@ export type Song = {
   audio?: string; // path to audio file (mp3/ogg/etc.)
   youtubeUrl?: string; // canonical YouTube URL for the song
 
-  duration: number; // seconds
+  duration?: number; // seconds — omit when the song is catalogued but has no playable source yet
 
   vocalist?: string;
   composer?: string;
