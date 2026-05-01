@@ -1,6 +1,7 @@
 import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
+  ArrowClockwiseIcon,
   BookOpenTextIcon,
   BookmarkSimpleIcon,
   GearIcon,
@@ -34,6 +35,26 @@ export function AppShell() {
   useEffect(() => {
     viewportRef.current?.scrollTo({ top: 0, behavior: "instant" });
   }, [location.pathname]);
+
+  // Hard reload — checks for SW updates, activates any waiting worker, then
+  // forces a reload. The standalone PWA has no URL bar so this is the only
+  // way for the user to pull a fresh version on demand.
+  async function hardReload() {
+    if ("serviceWorker" in navigator) {
+      try {
+        const registrations = await navigator.serviceWorker.getRegistrations();
+        await Promise.all(
+          registrations.map(async (reg) => {
+            await reg.update().catch(() => undefined);
+            reg.waiting?.postMessage({ type: "SKIP_WAITING" });
+          }),
+        );
+      } catch {
+        // ignore — fall through to reload regardless
+      }
+    }
+    window.location.reload();
+  }
 
   return (
     <div className="h-screen flex flex-col bg-bg">
@@ -77,6 +98,14 @@ export function AppShell() {
               >
                 <GearIcon weight="light" />
               </IconButton>
+              <IconButton
+                variant="ghost"
+                size="sm"
+                aria-label="Reload for updates"
+                onClick={hardReload}
+              >
+                <ArrowClockwiseIcon weight="light" />
+              </IconButton>
               <ThemeToggle />
             </div>
             <Menu>
@@ -113,6 +142,13 @@ export function AppShell() {
                     <Menu.Item onClick={() => setSettingsOpen(true)}>
                       <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                       Reader settings
+                    </Menu.Item>
+                    <Menu.Item onClick={hardReload}>
+                      <ArrowClockwiseIcon
+                        weight="light"
+                        className="inline-block mr-2 align-[-2px]"
+                      />
+                      Reload for updates
                     </Menu.Item>
                     <Menu.Separator />
                     <Menu.Item onClick={() => setTheme(isDark ? "light" : "dark")}>
