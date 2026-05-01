@@ -95,5 +95,14 @@ export default defineConfig({
         enabled: false,
       },
     }),
+    {
+      name: "ignore-volume-md-files",
+      load(id) {
+        if (id.includes("/src/data/volumes/") && id.endsWith(".md")) {
+          return 'export default "";';
+        }
+        return null;
+      },
+    },
   ],
 });
