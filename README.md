@@ -34,17 +34,29 @@ the books, building a reading interface for myself.
 
 ## Translation source
 
-English text for _The Daughter of Evil — Vol 1: Clôture of Yellow_ comes
-from the fan translation hosted at **[ltquick.nl](https://www.ltquick.nl/pdf/ClotureofYellowBetterVersion.pdf)**.
-Full credit and gratitude to the translator and proof-readers; without that
-work this project would not exist. If you're the translator and would prefer
-attribution changes (or removal), open an issue and I'll act on it
-immediately.
+English text comes from three different fan translations, one per volume:
+
+- **Vol 1 — Clôture of Yellow:** the PDF hosted at
+  **[ltquick.nl](https://www.ltquick.nl/pdf/ClotureofYellowBetterVersion.pdf)**.
+- **Vol 2 — Wiegenlied of Green:** a personal PDF copy of an English fan
+  translation (translator uncredited in the file; transcription credited to
+  「轻之国度」 / Light Novel Country, distribution to 雪名残). If you recognise
+  this translation and can identify the translator, please open an issue so
+  I can attribute it properly.
+- **Vol 3 — Praeludium of Red:** the chapter-by-chapter translation posted at
+  **[doe-praeludiumofred.tumblr.com](https://doe-praeludiumofred.tumblr.com/directory)**.
+
+Full credit and gratitude to every translator and proof-reader involved;
+without their work this project would not exist. If you're one of these
+translators and would prefer attribution changes (or removal), open an issue
+and I'll act on it immediately.
 
 The original Japanese works, illustrations, lyrics, and music remain
 copyright of their respective creators —
 **Akuno-P (mothy) / EXIT TUNES / PHP Institute** and the credited
-illustrators (壱加 / 忱 / ゆのみ on Vol 1). Cover image © 一色.
+illustrators (壱加 / 忱 / ゆのみ on Vol 1; 鈴ノ助 / 壱加 / 忱 / なぎみそ /
+かる / ゆーりん / 吉田ドンドリアン on Vol 2). Cover images © 一色 (Vol 1),
+鈴ノ助 (Vol 2).
 
 ## Stack
 
@@ -92,7 +104,9 @@ src/
     volumes/       Per-volume full schema fixtures + chapter markdown
   routes/          File-based routes (TanStack Router)
 public/
-  cloture-of-yellow/   Cover, artwork, illustrations
+  cloture-of-yellow/     Vol 1 cover, artwork, illustrations
+  wiegenlied-of-green/   Vol 2 cover, artwork, illustrations, source PDF
+  praeludium-of-red/     Vol 3 cover (illustrations pending)
 ```
 
 ## License

@@ -8,66 +8,90 @@ import type { Volume } from "@src/data/schema";
 
 export function VolumeHero({ volume }: { volume: Volume }) {
   const firstChapter = volume.chapters[0];
+  const { width, height } = volume.cover;
+  const isPortrait = width && height ? height > width : false;
+
+  const cover = (
+    <img
+      src={asset(volume.cover.src)}
+      alt={volume.cover.alt}
+      width={width}
+      height={height}
+      className={
+        isPortrait
+          ? "w-full max-w-xs rounded-sm border border-border shadow-md shadow-ink/30 md:max-w-sm"
+          : "mx-auto max-h-[70vh] w-auto max-w-full rounded-sm border border-border object-contain shadow-md shadow-ink/30"
+      }
+    />
+  );
+
+  const details = (
+    <div className="flex max-w-2xl flex-col gap-4">
+      <div className="flex flex-col gap-2">
+        <span className="text-style-eyebrow text-fg-muted">Volume {volume.number}</span>
+        <h1 className="text-style-display text-fg">{volume.title}</h1>
+        {volume.originalTitle ? (
+          <p className="text-style-caption text-fg-muted">
+            {volume.originalTitle}
+            {volume.romanizedTitle ? <> · {volume.romanizedTitle}</> : null}
+          </p>
+        ) : null}
+      </div>
+
+      {volume.sin ? (
+        <div>
+          <Badge
+            variant="soft"
+            size="md"
+            className="capitalize"
+            icon={<SinGlyph sin={volume.sin} weight="light" />}
+          >
+            {volume.sin}
+          </Badge>
+        </div>
+      ) : null}
+
+      {volume.description ? (
+        <p className="text-style-lead text-fg-muted">{volume.description}</p>
+      ) : null}
+
+      {firstChapter ? (
+        <div className="mt-2 flex flex-wrap items-center gap-3">
+          <Button
+            variant="primary"
+            size="lg"
+            render={
+              <Link
+                to="/library/$seriesId/$volumeId/$chapterId"
+                params={{
+                  seriesId: volume.series,
+                  volumeId: volume.id,
+                  chapterId: firstChapter.id,
+                }}
+              />
+            }
+          >
+            <BookOpenIcon weight="light" />
+            Start Reading
+          </Button>
+        </div>
+      ) : null}
+    </div>
+  );
+
+  if (isPortrait) {
+    return (
+      <section className="flex flex-col items-start gap-10 md:flex-row md:gap-12">
+        {cover}
+        {details}
+      </section>
+    );
+  }
 
   return (
     <section className="flex flex-col gap-10">
-      <img
-        src={asset(volume.cover.src)}
-        alt={volume.cover.alt}
-        className="w-full rounded-sm border border-border shadow-md shadow-ink/30"
-      />
-
-      <div className="flex flex-col gap-4 max-w-2xl">
-        <div className="flex flex-col gap-2">
-          <span className="text-style-eyebrow text-fg-muted">Volume {volume.number}</span>
-          <h1 className="text-style-display text-fg">{volume.title}</h1>
-          {volume.originalTitle ? (
-            <p className="text-style-caption text-fg-muted">
-              {volume.originalTitle}
-              {volume.romanizedTitle ? <> · {volume.romanizedTitle}</> : null}
-            </p>
-          ) : null}
-        </div>
-
-        {volume.sin ? (
-          <div>
-            <Badge
-              variant="soft"
-              size="md"
-              className="capitalize"
-              icon={<SinGlyph sin={volume.sin} weight="light" />}
-            >
-              {volume.sin}
-            </Badge>
-          </div>
-        ) : null}
-
-        {volume.description ? (
-          <p className="text-style-lead text-fg-muted">{volume.description}</p>
-        ) : null}
-
-        {firstChapter ? (
-          <div className="mt-2 flex flex-wrap items-center gap-3">
-            <Button
-              variant="primary"
-              size="lg"
-              render={
-                <Link
-                  to="/library/$seriesId/$volumeId/$chapterId"
-                  params={{
-                    seriesId: volume.series,
-                    volumeId: volume.id,
-                    chapterId: firstChapter.id,
-                  }}
-                />
-              }
-            >
-              <BookOpenIcon weight="light" />
-              Start Reading
-            </Button>
-          </div>
-        ) : null}
-      </div>
+      {cover}
+      {details}
     </section>
   );
 }

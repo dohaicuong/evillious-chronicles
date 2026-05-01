@@ -9,6 +9,7 @@ import type { Volume } from "@src/data/schema";
 const loaders: Record<string, () => Promise<Volume>> = {
   "cloture-of-yellow": () => import("./cloture-of-yellow").then((m) => m.clotureOfYellow),
   "wiegenlied-of-green": () => import("./wiegenlied-of-green").then((m) => m.wiegenliedOfGreen),
+  "praeludium-of-red": () => import("./praeludium-of-red").then((m) => m.praeludiumOfRed),
 };
 
 export async function getVolume(id: string): Promise<Volume | undefined> {

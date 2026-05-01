@@ -88,6 +88,8 @@ export const wiegenliedOfGreen: Volume = {
     src: "/wiegenlied-of-green/cover.jpg",
     alt: "Wiegenlied of Green — Michaela and Clarith beneath the Millennium Tree at dusk",
     credit: "Cover Illustration by 鈴ノ助",
+    width: 960,
+    height: 548,
   },
 
   titlePage: {

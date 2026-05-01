@@ -91,6 +91,8 @@ export const clotureOfYellow: Volume = {
     src: "/cloture-of-yellow/cover.jpg",
     alt: "Clôture of Yellow — twin protagonists framed by gears and a candlelit castle",
     credit: "Cover Illustration by 一色",
+    width: 830,
+    height: 474,
   },
 
   titlePage: {
