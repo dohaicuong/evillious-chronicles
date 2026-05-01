@@ -1,7 +1,7 @@
 import { PlayIcon } from "@phosphor-icons/react";
-import { IconButton } from "@src/components/primitives/icon-button";
 import { useAudio } from "@src/lib/audio";
 import { getSong } from "@src/data/songs";
+import { cn } from "@src/lib/cn";
 
 const durationFmt = new Intl.DurationFormat("en", { style: "digital" });
 
@@ -23,36 +23,54 @@ export function SongList({ songIds }: { songIds: string[] }) {
         const isCurrent = currentSong?.id === song.id;
         const hasSource = Boolean(song.audio || song.youtubeUrl);
 
-        return (
-          <li
-            key={id}
-            className="flex items-center gap-4 border-t border-border py-3 last:border-b"
-          >
-            <span className="w-6 text-right text-style-caption text-fg-muted tabular-nums">
+        const rowClass = cn(
+          "flex w-full items-center gap-4 px-3 py-3 text-left transition-colors",
+          "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
+          hasSource && "cursor-pointer hover:bg-accent-soft",
+          !hasSource && "cursor-default",
+        );
+
+        const content = (
+          <>
+            <span className="text-style-caption text-fg-muted w-6 text-right tabular-nums">
               {i + 1}
             </span>
             <div className="flex min-w-0 flex-1 flex-col gap-0.5">
-              <span className="line-clamp-1 text-style-body text-fg">{song.title}</span>
-              <span className="line-clamp-1 text-style-caption text-fg-muted">
+              <span className="text-style-body text-fg line-clamp-1">{song.title}</span>
+              <span className="text-style-caption text-fg-muted line-clamp-1">
                 {[song.originalTitle, song.vocalist, song.composer].filter(Boolean).join(" · ")}
               </span>
             </div>
             {song.duration ? (
-              <span className="hidden text-style-caption text-fg-muted tabular-nums sm:inline">
+              <span className="text-style-caption text-fg-muted hidden tabular-nums sm:inline">
                 {formatDuration(song.duration)}
               </span>
             ) : null}
+            <span
+              aria-hidden
+              className={cn(
+                "inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-sm",
+                hasSource ? (isCurrent ? "text-accent" : "text-fg-muted") : "opacity-0",
+              )}
+            >
+              <PlayIcon size={16} weight={isCurrent ? "fill" : "light"} />
+            </span>
+          </>
+        );
+
+        return (
+          <li key={id} className="border-border border-t last:border-b">
             {hasSource ? (
-              <IconButton
-                size="sm"
-                variant={isCurrent ? "outline" : "ghost"}
-                aria-label={isCurrent ? `Now playing: ${song.title}` : `Play ${song.title}`}
+              <button
+                type="button"
+                className={rowClass}
                 onClick={() => play(song)}
+                aria-label={isCurrent ? `Now playing: ${song.title}` : `Play ${song.title}`}
               >
-                <PlayIcon weight={isCurrent ? "fill" : "light"} />
-              </IconButton>
+                {content}
+              </button>
             ) : (
-              <span className="h-8 w-8 shrink-0" aria-hidden="true" />
+              <div className={rowClass}>{content}</div>
             )}
           </li>
         );

@@ -80,21 +80,21 @@ function VolumePage() {
 
         {full?.openingPoetry ? (
           <>
-            <Ornament />
+            <Ornament glyph="❦" />
             <PoetrySection poetry={full.openingPoetry} />
           </>
         ) : null}
 
         {full?.openingGallery && full.openingGallery.length > 0 ? (
           <>
-            <Ornament />
+            <Ornament glyph="❀" />
             <GallerySection gallery={full.openingGallery} label="Opening Gallery" />
           </>
         ) : null}
 
         {full ? (
           <>
-            <Ornament />
+            <Ornament glyph="☙" />
             <TitlePageSection volume={full} />
           </>
         ) : null}

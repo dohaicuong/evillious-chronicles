@@ -1,6 +1,7 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { ArrowSquareOutIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
+import { Link } from "@tanstack/react-router";
+import { ArrowSquareOutIcon, CaretLeftIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { characters } from "@src/data/characters";
 import { CharacterCard } from "@src/components/library/character-card";
 import { Input } from "@src/components/primitives/input";
@@ -45,6 +46,13 @@ function CharactersPage() {
 
   return (
     <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
+      <Link
+        to="/library"
+        className="text-style-eyebrow text-fg-muted hover:text-fg mb-6 inline-flex items-center gap-1 transition-colors"
+      >
+        <CaretLeftIcon size={14} />
+        Library
+      </Link>
       <header className="mb-8 flex flex-col gap-3 max-w-2xl">
         <span className="text-style-eyebrow text-fg-muted">Dramatis Personae</span>
         <h1 className="text-style-display text-fg">Characters</h1>

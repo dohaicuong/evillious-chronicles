@@ -1,4 +1,5 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
+import { ClockworkOrnament } from "@src/components/thematic/clockwork-ornament";
 import { ClockworkSpinner } from "@src/components/thematic/clockwork-spinner";
 import { Ornament } from "@src/components/thematic/ornament";
 import { SinGlyph } from "@src/components/thematic/sin-glyph";
@@ -60,6 +61,27 @@ function ThematicPage() {
           </div>
           <div data-sin="lust">
             <ClockworkSpinner size={32} />
+          </div>
+        </div>
+      </section>
+
+      {/* Clockwork ornament */}
+      <section className="flex flex-col gap-4">
+        <h2 className="text-style-eyebrow text-fg-muted">Clockwork Ornament</h2>
+        <p className="text-style-caption text-fg-muted max-w-prose">
+          Decorative pair of interlocking gears — six-tooth gear (18s) and a smaller four-tooth gear
+          (12s reverse). Purely ornamental (<code>aria-hidden</code>); for loading semantics use{" "}
+          <code>ClockworkSpinner</code>.
+        </p>
+        <div className="flex flex-wrap items-end gap-12 border border-border rounded-sm p-8">
+          <ClockworkOrnament size={48} />
+          <ClockworkOrnament size={80} />
+          <ClockworkOrnament size={120} />
+          <div data-sin="pride">
+            <ClockworkOrnament size={80} />
+          </div>
+          <div data-sin="greed">
+            <ClockworkOrnament size={80} />
           </div>
         </div>
       </section>
