@@ -5,7 +5,6 @@
 ### Reader / content
 
 - **Audio cues** — wire `Page.songCue` to the audio dock. Schema already in place at three levels (no changes needed): `Series.songIds` (rendered on series page), `Chapter.songIds` (a "tracks in this chapter" list — not rendered yet), `Page.songCue` (single id, intended to pin/highlight the song in the dock when the page is reached). Plan: IntersectionObserver on the page like progress; opt-in via a new `autoplaySongCues` toggle in `SettingsDrawer`.
-- **Per-chapter annotation chips** on the volume page — small chips next to each chapter showing bookmark / note counts.
 
 ### Translation sources to wire up (Deadly Sins of Evil novels)
 
@@ -69,3 +68,4 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - ✅ Reader settings (roadmap #5) — `SettingsDrawer` with font-size / line-height / reader-width sliders, live preview, reset; scoped to chapter prose via CSS vars + new `text-style-reader-prose` utility
 - ✅ Continue Reading on home page — top-3 in-progress cards above "Open the Library", deep-link to last chapter / page (sin-tinted progress bar)
 - ✅ Next-chapter CTA — large card at the end of a chapter above the existing `ChapterNav` (only renders when there's a next chapter)
+- ✅ Per-chapter annotation chips — small bookmark/note count chips next to each chapter on the volume page (one Dexie query at the list level, hidden on mobile to keep the row compact)
