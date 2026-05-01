@@ -71,6 +71,27 @@ export const venomania: Volume = {
     credits: [{ role: "Original Work", name: "Akuno_P (mothy)" }],
   },
 
+  openingGallery: [
+    {
+      illustration: {
+        src: "/venomania/artwork-1.jpg",
+        alt: "The Lunacy of Duke Venomania — opening artwork 1",
+      },
+    },
+    {
+      illustration: {
+        src: "/venomania/artwork-2.jpg",
+        alt: "The Lunacy of Duke Venomania — opening artwork 2",
+      },
+    },
+    {
+      illustration: {
+        src: "/venomania/artwork-3.jpg",
+        alt: "The Lunacy of Duke Venomania — opening artwork 3",
+      },
+    },
+  ],
+
   chapters: [
     {
       id: "ven-prologue",
