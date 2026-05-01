@@ -34,6 +34,25 @@ function makeChapters(prefix: string, titles: string[]): Chapter[] {
   }));
 }
 
+// Eager glob over every chapter page file across every volume. Returns a map
+// of project-relative paths → loader. We don't load the content here — just
+// count the keys per chapter directory to derive `pageCount`.
+const ALL_PAGE_FILES = import.meta.glob("./volumes/**/chapters/**/*.md");
+
+function pageCountFor(volumeSlug: string, chapterDir: string): number {
+  const prefix = `./volumes/${volumeSlug}/chapters/${chapterDir}/`;
+  let n = 0;
+  for (const k in ALL_PAGE_FILES) if (k.startsWith(prefix)) n++;
+  return n;
+}
+
+// Compact chapter constructor for implemented volumes. `dir` is the
+// per-chapter folder name under `src/data/volumes/<slug>/chapters/`; the
+// page-count comes from counting `.md` files there.
+function chap(volumeSlug: string, dir: string, id: string, number: number, title: string): Chapter {
+  return { id, number, title, pageCount: pageCountFor(volumeSlug, dir) };
+}
+
 export const series: Series[] = [
   {
     id: "the-daughter-of-evil",
@@ -62,49 +81,50 @@ export const series: Series[] = [
         title: "Clôture of Yellow",
         sin: "pride",
         chapters: [
-          { id: "cy-prologue", number: 0, title: "Prologue", pageCount: 1 },
-          {
-            id: "cy-ch1-s1",
-            number: 1,
-            title: "Chapter 1 · The Fourteenth Birthday",
-            pageCount: 16,
-          },
-          {
-            id: "cy-ch1-s2",
-            number: 2,
-            title: "Chapter 1 · Lodging in the Hearts of Evil",
-            pageCount: 18,
-          },
-          {
-            id: "cy-ch2-s1",
-            number: 3,
-            title: "Chapter 2 · The Yearning of a Twin",
-            pageCount: 20,
-          },
-          {
-            id: "cy-ch2-s2",
-            number: 4,
-            title: "Chapter 2 · The Gear's Direction",
-            pageCount: 15,
-          },
-          {
-            id: "cy-ch3-s1",
-            number: 5,
-            title: "Chapter 3 · Assembly of Allies",
-            pageCount: 16,
-          },
-          {
-            id: "cy-ch3-s2",
-            number: 6,
-            title: "Chapter 3 · The Wish for an End",
-            pageCount: 22,
-          },
-          {
-            id: "cy-ch4",
-            number: 7,
-            title: "Chapter 4 · True Evil?",
-            pageCount: 25,
-          },
+          chap("cloture-of-yellow", "00-prologue", "cy-prologue", 0, "Prologue"),
+          chap(
+            "cloture-of-yellow",
+            "01-ch1-s1-fourteenth-birthday",
+            "cy-ch1-s1",
+            1,
+            "Chapter 1 · The Fourteenth Birthday",
+          ),
+          chap(
+            "cloture-of-yellow",
+            "02-ch1-s2-lodging",
+            "cy-ch1-s2",
+            2,
+            "Chapter 1 · Lodging in the Hearts of Evil",
+          ),
+          chap(
+            "cloture-of-yellow",
+            "03-ch2-s1-yearning",
+            "cy-ch2-s1",
+            3,
+            "Chapter 2 · The Yearning of a Twin",
+          ),
+          chap(
+            "cloture-of-yellow",
+            "04-ch2-s2-gear",
+            "cy-ch2-s2",
+            4,
+            "Chapter 2 · The Gear's Direction",
+          ),
+          chap(
+            "cloture-of-yellow",
+            "05-ch3-s1-allies",
+            "cy-ch3-s1",
+            5,
+            "Chapter 3 · Assembly of Allies",
+          ),
+          chap(
+            "cloture-of-yellow",
+            "06-ch3-s2-wish-for-end",
+            "cy-ch3-s2",
+            6,
+            "Chapter 3 · The Wish for an End",
+          ),
+          chap("cloture-of-yellow", "07-ch4-true-evil", "cy-ch4", 7, "Chapter 4 · True Evil?"),
         ],
       },
       {
@@ -113,44 +133,56 @@ export const series: Series[] = [
         title: "Wiegenlied of Green",
         sin: "pride",
         chapters: [
-          { id: "wg-prologue", number: 0, title: "Prologue", pageCount: 1 },
-          { id: "wg-ch1", number: 1, title: "Chapter 1 · Dream of a Mage", pageCount: 13 },
-          {
-            id: "wg-ch2-s1",
-            number: 2,
-            title: "Chapter 2 · The So-called Humans",
-            pageCount: 22,
-          },
-          {
-            id: "wg-ch2-s2",
-            number: 3,
-            title: "Chapter 2 · Wooden Girl and White-Haired Girl",
-            pageCount: 22,
-          },
-          {
-            id: "wg-ch3-s1",
-            number: 4,
-            title: "Chapter 3 · Waltz of the Diva",
-            pageCount: 17,
-          },
-          {
-            id: "wg-ch3-s2",
-            number: 5,
-            title: "Chapter 3 · The Lady Who Staggered",
-            pageCount: 34,
-          },
-          {
-            id: "wg-ch4-s1",
-            number: 6,
-            title: "Chapter 4 · Lost Destination",
-            pageCount: 19,
-          },
-          {
-            id: "wg-ch4-s2",
-            number: 7,
-            title: "Chapter 4 · Seaside's Small Bottle",
-            pageCount: 19,
-          },
+          chap("wiegenlied-of-green", "00-prologue", "wg-prologue", 0, "Prologue"),
+          chap(
+            "wiegenlied-of-green",
+            "01-ch1-dream-of-mage",
+            "wg-ch1",
+            1,
+            "Chapter 1 · Dream of a Mage",
+          ),
+          chap(
+            "wiegenlied-of-green",
+            "02-ch2-s1-so-called-humans",
+            "wg-ch2-s1",
+            2,
+            "Chapter 2 · The So-called Humans",
+          ),
+          chap(
+            "wiegenlied-of-green",
+            "03-ch2-s2-wooden-girl",
+            "wg-ch2-s2",
+            3,
+            "Chapter 2 · Wooden Girl and White-Haired Girl",
+          ),
+          chap(
+            "wiegenlied-of-green",
+            "04-ch3-s1-waltz-of-diva",
+            "wg-ch3-s1",
+            4,
+            "Chapter 3 · Waltz of the Diva",
+          ),
+          chap(
+            "wiegenlied-of-green",
+            "05-ch3-s2-lady-who-staggered",
+            "wg-ch3-s2",
+            5,
+            "Chapter 3 · The Lady Who Staggered",
+          ),
+          chap(
+            "wiegenlied-of-green",
+            "06-ch4-s1-lost-destination",
+            "wg-ch4-s1",
+            6,
+            "Chapter 4 · Lost Destination",
+          ),
+          chap(
+            "wiegenlied-of-green",
+            "07-ch4-s2-seasides-small-bottle",
+            "wg-ch4-s2",
+            7,
+            "Chapter 4 · Seaside's Small Bottle",
+          ),
         ],
       },
       {
@@ -159,45 +191,63 @@ export const series: Series[] = [
         title: "Praeludium of Red",
         sin: "pride",
         chapters: [
-          { id: "pr-prologue", number: 0, title: "Prologue", pageCount: 1 },
-          { id: "pr-ch1-s1", number: 1, title: "Chapter 1 · The Star Fortress", pageCount: 6 },
-          {
-            id: "pr-ch1-s2",
-            number: 2,
-            title: "Chapter 1 · Chance Meeting of a Sworn Friend",
-            pageCount: 4,
-          },
-          {
-            id: "pr-ch2-s1",
-            number: 3,
-            title: "Chapter 2 · Footprints of the Evil Food Eater",
-            pageCount: 6,
-          },
-          {
-            id: "pr-ch2-s2",
-            number: 4,
-            title: "Chapter 2 · The Signal Fire of a Counterattack",
-            pageCount: 5,
-          },
-          {
-            id: "pr-ch3-s1",
-            number: 5,
-            title: "Chapter 3 · The King and the Girl",
-            pageCount: 3,
-          },
-          { id: "pr-ch3-s2", number: 6, title: "Chapter 3 · Full Moon Visitor", pageCount: 8 },
-          {
-            id: "pr-ch4",
-            number: 7,
-            title: "Chapter 4 · Time and a Forest and a Song",
-            pageCount: 3,
-          },
-          {
-            id: "pr-epilogue",
-            number: 8,
-            title: "Epilogue · To the Blue Country",
-            pageCount: 5,
-          },
+          chap("praeludium-of-red", "00-prologue", "pr-prologue", 0, "Prologue"),
+          chap(
+            "praeludium-of-red",
+            "01-ch1-s1-star-fortress",
+            "pr-ch1-s1",
+            1,
+            "Chapter 1 · The Star Fortress",
+          ),
+          chap(
+            "praeludium-of-red",
+            "02-ch1-s2-chance-meeting",
+            "pr-ch1-s2",
+            2,
+            "Chapter 1 · Chance Meeting of a Sworn Friend",
+          ),
+          chap(
+            "praeludium-of-red",
+            "03-ch2-s1-evil-food-eater",
+            "pr-ch2-s1",
+            3,
+            "Chapter 2 · Footprints of the Evil Food Eater",
+          ),
+          chap(
+            "praeludium-of-red",
+            "04-ch2-s2-counterattack",
+            "pr-ch2-s2",
+            4,
+            "Chapter 2 · The Signal Fire of a Counterattack",
+          ),
+          chap(
+            "praeludium-of-red",
+            "05-ch3-s1-king-and-girl",
+            "pr-ch3-s1",
+            5,
+            "Chapter 3 · The King and the Girl",
+          ),
+          chap(
+            "praeludium-of-red",
+            "06-ch3-s2-full-moon-visitor",
+            "pr-ch3-s2",
+            6,
+            "Chapter 3 · Full Moon Visitor",
+          ),
+          chap(
+            "praeludium-of-red",
+            "07-ch4-time-forest-song",
+            "pr-ch4",
+            7,
+            "Chapter 4 · Time and a Forest and a Song",
+          ),
+          chap(
+            "praeludium-of-red",
+            "08-epilogue-blue-country",
+            "pr-epilogue",
+            8,
+            "Epilogue · To the Blue Country",
+          ),
         ],
       },
       {
@@ -206,55 +256,63 @@ export const series: Series[] = [
         title: "Praefacio of Blue",
         sin: "pride",
         chapters: [
-          { id: "pb-prologue", number: 0, title: "Prologue", pageCount: 1 },
-          {
-            id: "pb-ch1",
-            number: 1,
-            title: "Chapter 1 · Signs of the Enemy at Sea",
-            pageCount: 1,
-          },
-          {
-            id: "pb-ch2-s1",
-            number: 2,
-            title: "Chapter 2 · Hometown of Misgivings",
-            pageCount: 9,
-          },
-          {
-            id: "pb-ch2-s2",
-            number: 3,
-            title: "Chapter 2 · The Sorceress and the Forest",
-            pageCount: 5,
-          },
-          {
-            id: "pb-ch3-s1",
-            number: 4,
-            title: "Chapter 3 · The Inside Story on the Girl",
-            pageCount: 4,
-          },
-          {
-            id: "pb-ch3-s2",
-            number: 5,
-            title: "Chapter 3 · A Heartbeat in the Rain",
-            pageCount: 11,
-          },
-          {
-            id: "pb-ch4-s1",
-            number: 6,
-            title: "Chapter 4 · The Monastery on the Seashore",
-            pageCount: 3,
-          },
-          {
-            id: "pb-ch4-s2",
-            number: 7,
-            title: "Chapter 4 · With That Person",
-            pageCount: 3,
-          },
-          {
-            id: "pb-epilogue",
-            number: 8,
-            title: "Epilogue · Prelude of Things to Come",
-            pageCount: 1,
-          },
+          chap("praefacio-of-blue", "00-prologue", "pb-prologue", 0, "Prologue"),
+          chap(
+            "praefacio-of-blue",
+            "01-ch1-signs-of-enemy",
+            "pb-ch1",
+            1,
+            "Chapter 1 · Signs of the Enemy at Sea",
+          ),
+          chap(
+            "praefacio-of-blue",
+            "02-ch2-s1-hometown-misgivings",
+            "pb-ch2-s1",
+            2,
+            "Chapter 2 · Hometown of Misgivings",
+          ),
+          chap(
+            "praefacio-of-blue",
+            "03-ch2-s2-sorceress-and-forest",
+            "pb-ch2-s2",
+            3,
+            "Chapter 2 · The Sorceress and the Forest",
+          ),
+          chap(
+            "praefacio-of-blue",
+            "04-ch3-s1-inside-story",
+            "pb-ch3-s1",
+            4,
+            "Chapter 3 · The Inside Story on the Girl",
+          ),
+          chap(
+            "praefacio-of-blue",
+            "05-ch3-s2-heartbeat-rain",
+            "pb-ch3-s2",
+            5,
+            "Chapter 3 · A Heartbeat in the Rain",
+          ),
+          chap(
+            "praefacio-of-blue",
+            "06-ch4-s1-monastery-seashore",
+            "pb-ch4-s1",
+            6,
+            "Chapter 4 · The Monastery on the Seashore",
+          ),
+          chap(
+            "praefacio-of-blue",
+            "07-ch4-s2-with-that-person",
+            "pb-ch4-s2",
+            7,
+            "Chapter 4 · With That Person",
+          ),
+          chap(
+            "praefacio-of-blue",
+            "08-epilogue-prelude",
+            "pb-epilogue",
+            8,
+            "Epilogue · Prelude of Things to Come",
+          ),
         ],
       },
     ],
@@ -280,11 +338,11 @@ export const series: Series[] = [
         title: "The Lunacy of Duke Venomania",
         sin: "lust",
         chapters: [
-          { id: "ven-prologue", number: 0, title: "Prologue", pageCount: 1 },
-          { id: "ven-ch1", number: 1, title: "Chapter 1 · Lukana Octo", pageCount: 8 },
-          { id: "ven-ch2", number: 2, title: "Chapter 2 · Mikulia Greeonio", pageCount: 5 },
-          { id: "ven-ch3", number: 3, title: "Chapter 3 · Gumina Glassred", pageCount: 9 },
-          { id: "ven-ch4", number: 4, title: "Chapter 4 · Yufina Marlon", pageCount: 6 },
+          chap("venomania", "00-prologue", "ven-prologue", 0, "Prologue"),
+          chap("venomania", "01-ch1", "ven-ch1", 1, "Chapter 1 · Lukana Octo"),
+          chap("venomania", "02-ch2", "ven-ch2", 2, "Chapter 2 · Mikulia Greeonio"),
+          chap("venomania", "03-ch3", "ven-ch3", 3, "Chapter 3 · Gumina Glassred"),
+          chap("venomania", "04-ch4", "ven-ch4", 4, "Chapter 4 · Yufina Marlon"),
         ],
       },
       {

@@ -39,7 +39,7 @@ function SeriesPage() {
       {s.songIds && s.songIds.length > 0 ? (
         <>
           <Ornament />
-          <section className="flex flex-col gap-4 max-w-3xl">
+          <section className="flex flex-col gap-4">
             <h2 className="text-style-eyebrow text-fg-muted">Songs</h2>
             <SongList songIds={s.songIds} />
           </section>

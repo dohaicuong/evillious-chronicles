@@ -1,5 +1,10 @@
 # TODO
 
+## TOP PRIORITY
+
+    1. afterword not showing any where?
+    2. make the card list in series page height the same when in same line
+
 ## Pending
 
 ### Reader / content

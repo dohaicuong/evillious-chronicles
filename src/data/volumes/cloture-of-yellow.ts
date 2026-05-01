@@ -1,13 +1,5 @@
-import type { ImageAsset, Page, Volume } from "@src/data/schema";
-
-import prologueText from "./cloture-of-yellow/chapters/00-prologue.md?raw";
-import ch1s1Text from "./cloture-of-yellow/chapters/01-ch1-s1-fourteenth-birthday.md?raw";
-import ch1s2Text from "./cloture-of-yellow/chapters/02-ch1-s2-lodging.md?raw";
-import ch2s1Text from "./cloture-of-yellow/chapters/03-ch2-s1-yearning.md?raw";
-import ch2s2Text from "./cloture-of-yellow/chapters/04-ch2-s2-gear.md?raw";
-import ch3s1Text from "./cloture-of-yellow/chapters/05-ch3-s1-allies.md?raw";
-import ch3s2Text from "./cloture-of-yellow/chapters/06-ch3-s2-wish-for-end.md?raw";
-import ch4Text from "./cloture-of-yellow/chapters/07-ch4-true-evil.md?raw";
+import type { ImageAsset, Volume } from "@src/data/schema";
+import { loadPagesGlob, makePagesBuilder } from "./_shared";
 
 /*
  * The Daughter of Evil — Volume 1: Clôture of Yellow (悪ノ娘 — 黄のクロアチュール)
@@ -58,32 +50,64 @@ const illustrations: Record<string, ImageAsset> = {
     alt: "The third bell — Allen's farewell",
   },
 };
+const buildPages = makePagesBuilder(illustrations);
 
-function buildPages(markdown: string): Page[] {
-  // Tokenize the markdown on either marker. The regex captures two groups:
-  // group 1 = illustration name (only set for `<!-- illustration: NAME -->`);
-  // group 2 is matched (but unused) for the page-break marker `<!-- page -->`.
-  const splitRe = /<!--\s*illustration:\s*([\w-]+)\s*-->|<!--\s*(page)\s*-->/g;
-  const pages: Page[] = [];
-  let pageNum = 1;
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-  const pushProse = (raw: string) => {
-    const text = raw.trim();
-    if (text) pages.push({ number: pageNum++, layout: "prose", text });
-  };
-  while ((match = splitRe.exec(markdown)) !== null) {
-    pushProse(markdown.slice(lastIndex, match.index));
-    if (match[1]) {
-      const illustration = illustrations[match[1]];
-      if (illustration) pages.push({ number: pageNum++, layout: "illustration", illustration });
-    }
-    // page-break marker is a pure separator — no payload to push.
-    lastIndex = match.index + match[0].length;
-  }
-  pushProse(markdown.slice(lastIndex));
-  return pages;
-}
+const prologuePages = loadPagesGlob(
+  import.meta.glob("./cloture-of-yellow/chapters/00-prologue/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch1s1Pages = loadPagesGlob(
+  import.meta.glob("./cloture-of-yellow/chapters/01-ch1-s1-fourteenth-birthday/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch1s2Pages = loadPagesGlob(
+  import.meta.glob("./cloture-of-yellow/chapters/02-ch1-s2-lodging/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch2s1Pages = loadPagesGlob(
+  import.meta.glob("./cloture-of-yellow/chapters/03-ch2-s1-yearning/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch2s2Pages = loadPagesGlob(
+  import.meta.glob("./cloture-of-yellow/chapters/04-ch2-s2-gear/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch3s1Pages = loadPagesGlob(
+  import.meta.glob("./cloture-of-yellow/chapters/05-ch3-s1-allies/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch3s2Pages = loadPagesGlob(
+  import.meta.glob("./cloture-of-yellow/chapters/06-ch3-s2-wish-for-end/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch4Pages = loadPagesGlob(
+  import.meta.glob("./cloture-of-yellow/chapters/07-ch4-true-evil/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
 
 export const clotureOfYellow: Volume = {
   id: "cloture-of-yellow",
@@ -300,50 +324,50 @@ export const clotureOfYellow: Volume = {
       id: "cy-prologue",
       number: 0,
       title: "Prologue",
-      pages: [{ number: 1, layout: "prose", text: prologueText, songCue: "daughter-of-evil" }],
+      pages: buildPages(...prologuePages),
       songIds: ["daughter-of-evil"],
     },
     {
       id: "cy-ch1-s1",
       number: 1,
       title: "Chapter 1 · The Fourteenth Birthday",
-      pages: buildPages(ch1s1Text),
+      pages: buildPages(...ch1s1Pages),
     },
     {
       id: "cy-ch1-s2",
       number: 2,
       title: "Chapter 1 · Lodging in the Hearts of Evil",
-      pages: buildPages(ch1s2Text),
+      pages: buildPages(...ch1s2Pages),
     },
     {
       id: "cy-ch2-s1",
       number: 3,
       title: "Chapter 2 · The Yearning of a Twin",
-      pages: buildPages(ch2s1Text),
+      pages: buildPages(...ch2s1Pages),
     },
     {
       id: "cy-ch2-s2",
       number: 4,
       title: "Chapter 2 · The Gear's Direction",
-      pages: buildPages(ch2s2Text),
+      pages: buildPages(...ch2s2Pages),
     },
     {
       id: "cy-ch3-s1",
       number: 5,
       title: "Chapter 3 · Assembly of Allies",
-      pages: buildPages(ch3s1Text),
+      pages: buildPages(...ch3s1Pages),
     },
     {
       id: "cy-ch3-s2",
       number: 6,
       title: "Chapter 3 · The Wish for an End",
-      pages: buildPages(ch3s2Text),
+      pages: buildPages(...ch3s2Pages),
     },
     {
       id: "cy-ch4",
       number: 7,
       title: "Chapter 4 · True Evil?",
-      pages: buildPages(ch4Text),
+      pages: buildPages(...ch4Pages),
     },
   ],
 

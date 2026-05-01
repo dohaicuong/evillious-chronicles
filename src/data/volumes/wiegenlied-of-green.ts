@@ -1,13 +1,5 @@
-import type { ImageAsset, Page, Volume } from "@src/data/schema";
-
-import prologueText from "./wiegenlied-of-green/chapters/00-prologue.md?raw";
-import ch1Text from "./wiegenlied-of-green/chapters/01-ch1-dream-of-mage.md?raw";
-import ch2s1Text from "./wiegenlied-of-green/chapters/02-ch2-s1-so-called-humans.md?raw";
-import ch2s2Text from "./wiegenlied-of-green/chapters/03-ch2-s2-wooden-girl.md?raw";
-import ch3s1Text from "./wiegenlied-of-green/chapters/04-ch3-s1-waltz-of-diva.md?raw";
-import ch3s2Text from "./wiegenlied-of-green/chapters/05-ch3-s2-lady-who-staggered.md?raw";
-import ch4s1Text from "./wiegenlied-of-green/chapters/06-ch4-s1-lost-destination.md?raw";
-import ch4s2Text from "./wiegenlied-of-green/chapters/07-ch4-s2-seasides-small-bottle.md?raw";
+import type { ImageAsset, Volume } from "@src/data/schema";
+import { loadPagesGlob, makePagesBuilder } from "./_shared";
 
 /*
  * The Daughter of Evil — Volume 2: Wiegenlied of Green (悪ノ娘 — 緑のヴィーゲンリート)
@@ -56,31 +48,64 @@ const illustrations: Record<string, ImageAsset> = {
   },
 };
 
-function buildPages(markdown: string): Page[] {
-  // Tokenize the markdown on either marker. The regex captures two groups:
-  // group 1 = illustration name (only set for `<!-- illustration: NAME -->`);
-  // group 2 is matched (but unused) for the page-break marker `<!-- page -->`.
-  const splitRe = /<!--\s*illustration:\s*([\w-]+)\s*-->|<!--\s*(page)\s*-->/g;
-  const pages: Page[] = [];
-  let pageNum = 1;
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-  const pushProse = (raw: string) => {
-    const text = raw.trim();
-    if (text) pages.push({ number: pageNum++, layout: "prose", text });
-  };
-  while ((match = splitRe.exec(markdown)) !== null) {
-    pushProse(markdown.slice(lastIndex, match.index));
-    if (match[1]) {
-      const illustration = illustrations[match[1]];
-      if (illustration) pages.push({ number: pageNum++, layout: "illustration", illustration });
-    }
-    // page-break marker is a pure separator — no payload to push.
-    lastIndex = match.index + match[0].length;
-  }
-  pushProse(markdown.slice(lastIndex));
-  return pages;
-}
+const buildPages = makePagesBuilder(illustrations);
+
+const prologuePages = loadPagesGlob(
+  import.meta.glob("./wiegenlied-of-green/chapters/00-prologue/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch1Pages = loadPagesGlob(
+  import.meta.glob("./wiegenlied-of-green/chapters/01-ch1-dream-of-mage/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch2s1Pages = loadPagesGlob(
+  import.meta.glob("./wiegenlied-of-green/chapters/02-ch2-s1-so-called-humans/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch2s2Pages = loadPagesGlob(
+  import.meta.glob("./wiegenlied-of-green/chapters/03-ch2-s2-wooden-girl/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch3s1Pages = loadPagesGlob(
+  import.meta.glob("./wiegenlied-of-green/chapters/04-ch3-s1-waltz-of-diva/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch3s2Pages = loadPagesGlob(
+  import.meta.glob("./wiegenlied-of-green/chapters/05-ch3-s2-lady-who-staggered/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch4s1Pages = loadPagesGlob(
+  import.meta.glob("./wiegenlied-of-green/chapters/06-ch4-s1-lost-destination/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch4s2Pages = loadPagesGlob(
+  import.meta.glob("./wiegenlied-of-green/chapters/07-ch4-s2-seasides-small-bottle/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
 
 export const wiegenliedOfGreen: Volume = {
   id: "wiegenlied-of-green",
@@ -239,50 +264,50 @@ export const wiegenliedOfGreen: Volume = {
       id: "wg-prologue",
       number: 0,
       title: "Prologue",
-      pages: [{ number: 1, layout: "prose", text: prologueText, songCue: "daughter-of-white" }],
+      pages: buildPages(...prologuePages),
       songIds: ["daughter-of-white"],
     },
     {
       id: "wg-ch1",
       number: 1,
       title: "Chapter 1 · Dream of a Mage",
-      pages: buildPages(ch1Text),
+      pages: buildPages(...ch1Pages),
     },
     {
       id: "wg-ch2-s1",
       number: 2,
       title: "Chapter 2 · The So-called Humans",
-      pages: buildPages(ch2s1Text),
+      pages: buildPages(...ch2s1Pages),
     },
     {
       id: "wg-ch2-s2",
       number: 3,
       title: "Chapter 2 · Wooden Girl and White-Haired Girl",
-      pages: buildPages(ch2s2Text),
+      pages: buildPages(...ch2s2Pages),
     },
     {
       id: "wg-ch3-s1",
       number: 4,
       title: "Chapter 3 · Waltz of the Diva",
-      pages: buildPages(ch3s1Text),
+      pages: buildPages(...ch3s1Pages),
     },
     {
       id: "wg-ch3-s2",
       number: 5,
       title: "Chapter 3 · The Lady Who Staggered",
-      pages: buildPages(ch3s2Text),
+      pages: buildPages(...ch3s2Pages),
     },
     {
       id: "wg-ch4-s1",
       number: 6,
       title: "Chapter 4 · Lost Destination",
-      pages: buildPages(ch4s1Text),
+      pages: buildPages(...ch4s1Pages),
     },
     {
       id: "wg-ch4-s2",
       number: 7,
       title: "Chapter 4 · Seaside's Small Bottle",
-      pages: buildPages(ch4s2Text),
+      pages: buildPages(...ch4s2Pages),
     },
   ],
 

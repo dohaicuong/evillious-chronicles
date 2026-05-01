@@ -1,15 +1,6 @@
-import type { ImageAsset, Page, Volume } from "@src/data/schema";
+import type { ImageAsset, Volume } from "@src/data/schema";
 
-import prologueText from "./praeludium-of-red/chapters/00-prologue.md?raw";
-import ch1s1Text from "./praeludium-of-red/chapters/01-ch1-s1-star-fortress.md?raw";
-import ch1s2Text from "./praeludium-of-red/chapters/02-ch1-s2-chance-meeting.md?raw";
-import ch2s1Text from "./praeludium-of-red/chapters/03-ch2-s1-evil-food-eater.md?raw";
-import ch2s2Text from "./praeludium-of-red/chapters/04-ch2-s2-counterattack.md?raw";
-import ch3s1Text from "./praeludium-of-red/chapters/05-ch3-s1-king-and-girl.md?raw";
-import ch3s2Text from "./praeludium-of-red/chapters/06-ch3-s2-full-moon-visitor.md?raw";
-import ch4Text from "./praeludium-of-red/chapters/07-ch4-time-forest-song.md?raw";
-import epilogueText from "./praeludium-of-red/chapters/08-epilogue-blue-country.md?raw";
-import afterwordText from "./praeludium-of-red/chapters/afterword.md?raw";
+import { loadPagesGlob, makePagesBuilder } from "./_shared";
 
 /*
  * The Daughter of Evil — Volume 3: Praeludium of Red (悪ノ娘 — 赤のプレリュード)
@@ -24,31 +15,78 @@ import afterwordText from "./praeludium-of-red/chapters/afterword.md?raw";
 
 const illustrations: Record<string, ImageAsset> = {};
 
-function buildPages(markdown: string): Page[] {
-  // Tokenize the markdown on either marker. The regex captures two groups:
-  // group 1 = illustration name (only set for `<!-- illustration: NAME -->`);
-  // group 2 is matched (but unused) for the page-break marker `<!-- page -->`.
-  const splitRe = /<!--\s*illustration:\s*([\w-]+)\s*-->|<!--\s*(page)\s*-->/g;
-  const pages: Page[] = [];
-  let pageNum = 1;
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-  const pushProse = (raw: string) => {
-    const text = raw.trim();
-    if (text) pages.push({ number: pageNum++, layout: "prose", text });
-  };
-  while ((match = splitRe.exec(markdown)) !== null) {
-    pushProse(markdown.slice(lastIndex, match.index));
-    if (match[1]) {
-      const illustration = illustrations[match[1]];
-      if (illustration) pages.push({ number: pageNum++, layout: "illustration", illustration });
-    }
-    // page-break marker is a pure separator — no payload to push.
-    lastIndex = match.index + match[0].length;
-  }
-  pushProse(markdown.slice(lastIndex));
-  return pages;
-}
+const buildPages = makePagesBuilder(illustrations);
+
+const prologuePages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/00-prologue/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch1s1Pages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/01-ch1-s1-star-fortress/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch1s2Pages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/02-ch1-s2-chance-meeting/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch2s1Pages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/03-ch2-s1-evil-food-eater/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch2s2Pages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/04-ch2-s2-counterattack/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch3s1Pages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/05-ch3-s1-king-and-girl/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch3s2Pages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/06-ch3-s2-full-moon-visitor/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch4Pages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/07-ch4-time-forest-song/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const epiloguePages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/08-epilogue-blue-country/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const afterwordPages = loadPagesGlob(
+  import.meta.glob("./praeludium-of-red/chapters/afterword/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
 
 export const praeludiumOfRed: Volume = {
   id: "praeludium-of-red",
@@ -106,55 +144,55 @@ export const praeludiumOfRed: Volume = {
       id: "pr-prologue",
       number: 0,
       title: "Prologue",
-      pages: buildPages(prologueText),
+      pages: buildPages(...prologuePages),
     },
     {
       id: "pr-ch1-s1",
       number: 1,
       title: "Chapter 1 · The Star Fortress",
-      pages: buildPages(ch1s1Text),
+      pages: buildPages(...ch1s1Pages),
     },
     {
       id: "pr-ch1-s2",
       number: 2,
       title: "Chapter 1 · Chance Meeting of a Sworn Friend",
-      pages: buildPages(ch1s2Text),
+      pages: buildPages(...ch1s2Pages),
     },
     {
       id: "pr-ch2-s1",
       number: 3,
       title: "Chapter 2 · Footprints of the Evil Food Eater",
-      pages: buildPages(ch2s1Text),
+      pages: buildPages(...ch2s1Pages),
     },
     {
       id: "pr-ch2-s2",
       number: 4,
       title: "Chapter 2 · The Signal Fire of a Counterattack",
-      pages: buildPages(ch2s2Text),
+      pages: buildPages(...ch2s2Pages),
     },
     {
       id: "pr-ch3-s1",
       number: 5,
       title: "Chapter 3 · The King and the Girl",
-      pages: buildPages(ch3s1Text),
+      pages: buildPages(...ch3s1Pages),
     },
     {
       id: "pr-ch3-s2",
       number: 6,
       title: "Chapter 3 · Full Moon Visitor",
-      pages: buildPages(ch3s2Text),
+      pages: buildPages(...ch3s2Pages),
     },
     {
       id: "pr-ch4",
       number: 7,
       title: "Chapter 4 · Time and a Forest and a Song",
-      pages: buildPages(ch4Text),
+      pages: buildPages(...ch4Pages),
     },
     {
       id: "pr-epilogue",
       number: 8,
       title: "Epilogue · To the Blue Country",
-      pages: buildPages(epilogueText),
+      pages: buildPages(...epiloguePages),
     },
   ],
 
@@ -162,7 +200,7 @@ export const praeludiumOfRed: Volume = {
     id: "pr-afterword",
     number: 99,
     title: "Afterword",
-    pages: buildPages(afterwordText),
+    pages: buildPages(...afterwordPages),
   },
 
   description:

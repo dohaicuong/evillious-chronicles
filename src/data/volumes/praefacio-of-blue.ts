@@ -1,15 +1,6 @@
-import type { ImageAsset, Page, Volume } from "@src/data/schema";
+import type { ImageAsset, Volume } from "@src/data/schema";
 
-import prologueText from "./praefacio-of-blue/chapters/00-prologue.md?raw";
-import ch1Text from "./praefacio-of-blue/chapters/01-ch1-signs-of-enemy.md?raw";
-import ch2s1Text from "./praefacio-of-blue/chapters/02-ch2-s1-hometown-misgivings.md?raw";
-import ch2s2Text from "./praefacio-of-blue/chapters/03-ch2-s2-sorceress-and-forest.md?raw";
-import ch3s1Text from "./praefacio-of-blue/chapters/04-ch3-s1-inside-story.md?raw";
-import ch3s2Text from "./praefacio-of-blue/chapters/05-ch3-s2-heartbeat-rain.md?raw";
-import ch4s1Text from "./praefacio-of-blue/chapters/06-ch4-s1-monastery-seashore.md?raw";
-import ch4s2Text from "./praefacio-of-blue/chapters/07-ch4-s2-with-that-person.md?raw";
-import epilogueText from "./praefacio-of-blue/chapters/08-epilogue-prelude.md?raw";
-import afterwordText from "./praefacio-of-blue/chapters/afterword.md?raw";
+import { loadPagesGlob, makePagesBuilder } from "./_shared";
 
 /*
  * The Daughter of Evil — Volume 4: Praefacio of Blue (悪ノ娘 — 青のプラエファチオ)
@@ -21,31 +12,79 @@ import afterwordText from "./praefacio-of-blue/chapters/afterword.md?raw";
 
 const illustrations: Record<string, ImageAsset> = {};
 
-function buildPages(markdown: string): Page[] {
-  // Tokenize the markdown on either marker. The regex captures two groups:
-  // group 1 = illustration name (only set for `<!-- illustration: NAME -->`);
-  // group 2 is matched (but unused) for the page-break marker `<!-- page -->`.
-  const splitRe = /<!--\s*illustration:\s*([\w-]+)\s*-->|<!--\s*(page)\s*-->/g;
-  const pages: Page[] = [];
-  let pageNum = 1;
-  let lastIndex = 0;
-  let match: RegExpExecArray | null;
-  const pushProse = (raw: string) => {
-    const text = raw.trim();
-    if (text) pages.push({ number: pageNum++, layout: "prose", text });
-  };
-  while ((match = splitRe.exec(markdown)) !== null) {
-    pushProse(markdown.slice(lastIndex, match.index));
-    if (match[1]) {
-      const illustration = illustrations[match[1]];
-      if (illustration) pages.push({ number: pageNum++, layout: "illustration", illustration });
-    }
-    // page-break marker is a pure separator — no payload to push.
-    lastIndex = match.index + match[0].length;
-  }
-  pushProse(markdown.slice(lastIndex));
-  return pages;
-}
+const buildPages = makePagesBuilder(illustrations);
+
+const prologuePages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/00-prologue/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+
+const ch1s1Pages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/01-ch1-signs-of-enemy/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch2s1Pages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/02-ch2-s1-hometown-misgivings/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch2s2Pages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/03-ch2-s2-sorceress-and-forest/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch3s1Pages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/04-ch3-s1-inside-story/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch3s2Pages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/05-ch3-s2-heartbeat-rain/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch4s1Pages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/06-ch4-s1-monastery-seashore/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const ch4s2Pages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/07-ch4-s2-with-that-person/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const epiloguePages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/08-epilogue-prelude/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
+const afterwordPages = loadPagesGlob(
+  import.meta.glob("./praefacio-of-blue/chapters/afterword/*.md", {
+    eager: true,
+    query: "?raw",
+    import: "default",
+  }),
+);
 
 export const praefacioOfBlue: Volume = {
   id: "praefacio-of-blue",
@@ -100,55 +139,55 @@ export const praefacioOfBlue: Volume = {
       id: "pb-prologue",
       number: 0,
       title: "Prologue",
-      pages: buildPages(prologueText),
+      pages: buildPages(...prologuePages),
     },
     {
       id: "pb-ch1",
       number: 1,
       title: "Chapter 1 · Signs of the Enemy at Sea",
-      pages: buildPages(ch1Text),
+      pages: buildPages(...ch1s1Pages),
     },
     {
       id: "pb-ch2-s1",
       number: 2,
       title: "Chapter 2 · Hometown of Misgivings",
-      pages: buildPages(ch2s1Text),
+      pages: buildPages(...ch2s1Pages),
     },
     {
       id: "pb-ch2-s2",
       number: 3,
       title: "Chapter 2 · The Sorceress and the Forest",
-      pages: buildPages(ch2s2Text),
+      pages: buildPages(...ch2s2Pages),
     },
     {
       id: "pb-ch3-s1",
       number: 4,
       title: "Chapter 3 · The Inside Story on the Girl",
-      pages: buildPages(ch3s1Text),
+      pages: buildPages(...ch3s1Pages),
     },
     {
       id: "pb-ch3-s2",
       number: 5,
       title: "Chapter 3 · A Heartbeat in the Rain",
-      pages: buildPages(ch3s2Text),
+      pages: buildPages(...ch3s2Pages),
     },
     {
       id: "pb-ch4-s1",
       number: 6,
       title: "Chapter 4 · The Monastery on the Seashore",
-      pages: buildPages(ch4s1Text),
+      pages: buildPages(...ch4s1Pages),
     },
     {
       id: "pb-ch4-s2",
       number: 7,
       title: "Chapter 4 · With That Person",
-      pages: buildPages(ch4s2Text),
+      pages: buildPages(...ch4s2Pages),
     },
     {
       id: "pb-epilogue",
       number: 8,
       title: "Epilogue · Prelude of Things to Come",
-      pages: buildPages(epilogueText),
+      pages: buildPages(...epiloguePages),
     },
   ],
 
@@ -156,7 +195,7 @@ export const praefacioOfBlue: Volume = {
     id: "pb-afterword",
     number: 99,
     title: "Afterword",
-    pages: buildPages(afterwordText),
+    pages: buildPages(...afterwordPages),
   },
 
   description:
