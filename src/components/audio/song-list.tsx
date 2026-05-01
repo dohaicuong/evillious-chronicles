@@ -34,9 +34,7 @@ export function SongList({ songIds }: { songIds: string[] }) {
             <div className="flex min-w-0 flex-1 flex-col gap-0.5">
               <span className="line-clamp-1 text-style-body text-fg">{song.title}</span>
               <span className="line-clamp-1 text-style-caption text-fg-muted">
-                {song.originalTitle ? <>{song.originalTitle} · </> : null}
-                {song.vocalist}
-                {song.composer ? <> · {song.composer}</> : null}
+                {[song.originalTitle, song.vocalist, song.composer].filter(Boolean).join(" · ")}
               </span>
             </div>
             {song.duration ? (

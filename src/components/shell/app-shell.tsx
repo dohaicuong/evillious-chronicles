@@ -2,6 +2,7 @@ import { Link, Outlet, useLocation } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowClockwiseIcon,
+  ArrowSquareOutIcon,
   BookOpenTextIcon,
   BookmarkSimpleIcon,
   GearIcon,
@@ -106,6 +107,20 @@ export function AppShell() {
               >
                 <ArrowClockwiseIcon weight="light" />
               </IconButton>
+              <IconButton
+                variant="ghost"
+                size="sm"
+                aria-label="Open Evillious Chronicles wiki in a new tab"
+                render={
+                  <a
+                    href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  />
+                }
+              >
+                <ArrowSquareOutIcon weight="light" />
+              </IconButton>
               <ThemeToggle />
             </div>
             <Menu>
@@ -149,6 +164,21 @@ export function AppShell() {
                         className="inline-block mr-2 align-[-2px]"
                       />
                       Reload for updates
+                    </Menu.Item>
+                    <Menu.Item
+                      render={
+                        <a
+                          href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                        />
+                      }
+                    >
+                      <ArrowSquareOutIcon
+                        weight="light"
+                        className="inline-block mr-2 align-[-2px]"
+                      />
+                      Evillious Chronicles wiki
                     </Menu.Item>
                     <Menu.Separator />
                     <Menu.Item onClick={() => setTheme(isDark ? "light" : "dark")}>

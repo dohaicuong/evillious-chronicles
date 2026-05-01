@@ -9,6 +9,19 @@ export function SeriesCard({ series }: { series: Series }) {
   const sins = [...new Set(series.volumes.map((v) => v.sin).filter((s): s is Sin => Boolean(s)))];
   const total = series.volumes.length;
   const available = series.volumes.filter((v) => isVolumeAvailable(v.id)).length;
+  const songCount = series.songIds?.length ?? 0;
+
+  const stats: string[] = [];
+  if (total > 0) {
+    stats.push(
+      available > 0
+        ? `${available} of ${total} volume${total !== 1 ? "s" : ""} available`
+        : `${total} volume${total !== 1 ? "s" : ""}, none yet available`,
+    );
+  }
+  if (songCount > 0) {
+    stats.push(`${songCount} song${songCount !== 1 ? "s" : ""}`);
+  }
 
   return (
     <Link
@@ -19,17 +32,7 @@ export function SeriesCard({ series }: { series: Series }) {
       <Card variant="interactive">
         <Card.Header>
           <Card.Title>{series.title}</Card.Title>
-          <Card.Description>
-            {available > 0 ? (
-              <>
-                {available} of {total} volume{total !== 1 ? "s" : ""} available
-              </>
-            ) : (
-              <>
-                {total} volume{total !== 1 ? "s" : ""} · not yet available
-              </>
-            )}
-          </Card.Description>
+          {stats.length > 0 ? <Card.Description>{stats.join(" · ")}</Card.Description> : null}
         </Card.Header>
         <Card.Body>
           <p className="line-clamp-3 text-fg-muted">{series.description}</p>

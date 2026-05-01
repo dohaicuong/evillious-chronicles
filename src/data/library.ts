@@ -444,4 +444,41 @@ export const series: Series[] = [
       },
     ],
   },
+  {
+    id: "clockwork-lullaby",
+    title: "Clockwork Lullaby Series",
+    description:
+      "A song cycle of twelve tracks that incorporate the Clockwork Lullaby motif into every entry — the thread that ties the cycles of Evillious together. mothy planned twelve songs (Clockwork Lullaby 1–9 plus three sequels) collected on the Zenmai Jikake no Komoriuta album.",
+    songIds: [
+      "wordplay",
+      "clockwork-lullaby",
+      "miniature-garden-girl",
+      "re-birthday",
+      "heartbeat-clocktower",
+      "chrono-story",
+      "capriccio-farce",
+      "seven-crimes-and-punishments",
+      "song-i-heard-somewhere",
+      "swear-oath-bridge",
+      "banica-concerto",
+      "karma-of-evil",
+      "song-third-period",
+      "screws-gears-pride",
+      "recollective-musicbox",
+    ],
+    volumes: [],
+  },
+  {
+    id: "four-endings",
+    title: "Four Endings Series",
+    description:
+      "Four songs depicting the Four Last Things — Judgment, Death, Hell, and Heaven. Master of the Court (Judgment), Master of the Graveyard (Death), Master of the Hellish Yard (Hell), and Master of the Heavenly Yard (Heaven), the latter serving as the grand finale to both the Four Endings and the Seven Deadly Sins of Evil arcs.",
+    songIds: [
+      "master-of-the-court",
+      "master-of-the-graveyard",
+      "master-of-hellish-yard",
+      "master-of-heavenly-yard",
+    ],
+    volumes: [],
+  },
 ];
