@@ -52,6 +52,8 @@ He again ignored me and returned to the room.
 Now that I think about it, but it’s kind of silly. Minis is indeed one of the oldest ministers since King Arth’s era. He is indeed worthy of being
 called a veteran.
 
+<!-- page -->
+
 “Is the meeting finished yet?”
 
 Riliane yawned.
@@ -106,6 +108,8 @@ A week later
 “Report! In Rolde, an unidentified army corps has taken part with the Revolutionary Army! Like the troupe attacked Retasan and Babul's
 soldiers! Mercenary army, near the collapse state!!”
 
+<!-- page -->
+
 “Marlon! Where’s Marlon’s reply?!”
 
 “The messenger just got back… saying Marlon has refused to send troops”
@@ -143,6 +147,8 @@ Hearing the flood of bad news, Minis couldn’t help but wail.
 The other ministers tried to remind him while Minis was shouting.
 
 Riliane has already left the Hall of Sounds.
+
+<!-- page -->
 
 ♠ Germaine ~ Lucifenia “Palace Main Gate” ~
 
@@ -199,6 +205,8 @@ At this time, York came through the crowd
 
 “Germaine, we have finished collecting everybody”
 
+<!-- page -->
+
 “York, how is Sekka?”
 
 “Her life is saved... but she can't fight anymore, so I'm bringing her home"
@@ -221,6 +229,8 @@ Come on, you guys.
 Let's go, everyone. This is the final battle.
 
 I raised my sword.
+
+<!-- page -->
 
 ♦Allen~Lucifenian Palace's "The Servant Room"~
 
@@ -277,6 +287,8 @@ I come up with a bag full of gold coins from the shelf and gave it to Gast. This
 
 “Did you not understand what I said? I don’t want money. Particularly, a servant like you, why go so far as to…”
 
+<!-- page -->
+
 “The princess is… Riliane is my twin sister”
 
 A long silence.
@@ -315,6 +327,8 @@ Gast looked at my eyes again then turned around.
 He slowly moved towards the door, then he murmured.
 
 “You are the same as me.... evil”
+
+<!-- page -->
 
 ♠Germaine ~Lucifenian Palace’s “Heavenly Yard”~
 
@@ -368,6 +382,8 @@ made her look like a devil. The devil softly said:
 I knew it. Why did I forget about her existence? Because father and Elluka are gone, the only one left is...
 
 “I am one of the three heroes, Mariam Futapie! Lucifenian soldiers! Show me your loyalty!”
+
+<!-- page -->
 
 Because of Mariam’s overwhelming force and her title as the “Three Heroes” inspired morale to the soldiers that collapsed. As I thought, these
 soldiers are very loyal to the “Three Heroes”.
@@ -424,6 +440,8 @@ Mariam’s face changed when she saw her face.
 
 “How… Why… did you participate in the revolutionary army!”
 
+<!-- page -->
+
 This time, we have successfully broken through. I only glanced back at the confrontation between the two.
 
 Mariam’s face looked really awkward.
@@ -435,6 +453,8 @@ God… If He exist, then I have to pray. Pray for my childhood success!(?) (祈�
 “……This is a duel between maids! A showdown!”
 
 Please. Please live, Chartette Langley!
+
+<!-- page -->
 
 ♦Allen~Lucifenian Palace's "Corridors"~
 
@@ -490,6 +510,8 @@ encountered a difficult opponent.
 
 “Oh, for a beautiful woman to know my name, I am deeply honoured”
 
+<!-- page -->
+
 “I will make you pay for what you did to Mark!”
 
 “Mark? Oh, sorry, I don’t remember the names of people who were killed by my hands”
@@ -519,6 +541,8 @@ Yard, I already understand that it is an impossible desire. Fight to the last mi
 “Come on, everybody!”
 
 We were leaping on Gast, and the Royal guards.
+
+<!-- page -->
 
 ♦Allen~Lucifenian Palace's "Riliane's Room"
 
@@ -583,6 +607,8 @@ For as long as it is to protect you, I…
 “This time, Can you hear out my wish?”
 Only this number of opponent, you seem to fight alone.
 
+<!-- page -->
+
 ♠ Germaine ~ Lucifenia’s Palace “Hall of Mirrors” ~
 
 The battle with the royal guards continue.
@@ -637,6 +663,8 @@ about how he struggled against the strong opponent—
 
 (That guy was strong, his speed was extraordinary. And I never seen that kind of swordsmanship)
 
+<!-- page -->
+
 Gast was smiling with every swing of his sword. Is he playing with me? No, he is just pushing me into the corner.
 
 (Honestly, I thought I can’t beat that guy. However… In battle, I found out that your enemies has unique mannerism)
@@ -690,6 +718,8 @@ A fallen man murmured. Although not clear, but I’m sure it was Gast. My attack
 “Do you not remember the heraldry on my armour?”
 
 Gast looked at my armour then became stiff.
+
+<!-- page -->
 
 “...... Oh, you are Leonhart’s daughter. Haha, now I can’t complain why I lost. Knowing my sword’s weakness and not correcting it myself… is
 the reason why I lost”
@@ -746,6 +776,8 @@ She is even able to drive away Mariam…… Chartette should not be underestimat
 
 York said with rough voice.
 
+<!-- page -->
+
 “He found the absconding Prime Minister, Minis. Although Kachess wanted to arrest him… but he resisted, so he was killed”
 
 “…… and the princess?”
@@ -799,6 +831,8 @@ I narrowed my eyes. Although it’s vague, but I can see the princess, a few sol
 “…… I’m not convinced”
 
 “Really? Please tell us why”
+
+<!-- page -->
 
 “Don’t touch me!”
 

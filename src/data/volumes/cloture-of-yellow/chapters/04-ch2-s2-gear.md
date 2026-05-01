@@ -51,6 +51,8 @@ At that instant of seeing his face, Riliane immediately restored calmness. Then�
 
 Everyone present solidified. We didn’t utter one word.
 
+<!-- page -->
+
 “Since we don’t exactly know her…… Ah, right! Killing all of them is fine! Minis, prepare the troops at once! Kill all the green-
 haired women!”
 
@@ -154,6 +156,8 @@ An item Michaela has hung around her neck.
 
 This ornament is one of the gifts Kyle presented to Riliane.
 
+<!-- page -->
+
 …… Oh no, Kyle’s love is……
 
 That night, Lucifenian soldiers set fire to the Forest of Bewilderment.
@@ -206,6 +210,8 @@ As I was getting ready to refute the Lucifenian soldiers——
 I felt something on my cheek. Water? I looked up and saw the blue sky gather up dark clouds; it started to rain.
 
 Instantly, the rain changed…… into a powerful rainstorm I have never seen before.
+
+<!-- page -->
 
 The heavy rain swept through the forest and gradually extinguished the flames…… ‘till it completely suppressed the fire.
 
@@ -260,6 +266,8 @@ Elluka and her disciple stood up, walked to the depths of the forest, and soon d
 The forest is going to be burned.
 
 One of the Three Heroes is being hunted.
+
+<!-- page -->
 
 “What exactly happened to the Palace……?”
 
@@ -316,6 +324,8 @@ As I met with Keel in the dungeon, his tone was the same as before.
 
 Keel’s smile disappeared. With no one else around us, he whispered:
 
+<!-- page -->
+
 “…… Are there other people who know it?”
 
 “No …… I’m afraid I’m the only person who noticed.”
@@ -369,6 +379,8 @@ Michaela cried. The light on the kerosense lamp glowed.
 
 "…… You don't need to apologize, Allen; although you're a person from Lucifenia, the war was caused by aristocrats."
 
+<!-- page -->
+
 But the one who launched an attack, and pulled the trigger, was my sister.
 
 Keel has a point. If Michaela is killed, "The Gren Hunting" will be over. Riliane will be very delighted. However…… this young girl sitting beside
@@ -386,6 +398,8 @@ I stood up and pushed open the iron door.
 Kyle's arrival will be five days from now.
 
 W…… What exactly am I going to do?
+
+<!-- page -->
 
 ♠Germaine~Lucifenia Kingdom's "Avadonia Residence"~
 
@@ -441,6 +455,8 @@ Riliane's tone was evidently angry.
 
 "Oh, Spring Onions? What kind of Spring Onions? The Spring Onions are still alive, right?"
 
+<!-- page -->
+
 A drop of cold sweat slided on my forehead.
 
 "…… I don't understand what you mean."
@@ -486,6 +502,8 @@ incarnation of evil.
 But……
 
 A sleepless night finally ushered the dawn.
+
+<!-- page -->
 
 ✾???~"Somewhere"~
 
@@ -539,6 +557,8 @@ impression on her was a little girl who runs around actively everyday. She seems
 
 "B-But, Ney always runs out of the palace too!"
 
+<!-- page -->
+
 "I-I just…… meet with my friends……"
 
 "Oh~~~~What kind of friends? Men?"
@@ -558,6 +578,8 @@ I prepared snacks on the table.
 "Today's snack is brioche."
 
 You smile. Such an innocent smile.
+
+<!-- page -->
 
 ♠Germaine~Lucifenia Kingdom's "Forest of Bewilderment Base"~
 
@@ -612,6 +634,8 @@ There's only one person at the other side. And we, including myself, are six peo
 "…… OK, come in."
 
 York opened the door.
+
+<!-- page -->
 
 And there stood a man wearing a mask.
 

@@ -26,6 +26,11 @@ export function useChapterPercent(chapterId: string, pageCount: number): number 
   return pageCount ? Math.round((pagesRead / pageCount) * 100) : 0;
 }
 
+export function useChapterPagesRead(chapterId: string, pageCount: number): number {
+  const record = useLiveQuery(() => db.chapterProgress.get(chapterId), [chapterId]);
+  return Math.min(record?.pagesRead ?? 0, pageCount);
+}
+
 export function useVolumeProgress(chapters: SlimChapter[]): {
   pagesRead: number;
   totalPages: number;

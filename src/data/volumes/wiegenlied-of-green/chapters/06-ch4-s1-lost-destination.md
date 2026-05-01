@@ -44,6 +44,8 @@ Clarith, you've been here for two months already. Surely you wish to go home?"
 
 “………”
 
+<!-- page -->
+
 “You’re still keeping silent… Really, if you would just say it, this war might have ended already”
 
 The freckled Daniel Ausdin’s brows wrinkled again – maybe if he could just retain his child like face, he
@@ -85,6 +87,8 @@ girl’”
 
 What the merchant said caught my attention. Unimportant? This is how it was. Koopa’s eyes instantly
 fell upon me and grudgingly said:
+
+<!-- page -->
 
 “The ‘green girl’ that was have been looking for – Michaela was confirmed dead. The Palace sent
 assassins to search for her alone.”
@@ -129,6 +133,8 @@ missed my little master.
 
 “Ms. Yukina… I see you’re doing alright”
 
+<!-- page -->
+
 “That’s because my father, mother and brother is doing alright too!”
 
 The Freesis family was imprisoned in Lucifenia and was released a few days ago. During the
@@ -172,6 +178,8 @@ I collapsed and was lying on the floor, crying.
 
 Everyone is dead. My mother is dead, the villagers are dead, Michaela is dead.
 
+<!-- page -->
+
 The gentle Michaela who was loved by all.
 
 I would be glad if I was the one who died instead of her. Because of this thought, I should have fought
@@ -214,6 +222,8 @@ The lady was really concerned about me.
 I walked out of the room and knocked on the next door.
 
 “I’m sorry if I’m bothering something but can I come in?”
+
+<!-- page -->
 
 “I don’t mind. Please come in!”
 
@@ -259,6 +269,8 @@ talking about. I sneaked a look at Mr Keel, he had an ugly expression.
 
 "Clarith, I'll start from the beginning so you can understand. I am Germaine, and he is York. We're
 
+<!-- page -->
+
 preparing to launch/initiate a revolution on Lucifenia. We're here to beg for assistance... Honestly
 speaking, we're short on both manpower and funds."
 
@@ -300,6 +312,8 @@ Mr. Keel.
 rest. You are not a servant here but a guest. You should speak with one of Koopa’s servants.”
 
 “Yes… I know”
+
+<!-- page -->
 
 A servant brought me into a room which had more space than our house in Yatski Village or in the
 servant’s room in the Freesis Mansion. As the fatigue suddenly overwhelmed me, I fell into bed. The
@@ -343,6 +357,8 @@ I tried to avoid his confident eyes:
 
 I replied in a low voice.
 
+<!-- page -->
+
 Yes, I am a coward. While my hatred for the princess is growing, but the thought of venting it on her is
 what I’m afraid off.
 
@@ -385,6 +401,8 @@ do…”
 
 Keel stood up and went for the window to watch the scenery. From here, we could see the Levin
 Cathedral.
+
+<!-- page -->
 
 “Clarith, do you believe in God?”
 
@@ -430,6 +448,8 @@ would become sad.
 “Good, I’ll contact you. Clarith, you have to remember that even if you are separated from us, you are
 still part of the family”
 
+<!-- page -->
+
 “Thank you very much…”
 
 He held out his hand and I firmly hold it.
@@ -472,6 +492,8 @@ before and after having breakfast. Preparing the meals was one of my duties.
 I am primarily responsible for the children’s meals. Because a lot of the children are picky eaters, I have
 to consider them one at a time so I have to make a menu that will satisfy all of them and it’s giving me a
 headache. If the menu is too biased, I’ll get scolded by the dean.
+
+<!-- page -->
 
 After breakfast, the nuns begin to do their duties. The monastic life is essentially self-contained. In
 addition, we had to publicize the activities of the church. We also engage in agricultural activities like
@@ -516,6 +538,8 @@ Elluka suppressed Gumillia’s provocative attitude. Elluka took out a pot with 
 
 “This is…?”
 
+<!-- page -->
+
 “Your most precious friend”
 
 “Eh?”
@@ -555,6 +579,8 @@ Michaela was at the Millennium Tree Forest’s ancient well right?
 King”
 
 “The Marlon King?”
+
+<!-- page -->
 
 “He seems to have heard about Michaela’s whereabouts. We didn’t have time to save her. Although he
 brought back her bones, he didn’t acknowledge her death. In my point of view, he also contributed to
@@ -600,6 +626,8 @@ changed, for me, she is still my most cherished person.
 
 “However, I don’t know about you but Gumillia wants to keep her(?)”
 
+<!-- page -->
+
 “We can’t decide if Michaela is a sapling.(?)”
 
 Elluka and Gumillia became silent for a while. It seems Michaela is an important person for her as well.
@@ -623,6 +651,8 @@ I can’t help but close my eyes.
 As I opened my eyes, my mood became indescribable.
 
 In front of me was a figure I could only dream off.
+
+<!-- illustration: illustration-7 -->
 
 “Michaela!”
 
@@ -664,6 +694,8 @@ However, Michaela did not answer.
 “My time as a human has already ended and you have to live on. When you worry about the pains the
 future might bring, you can no longer rely on me. You have to find the answer on your own. If I give my
 answer now, those words will be forever trapped inside of you and will never be able to stand up for
+
+<!-- page -->
 
 yourself. You decide what you want to do with your life. Even if your decision is erroneous or distorted,
 for as long as it’s your own choice, it’s meaningful”
@@ -708,6 +740,8 @@ Gumillia recited again and Michaela’s body disappeared. She then gave the pot 
 
 “I’m giving you Michaela. If she dies… I don’t care”
 
+<!-- page -->
+
 I just experienced something incredible, really incredible. If common sense applies, this should have
 never happened. Perhaps this is all a lie. This two people united and are lying to me. Maybe.
 
@@ -730,5 +764,3 @@ something. She turned back and said to me:
 
 “I forgot to tell you. The revolution was a success and the princess has been sentenced. Michaela has
 been avenged.”
-
-<!-- illustration: illustration-7 -->

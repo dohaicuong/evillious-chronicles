@@ -30,6 +30,8 @@ Although I was aware of this, but…
 
 I was trembling in the darkness.
 
+<!-- page -->
+
 ♠ Germaine ~ Lucifenia’s Palace “Hall of Sounds” ~
 
 “Why do it here? We can always have a meeting in the Hall of Mirrors”
@@ -83,6 +85,8 @@ and on bed rest, started applying her makeup.
 
 “Hello everybody. I am very grateful to you all to be able to gather here today. First of all, because of the forces of the revolutionary army, we
 claimed victory over the war. My heartfelt congratulations”
+
+<!-- page -->
 
 Kyle gave his opening remarks. I am obviously the heart of the revolutionary army’s officials, so I have a nerve to say this.
 
@@ -138,6 +142,8 @@ Kyle continued.
 
 “Well, next is......”
 
+<!-- page -->
+
 “The missing one, right?”
 
 He was talking about Mariam who was defeated by Chartette.
@@ -191,6 +197,8 @@ able to understand his ideas.
 “York, calm down and let him finish. We will give our complaints later”
 
 After hearing this, York stopped and sat in a poor position.
+
+<!-- page -->
 
 “If this country is led by the revolutionary army, then I would like to ask, who among them have political experience?...... None. The
 revolutionary army is composed of peasantry, and you expect to reform the country?”
@@ -246,6 +254,8 @@ My vision is also unaffected
 
 “Now… about her execution…”
 
+<!-- page -->
+
 “There is no need to discuss it”
 
 Yes, if we think about the significance of this revolution, we should fully understand what will happen to the Daughter of Evil.
@@ -255,6 +265,8 @@ Yes, if we think about the significance of this revolution, we should fully unde
 Kyle paused then declared:
 
 “The Execution of the Daughter of Evil will be held in 3 o’clock in the afternoon at Millenial Square --- A public execution”
+
+<!-- page -->
 
 - Daughter of Evil ~ Lucifenia Kingdom’s “Underground Prison” ~
 
@@ -309,6 +321,8 @@ The guard was surprised from her request.
 “…Okay. Please be careful and do not open the cell”
 
 Footsteps can be heard and it eventually faded away. It seems the guard went to the stairs and left.
+
+<!-- page -->
 
 “This is the first time I’ve met you, princess”
 
@@ -365,6 +379,8 @@ Tears formed from her eyes. I could no longer pretend.
 
 Since my identity has been exposed, there’s no other way; I’ll tell everything to Germaine.
 
+<!-- page -->
+
 ♦Allen ~ Five days ago, Lucifenian Palace's "Riliane's Room" ~
 
 “Hahaha! I didn’t expect this dress is suitable for you Allen”
@@ -418,6 +434,8 @@ Riliane was confused like she couldn’t understand what I was saying.
 
 “Why…? If you do that, Allen, you will die right? You will get killed right? Why Allen, why…”
 
+<!-- page -->
+
 “Riliane… You have been an evil girl… If you are an evil girl, then your evil blood also flows through me. If you are the Daughter of Evil, the I’m
 the Servant of Evil. So it doesn’t matter. I will take you place here while you live on…”
 
@@ -457,6 +475,8 @@ Riliane cried in a weak voice, desperately banging on the door.
 All right, all right. Right now, I am the “Daughter of Evil”, I have to be a strong girl. So…
 
 I should never cry.
+
+<!-- page -->
 
 ♦Daughter of Evil ·Allen ~ Lucifenia Kingdom’s “Underground Prison” ~ Continuation
 
@@ -508,6 +528,8 @@ Yes, such an event did happen but it’s all in the past.
 When I said that, Germaine suddenly stopped.
 
 “The King of Marlon, Kyle has been here before... he told me that he decided to execute me in exchange for the princess”
+
+<!-- page -->
 
 Kyle Marlon.... He, too, recognised me immediately for who I really was. He /was/ Rillianne's fiancé after all, so being discovered by him was not
 surprising. But as a king of a country, if he was to discover that the Princess is a false one, he would have to consider whether the fact would
@@ -563,6 +585,8 @@ I asked, pointing at her armour.
 
 “......? Ah, yes. But because it was not my size, Chartette’s father, who is a blacksmith, slightly modified it to fit me”
 
+<!-- page -->
+
 “What...... Indeed Chartette’s father is a good black smith. He made good changes. Was the damage on the shoulder also repaired?”
 
 “...... huh?”
@@ -608,6 +632,8 @@ The singing voices outside could not be heard.
 
 Father, how are you doing in heaven?
 
+<!-- page -->
+
 If it’s father, he might be drinking all day long.
 
 Mariam and the Royal Guards are also there so they must be having a party right now.
@@ -641,6 +667,8 @@ Tell me...
 Tell me, father...
 
 This so called “Evil”, will it end after this?
+
+<!-- page -->
 
 ♦ Allen ~ Lucifenia Kingdom’s “Millenial Square” ~
 
@@ -696,6 +724,8 @@ As a child, I was afraid of the night because I was scared of the dark.
 
 “I doesn’t matter. Don’t be afraid and just hold my hand”
 
+<!-- page -->
+
 Riliane’s hand was very warm.
 
 Really, for as long as you take my hand, I was not afraid. I became very at ease.
@@ -747,6 +777,8 @@ This is the second time, one more left.
 The condemning is still on going. Yeah, I need to come up with something that will look like an answer coming from Riliane.
 
 “Ara, It’s snack time”
+
+<!-- page -->
 
 The third bell sounded. The target of the guillotine was my neck.
 
@@ -811,6 +843,8 @@ Elluka and Gumillia began their journey to head east and while also visiting my 
 The third letter was from Clarise. She is now working in a small port city not far from Lucifenia’s Monastery. That monastery was originally
 funded by me, so I asked her to go there.
 
+<!-- page -->
+
 I asked her to become my maid again but she rejected. Perhaps she has her own ideas.
 
 And the fourth letter… was from the leader of the revolutionary army, Germaine Avadonia. She appreciated the help I gave her during the
@@ -836,6 +870,8 @@ However…
 Has it really ended?
 
 My lovely daughter, for you to write about the “Daughter of Evil”, perhaps it’s a bit too early to do so.
+
+<!-- page -->
 
 ❃ ? ? ? ~ Somewhere ~
 
@@ -876,6 +912,8 @@ To her, I am just a tool in order to achieve her plan.
 I don’t care about brother. I exist… for mother’s sake.
 
 “Leave the rest to me. You rest for a while, my lovely daughter… Marlon’s 13th princess, Ney Marlon”
+
+<!-- page -->
 
 ♥ Clarith ~ Lucifenia Kingdom’s “Port City” ~
 
@@ -929,6 +967,8 @@ It was a man, lying on the ground.
 
 Upon hearing the consecutive moans of pain, I immediately took off the cloak and loosened the collar. He had beautiful blond hair and a
 handsome face. Though he’s wearing men clothes, but the looks from the body… she’s a girl?
+
+<!-- page -->
 
 Although it looks like she isn’t suffering from any serious injury, maybe she’s hungry because she looks thin and skinny. I must give her
 something to eat.

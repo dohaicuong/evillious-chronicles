@@ -11,6 +11,7 @@ const loaders: Record<string, () => Promise<Volume>> = {
   "wiegenlied-of-green": () => import("./wiegenlied-of-green").then((m) => m.wiegenliedOfGreen),
   "praeludium-of-red": () => import("./praeludium-of-red").then((m) => m.praeludiumOfRed),
   "praefacio-of-blue": () => import("./praefacio-of-blue").then((m) => m.praefacioOfBlue),
+  venomania: () => import("./venomania").then((m) => m.venomania),
 };
 
 export async function getVolume(id: string): Promise<Volume | undefined> {

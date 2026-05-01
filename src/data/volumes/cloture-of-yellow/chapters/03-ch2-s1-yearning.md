@@ -52,6 +52,8 @@ it. If she's in another country, she'll destroy every single artwork of the poli
 
 The point of this task is unclear; the designated place isn't the Elphegort palace, but the giant mansion of Keel Freesis.
 
+<!-- page -->
+
 Keel's influence is not only limited to Elphegort; even Lucifenian and Marlon merchants owned properties that he managed; he can be regarded
 as a "Business Leader". The first time I saw him was in the previous ball; prior to that, I thought he was a strong-bodied man with a beard. But
 in fact, Keel has a slightly gentle face like of young men. Hanging on his nose were glasses that he's famous for, so I couldn't help but sigh that he
@@ -80,6 +82,8 @@ Same goes to the "Blue Country" Marlon; King Kyle has blue hair, but nearly all 
 (This way, I might not be able to fulfill Gumilia's favor……)
 
 I remembered something Elluka's apprentice, Gumilia asked me to do out of town.
+
+<!-- page -->
 
 ♦Allen~Lucineian Palace's "Servant Room"~
 
@@ -136,6 +140,8 @@ She suddenly changed the topic.
 
 "Ah? Er, the Prime Minister ordered me to……"
 
+<!-- page -->
+
 "I want you to give this to my friend in Elphegort for me."
 She said as she removed something from her sleeve.
 
@@ -182,6 +188,8 @@ Hearing my cry, Gumilia said:
 "Oh my friend's named…… Michaela."
 
 After leaving those words, she left the room.
+
+<!-- page -->
 
 ♦Allen~Elphegort kingdom's "The Central Region of the Capital City, Aceid"~
 
@@ -237,6 +245,8 @@ The shy girl once again paid tribute to the people.
 
 A teenager went to her side.
 
+<!-- page -->
+
 "Thank you, Michaela-nee!"
 
 "It's nothing. Don't mention it …… So, how are you? Did I cheer you up yet?"
@@ -291,6 +301,8 @@ Anyway, since I've completed the favor Gumilia entrusted me with, I could finall
 
 "Wait, Allen!"
 
+<!-- page -->
+
 Michaela stopped me as I was about to leave.
 
 "I want to thank you; could you come over here and follow me?"
@@ -300,6 +312,8 @@ Michaela stopped me as I was about to leave.
 After listening to me, Michaela immediately replied excitedly:
 
 "……! Exactly! I'll lead the way for you! I live at Mr. Keel Freesis's house!"
+
+<!-- page -->
 
 ♦Allen ~Elphegort Kingdom's "The Northern Region of the Capital City, Aceid"~
 
@@ -355,6 +369,8 @@ Michaela's face was a little gloomy.
 
 "I hang out with a friend…… named Clarise. She doesn't look the same as the others…… Ever since childhood she had been bullied by others;
 when we came to Aceid, it was the same old way. Even if I was around, Clarise totally can't find a job……"
+
+<!-- page -->
 
 Upon saying this, Michaela smiled; she revealed a very brilliant smile. She then continued:
 
@@ -412,6 +428,8 @@ Can't the carriage move a little slower?
 
 I thought. I don't know why but I wanna listen to her talk forever.
 
+<!-- page -->
+
 ♦Allen~Elphegort Kingdom's "Freesis Mansion"~
 
 Keel was talking to another guest during the time delayed, so I went to the other room to wait.
@@ -427,6 +445,8 @@ Marlon.
 I looked out the window; I saw two girls washing clothes by the pool.
 
 <!-- illustration: illustration-3 -->
+
+<!-- page -->
 
 One of them was Michaela, and her hands & feet were very diligent. It seems that she is a very good maid, and will surely become a good wife.
 
@@ -479,6 +499,8 @@ Gast Venom…… I've heard of that name before. He has an alias called the "Dev
 "Thank you very much. As I was saying……"
 
 Gast suddenly stared at my face; I can't help but take one step backwards.
+
+<!-- page -->
 
 "The darkness of your eyes…… are unlike what a typical servant has. Allen, have you killed a man?"
 
@@ -535,6 +557,8 @@ Keel took out a sword that looked very old. Like the sword on Gast's waist, the 
 "Venom Sword…… It seems to be a sword passed down from his ancestors. In fact, this is not fundamentally worth much, but I think if I
 deliberately opened up a high price: he'll dislike it, give up, and go away. Ah, that's what I hate the most about mercenaries and the like."
 
+<!-- page -->
+
 It seems that merchants don't give fixed prices for gifted and experienced mercenaries.
 
 "By not knowing where to squeeze out high profits from the value of my goods, I will not hesitate on the amount of money that my client has
@@ -589,6 +613,8 @@ person, I called a spade a spade, and deliberately concealed his doubt.
 "However, it's a lot better recently. Thanks to your help, the food problem is resolved; the people's dissatisfaction has been reduced; as for the
 impeding marrage with King Kyle, the Queen seems to feel very good."
 
+<!-- page -->
+
 Minis went to the Marlon country; on one hand, he went there to give thanks for the food aid; on the other hand, it's to have a concrete
 discussion on King Kyle and Queen Riliane's wedding issues. He should have set foot in Elphegort on his way home by now.
 
@@ -641,6 +667,8 @@ like her.
 
 That low-grade shell necklace; do I know the man who gave it to her?
 
+<!-- page -->
+
 "When people proposed marriage to her, she refused. I think it's a pity, but I respect her thoughts…… Oh, I just realize that I've been talking
 too long."
 
@@ -663,6 +691,8 @@ I sat inside the vehicle and stared at the Freesis mansion from far away; I saw 
 body out of the carriage and waved to her. Her smile was deeply engraved in my mind.
 
 Michaela, I hope I could be with you again.
+
+<!-- page -->
 
 ♦Allen~Lucifenian Palace's "Hall of Sounds"~
 
@@ -717,6 +747,8 @@ Riliane stiffened her face.
 
 "They said that it's one of the baby octopuses they often capture in the coastal waters of Marlon. Because of its weird shape, nobody wanted to
 eat it."
+
+<!-- page -->
 
 "What in the world is this?! Is this a hoax or something?!"
 
@@ -782,6 +814,8 @@ But if he dares to make Riliane sad, I will have to get rid of him.
 
 Even if the blood will dye both my hands red once again, I will do it at any cost.
 
+<!-- page -->
+
 ♠Germaine~Lucifenian Royal Palace’s “Forest of Bewilderment”~
 
 Ever since that incident that happened during my childhood, I never went close to the Forest of Bewilderment.
@@ -823,6 +857,8 @@ organization; gathered for the crusade against the Queen ——the “Daughter o
 “Let’s start of with the new recruits. Minage, how many did you recruit?”
 
 Hearing my inquiry, Minage scratched his head and replied:
+
+<!-- page -->
 
 “Many people are disgusted by the Royal Palace, so I was able to find a lot of people. But most of them don’t even know how to hold a sword. I
 was going to tell York to train them, but……”

@@ -46,6 +46,8 @@ A valiant breeze and a cloudless sky.
 
 This is the most suitable weather for birds to fly in the sky.
 
+<!-- page -->
+
 If you pass through the Eldoh's Forest, there's a huge lake at the north. The lake seems to be referred
 by the humans as the "Lake of Amusement". Every "Millenium Tree" Festival, the elderly people
 respectfully invite the youth to come together and tell the legends of the lake. According to the legends,
@@ -98,6 +100,8 @@ my mouth. Well, it's really tasty! Did these get tastier than before or is it ju
 one for a long time now? Or did the humans' gardening skills improve? What really caused this to
 happen, I wonder?
 
+<!-- page -->
+
 Knowing that we birds are small, there's no way I can bring back a lot of fruits. So I picked the dark ones
 that looked very delicious and grasped them inside my claws. Just tasting them is enough.
 
@@ -144,6 +148,8 @@ I woke up in a place I wasn’t familiar with.
 
 I was surrounded by walls that were made of processed stones; even the sky, I cannot see it. This is a
 place I’ve never seen in the forest.
+
+<!-- page -->
 
 (……It seems to be a familiar place)
 
@@ -192,6 +198,8 @@ I voice coming from the door; a woman came in. This woman who is holding a small
 owner of this house. Compared to the other humans I’ve seen so far, this one is too thin. This woman
 with a bundle of white hair on the back of her head looked at me with a funny and surprised face with
 complex expressions.
+
+<!-- page -->
 
 “That Clarith… the bandages are all wrong… I’m sorry little birdie”
 
@@ -243,6 +251,8 @@ eating an earthworm or something like that… forget it.
 
 “Then try to give it this”
 
+<!-- page -->
+
 Clarith, with a gloomy face, placed the large basket on the ground. How do I say this, this kid seems to
 be a really cold girl. Suddenly, she grabbed something from inside the basket.
 
@@ -291,6 +301,8 @@ basket to grab some more. She immediately took out some trauben and laid them in
 
 “I’m sorry birdie. Although she is like that, that child is a very gentle person. She was the one who saved
 you when you were injured so please forgive her”
+
+<!-- page -->
 
 The old lady smiled at me again.
 
@@ -343,6 +355,8 @@ was the problem. She had a broken tools with her, leading to her inefficiency in
 not even bother helping Clarith, but instead they would deliberately bump into her and trample on the
 ground which she plowed.
 
+<!-- page -->
+
 But even in such situations, Clarith’s expression still didn’t change; she still had a blank expression. Only
 when she is with her mother or with me she would expose a little smile.
 
@@ -388,6 +402,8 @@ was a bit hesitant leaving the bird cage.
 “Are you going back?”
 
 Behind our back was, to our surprise, was the old lady.
+
+<!-- page -->
 
 “I see that your spirit friend has come to pick you up”
 
@@ -437,6 +453,8 @@ are mutually exclusive? Humans really are amazing creatures.
 
 The old lady took a bunch of trauben from the basket gave me some.
 
+<!-- page -->
+
 “Thank you. Thank you very much”
 
 I solemnly thank her again then I tried to move my wings. Although there a little bit of pain, returning to
@@ -484,6 +502,8 @@ was unable to move because of my injury!”
 “_whines_......”
 
 From afar, the other spirits could not help but laugh.
+
+<!-- page -->
 
 Gumilia was that kind that calmly and objectively judges everything. What right is right, what wrong is
 wrong, and she’ll clearly say which of them something is. But this time, she gave me a little symphathy
@@ -535,6 +555,8 @@ was being treated like that until I grew up. My white hair and red eyes was the 
 accepted in this country. Everyone called me a “demon’s child”, saying that I should be tied up on a
 cross and burned.”
 
+<!-- page -->
+
 I also heard of the “Netsuma Tribe discrimination” thing but I didn’t know of the cruel treatment to
 them. Clarith continued.
 
@@ -581,6 +603,8 @@ Unfortunately, Clarith’s prayer did not reach Eldoh-san’s ears for he was ha
 one who heard Clarith’s heart cry out. But for me… neither God nor I, will be able to grant her wish.
 
 For this matter, I was very upset.
+
+<!-- page -->
 
 A few days later, when Eldoh-san finally woke up, I immediately approached him and discussed what
 Clarith said.
@@ -631,6 +655,8 @@ interfere, for that reason, I send you out, a “human”, to gather them.”
 
 “So, have you made a decision? Have you considered it?”
 
+<!-- page -->
+
 “Consider what?”
 
 Eldoh-san was a bit confused to what Elluka said. Elluka gave a wrinkled brow, an unhappy expression.
@@ -678,6 +704,8 @@ hundred years or so.”
 
 “Make Gumillia your disciple. She is a very serious child; she can effectively monitor you and does not
 let you get lazy.”
+
+<!-- page -->
 
 “Ha, double the supervision…”
 
@@ -728,6 +756,8 @@ of me and Gumillia reincarnating as a human will now begin.
 
 “What exactly do we have to do?”
 
+<!-- page -->
+
 “Yes, you have to think about images of people from Elphegort, preferably beautiful women”
 
 “A human that we have seen?”
@@ -777,6 +807,8 @@ Down. Down. I dropped at my destination. “She” was waiting for me.
 
 Crying, her arms where clutching as she was carrying a pair of twins.
 
+<!-- page -->
+
 My consciousness disappeared this time.
 
 ✿ Michaela ~ Lucifenia Kingdom’s “Forest of Bewilderment • Abandoned House” ~
@@ -813,6 +845,8 @@ your face every now and then”
 “Yes!”
 
 I reminded Elluka not to fall asleep again. Waiting outside was a girl playing with her short green hair.
+
+<!-- illustration: illustration-2 -->
 
 “Gumillia, Elluka is up. I’ll come join you in a moment.”
 
@@ -861,6 +895,8 @@ need to practice the necessary magic to do so. That magic would be…
 “Michaela, show me what you learned.”
 
 “I understand!”
+
+<!-- page -->
 
 I faced the sky and opened my mouth to inhale. Accompanied by a soothing rhythm, a melody blurted
 out.
@@ -912,6 +948,8 @@ During our last supper together, Elluka told me this.
 powerful such as King Sohni Elphen, Duke Parukeiji Merudo and the aristocrat, Keel Freesis… they all
 live in Aceid”
 
+<!-- page -->
+
 “Yes… I know.”
 
 I don’t know why, but my head is aching. That wasn’t a right answer to give.
@@ -959,6 +997,8 @@ I felt a gaze on me; Gumillia was looking at me and had a worried look on her fa
 
 I grabbed Gumillia’s hand and said with a smile:
 
+<!-- page -->
+
 “Don’t be! I’ll be having a new life in Elphegort. It’s very close to Eldoh-san so there’s nothing to fear of!
 You’re the one that should be more careful Gumillia, we do not know what the future has for you in
 Lucifenia.”
@@ -988,5 +1028,3 @@ Elluka and I weren’t able to achieve a final agreement.
 Reincarnating as a human, “I” didn’t realize it.
 
 That this would be our last meeting as humans.
-
-<!-- illustration: illustration-2 -->

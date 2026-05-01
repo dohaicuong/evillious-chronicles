@@ -7,7 +7,7 @@ import { Menu } from "@src/components/primitives/menu";
 import { isVolumeAvailable } from "@src/data/volumes";
 import { useAllBookmarks } from "@src/lib/bookmarks";
 import { useAllNotes } from "@src/lib/notes";
-import { markChapterComplete, resetChapterProgress, useChapterPercent } from "@src/lib/progress";
+import { markChapterComplete, resetChapterProgress, useChapterPagesRead } from "@src/lib/progress";
 import type { Chapter } from "@src/data/library";
 
 type Props = {
@@ -72,7 +72,7 @@ function ChapterRow({
   bookmarkCount: number;
   noteCount: number;
 }) {
-  const progress = useChapterPercent(chapter.id, chapter.pageCount);
+  const pagesRead = useChapterPagesRead(chapter.id, chapter.pageCount);
 
   const rowContent = (
     <>
@@ -112,7 +112,7 @@ function ChapterRow({
           Pending
         </Badge>
       ) : (
-        <ChapterStatus progress={progress} />
+        <ChapterStatus pagesRead={pagesRead} pageCount={chapter.pageCount} />
       )}
     </>
   );
@@ -135,14 +135,14 @@ function ChapterRow({
           >
             {rowContent}
           </Link>
-          <ChapterRowMenu chapter={chapter} progress={progress} />
+          <ChapterRowMenu chapter={chapter} pagesRead={pagesRead} />
         </>
       )}
     </li>
   );
 }
 
-function ChapterRowMenu({ chapter, progress }: { chapter: Chapter; progress: number }) {
+function ChapterRowMenu({ chapter, pagesRead }: { chapter: Chapter; pagesRead: number }) {
   return (
     <Menu>
       <Menu.Trigger
@@ -156,13 +156,13 @@ function ChapterRowMenu({ chapter, progress }: { chapter: Chapter; progress: num
         <Menu.Positioner align="end">
           <Menu.Popup>
             <Menu.Item
-              disabled={progress === 100}
+              disabled={pagesRead >= chapter.pageCount}
               onClick={() => void markChapterComplete(chapter.id, chapter.pageCount)}
             >
               Mark complete
             </Menu.Item>
             <Menu.Item
-              disabled={progress === 0}
+              disabled={pagesRead === 0}
               onClick={() => void resetChapterProgress(chapter.id)}
             >
               Reset progress
@@ -174,18 +174,18 @@ function ChapterRowMenu({ chapter, progress }: { chapter: Chapter; progress: num
   );
 }
 
-function ChapterStatus({ progress }: { progress: number }) {
-  if (progress === 100) {
+function ChapterStatus({ pagesRead, pageCount }: { pagesRead: number; pageCount: number }) {
+  if (pagesRead >= pageCount && pageCount > 0) {
     return (
       <Badge variant="soft" size="sm">
         Read
       </Badge>
     );
   }
-  if (progress > 0) {
+  if (pagesRead > 0) {
     return (
-      <Badge variant="solid" size="sm">
-        {progress}%
+      <Badge variant="solid" size="sm" className="tabular-nums">
+        {pagesRead}/{pageCount}
       </Badge>
     );
   }

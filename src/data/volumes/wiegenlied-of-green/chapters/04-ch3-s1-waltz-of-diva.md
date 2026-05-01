@@ -48,6 +48,8 @@ Kingdom, in Marlon, in Divine Levianta and in Elphegort.
 Not only that, but Keel also combined with other trading associations. His plan to make a union where
 sharing of useful information to get better benefits was a success. Keel’s authority even catches up
 
+<!-- page -->
+
 among the royal family. He bought his knighthood to become a noble, giving him greater political
 influence.
 
@@ -98,6 +100,8 @@ but for Elphegorteans, its feather is a very precious item than can be used as a
 
 “Thank you! Thank you very much madam!”
 
+<!-- page -->
+
 “Ha ha! You can thank me later when you get hired.”
 
 Keel and his wife are not Elphegorteans. If it all goes well, maybe Clarith will get employed too. We have
@@ -145,6 +149,8 @@ As a businessman’s wife, she seems to have a very good eye to judge a person. 
 be able to see my true identity, but I’m still getting a little worried.”
 
 “For some reasons, I’m currently staying here.”
+
+<!-- page -->
 
 “For someone as young as you, it must be hard”
 
@@ -195,6 +201,8 @@ approached Clarith.
 
 “Yes”
 
+<!-- page -->
+
 Her bright eyes were in awe. Clarith took a step back. As if to tie with Clarith, she also took a step
 forward, followed by Clarith taking a step back. After a while, they were outside the inn.”
 
@@ -242,6 +250,8 @@ At this point, Clarith, who was silent till now, stepped forward and bowed her h
 “Please, I beg of you. Please hire Michaela as well!”
 
 “You also suffered from the cruelty of Elphegorteans right? Why are you siding with her?”
+
+<!-- page -->
 
 Mrs. Freesis showed her disbelief. Although it’s a little off topic, but for her to “hate Elphegorteans”
 must be her true feelings.
@@ -293,6 +303,8 @@ clothes.
 Even though I warned her, Clarith still dipped her finger into the water and said: “It is!” Clarith
 whispered out. The people doing laundry with us laughed.
 
+<!-- page -->
+
 “Just be careful. We don’t want you to slip and get frozen to death”
 
 I jokingly said. Clarith rubbed her hands on her clothes then she smiled.
@@ -341,6 +353,8 @@ while a young man was as if waiting in the side of the room.
 
 “Excuse me. Here are your drinks and snacks. Master will be attending to you in moment.”
 
+<!-- page -->
+
 I carefully poured tea into the cup. As Clarith was about to place the snacks, she suddenly gave a faint
 cry.
 
@@ -381,6 +395,8 @@ avenge Eugen”
 Ein’s eyes became shy and slender. His line of sight was not on my face but was behind me a bit.
 
 The door to the living room was opened by the butler Bruno. The meeting seems to have finally ended.
+
+<!-- page -->
 
 “I see. Lucifenia’s financial problems has become difficult to handle”
 
@@ -440,6 +456,8 @@ because of the cold weather, plant do not bloom their flowers.
 
 “It’s alright. Thanks for the hard work”
 
+<!-- page -->
+
 “It’s cold right? Don’t you want to get warm?”
 
 Clarith ran all the way here then she immediately hugged me. Seeing her smile, It naturally eased down
@@ -489,6 +507,8 @@ It came from the warehouse. I can feel its existence when I approach it.
 However, the warehouse is tightly sealed off, not letting any low servants inside. To not get any
 attention from the people of the mansion, I have to contact Elluka in Lucifenia.
 
+<!-- page -->
+
 When I finished singing, I heard clapping hands behind me. Clarith and I looked back only to see Mr.
 Keel.
 
@@ -536,6 +556,8 @@ my treasured items!”
 
 I don’t know who started the joke but the people blurted out a little laughter. When the laughter
 stopped, Mr. Keel showed a confident smile.
+
+<!-- page -->
 
 “I am very confident because today, I have something new to show you! Let me present to you
 Michaela, an Elphegortean with a beautiful voice so please enjoy!”
@@ -587,6 +609,8 @@ youngest of them all.
 
 This man was called Kyle, smiling brightly in my direction. His smile is somewhat similar to Ein’s.
 
+<!-- page -->
+
 “Michaela, I want you to meet Kyle, the King of Marlon. He is my good friend who comes to my house
 every month to attend the party. A real playboy”
 
@@ -625,6 +649,8 @@ I got accustomed to human life.
 I even forgot my original purpose and mission.
 
 It has been past a year since my reincarnation.
+
+<!-- page -->
 
 ✿ Michaela ~ Elphegort Country’s “Freesis Mansion • Living Room” ~
 
@@ -685,6 +711,8 @@ other than Kyle, the King of Marlon.
 I was probably too focused to notice the knock on the door. For him to just walk in… he should at least
 called me out.
 
+<!-- page -->
+
 Sometimes, this person does commensurate the Royal Family’s dignity but has a speculative atmosphere;
 he just looks like that with no effort. The ladies attending the dinner party would always crowd over
 him; he seems to be very popular with them.
@@ -734,6 +762,8 @@ It suddenly became difficult to say something. Even so, Kyle said it quite clear
 
 “Yes, I like you. Perhaps it started when on our first meeting…”
 
+<!-- page -->
+
 I looked at Kyle and thought… If I was an ordinary woman, then should I say I’m happy? Or should I be
 shy about it? Or ask him “Why me?” looking all confused? For me, these feelings are not true. Loving a
 person categorically is not a bad thing. Well, he would the fifth person that proposed to me. I should
@@ -781,6 +811,8 @@ Although there are many other concerns, but for me, this is the difference of fr
 “Even if… the other person is a woman?”
 
 “…… That would make me embarrassed.”
+
+<!-- page -->
 
 Kyle raised his head and looked up. Of course, the one who came to my mind is Clarith.
 

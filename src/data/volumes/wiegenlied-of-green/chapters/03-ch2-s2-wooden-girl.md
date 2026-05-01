@@ -46,6 +46,8 @@ gave a cool feeling.
 
 “I…”
 
+<!-- page -->
+
 “In the forest… I found you fainted nearby the Millennium Tree. I know you don’t like people of the
 Netsuma tribe to take care of you, but unless your fever is gone, I hope you would bear with me.”
 
@@ -69,6 +71,8 @@ I’m sorry.”
 
 Clarith hung her head and said with a small voice. Her cautious attitude made her nervous and just say
 something simple.
+
+<!-- illustration: illustration-3 -->
 
 “There’s nothing to apologize about and I really appreciate your help.”
 
@@ -120,6 +124,8 @@ when I was in my robin form.
 
 Clarith’s mother’s voice came from inside the room.
 
+<!-- page -->
+
 “I heated up the soup. Do you also want some, Miss Michaela?”
 
 Clarith’s mother, carrying a bowl of steaming soup, walked slowly into the room. I suddenly
@@ -166,6 +172,8 @@ like that because of what that old man did to her arms and legs.
 
 I placed the bowl of soup aside, interrupting his laughter. The old man immediately turned his sight from
 Clarith to me. He became alert as he saw me.
+
+<!-- page -->
 
 “You are not from this village. This is an internal problem of our village. I hope outsiders would not
 interfere.”
@@ -216,6 +224,8 @@ But with this money, I can help Clarith.
 
 “……Clarith.”
 
+<!-- page -->
+
 “Yes?”
 
 “I have to tell you something that will please you.”
@@ -235,8 +245,6 @@ worried. It must be already be normal for them.
 I strived to tell this to Clarith:
 
 “I can pay rent, so can you let me stay here for a while?”
-
-<!-- illustration: illustration-3 -->
 
 ✿ Michaela ~ Elphegort Country’s “Yatski Village” ~
 
@@ -266,6 +274,8 @@ unbearable. Sometimes, I want to go back to Eldoh-san and live a life of leisure
 
 The old man next door complained about the low temperature we were having; we harvested a lot less
 compared to last year. But it was still more than what Lucifenia has harvested.
+
+<!-- page -->
 
 Speaking of Lucifenia…… I wonder how Gumillia and Elluka are doing. I haven’t seen or heard of them
 in a few months now. This country lacks information about other countries.
@@ -315,6 +325,8 @@ On my way back, I found Clarith talking to another person nearby a truck. It was
 The other person was the chieftain’s son, Ein. He is entirely different from his father; a fine young man
 and very popular among the women of the village. I hesitated to say hello but Ein seems to be aware of
 my existence. I wildly turned and waved my hand. Clarith nodded.
+
+<!-- page -->
 
 “Miss Michaela…”
 
@@ -366,6 +378,8 @@ between a man and a woman...
 
 "What does Michaela think of Ein?"
 
+<!-- page -->
+
 "......What?"
 
 "I think beautiful people match very well."
@@ -414,6 +428,8 @@ Chelsea crossed her arms, pressing herself against Clarith.
 "I'm sorry!"
 
 "I don't want to hear your excuses!"
+
+<!-- page -->
 
 This is what you call "Woman's Envy". If that were the case, why isn't she targeting me? I'm the one they
 should be targeting because Clarith didn't even say anything to Ein. Or maybe they saw the scene when I
@@ -464,6 +480,8 @@ gently patted Clarith's trembling shoulder.
 "Clarith, you have to speak out your mind. If you don't tell others your thoughts, you will be
 misunderstood."
 
+<!-- page -->
+
 "I'm sorry, Miss Michaela."
 
 "Hey, you should just call me "Michaela". We are friends after all."
@@ -513,9 +531,11 @@ From air to language and from language to music.
 
 Elluka taught me the “Music box Lullaby”, a very old song.
 
-<!-- illustration: illustration-4 -->
+<!-- page -->
 
 I let my song be heard throughout Elphegort, the earth and the sky.
+
+<!-- illustration: illustration-4 -->
 
 I sang until my voice became hoarse.
 
@@ -565,6 +585,8 @@ After hearing what I said, Clarith timidly came and sat beside me.
 “Happy… I never felt like that. It must be because you’re rich”
 
 “Rich? Me?”
+
+<!-- page -->
 
 “Michaela must have come from a wealthy family, otherwise, you wouldn’t have lots of money”
 
@@ -616,6 +638,8 @@ Clarith whispered with a lonely face.
 
 “Ah? Yes. But it’s okay. I know I can’t make friends.”
 
+<!-- page -->
+
 Clarith holding her knees, a gust of wind blew. It feels a little colder.
 
 “Because Clarith is of the Netsuma Tribe?”
@@ -663,6 +687,8 @@ Clarise did not want to wake up her mother. She gently opened the door.
 As I was about to go in, Clarith just stood there and did not move.
 
 “What’s the matter Clarith?”
+
+<!-- page -->
 
 I looked over Clarith’s shoulder to see what happened.
 
@@ -714,6 +740,8 @@ now.
 
 These words… although I speak these words, it has no logic at all.
 
+<!-- page -->
+
 In fact, I cannot live here anymore. Now that I know the whereabouts of ‘sin’, I have to take action. I
 must end this already. I haven’t met up with Elluka for six months now.
 
@@ -760,6 +788,8 @@ allow us to understand each other’s feelings.
 “Clarith, I like you for who you are”
 
 Clarith did not say anything; her face did not show any cowardice.
+
+<!-- page -->
 
 “No matter what others say, for me, you’re a very beautiful person. Your kindness can never be
 compared to anyone.”
@@ -810,6 +840,8 @@ getting ready to arrest Clarith. We must hurry and escape!”
 
 After hearing what Ein said, my head became blank.
 
+<!-- page -->
+
 ✿ Michaela ~ Elphegort Country’s “Yatski Village • Backstreet” ~
 
 On a hill, a little north from the village, was a steep cliff path. The road was too narrow; the slightest
@@ -858,6 +890,8 @@ side in their heart.
 “If you do that, your father will be arrested. Is that okay with you?”
 
 “It doesn’t matter anymore. Michaela, would you come with me…”
+
+<!-- page -->
 
 “Thank you for the offer, but we intend to leave the village and live in Aceid”
 

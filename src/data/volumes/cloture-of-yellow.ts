@@ -60,18 +60,28 @@ const illustrations: Record<string, ImageAsset> = {
 };
 
 function buildPages(markdown: string): Page[] {
-  const parts = markdown.split(/<!--\s*illustration:\s*([\w-]+)\s*-->/);
+  // Tokenize the markdown on either marker. The regex captures two groups:
+  // group 1 = illustration name (only set for `<!-- illustration: NAME -->`);
+  // group 2 is matched (but unused) for the page-break marker `<!-- page -->`.
+  const splitRe = /<!--\s*illustration:\s*([\w-]+)\s*-->|<!--\s*(page)\s*-->/g;
   const pages: Page[] = [];
   let pageNum = 1;
-  for (let i = 0; i < parts.length; i++) {
-    if (i % 2 === 0) {
-      const text = parts[i].trim();
-      if (text) pages.push({ number: pageNum++, layout: "prose", text });
-    } else {
-      const illustration = illustrations[parts[i]];
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  const pushProse = (raw: string) => {
+    const text = raw.trim();
+    if (text) pages.push({ number: pageNum++, layout: "prose", text });
+  };
+  while ((match = splitRe.exec(markdown)) !== null) {
+    pushProse(markdown.slice(lastIndex, match.index));
+    if (match[1]) {
+      const illustration = illustrations[match[1]];
       if (illustration) pages.push({ number: pageNum++, layout: "illustration", illustration });
     }
+    // page-break marker is a pure separator — no payload to push.
+    lastIndex = match.index + match[0].length;
   }
+  pushProse(markdown.slice(lastIndex));
   return pages;
 }
 

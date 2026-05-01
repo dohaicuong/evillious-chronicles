@@ -59,13 +59,13 @@ function VolumeRow({ volume, onNavigate }: { volume: VolumeInProgress; onNavigat
   return (
     <li data-sin={volume.sin ?? undefined} className="border-b border-border last:border-b-0 py-2">
       <Link
-        to="/library/$seriesId/$volumeId/$chapterId"
+        to="/library/$seriesId/$volumeId/$chapterId/$pageNumber"
         params={{
           seriesId: volume.seriesId,
           volumeId: volume.volumeId,
           chapterId: volume.resumeChapterId,
+          pageNumber: String(volume.resumePageNumber ?? 1),
         }}
-        hash={volume.resumePageNumber != null ? `page-${volume.resumePageNumber}` : undefined}
         onClick={onNavigate}
         className="flex flex-col gap-2 rounded-sm hover:bg-accent-soft -mx-2 px-2 py-2 transition-colors"
       >

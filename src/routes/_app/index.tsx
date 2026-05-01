@@ -24,7 +24,7 @@ function ClockFace() {
     <svg
       aria-hidden
       viewBox="0 0 60 60"
-      className="text-fg-muted/70 pointer-events-none absolute top-1/2 left-1/2 h-[0.5em] w-[0.5em] -translate-x-[35%] -translate-y-[60%]"
+      className="text-fg pointer-events-none absolute top-1/2 left-1/2 h-[0.5em] w-[0.5em] -translate-x-[35%] -translate-y-[60%]"
     >
       {ticks.map((t, i) => (
         <line

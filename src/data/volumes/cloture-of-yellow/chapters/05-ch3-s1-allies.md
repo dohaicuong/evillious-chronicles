@@ -52,6 +52,8 @@ At the corridor, the three of us overheard everything.
 
 The ones in the meeting were only Riliane and the other ministers; nobody else was allowed to enter.
 
+<!-- page -->
+
 Yesterday, at the ball, the prime minister Minis was attacked; although he managed to have a narrow escape, he was seriously injured; hence, he
 didn't attend the meeting. Although the prisoners were immediately killed by the pro-guards, the mere fact that the Palace actually had an
 assasin that sneaked into it -- is insane.
@@ -94,6 +96,8 @@ Riliane said.
 "I object! Those guys really have the strength, but they have long been notorious. How could we let those kind of people enter our palace……"
 
 After that, the meeting continued. But in the end, they decided to hire the Mercenary group. A drastic measure. This is the current status quo.
+
+<!-- page -->
 
 ♦Allen~Lucifenian Palace's "Hall of Mirrors"~
 
@@ -150,6 +154,8 @@ Mariam stood there holding food.
 
 "The Head of Maids!"
 
+<!-- page -->
+
 I don't know if it was psychological, but Mariam looked a bit annoyed.
 
 "Long time no see, Mariam…… Or should I call you the Head of the Maids? I didn't expect you to be a servant. People change, indeed."
@@ -178,6 +184,8 @@ Mariam was ready to leave, but she suddenly stopped, turned back to Gast, and sa
 Facing this question, Gast revealed a faint smile; a complex empression wherein it's undistinguishable whether he's crying or not.
 
 "In order to find a place to die."
+
+<!-- page -->
 
 ♠ Germaine ~ Lucifenia Kingdom “Bar” ~
 
@@ -277,6 +285,8 @@ I muttered. York had a calm face.
 
 I interjected:
 
+<!-- page -->
+
 “Lucifenian soldiers, although some are despicable… but all of them must comply with some minimum etiquette. The two them are not soldiers
 of the palace, but from a group of mercenaries”
 
@@ -312,6 +322,8 @@ them”
 Shaking while clenching his fist, York became extremely angry.
 
 Fortunately, the owner did not suffer any injuries. We paid for our drinks and left the bar.
+
+<!-- page -->
 
 ♦ Allen ~Lucifenia's Training Ground ~
 
@@ -359,6 +371,8 @@ What was that? Just what happened?
 “Haha. HAHAHAHAHA!!"
 
 In the frightened eyes of the two other soldiers, Gast turned and left.
+
+<!-- page -->
 
 ♠Germaine~Lucifenian Royal Palace’s “Forest of Bewilderment”~
 
@@ -415,6 +429,8 @@ This masked man… It seems I’m vaguely of him. I’m afraid I’ve seen him b
 have to correspond with each other; I understand his motive for his participation in the resistance movement and about why he hides his true
 identity with a mask.
 
+<!-- page -->
+
 His aim… just like mine… is revenge.
 
 “Germaine! Isn’t this a problem? Are you not discontented with this guy?”
@@ -467,6 +483,8 @@ forging weapons for the revolutionary army.
 I took the weapons from his hands. One was a small decorative sword, at a glance; I knew it was much sharper to date. The other one was
 armour. The chest and shoulder part had bright red lion decorated patterns. This is……
 
+<!-- page -->
+
 “I processed LeonHart’s armour to your fitting. His sword is too heavy for a girl so I replaced it with a lighter one and I placed his swords
 heraldry to your amour near your neck. Is it too much?”
 
@@ -516,6 +534,8 @@ intimate. Moreover, Allen and the princess, being identical, and are man and wom
 No, think about it, Allen wouldn’t lose to anyone even to father’s sword. If that’s the case, he should be able to escape the palace on his own
 right? I will choose to believe in him.
 
+<!-- page -->
+
 ♦Allen ~Lucifenian Palace’s “Heavenly Yard”~
 
 Clang… Clang… Clang…
@@ -551,6 +571,8 @@ However, even so, I promise to protect this land. I will protect my poor, lonely
 Alone? Is she?
 
 Or……… is it me?
+
+<!-- page -->
 
 ♠ Germaine ~ Lucifenia Kingdom “Bar” ~
 
@@ -607,7 +629,9 @@ His face got swollen then he cried and pleaded:
 
 “Please, Please stop…”
 
-“Please stop you say? This time you should say "Please torment more"!"
+<!-- page -->
+
+“Please stop you say? This time you should say “Please torment more”!”
 
 Bang! Bang! Clang!
 
@@ -659,6 +683,8 @@ Today is the end of it, and the start of a new beginning! YOU ALL! DO YOU ALL HA
 “Your shield, why do you wield it?!”
 
 “In order to protect our family!”
+
+<!-- page -->
 
 “Your armour, why do you wear it?!”
 

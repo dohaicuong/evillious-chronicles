@@ -19,6 +19,8 @@ During our spare time, we servants would gossip about such matters.
 
 “Their meeting must also be about Lucifenia’s problems”
 
+<!-- page -->
+
 “It would be nice if a war wouldn’t start…”
 
 “They wouldn’t be taking the opportunity while the other is pinned down right? That’s what the meeting
@@ -60,6 +62,8 @@ could you tell my farewells to Keel?”
 
 “………Are you angry? Are you going to feel lonely because of my departure? Michaela… You have
 finally…!”
+
+<!-- page -->
 
 “That’s…not…what…”
 
@@ -105,6 +109,8 @@ wants, it will only give himself trouble.
 
 I looked at him straight into the eye.
 
+<!-- page -->
+
 “In the future, please do not express your love to me and just address me as a house maid. You are the
 King of Marlon and yet you choose someone like me to marry you? If this goes on, we might have
 problems with the other countries”
@@ -137,6 +143,8 @@ this feeling is but I can only feel it when I feel Kyle’s body temperature.
 “I……”
 
 “…I’m sorry. Forget about what I just said”
+
+<!-- illustration: illustration-5 -->
 
 Kyle released me and turned to leave.
 
@@ -182,6 +190,8 @@ earlier than usual.
 
 I took a deep breath and sang a song, different from my usual song.
 
+<!-- page -->
+
 “Recollective Music Box”--- this song w as called “Clockwork Requiem” that seemed to be a tragic song
 for workers. I sang endless melodies so that it would reach Lucifenia.
 
@@ -192,8 +202,6 @@ unnecessary things.
 (It didn’t really matter for as long as I know how.)
 
 Now, I just have to wait for Elluka. She will definitely come here.
-
-<!-- illustration: illustration-5 -->
 
 ✿Michaela ~ Elphegort Country’s “Aceid • Central Region” ~
 
@@ -226,6 +234,8 @@ Like the face of her daughter, the lady said in a smooth face.
 
 Although she is very clumsy and would always miss the essentials, she is occasionally headstrong. For
 me, there is no one who can replace Clarith.
+
+<!-- page -->
 
 Because of this, I fear when the “sin” problem is resolved, I would eventually have to turn back into a
 spirit; I do not know when we have to part ways. Will Clarith’s heart be able to withstand it?
@@ -269,6 +279,8 @@ absence of your parents and you would feel that they are just right beside you�
 
 I took a deep breath, preparing myself to let out my voice. At this time, the owner’s wife stopped me.
 
+<!-- page -->
+
 “Wait a minute. A rare song should not be sung in a closed space. We should go somewhere more
 spacious; the city square. For a diva to sing in a small hotel would be a waste”
 
@@ -310,6 +322,8 @@ happens. For as long as we keep this feeling, Clarith and I can courageously mov
 (I have to go back)
 
 Just when I was about to go back to the hotel to get the soap…
+
+<!-- page -->
 
 “Excuse me…”
 
@@ -354,6 +368,8 @@ Allen pointed to the gift Gumillia gave me. She gave me the root of a spring oni
 a normal spring onion. Yes! It was a “very amazing spring onion!” Elluka taught me a legendary magic
 when were staying at the abandoned house.
 
+<!-- page -->
+
 ?????????//
 
 “Ha ha ha, anyway, it’s incredible”
@@ -397,6 +413,8 @@ to wait in a different room?”
 
 Allen followed Bruno to the waiting room.
 
+<!-- page -->
+
 “Good bye Allen! I hope we can meet again someday!”
 
 I said, waving at Allen. He even bowed before leaving. Clarith passed by him then confronted me.
@@ -439,6 +457,8 @@ Upon hearing her words, I remembered the reason why I bought soap.
 I said “good bye” to Clarith and ran for the laundry room”
 
 After washing the clothes, I can finally rest. At this point, I strange figure appeared in the hallway.
+
+<!-- page -->
 
 A person with purple hair and beautiful face appeared. At first, I thought he was a woman but I was well
 from his actions that he was a man.
@@ -484,6 +504,8 @@ set unto the soft soil. The green onion suddenly said:
 
 After a brief silence, a nostalgic voice was accompanied with noise.
 
+<!-- page -->
+
 “Elluka! Long time no see!”
 
 This is the “Amazing Green Onion’s” ability. For as long as it has the magic of its owner, it can make
@@ -524,6 +546,8 @@ sword”
 six months or so. She really is a smart girl”
 
 The sound is gradually fading. It seems we are nearing the time limit.
+
+<!-- page -->
 
 “Remember to contact me if an unexpected situation occurs. You don’t have to worry about a thing,
 Michaela. Just stay put and relax”
@@ -567,6 +591,8 @@ Mr. Keel said as an opening.
 “Bruno, please explain the situation”
 
 He has served the Freesis Mansion for years. He took a step forward and told us the whole story.
+
+<!-- page -->
 
 “Five days ago, we received the news that the King of Marlon, Kyle has been placed under house arrest.
 As he prepared to go to Elphegort, Queen Dowager Prim Marlon chained him up and imprisoned him”
@@ -612,6 +638,8 @@ do anything…
 
 Mrs. Freesis stared at my direction. Am I really the reason?
 
+<!-- page -->
+
 “I’m sorry my lady… I did not expect this”
 
 “I’m not blaming. As Keel said, Kyle is at fault. You have been doing well in this household. Am I not a
@@ -652,6 +680,8 @@ is the case, you should protect her”
 “…… Yes!”
 
 After hearing the two incentives, Clarith firmly replied.
+
+<!-- page -->
 
 “We show equal love to our servants and their family, that is one of the Freesis’s mottos. Michaela is no
 exception. C’mon you guys!”
@@ -696,6 +726,8 @@ forest in a matter of time.
 
 (They… Must be alright…)
 
+<!-- page -->
+
 The forest animals, plants and people living in the forest, Eldoh-san must be worried about them.
 
 Although I tried using the “Amazing Green Onion” to contact Elluka, I didn’t get any response.
@@ -736,6 +768,8 @@ your current place… No, you have to escape Elphegort!”
 The situation is getting worse. We only need six more months to seal the demon!
 
 “Why… How did this happen?!”
+
+<!-- page -->
 
 “Rilliane is burning the forest because, for her, it is a hindrance. Gumillia and I are trying to lessen the
 mortality rate… Gumillia was very helpful. If she weren’t here, I wouldn’t be able to make such a large
@@ -779,6 +813,8 @@ Green hair… I touched my pony tail and suddenly realized something frightening
 in Elphegort’s Palace. Anyway, if my dream is to occur right away, Lucifenia will fall because of a
 revolution. Until this happens, you just have to run and hide…”
 
+<!-- page -->
+
 According to Elluka’s interpretations, her “Purple” dreams will always come true. We can only accept it
 and decide on our future actions.
 
@@ -821,6 +857,8 @@ to do. I also learned a lot after being a human so I can somewhat understand you
 spirit”
 
 “Ah Ha Ha Ha Ha Ha!?” Screams from Elluka was heard from far away.
+
+<!-- page -->
 
 “I also have important people to protect. I want to protect that person and to survive as a human”
 
@@ -866,6 +904,8 @@ will not kill non-Elphegorteans.
 “Michaela, we understand your feelings, but there is no other way. If you stay here, the others might get
 harmed as well. It would be best if you escape from Lucifenia”
 
+<!-- page -->
+
 Mr. Keel’s sharp tone was very deliberate. But Clarith doesn’t understand his plan.
 
 “You want to give up Michaela?!”
@@ -895,6 +935,8 @@ look forward to it.”
 Clarith patted the head of the weeping Ms. Yukina. Clarith sofly smiled. Her smile is exactly like her
 mother’s smile.
 
+<!-- illustration: illustration-6 -->
+
 At the back door, Mrs. Freesis was waiting for us, holding a cloak.
 
 “Put this on to cover your hair. Your escape might get obscured by your hair… be careful”
@@ -907,8 +949,6 @@ yes?”
 Mrs. Freesis started wiping her tears(?).
 
 We left the Freesis Mansion through the backdoor quietly. Mr. Keel told us where to go.
-
-<!-- illustration: illustration-6 -->
 
 ✿Michaela ~ Elphegort Country’s “Yatski Village”
 
@@ -939,6 +979,8 @@ Clarith whispered. The house we lived together with Clarith’s mother; a home f
 
 Miraculously, the house was alright. Although the interior was turned upside down, it wasn’t destroyed
 or burnt down; it was the same as we left it.
+
+<!-- page -->
 
 But the slightly more valuables were swept away. This may have been done by the villagers. But it
 doesn’t matter anymore because this house and this village is no more.
@@ -983,6 +1025,8 @@ ready to die.
 
 “Stop!”
 
+<!-- page -->
+
 Suddenly somebody shouted. I opened my eyes and saw a man rushing and tackling the soldiers.
 
 “Run! Clarith! Michaela!”
@@ -1023,6 +1067,8 @@ I grabbed Clarith’s hand and desperately ran towards the forest.
 I ran, pulling her in reluctance.
 
 Behind us, I heard the sound of a horse neighing.
+
+<!-- page -->
 
 ✿Michaela ~ Elphegort Country’s “Millennium Tree Forest”
 
@@ -1070,6 +1116,8 @@ haired one!”
 
 “Absolutely not! I absolutely cannot afford to lose you! I, I, I…!”
 
+<!-- page -->
+
 My voice was shaking and I became speechless. Clarith was clinging on my shoulder.
 
 “Michaela, can you hold as tight as before?”
@@ -1112,6 +1160,8 @@ some traces of human life in here. I never would have thought there was hidden r
 
 There was a horizontal iron bared window and I was lying on bed. The place was basically deserted.
 There was a used first aid kit on the table.
+
+<!-- page -->
 
 “Clarith…? Ein…?”
 
@@ -1156,6 +1206,8 @@ servants seems to have successfully escaped. Mr. Keel has nothing with him right
 
 Allen seems to be on our side because he told me the current situation.
 
+<!-- page -->
+
 I am Kyle’s lover. Moreover, it seems Lucifenia and Allen has not noticed this. They called this massacre
 the “Green Hunting”. In addition, before he got arrested, Mr. Keel wrote a letter to Kyle. Kyle left the
 city and was about to come here. If so, he should take not more than five days to arrive.
@@ -1199,6 +1251,8 @@ But… sorry Allen. I cannot respond to your feelings.
 
 The next day, it was already evening.
 
+<!-- page -->
+
 For the whole time, I’ve been hiding in the well and getting lonely. I decided to go out and get some
 fresh air. I believe in what Allen said that Lucifenian soldiers will not come out at night.
 
@@ -1241,6 +1295,8 @@ anxious.
 “You’re presence is already known by the princess. We must quickly escape from here!”
 
 “How is that… Is that true?”
+
+<!-- page -->
 
 But I have to stay here and wait for Clarith! But I can’t give up. If I get arrested, it’s all over.
 
@@ -1288,6 +1344,8 @@ Ney raised a knife then stabbing my chest.
 ………
 
 ……………
+
+<!-- page -->
 
 I managed to save my consciousness.
 

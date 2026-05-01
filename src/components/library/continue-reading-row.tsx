@@ -26,13 +26,13 @@ function Card({ volume: v }: { volume: VolumeInProgress }) {
   return (
     <li data-sin={v.sin ?? undefined} className="flex">
       <Link
-        to="/library/$seriesId/$volumeId/$chapterId"
+        to="/library/$seriesId/$volumeId/$chapterId/$pageNumber"
         params={{
           seriesId: v.seriesId,
           volumeId: v.volumeId,
           chapterId: v.resumeChapterId,
+          pageNumber: String(v.resumePageNumber ?? 1),
         }}
-        hash={v.resumePageNumber != null ? `page-${v.resumePageNumber}` : undefined}
         className="flex flex-1 flex-col gap-2 rounded-sm border border-border bg-surface p-4 transition-colors hover:bg-accent-soft hover:border-accent"
       >
         <span className="text-style-eyebrow text-fg-muted line-clamp-1">{v.seriesTitle}</span>

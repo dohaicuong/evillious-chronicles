@@ -48,6 +48,8 @@ Rin sat down and turned her head left.
 
 “I don’t care, I won’t do it! I-- don’t--wanna!”
 
+<!-- page -->
+
 Rin simply flopped onto the ground. With a child like her, it’s no use even if you get angry or try to
 persuade her.
 
@@ -95,6 +97,8 @@ her false ease, she said to me:
 
 “Hmm, yes. Let’s go, Rin.”
 
+<!-- page -->
+
 We walked towards the field. The sky over our heads were cloudless, and it was good weather for
 farming.
 There were some steep slopes in front of the convent. I found Rin there, a week after Elluka and
@@ -141,6 +145,8 @@ feels that food is hard to come by. Of course, she won’t ever say it out loud.
 I watered the potted plants while watching Rin.
 
 The canteen lets in the most light in the convent, it couldn’t be better for the growth of the plants.
+
+<!-- page -->
 
 “What’s that plant?”
 
@@ -192,6 +198,8 @@ Rin appears to have finished eating. She set her cutlery down onto the table.
 
 Rin anxiously asked while clearing up her utensils:
 
+<!-- page -->
+
 “No matter what kind of person I am… for example, if I were a heinous, wicked person… will you still
 treat me like you do now?”
 
@@ -237,6 +245,8 @@ branches and leaves growing from the pot.
 
 (Where should I plant her…)
 
+<!-- page -->
+
 I can take my time and plant her in the Millennium Tree Forest. Since she is Eldoh’s successor, then she
 should be placed in the most appropriate place.
 
@@ -280,6 +290,8 @@ girl.”
 
 It was a female voice. I already knew who it was but my head was trying hard to deny it.
 
+<!-- page -->
+
 “……I don’t even know why I did such nonsense. No matter how head strong I was, it was all foolish.
 To casually kill a person who accused me. All the people around me gave painful smiles. It was all
 because of those cunning ministers… and my own quibbles”
@@ -293,6 +305,8 @@ Eventually, all important people to me, even my family, were murdered.
 
 Beautiful blonde hair – her short hair became long and she seem more mature. So far, I’ve already
 considered her as my little sister.
+
+<!-- illustration: illustration-8 -->
 
 “My malicious intent even reached foreign countries. When I knew my fiancée had another lover, I
 frantically became jealous. I cannot stand the idea of someone rebelling against my own ideas. My envy
@@ -308,8 +322,6 @@ How do I say this…
 She… Rin is the cause of Michaela’s death.
 
 She is Lucifenia’s Princess – “The Daughter of Evil”.
-
-<!-- illustration: illustration-8 -->
 
 ♥Clarith～Lucifenia Kingdom’s “Unknown Coast”～
 
@@ -342,6 +354,8 @@ Before long, Rin took out a bottle and set it out to the sea.
 I have heard the Mother Superior speak of the legend of the sea. If you put in a bottle a piece of
 parchment with your wish written on it, then let the bottle flow out to sea, then your wish would come
 true.
+
+<!-- page -->
 
 (However, Rin, do you know the whole legend.)
 
@@ -392,6 +406,8 @@ Who are you?
 
 Why are you interfering with me?
 
+<!-- page -->
+
 The boy who looks exactly like Rin. Who are you?
 
 Go away, I must kill her!
@@ -441,6 +457,8 @@ Rin had killed Michaela.
 
 Rin was like my cute little sister.
 
+<!-- page -->
+
 Rin was the Daughter of Evil, who had committed despicable deeds.
 
 Rin is a sad and lonely person.
@@ -454,6 +472,8 @@ Steeling myself, I aimed my knife at her and slashed downwards.
 The coast was very quiet at night.
 
 I could hear the slight noise of the waves.
+
+<!-- page -->
 
 Final Chapter
 
@@ -497,6 +517,8 @@ Commitment.
 
 Everyone is committed to their feelings.
 
+<!-- page -->
+
 ……I’m not wrong. The road I’m following is the right road. Not only for Lucifenia but for Marlon as
 well will justice be served.
 
@@ -539,6 +561,8 @@ Here, I will make a simple record of what Elluka and I did after leaving Lucifen
 
 First, we worked together to bring down rain to extinguish the fire in the Bewilderment Forest-
 unfortunately, at the expense of the octopus.
+
+<!-- page -->
 
 At that time, even though we encountered the Lucifenian army tracking us, we still found a way to
 escape.
@@ -590,6 +614,8 @@ shout, and soon started tearing away at the seal on the sword.
 
 “……No wonder… I was wondering why its magic was so weak…”
 
+<!-- page -->
+
 A disappointed Elluka vented her anger by flinging the Venom Sword onto the ground.
 
 “We were cheated.”
@@ -636,6 +662,8 @@ haired female.
 
 “Is it here, Clarith?”
 
+<!-- page -->
+
 “Yes, this should be her original home”
 
 These two people are friends. After praying for awhile, they began planting some kind of seedling on the
@@ -670,12 +698,12 @@ After planting the sapling, they offered a prayer again.
 While praying, Rin suddenly whispered while sobbing. I don’t know to whom she was apologizing to and
 why she began to cry.
 
+<!-- illustration: illustration-9 -->
+
 “I’m sorry.”
 
 Rin continued to mumble then was followed by Clarith.
 
 In this way, the both of them continued to cry till night fell.
-
-<!-- illustration: illustration-9 -->
 
 [FIN]

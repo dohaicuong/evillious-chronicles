@@ -9,7 +9,7 @@ import type { Volume } from "@src/data/schema";
 export function VolumeHero({ volume }: { volume: Volume }) {
   const firstChapter = volume.chapters[0];
   const { width, height } = volume.cover;
-  const isPortrait = width && height ? height > width : false;
+  const isPortrait = width && height ? height > width : true;
 
   const cover = (
     <img

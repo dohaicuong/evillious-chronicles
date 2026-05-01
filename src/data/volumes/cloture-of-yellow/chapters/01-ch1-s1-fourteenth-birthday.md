@@ -50,6 +50,8 @@ coming and we have to sweep here?”
 “…… But today is the birthday of Her Royal Highness Riliane. Even Mariam-san is careful to work more than usual. If the Queen find outs that
 we’re being lazy, something bad might happen to us.”
 
+<!-- page -->
+
 Chartette silently continued cleaning up. But in her mind, she was still complaining. To think of it, it’s my job to serve the princess but cleaning
 the courtyard, isn’t part of my job. Why both of us are cleaning is because of Chartette’s brute force. When Chartette is preparing foods and
 fixing clothing, she will certainly use her brute force to break the tableware and tear the clothes. I’m only here to be her supervisor.
@@ -104,6 +106,8 @@ the right to be associated with someone who’s part of the “Three Heroes”.
 
 “So-so, I guess. Leonhart-san……what about Germaine?”
 
+<!-- page -->
+
 “Germaine…… That guy’s abundant energy is giving me a headache. Yesterday, she was lashing out other people in the streets.”
 
 “But Germaine won, right?”
@@ -157,6 +161,8 @@ even capable of looking around her.”
 
 The conflict between Leonhart and Rilliane hadn’t been born that day. Though Leonhart was unkempt and an incorrigible boozehound, he was
 serious when it came to his duties as Commander and devoted towards the people. Riliane, extravagant and self-indulgent, was heinously
+
+<!-- page -->
 
 ignorant of the world around her and paid no attention to the daily lives of her subjects, so their clashes were a common sight in the royal
 palace.
@@ -265,6 +271,8 @@ hideout. Germaine and I had managed somehow to rescue her in that occasion, but 
 
 Leonhart told me as he walked by my side.
 
+<!-- page -->
+
 “It’s alright. I’ve come here before.”
 
 “...That’s true.”
@@ -290,6 +298,8 @@ I gave him a slight nod as an answer.
 Leonhart said those words behind me, as I started walking.
 
 She didn’t remember what had happened then. But even so, it might be possible...
+
+<!-- page -->
 
 ♦Allen ~Lucifenia Kingdom's "Anonymous Coast"~
 
@@ -346,6 +356,8 @@ aspect of Riliane’s personality.
 There shouldn’t have been any reason for her to become angry at me, but in any case, it was probably better to apologize at that point. I
 wouldn’t gain anything from displeasing her any further.
 
+<!-- page -->
+
 “Well, there is nothing to be done about it now. I’m going back.”
 
 When Riliane attempted to get up, I spotted a small scratch in the back of her right hand. Perhaps she had injured herself with a branch or
@@ -399,6 +411,8 @@ For some reason, Riliane then laughed.
 
 “Yes, taking that way is much faster.”
 
+<!-- page -->
+
 “....I-I knew that!”
 
 With a completely red face, Riliane then suddenly started running towards the port.
@@ -444,6 +458,8 @@ Absolute ruler of Lucifenia...
 And...
 
 My twin elder sister.
+
+<!-- page -->
 
 ♦Allen ~ Lucifenian Palace's "Hall of Mirrors"~
 
@@ -500,6 +516,8 @@ Mariam, the head of the maids of the palace, was one of the “Three Heroes” j
 for a simple servant? Once, I tried to ask Leonhart about her, but he only replied: “In a country there are all types of women, you know? All
 types.” I didn’t really learn anything from that.
 
+<!-- page -->
+
 “There seems to be something on your mind…Something about Princess Riliane, perhaps?”
 I hurriedly searched for words, but couldn’t find a quick answer. Mariam’s question was right on target.
 
@@ -552,6 +570,8 @@ While I kept thinking about my sister and me, the gathering became more animated
 “Welcome everyone, thank you for coming today! There’s plenty of food and beverages and pleasant conversation awaiting us after this, so
 please eat to your heart’s content, and enjoy yourselves!” Minister Minis greeted the crowd. Behind him, Princess Riliane sat smiling in her
 throne.
+
+<!-- page -->
 
 I felt relieved. She seemed to be in such a good mood that it was hard to believe that she had escaped the castle, and had been sulking until
 shortly before the party.
@@ -608,6 +628,8 @@ to hear our exchange.
 
 “Head maid…! Allen…!”
 
+<!-- page -->
+
 As I talked with Mariam, Chartette rushed towards us, raising her voice in a shout that escaped the hall.
 
 “It seems that the dancing is about to start, we gotta get ready to tidy things up!”
@@ -630,6 +652,8 @@ problems over money, material possessions or food. With just one command, she ha
 I knew the answer…Though perhaps saying I knew it wasn’t the correct choice of words.
 
 …In any case, some time passed before I was able to understand it in my own terms.
+
+<!-- page -->
 
 ♠Germaine~Lucifenia Kingdom's "Avadonia Residence"~
 
@@ -686,6 +710,8 @@ I leaned my nose closer to check my father's odor. Nope. There's no alcohol.
 
 "Why, of course! We already agreed on that, didn't we?"
 
-Even if I don't understand why my father sent Allen as a servant, I still trust my dad. Which might be the profound reason why I don't ever ask
+<!-- page -->
+
+Even if I don’t understand why my father sent Allen as a servant, I still trust my dad. Which might be the profound reason why I don't ever ask
 him why. I will keep waiting for that day when my adopted unrelated brother, Allen, and my respected father, Leonhart Avadonia, will take the
 initiative to tell me why.

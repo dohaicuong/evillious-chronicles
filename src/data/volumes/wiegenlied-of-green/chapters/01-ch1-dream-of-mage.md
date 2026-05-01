@@ -47,6 +47,8 @@ down at her back.
 
 "Ah."
 
+<!-- page -->
+
 A sharp pain immediately struck my wrist.
 
 The dagger that use to be firmly on my hand, flew to the air. As I heard it falling behind me, Mariam
@@ -93,6 +95,8 @@ Now, even if you say Lucifenia was the Evillious region's most fertile country, 
 before. "I want to make a country where kids laugh all day long", this was Anne's motto.
 
 However, a few days ago, Anne, like her husband's life was taken away by the same Gula disease.
+
+<!-- page -->
 
 War, accidents, diseases…… Many of my peers were killed. The only ones who lived were: Leonhart
 the Commander of the Guards, me, and Mariam. Nowadays, the prosperity of Lucifenia, was exchanged
@@ -142,6 +146,8 @@ Understanding this, I spoke up.
 "Can't you just find another Mage?"
 
 "That's impossible. You know best."
+
+<!-- page -->
 
 "Well, I have an idea."
 
@@ -193,6 +199,8 @@ guards right now."
 "No need, the people here are rather garish…… By the way, I heard that there's a new palace servant.
 Do you still prefer young men?"
 
+<!-- page -->
+
 "You're joking, I am not that stupid to lay my hands on the offspring of the old King…… Elluka, Your
 Excellency, that thing you said to me about the servant…… The true identity of Allen, you could make
 sure that it is confidential."
@@ -239,6 +247,8 @@ The current monarch, Sohni Elphen as a pacifist, uses his army merely for self-d
 military strength is not as powerful as its neighboring countries Lucifenia and Asmodin, the Elphegort
 people consists of an army that has a military commander with extremely high power and morale, which
 is one of the reasons why the other countries don't dare send armies hastily.
+
+<!-- page -->
 
 When it comes to religion, the main faith of Elphegort is Evillious' Levin Church, which also has many
 different sects. However, there are also other religions in the area. Elphegort has the deeply rooted
@@ -289,6 +299,8 @@ throughout the world, each incorporated by a demon”
 “Yeah, Venomania and Banica... Individuals who are the “victims of sin” would set off a catastrophe. The
 princess of Lucifenia... is called Riliane. Can we not drive out the demon influencing her?”
 
+<!-- page -->
+
 Arth and Anne had twin children. The girl called Riliane, at the age of six, was found out to be possessed
 by the “demon of sin”.
 At that time, when Arth had died, the twin brother was chosen to be the next heir. Their mother Anne
@@ -337,6 +349,8 @@ hundred years in the past already. A ‘vessel’ cannot be separated into sever
 
 “Do you mean this hand mirror is incomplete?”
 
+<!-- page -->
+
 I removed a small hand mirror from her, it was very rough. Riliane said she picked it up as a child in a
 beach. I’m afraid it might be a trap set by the minister. There was a seal talisman on the lens of the
 mirror, losing its function as a mirror.
@@ -383,6 +397,8 @@ be avoided for the gear has already been established.
 A gust of wind blew in the forest.
 
 “...... What do you mean?”
+
+<!-- page -->
 
 “The things that belong to you... You are afraid to watch them disappear right before your very eyes,
 right? Instead of watching your beloved person die, you might as well escape and leave it behind. You
@@ -432,6 +448,8 @@ have no form or simply cannot be seen by the naked eye. But they(forest spirits 
 into forest animals. Because of this, forest spirits are allowed to be recognized by mankind and can
 participate in human activities.
 
+<!-- page -->
+
 Then again, I am able to communicate with them because like me, they also possess magic and they can
 also understand human language.
 
@@ -448,11 +466,11 @@ admirable"
 
 I lifted my head and gazed at the sleeping face of Eldoh.
 
-<!-- illustration: illustration-1 -->
-
 "......Your master has dozed off. I'll be coming back another day"
 
 I sighed. Michaela expanded her wings and suddenly flew all the way to my shoulder.
+
+<!-- illustration: illustration-1 -->
 
 "I think it's a good idea, knowing there isn't a breath of humanity in a distance(?)"
 
@@ -502,6 +520,8 @@ The girl passed by in front of me and walked into the depths of the forest.
 As she passed in front of me, I heard her murmur some words.
 
 "I'm sorry. I really shouldn't be alive"
+
+<!-- page -->
 
 She wasn't aware of my presence. She must be talking to herself.
 

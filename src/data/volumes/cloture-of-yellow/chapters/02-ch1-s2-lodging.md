@@ -52,6 +52,8 @@ Riliane continued to curse:
 Come to think of it, she could always look for Mariam instead of Minis. But compared to the adamant Mariam, yelling at this always-trembling
 little man feels much more comfortable.
 
+<!-- page -->
+
 So to say, it seems that Asan was the one in charge for sending the lunch today. I hope she doesn't point a finger on him. I'm beginning to worry
 about narrow-minded Asan, who seems to be looking at his past right now.
 
@@ -100,6 +102,8 @@ After some investigation, it was discovered that Asan was the brother of the pol
 wanted to avenge him.
 
 The next day, Asan was also sent to the guillotine.
+
+<!-- page -->
 
 ♦Allen~Lucifenian Palace's "Kitchen"~
 
@@ -155,6 +159,8 @@ After listening to Ney's words, Riliane looked at her with a face filled with an
 
 "Yes.... Well, it's....."
 
+<!-- page -->
+
 "Say it already! If you don't say it within ten seconds, I'll cut your head!!!!"
 
 As Riliane cursed, Ney replied in sheer terror:
@@ -165,6 +171,8 @@ As Riliane cursed, Ney replied in sheer terror:
 Ney took a deep breath and said:
 
 "That man is..... Leonhart...... Captain Leonhart."
+
+<!-- page -->
 
 ♦Allen~Lucifenian Palace's "Riliane's Room"
 
@@ -219,6 +227,8 @@ I wasn't sure how to answer Riliane. Because I didn't know any other way, I trie
 
 "Why? You mean the small bottle? Well, someone had told me that your most important wish of all will certainly be achieved if you practice
 this. I forgot who that person was though."
+
+<!-- page -->
 
 I told her that method once. It seems that Riliane lost her memory but in some twisted way, she managed to remember this.
 
@@ -275,6 +285,8 @@ I see, using this kind of method might actually succeed...... But.......
 
 (This is a secret between the two of us!)
 
+<!-- page -->
+
 I also said that to Riliane once.
 
 And Riliane is saying it just like how I said it........ Ah ah, but.......
@@ -282,6 +294,8 @@ And Riliane is saying it just like how I said it........ Ah ah, but.......
 ——Where has the gear gone off?——
 
 "It starts tomorrow night. Prior to that, I'm already preapared for it. But just for tonight, I'm going to take a rest."
+
+<!-- page -->
 
 ♠ Germaine~Lucifenia Kingdom's "Avadonia Residence"~
 
@@ -339,6 +353,8 @@ The next day, my father bid farewell as usual. My father, with a slovenly askew 
 
 At that time, I never suspected that my whole life would be changing
 
+<!-- page -->
+
 ♦Allen~Lucifenian Palace's "The Servant Room"~
 
 By afternoon, I still haven't decided.
@@ -392,6 +408,8 @@ Ney shooked her head.
 
 "Wrong...... That's not the case, Allen. The reason why he asked you to get closer to Her Highness Riliane......... is to assassinate the Queen."
 
+<!-- page -->
+
 As I heard Ney's words, my mind went to a complete stop. She....... she said what?
 
 "Captain Leonhart doesn't quite like the Queen, you know? He seems to be....... looking for the right timing for you...... to........ kill Her Highness
@@ -407,6 +425,8 @@ I............ was cheated? From the very beginning....... I was just his tool?..
 "These words...... I can't say it to anyone else..... Even my mother refused to reveal anything about it.... Allen, you said, how can I do---"
 
 Not letting Ney finish speaking, I left the room.
+
+<!-- page -->
 
 ♦Allen~Lucifenian Palace's "Riliane's Room"
 
@@ -463,6 +483,8 @@ It was silent for a moment.
 It seems that Leonhart is really happy. Although his voice is still shaking and even if I stayed outside Riliane's room, I could make out that there's
 something about that voice that makes it different from before.
 
+<!-- page -->
+
 The room suddenly had a jingling sound. It sounded like glassware or silverware bumping each other.
 
 "To celebrate for today, I heard you've been resisting liquor? Come, have something to drink."
@@ -491,6 +513,8 @@ For not drinking for days and tasting a high-quality treasure, Leonhart suddenly
 "Her Highness Riliane is still young. By time, Her Royal Highness will someday taste the excellent taste."
 
 The two continued celebrating until late at night.
+
+<!-- page -->
 
 ♦Allen~Lucifenian Palace's Heavenly Yard~
 
@@ -547,6 +571,8 @@ Leonhart smiled slightly, as if to tell me that he was relaxed.
 
 I removed the sword from the rack & centered it in front of me. I better not hold back this time.
 
+<!-- page -->
+
 "……'Unicorn Style', your original move, Allen."
 
 "If I use the moves that you taught me, it's likely that you see through my moves pretty easily."
@@ -601,6 +627,8 @@ I looked closely and saw a small but beautifully decorated…… Hand Mirror?
 "Ah…… That's…… for your birthday a few days ago…… I went back here because I thought you would like it…… Since you and the Royal
 Highness share the same birthday,…… I was surprised that I completely forgotten about it, sorry."
 
+<!-- page -->
+
 I looked at it carefully…… This decoration, it's like I know it from somewhere……
 
 "It's the same as…… Riliane's. But I just got this from a bargain…… and it's fake. You, the person who serves in the palace,…… have to pay
@@ -646,6 +674,8 @@ Under the hands of the "Daughter of Evil"? It doesn't matter.
 
 If it's in order to protect you,
 I will become evil for you.
+
+<!-- page -->
 
 ♠Germaine~Lucifenia kingdom's "Riverside"~
 
@@ -701,6 +731,8 @@ isn't happening. DAD CAN'T BE DEAD. WRONG. WRONG. WRONG. No, not Daddy. NOT FATH
 Impossible. NO. NO. NO. He's not Daddy. NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO
 NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NOT DADDY NO NO NO NO NO NO NO NO NO
 NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO NO……
+
+<!-- page -->
 
 "Sister…… Do you want me to cheer you up?…… _weep_…… _weep\*\*cry_"
 

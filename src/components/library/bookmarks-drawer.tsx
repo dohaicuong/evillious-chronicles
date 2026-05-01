@@ -118,13 +118,13 @@ function BookmarkRow({ bookmark, onNavigate }: { bookmark: Bookmark; onNavigate:
         </div>
       ) : (
         <Link
-          to="/library/$seriesId/$volumeId/$chapterId"
+          to="/library/$seriesId/$volumeId/$chapterId/$pageNumber"
           params={{
             seriesId: bookmark.seriesId,
             volumeId: bookmark.volumeId,
             chapterId: bookmark.chapterId,
+            pageNumber: String(bookmark.pageNumber),
           }}
-          hash={`page-${bookmark.pageNumber}`}
           onClick={onNavigate}
           className="flex-1 flex flex-col gap-0.5 min-w-0 text-left rounded-sm hover:bg-accent-soft -mx-2 px-2 py-1 transition-colors"
         >

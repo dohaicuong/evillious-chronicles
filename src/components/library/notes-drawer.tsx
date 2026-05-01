@@ -92,13 +92,13 @@ function NoteRow({
     <li className="flex items-start gap-3 border-b border-border last:border-b-0 py-3">
       <NotePencilIcon weight="fill" className="mt-1.5 text-accent shrink-0" size={16} />
       <Link
-        to="/library/$seriesId/$volumeId/$chapterId"
+        to="/library/$seriesId/$volumeId/$chapterId/$pageNumber"
         params={{
           seriesId: note.seriesId,
           volumeId: note.volumeId,
           chapterId: note.chapterId,
+          pageNumber: String(note.pageNumber),
         }}
-        hash={`page-${note.pageNumber}`}
         onClick={onNavigate}
         className="flex-1 flex flex-col gap-0.5 min-w-0 text-left rounded-sm hover:bg-accent-soft -mx-2 px-2 py-1 transition-colors"
       >

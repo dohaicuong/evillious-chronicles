@@ -21,7 +21,8 @@ import { Route as AppCharactersIndexRouteImport } from './routes/_app/characters
 import { Route as AppCharactersCharacterIdRouteImport } from './routes/_app/characters/$characterId'
 import { Route as AppLibrarySeriesIdIndexRouteImport } from './routes/_app/library/$seriesId/index'
 import { Route as AppLibrarySeriesIdVolumeIdIndexRouteImport } from './routes/_app/library/$seriesId/$volumeId/index'
-import { Route as AppLibrarySeriesIdVolumeIdChapterIdRouteImport } from './routes/_app/library/$seriesId/$volumeId/$chapterId'
+import { Route as AppLibrarySeriesIdVolumeIdChapterIdIndexRouteImport } from './routes/_app/library/$seriesId/$volumeId/$chapterId/index'
+import { Route as AppLibrarySeriesIdVolumeIdChapterIdPageNumberRouteImport } from './routes/_app/library/$seriesId/$volumeId/$chapterId/$pageNumber'
 
 const ComponentsTypographyLazyRouteImport = createFileRoute(
   '/components/typography',
@@ -263,10 +264,16 @@ const AppLibrarySeriesIdVolumeIdIndexRoute =
     path: '/library/$seriesId/$volumeId/',
     getParentRoute: () => AppRouteRoute,
   } as any)
-const AppLibrarySeriesIdVolumeIdChapterIdRoute =
-  AppLibrarySeriesIdVolumeIdChapterIdRouteImport.update({
-    id: '/library/$seriesId/$volumeId/$chapterId',
-    path: '/library/$seriesId/$volumeId/$chapterId',
+const AppLibrarySeriesIdVolumeIdChapterIdIndexRoute =
+  AppLibrarySeriesIdVolumeIdChapterIdIndexRouteImport.update({
+    id: '/library/$seriesId/$volumeId/$chapterId/',
+    path: '/library/$seriesId/$volumeId/$chapterId/',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
+const AppLibrarySeriesIdVolumeIdChapterIdPageNumberRoute =
+  AppLibrarySeriesIdVolumeIdChapterIdPageNumberRouteImport.update({
+    id: '/library/$seriesId/$volumeId/$chapterId/$pageNumber',
+    path: '/library/$seriesId/$volumeId/$chapterId/$pageNumber',
     getParentRoute: () => AppRouteRoute,
   } as any)
 
@@ -300,8 +307,9 @@ export interface FileRoutesByFullPath {
   '/library/': typeof AppLibraryIndexRoute
   '/songs/': typeof AppSongsIndexRoute
   '/library/$seriesId/': typeof AppLibrarySeriesIdIndexRoute
-  '/library/$seriesId/$volumeId/$chapterId': typeof AppLibrarySeriesIdVolumeIdChapterIdRoute
   '/library/$seriesId/$volumeId/': typeof AppLibrarySeriesIdVolumeIdIndexRoute
+  '/library/$seriesId/$volumeId/$chapterId/$pageNumber': typeof AppLibrarySeriesIdVolumeIdChapterIdPageNumberRoute
+  '/library/$seriesId/$volumeId/$chapterId/': typeof AppLibrarySeriesIdVolumeIdChapterIdIndexRoute
 }
 export interface FileRoutesByTo {
   '/components/audio': typeof ComponentsAudioLazyRoute
@@ -332,8 +340,9 @@ export interface FileRoutesByTo {
   '/library': typeof AppLibraryIndexRoute
   '/songs': typeof AppSongsIndexRoute
   '/library/$seriesId': typeof AppLibrarySeriesIdIndexRoute
-  '/library/$seriesId/$volumeId/$chapterId': typeof AppLibrarySeriesIdVolumeIdChapterIdRoute
   '/library/$seriesId/$volumeId': typeof AppLibrarySeriesIdVolumeIdIndexRoute
+  '/library/$seriesId/$volumeId/$chapterId/$pageNumber': typeof AppLibrarySeriesIdVolumeIdChapterIdPageNumberRoute
+  '/library/$seriesId/$volumeId/$chapterId': typeof AppLibrarySeriesIdVolumeIdChapterIdIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
@@ -367,8 +376,9 @@ export interface FileRoutesById {
   '/_app/library/': typeof AppLibraryIndexRoute
   '/_app/songs/': typeof AppSongsIndexRoute
   '/_app/library/$seriesId/': typeof AppLibrarySeriesIdIndexRoute
-  '/_app/library/$seriesId/$volumeId/$chapterId': typeof AppLibrarySeriesIdVolumeIdChapterIdRoute
   '/_app/library/$seriesId/$volumeId/': typeof AppLibrarySeriesIdVolumeIdIndexRoute
+  '/_app/library/$seriesId/$volumeId/$chapterId/$pageNumber': typeof AppLibrarySeriesIdVolumeIdChapterIdPageNumberRoute
+  '/_app/library/$seriesId/$volumeId/$chapterId/': typeof AppLibrarySeriesIdVolumeIdChapterIdIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -402,8 +412,9 @@ export interface FileRouteTypes {
     | '/library/'
     | '/songs/'
     | '/library/$seriesId/'
-    | '/library/$seriesId/$volumeId/$chapterId'
     | '/library/$seriesId/$volumeId/'
+    | '/library/$seriesId/$volumeId/$chapterId/$pageNumber'
+    | '/library/$seriesId/$volumeId/$chapterId/'
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/components/audio'
@@ -434,8 +445,9 @@ export interface FileRouteTypes {
     | '/library'
     | '/songs'
     | '/library/$seriesId'
-    | '/library/$seriesId/$volumeId/$chapterId'
     | '/library/$seriesId/$volumeId'
+    | '/library/$seriesId/$volumeId/$chapterId/$pageNumber'
+    | '/library/$seriesId/$volumeId/$chapterId'
   id:
     | '__root__'
     | '/_app'
@@ -468,8 +480,9 @@ export interface FileRouteTypes {
     | '/_app/library/'
     | '/_app/songs/'
     | '/_app/library/$seriesId/'
-    | '/_app/library/$seriesId/$volumeId/$chapterId'
     | '/_app/library/$seriesId/$volumeId/'
+    | '/_app/library/$seriesId/$volumeId/$chapterId/$pageNumber'
+    | '/_app/library/$seriesId/$volumeId/$chapterId/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
@@ -696,11 +709,18 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLibrarySeriesIdVolumeIdIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
-    '/_app/library/$seriesId/$volumeId/$chapterId': {
-      id: '/_app/library/$seriesId/$volumeId/$chapterId'
+    '/_app/library/$seriesId/$volumeId/$chapterId/': {
+      id: '/_app/library/$seriesId/$volumeId/$chapterId/'
       path: '/library/$seriesId/$volumeId/$chapterId'
-      fullPath: '/library/$seriesId/$volumeId/$chapterId'
-      preLoaderRoute: typeof AppLibrarySeriesIdVolumeIdChapterIdRouteImport
+      fullPath: '/library/$seriesId/$volumeId/$chapterId/'
+      preLoaderRoute: typeof AppLibrarySeriesIdVolumeIdChapterIdIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/library/$seriesId/$volumeId/$chapterId/$pageNumber': {
+      id: '/_app/library/$seriesId/$volumeId/$chapterId/$pageNumber'
+      path: '/library/$seriesId/$volumeId/$chapterId/$pageNumber'
+      fullPath: '/library/$seriesId/$volumeId/$chapterId/$pageNumber'
+      preLoaderRoute: typeof AppLibrarySeriesIdVolumeIdChapterIdPageNumberRouteImport
       parentRoute: typeof AppRouteRoute
     }
   }
@@ -713,8 +733,9 @@ interface AppRouteRouteChildren {
   AppLibraryIndexRoute: typeof AppLibraryIndexRoute
   AppSongsIndexRoute: typeof AppSongsIndexRoute
   AppLibrarySeriesIdIndexRoute: typeof AppLibrarySeriesIdIndexRoute
-  AppLibrarySeriesIdVolumeIdChapterIdRoute: typeof AppLibrarySeriesIdVolumeIdChapterIdRoute
   AppLibrarySeriesIdVolumeIdIndexRoute: typeof AppLibrarySeriesIdVolumeIdIndexRoute
+  AppLibrarySeriesIdVolumeIdChapterIdPageNumberRoute: typeof AppLibrarySeriesIdVolumeIdChapterIdPageNumberRoute
+  AppLibrarySeriesIdVolumeIdChapterIdIndexRoute: typeof AppLibrarySeriesIdVolumeIdChapterIdIndexRoute
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
@@ -724,9 +745,11 @@ const AppRouteRouteChildren: AppRouteRouteChildren = {
   AppLibraryIndexRoute: AppLibraryIndexRoute,
   AppSongsIndexRoute: AppSongsIndexRoute,
   AppLibrarySeriesIdIndexRoute: AppLibrarySeriesIdIndexRoute,
-  AppLibrarySeriesIdVolumeIdChapterIdRoute:
-    AppLibrarySeriesIdVolumeIdChapterIdRoute,
   AppLibrarySeriesIdVolumeIdIndexRoute: AppLibrarySeriesIdVolumeIdIndexRoute,
+  AppLibrarySeriesIdVolumeIdChapterIdPageNumberRoute:
+    AppLibrarySeriesIdVolumeIdChapterIdPageNumberRoute,
+  AppLibrarySeriesIdVolumeIdChapterIdIndexRoute:
+    AppLibrarySeriesIdVolumeIdChapterIdIndexRoute,
 }
 
 const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
