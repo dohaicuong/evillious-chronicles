@@ -1,4 +1,4 @@
-import type { Page, Volume } from "@src/data/schema";
+import type { ImageAsset, Page, Volume } from "@src/data/schema";
 
 import prologueText from "./praeludium-of-red/chapters/00-prologue.md?raw";
 import ch1s1Text from "./praeludium-of-red/chapters/01-ch1-s1-star-fortress.md?raw";
@@ -22,8 +22,32 @@ import afterwordText from "./praeludium-of-red/chapters/afterword.md?raw";
  * Assets pending — drop cover/artwork/illustrations into public/praeludium-of-red/.
  */
 
-function singlePage(text: string): Page[] {
-  return [{ number: 1, layout: "prose", text }];
+const illustrations: Record<string, ImageAsset> = {};
+
+function buildPages(markdown: string): Page[] {
+  // Tokenize the markdown on either marker. The regex captures two groups:
+  // group 1 = illustration name (only set for `<!-- illustration: NAME -->`);
+  // group 2 is matched (but unused) for the page-break marker `<!-- page -->`.
+  const splitRe = /<!--\s*illustration:\s*([\w-]+)\s*-->|<!--\s*(page)\s*-->/g;
+  const pages: Page[] = [];
+  let pageNum = 1;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  const pushProse = (raw: string) => {
+    const text = raw.trim();
+    if (text) pages.push({ number: pageNum++, layout: "prose", text });
+  };
+  while ((match = splitRe.exec(markdown)) !== null) {
+    pushProse(markdown.slice(lastIndex, match.index));
+    if (match[1]) {
+      const illustration = illustrations[match[1]];
+      if (illustration) pages.push({ number: pageNum++, layout: "illustration", illustration });
+    }
+    // page-break marker is a pure separator — no payload to push.
+    lastIndex = match.index + match[0].length;
+  }
+  pushProse(markdown.slice(lastIndex));
+  return pages;
 }
 
 export const praeludiumOfRed: Volume = {
@@ -82,55 +106,55 @@ export const praeludiumOfRed: Volume = {
       id: "pr-prologue",
       number: 0,
       title: "Prologue",
-      pages: singlePage(prologueText),
+      pages: buildPages(prologueText),
     },
     {
       id: "pr-ch1-s1",
       number: 1,
       title: "Chapter 1 · The Star Fortress",
-      pages: singlePage(ch1s1Text),
+      pages: buildPages(ch1s1Text),
     },
     {
       id: "pr-ch1-s2",
       number: 2,
       title: "Chapter 1 · Chance Meeting of a Sworn Friend",
-      pages: singlePage(ch1s2Text),
+      pages: buildPages(ch1s2Text),
     },
     {
       id: "pr-ch2-s1",
       number: 3,
       title: "Chapter 2 · Footprints of the Evil Food Eater",
-      pages: singlePage(ch2s1Text),
+      pages: buildPages(ch2s1Text),
     },
     {
       id: "pr-ch2-s2",
       number: 4,
       title: "Chapter 2 · The Signal Fire of a Counterattack",
-      pages: singlePage(ch2s2Text),
+      pages: buildPages(ch2s2Text),
     },
     {
       id: "pr-ch3-s1",
       number: 5,
       title: "Chapter 3 · The King and the Girl",
-      pages: singlePage(ch3s1Text),
+      pages: buildPages(ch3s1Text),
     },
     {
       id: "pr-ch3-s2",
       number: 6,
       title: "Chapter 3 · Full Moon Visitor",
-      pages: singlePage(ch3s2Text),
+      pages: buildPages(ch3s2Text),
     },
     {
       id: "pr-ch4",
       number: 7,
       title: "Chapter 4 · Time and a Forest and a Song",
-      pages: singlePage(ch4Text),
+      pages: buildPages(ch4Text),
     },
     {
       id: "pr-epilogue",
       number: 8,
       title: "Epilogue · To the Blue Country",
-      pages: singlePage(epilogueText),
+      pages: buildPages(epilogueText),
     },
   ],
 
@@ -138,7 +162,7 @@ export const praeludiumOfRed: Volume = {
     id: "pr-afterword",
     number: 99,
     title: "Afterword",
-    pages: singlePage(afterwordText),
+    pages: buildPages(afterwordText),
   },
 
   description:

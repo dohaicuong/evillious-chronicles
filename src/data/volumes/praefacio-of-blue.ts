@@ -1,4 +1,4 @@
-import type { Page, Volume } from "@src/data/schema";
+import type { ImageAsset, Page, Volume } from "@src/data/schema";
 
 import prologueText from "./praefacio-of-blue/chapters/00-prologue.md?raw";
 import ch1Text from "./praefacio-of-blue/chapters/01-ch1-signs-of-enemy.md?raw";
@@ -19,8 +19,32 @@ import afterwordText from "./praefacio-of-blue/chapters/afterword.md?raw";
  * POV markers in the prose: ✥ Kyle (King of Marlon).
  */
 
-function singlePage(text: string): Page[] {
-  return [{ number: 1, layout: "prose", text }];
+const illustrations: Record<string, ImageAsset> = {};
+
+function buildPages(markdown: string): Page[] {
+  // Tokenize the markdown on either marker. The regex captures two groups:
+  // group 1 = illustration name (only set for `<!-- illustration: NAME -->`);
+  // group 2 is matched (but unused) for the page-break marker `<!-- page -->`.
+  const splitRe = /<!--\s*illustration:\s*([\w-]+)\s*-->|<!--\s*(page)\s*-->/g;
+  const pages: Page[] = [];
+  let pageNum = 1;
+  let lastIndex = 0;
+  let match: RegExpExecArray | null;
+  const pushProse = (raw: string) => {
+    const text = raw.trim();
+    if (text) pages.push({ number: pageNum++, layout: "prose", text });
+  };
+  while ((match = splitRe.exec(markdown)) !== null) {
+    pushProse(markdown.slice(lastIndex, match.index));
+    if (match[1]) {
+      const illustration = illustrations[match[1]];
+      if (illustration) pages.push({ number: pageNum++, layout: "illustration", illustration });
+    }
+    // page-break marker is a pure separator — no payload to push.
+    lastIndex = match.index + match[0].length;
+  }
+  pushProse(markdown.slice(lastIndex));
+  return pages;
 }
 
 export const praefacioOfBlue: Volume = {
@@ -76,55 +100,55 @@ export const praefacioOfBlue: Volume = {
       id: "pb-prologue",
       number: 0,
       title: "Prologue",
-      pages: singlePage(prologueText),
+      pages: buildPages(prologueText),
     },
     {
       id: "pb-ch1",
       number: 1,
       title: "Chapter 1 · Signs of the Enemy at Sea",
-      pages: singlePage(ch1Text),
+      pages: buildPages(ch1Text),
     },
     {
       id: "pb-ch2-s1",
       number: 2,
       title: "Chapter 2 · Hometown of Misgivings",
-      pages: singlePage(ch2s1Text),
+      pages: buildPages(ch2s1Text),
     },
     {
       id: "pb-ch2-s2",
       number: 3,
       title: "Chapter 2 · The Sorceress and the Forest",
-      pages: singlePage(ch2s2Text),
+      pages: buildPages(ch2s2Text),
     },
     {
       id: "pb-ch3-s1",
       number: 4,
       title: "Chapter 3 · The Inside Story on the Girl",
-      pages: singlePage(ch3s1Text),
+      pages: buildPages(ch3s1Text),
     },
     {
       id: "pb-ch3-s2",
       number: 5,
       title: "Chapter 3 · A Heartbeat in the Rain",
-      pages: singlePage(ch3s2Text),
+      pages: buildPages(ch3s2Text),
     },
     {
       id: "pb-ch4-s1",
       number: 6,
       title: "Chapter 4 · The Monastery on the Seashore",
-      pages: singlePage(ch4s1Text),
+      pages: buildPages(ch4s1Text),
     },
     {
       id: "pb-ch4-s2",
       number: 7,
       title: "Chapter 4 · With That Person",
-      pages: singlePage(ch4s2Text),
+      pages: buildPages(ch4s2Text),
     },
     {
       id: "pb-epilogue",
       number: 8,
       title: "Epilogue · Prelude of Things to Come",
-      pages: singlePage(epilogueText),
+      pages: buildPages(epilogueText),
     },
   ],
 
@@ -132,7 +156,7 @@ export const praefacioOfBlue: Volume = {
     id: "pb-afterword",
     number: 99,
     title: "Afterword",
-    pages: singlePage(afterwordText),
+    pages: buildPages(afterwordText),
   },
 
   description:

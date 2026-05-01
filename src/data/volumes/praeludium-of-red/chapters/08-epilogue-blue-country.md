@@ -27,6 +27,8 @@ you to or not once the ship goes out anyway. You’re a curious one.”
 The admiral was surprised, but he granted me permission
 to observe everything on board. I just wasn’t allowed to touch the artillery.
 
+<!-- page -->
+
 ♣ Yukina ~On the HMS Victoricia, “Stern Deck"~
 
 The sailors were engaged in their work on the stern of
@@ -127,6 +129,8 @@ events I had encountered on my journey.
 
 Because, while there were times when I was scared, that
 didn’t change the fact that all of them had been valuable and incredible experiences.
+
+<!-- page -->
 
 ♣ Yukina ~On the HMS Victoricia, “Sleeping Quarters"~
 
@@ -273,6 +277,8 @@ When I passed by the guest room where Germaine was bound
 hand and foot with rope and headed up there, I found someone there that I
 hadn’t seen in a while.
 
+<!-- page -->
+
 ♣ Yukina ~On the HMS Victoricia, “Main Deck"~
 
 “Miss Chartette!”
@@ -394,6 +400,8 @@ her by the ear.
 I watched everything from the main deck and took notes;
 Chartette was shouting something with a smile on her face, but I couldn’t catch
 what it was she was saying.
+
+<!-- page -->
 
 ♣ Yukina ~On the HMS Victoricia, “Stern Deck"~
 

@@ -125,6 +125,8 @@ My father replied, grinning and
 standing from his seat, “A few things happened while you were out on your
 journey, Yukina.”
 
+<!-- page -->
+
 ♣ Yukina ~The Country of Marlon, “Freezis Estate/Yukina’s Room”~
 
 Three days later, my father left for
@@ -167,6 +169,8 @@ guess while they’re out I’ll go play with Aile, I concluded.
 
 I had left my room and made it down
 the stairs. That’s when it happened.
+
+<!-- page -->
 
 ♣ Yukina ~The Country of Marlon, “Freezis Estate/Foyer”~
 
@@ -374,6 +378,8 @@ back to my room to get dressed for going out.
 No, no.
 
 Not at all.
+
+<!-- page -->
 
 ♣ Yukina ~The Country of Marlon, “Column Forest”~
 
@@ -1210,6 +1216,8 @@ and utter bewilderment. Though I had no idea what was going on, myself.
 The woman who looked like Elluka
 quietly said, “Let’s go back to your house for now. I’ll explain
 everything there.”
+
+<!-- page -->
 
 ♣ Yukina ~The Country of Marlon, “Freezis Estate/Drawing Room”~
 

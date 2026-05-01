@@ -98,6 +98,8 @@ thought it over I realized that she was a friendly face to her as well. She’d 
 I followed after her, and we headed for my
 destination–the Held Monastery.
 
+<!-- page -->
+
 ♣ Yukina ~In the Former Lucifenia Territory, “Monastery/Approaching the Front
 
 The Held Monastery was past the bread shop, at the end of
@@ -200,6 +202,8 @@ had when we’d parted five years before.
 I cried loudly, not caring what people around us thought.
 
 “I wanted to see you so much, Clarith…!”
+
+<!-- page -->
 
 ♣ Yukina ~In the Former Lucifenia Territory, “Monastery/Guest Room"~
 

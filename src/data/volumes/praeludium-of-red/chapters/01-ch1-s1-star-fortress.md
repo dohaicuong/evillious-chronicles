@@ -124,6 +124,8 @@ over it.
 Once I’d passed through this Retasan Fortress gate, I would
 be able to head to the Empire of Beelzenia beyond it.
 
+<!-- page -->
+
 ♣ Yukina ~In the Former Lucifenia Territory, “Town of Retasan/Fortress Gate”~
 
 However, it was there that I ended up receiving an
@@ -206,6 +208,8 @@ you’d better hurry back.”
 I could keep persevering on it, but it looked like I couldn’t
 hope for a better outcome. I gave up and decided to head back to the inn for
 now.
+
+<!-- page -->
 
 ♣ Yukina ~In the Former Lucifenia Territory, “Town of Retasan/The Half Moon
 
@@ -455,6 +459,8 @@ called ‘Riliane’ so I usually go by Lily.”
 The paella there was delicious. But I can’t remember what
 it tasted like that day.
 
+<!-- page -->
+
 ♣ Yukina ~In the Former Lucifenia Territory, “Town of Retasan/Main Street”~
 
 Five days passed.
@@ -583,6 +589,8 @@ surprised, but cheerfully agreed.
 
 The result of that came about eighteen days later.
 
+<!-- page -->
+
 ♣ Yukina ~In the Former Lucifenia Territory, “Town of Retasan/The Half Moon
 
 That morning I wasn’t woken by the shrill cry of a white Rollam
@@ -635,6 +643,8 @@ on the road to the fortress gate, after I’d checked out of the inn.
 She had always been a fast walker, but it seemed she was
 especially quick today. I desperately struggled to keep up with her while
 carrying along my suitcase.
+
+<!-- page -->
 
 ♣ Yukina ~In the Former Lucifenia Territory, “Town of Retasan/Fortress Gate”~
 

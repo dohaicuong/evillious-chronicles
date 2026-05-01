@@ -157,6 +157,8 @@ previous summons for me, after all. I’ll go see him.”
 I put in order the documents scattered on my desk and
 left the conference room with Arkatoir.
 
+<!-- page -->
+
 ✥ Kyle Marlon ~The Country of
 Marlon, “Marlon Castle/Right Palace”~
 
@@ -636,6 +638,8 @@ I could.
 
 We’ve been such blockheads. You, and I…!
 
+<!-- page -->
+
 ✥ Kyle Marlon ~The Country of
 Marlon, “Freezis Estate/Guest Room”~
 
@@ -1035,6 +1039,8 @@ There Keel stood, standing with the fury of an ogre.
 I hurriedly let go of Yukina, but it was too late.
 
 “What are you doing to Yukina, you bastard!?”
+
+<!-- page -->
 
 ✥ Kyle Marlon ~The Country of
 Marlon, “Freezis Estate/Foyer”~

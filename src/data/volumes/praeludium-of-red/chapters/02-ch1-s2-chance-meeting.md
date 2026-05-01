@@ -99,6 +99,8 @@ Elluka Clockworker.
 That was the same name as the sorceress who had lived
 with me for a very brief time five years ago.
 
+<!-- page -->
+
 ♣ Yukina ~In the Beelzenian Empire, “The Conchita Estate”~
 
 Having trodden upon this old ruin made of stone built among
@@ -261,6 +263,8 @@ upon some big prize here in Beelzenia after all.
 
 In the next moment, I embraced my sorely missed friend as
 tightly as I could.
+
+<!-- page -->
 
 ♣ Yukina ~In the Beelzenian Empire, “Northwest Region”~
 
@@ -539,6 +543,8 @@ Chartette raised her head mid-sentence. After making our
 way through the graveyard I could see a small settlement.
 
 “This is the Langley Unit’s Garrison.”
+
+<!-- page -->
 
 ♣ Yukina ~In the Beelzenian Empire, “Langley Unit Garrison”~
 

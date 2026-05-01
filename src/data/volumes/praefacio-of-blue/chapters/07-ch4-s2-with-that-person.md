@@ -396,8 +396,9 @@ upright, tottering a little.
 
 “Yukina…Yukina…Mama has…I…Oh, God…I…confess—”
 
-<The
-Confession of Madam Freezis, Mikina Freezis>
+<!-- page -->
+
+<The Confession of Madam Freezis, Mikina Freezis>
 
 God, I must confess.
 
@@ -637,6 +638,8 @@ Right now, away from here.
 I—I don’t want
 
 To kill you.
+
+<!-- page -->
 
 ♣ Yukina ~Once more, “The Anonymous Coast"~
 

@@ -384,6 +384,8 @@ I will persist on bringing justice, if it’s for that.
 
 I will even become evil.
 
+<!-- page -->
+
 ✥ Kyle Marlon ~In the Lucifenian Palace, “Hall of Sounds”~
 
 The Hall of Sounds was adorned with numerous weapons.
@@ -631,6 +633,8 @@ masked women!
 
 I slammed my fist hard on the armrest of the throne, and
 a loud bang resounded through the room.
+
+<!-- page -->
 
 ✥ Kyle Marlon ~Territory of Lucifenia, “Corpa Mansion”~
 

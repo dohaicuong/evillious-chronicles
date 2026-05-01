@@ -698,12 +698,12 @@ After planting the sapling, they offered a prayer again.
 While praying, Rin suddenly whispered while sobbing. I don’t know to whom she was apologizing to and
 why she began to cry.
 
-<!-- illustration: illustration-9 -->
-
 “I’m sorry.”
 
 Rin continued to mumble then was followed by Clarith.
 
 In this way, the both of them continued to cry till night fell.
+
+<!-- illustration: illustration-9 -->
 
 [FIN]

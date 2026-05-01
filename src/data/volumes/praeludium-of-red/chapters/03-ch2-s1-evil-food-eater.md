@@ -130,6 +130,8 @@ women was like a kind of greeting for him.
 “Oh? Then I’m glad. Well then, until another
 time,” I replied, smiling. Of course, I was just being diplomatic.
 
+<!-- page -->
+
 ♣ Yukina ~In the Beelzenian Empire,
 “Langley Unit Garrison”~
 
@@ -175,6 +177,8 @@ headin’ the same way, I’ll tag along, yannow!”
 
 So saying, Chartette took my hand and started walking in
 the direction of the emperor’s castle.
+
+<!-- page -->
 
 ♣ Yukina ~In the Beelzenian Empire,
 “The Graveyard Before the Garrison”~
@@ -448,6 +452,8 @@ She didn’t appear to be chasing us.
 
 She just clutched the glass in her hand and laughed
 loudly.
+
+<!-- page -->
 
 ♣ Yukina ~In the Beelzenian Empire, “Rucolebeni”~
 
@@ -1001,6 +1007,8 @@ I unlocked and opened the door.
 
 “It’s over. Somehow I won!”
 
+<!-- page -->
+
 ♣ Yukina ~In the Beelzenian Empire, “Rucolebeni
 ~ Highway to the Imperial Castle”~
 
@@ -1050,6 +1058,8 @@ There was Beelzenia’s red troops.
 And the white mass that appeared beyond them.
 
 It was a military force equal in number–no, greater–than that of the army corps. It was made entirely of white monsters.
+
+<!-- page -->
 
 ♣ Yukina ~In the Beelzenian Empire, “Rucolebeni
 ~ The Imperial Castle”~

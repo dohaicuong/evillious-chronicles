@@ -135,6 +135,8 @@ emperor a message. Tell him that the former
 commander of the Retasan Fortress, Lily Mouchet, has come to see
 him.”
 
+<!-- page -->
+
 ♣ Yukina ~In the Beelzenian Empire, “Imperial Castle"~
 
 Starting with the Langley Unit, the dead soldiers that had
@@ -336,6 +338,8 @@ After letting out another breath, Lily said, “Yeah.
 Seems the emperor’s made up his mind. He’s said he’s going to launch an
 invasion on Retasan in a day or two.”
 
+<!-- page -->
+
 ♣ Yukina ~In the Beelzenian Empire, “Rucolebeni/Inn"~
 
 That night, the Beelzenian army gathered in four places
@@ -467,6 +471,8 @@ than just watching the carpenters work from my inn window.
 
 I got dressed and dashed outside. The weather was nice.
 Beelzenia was a much warmer country than Marlon.
+
+<!-- page -->
 
 ♣ Yukina ~In the Beelzenian Empire, “Rucolebeni/Bar"~
 
@@ -701,6 +707,8 @@ days Retasan fell entirely into Beelzenia’s hands.
 In addition, there were plans to make an official
 commendation of Germaine Avadonia, for having won more in the battle than anyone
 during the night attack.
+
+<!-- page -->
 
 ♣ Yukina ~In the Former Lucifenia Territory, “Town of Retasan"~
 

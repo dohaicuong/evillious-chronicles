@@ -199,6 +199,8 @@ an area on the riverside.
 
 Standing there was Castle Hedgehog.
 
+<!-- page -->
+
 ✥ Kyle Marlon ~The Country of
 Marlon, “The Castle of Hedgehog/Front Gate”~
 
@@ -271,6 +273,8 @@ The moment I heard that shout, I gave out the command,
 
 All of the units barring the protective force surrounding
 the castle surged inside.
+
+<!-- page -->
 
 ✥ Kyle Marlon ~The Country of
 Marlon, “The Castle of Hedgehog/Banquet Hall”~
@@ -364,6 +368,8 @@ courtyard.
 
 Following the guidance of Germaine and her unit, I once
 more pursued Ney.
+
+<!-- page -->
 
 ✥ Kyle Marlon ~The Country of
 Marlon, “The Castle of Hedgehog/Courtyard”~
@@ -494,6 +500,8 @@ Special Maneuvers Task Force was slowly closing the distance between us.
 Right as they launched themselves at Germaine, I slid
 into the tower.
 
+<!-- page -->
+
 ✥ Kyle Marlon ~The Country of
 Marlon, “Heartbeat Clocktower”~
 
@@ -619,8 +627,9 @@ this country prosper even if it meant using a demon.”
 –And so I came to know half the life of the woman
 called Prim Marlon, and the sentiments that she’d carried therein.
 
-<<Reflections
-of Marlon Empress Dowager Prim Marlon>>
+<!-- page -->
+
+<<Reflections of Marlon Empress Dowager Prim Marlon>>
 
 You know that I am from the high-ranking Lucifenian Rogzé
 family, don’t you? Having such an ancient and honorable pedigree had been my
@@ -946,6 +955,8 @@ Therefore…Therefore, my Kyle,
 Your mother will once more,
 
 Have a demon possess you.
+
+<!-- page -->
 
 ✥ Kyle ~Once again, in the “Heartbeat Clocktower”~
 
@@ -1506,6 +1517,8 @@ descending the stairs, I saw that the sun peeking out from behind clouds.
 
 The rain had stopped.
 
+<!-- page -->
+
 ✥ Kyle Marlon ~The Country of
 Marlon, “The Town of Lioness”~
 
@@ -1727,6 +1740,8 @@ The moment that the door was opened–
 
 The entire room was filled with a blue flash.
 
+<!-- page -->
+
 ✥ Kyle ~In “???”~
 
 …Where am I…?
@@ -1835,6 +1850,8 @@ Don’t–
 
 Don’t leave me all alone–
 
+<!-- page -->
+
 ✥ Kyle Marlon ~Once More,
 “The Town of Lioness”~
 
@@ -1892,6 +1909,8 @@ The sheets on the bed were stained a deep red.
 Perhaps it was a small favor that at Ney’s death her face
 had not been filled with anguish, but rather an expression of sleeping
 peacefully.
+
+<!-- page -->
 
 ✥ Kyle Marlon ~The Country of
 Marlon “Marlon Castle/Left Chapel”~

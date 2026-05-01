@@ -129,6 +129,8 @@ There was a break in the vegetation, and my view for up
 ahead opened up. Seemed we’d come out onto a more spacious path. I could tell
 it would be an easier walk from here.
 
+<!-- page -->
+
 ♣ Yukina ~In the country of Elphegort, “Millenium Tree Forest/Old Well"~
 
 After moving on a little ways farther, Gumillia stopped
@@ -250,6 +252,8 @@ swordsman, Ayn.
 
 After praying before the gravesite for the soldier’s happiness
 in the afterlife, I hastened along.
+
+<!-- page -->
 
 ♣ Yukina ~In the country of Elphegort, “Millenium Tree Forest/Tree of Held"~
 

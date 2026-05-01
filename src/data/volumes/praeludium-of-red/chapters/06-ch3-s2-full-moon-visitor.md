@@ -235,6 +235,8 @@ situation in his own way.”
 After Clive told something to his underling soldiers,
 they began to walk off in separate directions.
 
+<!-- page -->
+
 ✥ Kyle ~In the Lucifenian
 Palace, “The Heavenly Yard”~
 
@@ -418,6 +420,8 @@ respective rooms.
 
 And that night, an unusual event occurred.
 
+<!-- page -->
+
 ✥ Kyle ~In the Lucifenian
 Palace, “Corridor”~
 
@@ -527,6 +531,8 @@ that doesn’t happen.”
 Taking along the reluctant guard, we headed for the room
 that the servants were in.
 
+<!-- page -->
+
 ✥ Kyle ~In the Lucifenian
 Palace, “Guest Room”~
 
@@ -624,6 +630,8 @@ getup.”
 Well then, you blasted mice. Where in the world have you
 run to?
 
+<!-- page -->
+
 ✥ Kyle ~In the Lucifenian
 Palace, “Corridor”~
 
@@ -702,6 +710,8 @@ well.”
 
 “Indeed. Sounds like my bed is going to be pretty
 singed, too.”
+
+<!-- page -->
 
 ✥ Kyle ~In the Lucifenian
 Palace, “The King’s Room”~
@@ -999,6 +1009,8 @@ the broken window and leaped out after her.
 I left the room by the door rather than the window, and
 headed for the room nearby–the one that once belonged to Princess Riliane.
 
+<!-- page -->
+
 ✥ Kyle ~In the Lucifenian Palace, “Riliane’s Room”~
 
 There wasn’t a soul inside Riliane’s room.
@@ -1014,6 +1026,8 @@ Here. It was coming from inside the fireplace. Was there a secret passage in a p
 The hole was a bit cramped for an adult to pass through. But, well, I would get through somehow or another.
 
 I had to hurry, hurry and touch that hand-mirror.
+
+<!-- page -->
 
 ✥ Kyle ~At the Lucifenian
 Palace, “The Stables”~

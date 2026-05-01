@@ -111,6 +111,8 @@ The people in the line were thin,
 and had lost their vitality. I prayed for their full recovery from inside the
 carriage as it passed by the church.
 
+<!-- page -->
+
 ♣ Yukina ~The Country of Marlon, “Freezis Estate/Foyer”~
 
 “The house is as big as
@@ -272,6 +274,8 @@ asking something so weird.”
 Shaw shrugged, and started to head
 for Aile’s room.
 
+<!-- page -->
+
 ♣ Yukina ~The Country of Marlon, “Freezis Estate/Mikina’s Room”~
 
 As I got closer to my mother’s room,
@@ -408,6 +412,8 @@ Mom stood and clapped her hands.
 together? It’s been so long since we’ve all eaten as a family–haha, Mama’s
 looking forward to it.”
 
+<!-- page -->
+
 ♣ Yukina ~The Country of Marlon, “Freezis Estate/Dining Hall”~
 
 The seven person banquet between the
@@ -497,6 +503,8 @@ my journey in full, they were liable to faint.
 I would spend a bit
 of time spacing out the tales of my travels.
 
+<!-- page -->
+
 ♣ Yukina ~The Country of Marlon, “Freezis Estate/Yukina’s Room”~
 
 This room, long bereft of its owner,
@@ -581,6 +589,8 @@ The shadow of conspiracy that
 covered Marlon. The true identity of the one who had King Kyle possessed by a
 demon, and Ney Phatipe. It wouldn’t be over until all of those things had been
 settled.
+
+<!-- page -->
 
 ♣ Yukina ~The Country of Marlon, “Freezis Estate/Keel’s Room”~
 
@@ -845,6 +855,8 @@ of the events that had happened since I entered Beelzenia.
 Taking some mild artistic licenses with
 it so he wouldn’t faint, of course.
 
+<!-- page -->
+
 ♣ Yukina ~The Country of Marlon, “Freezis Estate/Storeroom”~
 
 Three rooms down from my father’s
@@ -940,6 +952,8 @@ father’s collection pieces. I thought maybe it was something my mother had for
 
 “A…green onion? What’s this
 doing here?”
+
+<!-- page -->
 
 ✥ Kyle Marlon ~The
 Country of Marlon, “Marlon Castle/Middle Tower Roof”~
@@ -1136,6 +1150,8 @@ far too soon for this act to be over already.
 Arkatoir continued speaking, as
 though he could tell what I was feeling then. “She has a grave set up now.
 You can go see, if you like?”
+
+<!-- page -->
 
 ✥ Kyle Marlon ~The
 Country of Marlon, “Marlon Castle/Left Chapel”~
