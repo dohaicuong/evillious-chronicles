@@ -7,6 +7,24 @@
 - **Audio cues** — wire `Page.songCue` to the audio dock. Schema already in place at three levels (no changes needed): `Series.songIds` (rendered on series page), `Chapter.songIds` (a "tracks in this chapter" list — not rendered yet), `Page.songCue` (single id, intended to pin/highlight the song in the dock when the page is reached). Plan: IntersectionObserver on the page like progress; opt-in via a new `autoplaySongCues` toggle in `SettingsDrawer`.
 - **Per-chapter annotation chips** on the volume page — small chips next to each chapter showing bookmark / note counts.
 
+### Translation sources to wire up (Deadly Sins of Evil novels)
+
+Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefacio sources. Use the existing pipeline (curl directory → parse posts → assemble chapter markdowns → fixture + loader + library entry). Drop cover/illustrations into the matching `public/<slug>/` when available.
+
+- **The Lunacy of Duke Venomania** — https://pokkoo-shuu.tumblr.com/thelunacyofdukevenomania
+- **Evil Food Eater Conchita** — https://theevilfoodeaterconchita.tumblr.com/post/729399445695889408/directory
+- **Gift from the Princess Who Brought Sleep** — https://giftfromthesleepprincess.tumblr.com/post/729399840750125056/directory
+- **Fifth Pierrot** — https://thefifthclown.tumblr.com/directory
+- **The Tailor of Enbizaka** — https://thetailorofenbizaka.tumblr.com/directory
+- **Judgment of Corruption** — https://judgmentofcorruption.tumblr.com/directory
+- **The Muzzle of Nemesis** — https://themuzzleofnemesis.tumblr.com/directory
+- **Master of the Heavenly Yard** — https://dsoe-masteroftheheavenlyyard.tumblr.com/directory
+
+### Translation sources to wire up (Original Sin Story novels)
+
+- **Original Sin Story: Crime** — https://oss-crime.tumblr.com/directory
+- **Original Sin Story: Punishment** — https://oss-punishment.tumblr.com/directory
+
 ### Notes
 
 - Markdown body / preview in the editor (`react-markdown` already a dep).

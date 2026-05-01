@@ -27,7 +27,7 @@ function RootLayout() {
                 <AudioDock />
                 <Toast.Viewport />
                 <PwaUpdateToast />
-                <TanStackRouterDevtools />
+                <TanStackRouterDevtools position="bottom-right" />
               </IconContext.Provider>
             </AudioProvider>
           </Toast.Provider>

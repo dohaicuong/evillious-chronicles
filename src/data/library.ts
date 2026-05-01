@@ -419,19 +419,8 @@ export const series: Series[] = [
         ]),
       },
       {
-        id: "oss-to",
-        number: 2,
-        title: "Original Sin Story: To",
-        sin: "origin",
-        chapters: makeChapters("osst", [
-          "Recollective Musicbox",
-          "Ma Survival",
-          "Between Crime and Punishment",
-        ]),
-      },
-      {
         id: "oss-punishment",
-        number: 3,
+        number: 2,
         title: "Original Sin Story: Punishment",
         sin: "origin",
         chapters: makeChapters("ossp", [
