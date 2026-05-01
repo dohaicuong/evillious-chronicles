@@ -13,9 +13,11 @@ import { createFileRoute } from '@tanstack/react-router'
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as ComponentsRouteRouteImport } from './routes/components/route'
 import { Route as AppRouteRouteImport } from './routes/_app/route'
-import { Route as IndexRouteImport } from './routes/index'
 import { Route as ComponentsIndexRouteImport } from './routes/components/index'
+import { Route as AppIndexRouteImport } from './routes/_app/index'
 import { Route as AppLibraryIndexRouteImport } from './routes/_app/library/index'
+import { Route as AppCharactersIndexRouteImport } from './routes/_app/characters/index'
+import { Route as AppCharactersCharacterIdRouteImport } from './routes/_app/characters/$characterId'
 import { Route as AppLibrarySeriesIdIndexRouteImport } from './routes/_app/library/$seriesId/index'
 import { Route as AppLibrarySeriesIdVolumeIdIndexRouteImport } from './routes/_app/library/$seriesId/$volumeId/index'
 import { Route as AppLibrarySeriesIdVolumeIdChapterIdRouteImport } from './routes/_app/library/$seriesId/$volumeId/$chapterId'
@@ -42,6 +44,9 @@ const ComponentsScrollAreaLazyRouteImport = createFileRoute(
 const ComponentsProgressLazyRouteImport = createFileRoute(
   '/components/progress',
 )()
+const ComponentsPaginationLazyRouteImport = createFileRoute(
+  '/components/pagination',
+)()
 const ComponentsMenuLazyRouteImport = createFileRoute('/components/menu')()
 const ComponentsInputLazyRouteImport = createFileRoute('/components/input')()
 const ComponentsIconButtonLazyRouteImport = createFileRoute(
@@ -64,15 +69,15 @@ const AppRouteRoute = AppRouteRouteImport.update({
   id: '/_app',
   getParentRoute: () => rootRouteImport,
 } as any)
-const IndexRoute = IndexRouteImport.update({
-  id: '/',
-  path: '/',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const ComponentsIndexRoute = ComponentsIndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => ComponentsRouteRoute,
+} as any)
+const AppIndexRoute = AppIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AppRouteRoute,
 } as any)
 const ComponentsTypographyLazyRoute =
   ComponentsTypographyLazyRouteImport.update({
@@ -146,6 +151,14 @@ const ComponentsProgressLazyRoute = ComponentsProgressLazyRouteImport.update({
 } as any).lazy(() =>
   import('./routes/components/progress.lazy').then((d) => d.Route),
 )
+const ComponentsPaginationLazyRoute =
+  ComponentsPaginationLazyRouteImport.update({
+    id: '/pagination',
+    path: '/pagination',
+    getParentRoute: () => ComponentsRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/components/pagination.lazy').then((d) => d.Route),
+  )
 const ComponentsMenuLazyRoute = ComponentsMenuLazyRouteImport.update({
   id: '/menu',
   path: '/menu',
@@ -222,6 +235,17 @@ const AppLibraryIndexRoute = AppLibraryIndexRouteImport.update({
   path: '/library/',
   getParentRoute: () => AppRouteRoute,
 } as any)
+const AppCharactersIndexRoute = AppCharactersIndexRouteImport.update({
+  id: '/characters/',
+  path: '/characters/',
+  getParentRoute: () => AppRouteRoute,
+} as any)
+const AppCharactersCharacterIdRoute =
+  AppCharactersCharacterIdRouteImport.update({
+    id: '/characters/$characterId',
+    path: '/characters/$characterId',
+    getParentRoute: () => AppRouteRoute,
+  } as any)
 const AppLibrarySeriesIdIndexRoute = AppLibrarySeriesIdIndexRouteImport.update({
   id: '/library/$seriesId/',
   path: '/library/$seriesId/',
@@ -241,7 +265,7 @@ const AppLibrarySeriesIdVolumeIdChapterIdRoute =
   } as any)
 
 export interface FileRoutesByFullPath {
-  '/': typeof IndexRoute
+  '/': typeof AppIndexRoute
   '/components': typeof ComponentsRouteRouteWithChildren
   '/components/audio': typeof ComponentsAudioLazyRoute
   '/components/badge': typeof ComponentsBadgeLazyRoute
@@ -253,6 +277,7 @@ export interface FileRoutesByFullPath {
   '/components/icon-button': typeof ComponentsIconButtonLazyRoute
   '/components/input': typeof ComponentsInputLazyRoute
   '/components/menu': typeof ComponentsMenuLazyRoute
+  '/components/pagination': typeof ComponentsPaginationLazyRoute
   '/components/progress': typeof ComponentsProgressLazyRoute
   '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
   '/components/skeleton': typeof ComponentsSkeletonLazyRoute
@@ -264,13 +289,14 @@ export interface FileRoutesByFullPath {
   '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
   '/components/': typeof ComponentsIndexRoute
+  '/characters/$characterId': typeof AppCharactersCharacterIdRoute
+  '/characters/': typeof AppCharactersIndexRoute
   '/library/': typeof AppLibraryIndexRoute
   '/library/$seriesId/': typeof AppLibrarySeriesIdIndexRoute
   '/library/$seriesId/$volumeId/$chapterId': typeof AppLibrarySeriesIdVolumeIdChapterIdRoute
   '/library/$seriesId/$volumeId/': typeof AppLibrarySeriesIdVolumeIdIndexRoute
 }
 export interface FileRoutesByTo {
-  '/': typeof IndexRoute
   '/components/audio': typeof ComponentsAudioLazyRoute
   '/components/badge': typeof ComponentsBadgeLazyRoute
   '/components/button': typeof ComponentsButtonLazyRoute
@@ -281,6 +307,7 @@ export interface FileRoutesByTo {
   '/components/icon-button': typeof ComponentsIconButtonLazyRoute
   '/components/input': typeof ComponentsInputLazyRoute
   '/components/menu': typeof ComponentsMenuLazyRoute
+  '/components/pagination': typeof ComponentsPaginationLazyRoute
   '/components/progress': typeof ComponentsProgressLazyRoute
   '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
   '/components/skeleton': typeof ComponentsSkeletonLazyRoute
@@ -291,7 +318,10 @@ export interface FileRoutesByTo {
   '/components/toast': typeof ComponentsToastLazyRoute
   '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
+  '/': typeof AppIndexRoute
   '/components': typeof ComponentsIndexRoute
+  '/characters/$characterId': typeof AppCharactersCharacterIdRoute
+  '/characters': typeof AppCharactersIndexRoute
   '/library': typeof AppLibraryIndexRoute
   '/library/$seriesId': typeof AppLibrarySeriesIdIndexRoute
   '/library/$seriesId/$volumeId/$chapterId': typeof AppLibrarySeriesIdVolumeIdChapterIdRoute
@@ -299,7 +329,6 @@ export interface FileRoutesByTo {
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
-  '/': typeof IndexRoute
   '/_app': typeof AppRouteRouteWithChildren
   '/components': typeof ComponentsRouteRouteWithChildren
   '/components/audio': typeof ComponentsAudioLazyRoute
@@ -312,6 +341,7 @@ export interface FileRoutesById {
   '/components/icon-button': typeof ComponentsIconButtonLazyRoute
   '/components/input': typeof ComponentsInputLazyRoute
   '/components/menu': typeof ComponentsMenuLazyRoute
+  '/components/pagination': typeof ComponentsPaginationLazyRoute
   '/components/progress': typeof ComponentsProgressLazyRoute
   '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
   '/components/skeleton': typeof ComponentsSkeletonLazyRoute
@@ -322,7 +352,10 @@ export interface FileRoutesById {
   '/components/toast': typeof ComponentsToastLazyRoute
   '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
+  '/_app/': typeof AppIndexRoute
   '/components/': typeof ComponentsIndexRoute
+  '/_app/characters/$characterId': typeof AppCharactersCharacterIdRoute
+  '/_app/characters/': typeof AppCharactersIndexRoute
   '/_app/library/': typeof AppLibraryIndexRoute
   '/_app/library/$seriesId/': typeof AppLibrarySeriesIdIndexRoute
   '/_app/library/$seriesId/$volumeId/$chapterId': typeof AppLibrarySeriesIdVolumeIdChapterIdRoute
@@ -343,6 +376,7 @@ export interface FileRouteTypes {
     | '/components/icon-button'
     | '/components/input'
     | '/components/menu'
+    | '/components/pagination'
     | '/components/progress'
     | '/components/scroll-area'
     | '/components/skeleton'
@@ -354,13 +388,14 @@ export interface FileRouteTypes {
     | '/components/tooltip'
     | '/components/typography'
     | '/components/'
+    | '/characters/$characterId'
+    | '/characters/'
     | '/library/'
     | '/library/$seriesId/'
     | '/library/$seriesId/$volumeId/$chapterId'
     | '/library/$seriesId/$volumeId/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/'
     | '/components/audio'
     | '/components/badge'
     | '/components/button'
@@ -371,6 +406,7 @@ export interface FileRouteTypes {
     | '/components/icon-button'
     | '/components/input'
     | '/components/menu'
+    | '/components/pagination'
     | '/components/progress'
     | '/components/scroll-area'
     | '/components/skeleton'
@@ -381,14 +417,16 @@ export interface FileRouteTypes {
     | '/components/toast'
     | '/components/tooltip'
     | '/components/typography'
+    | '/'
     | '/components'
+    | '/characters/$characterId'
+    | '/characters'
     | '/library'
     | '/library/$seriesId'
     | '/library/$seriesId/$volumeId/$chapterId'
     | '/library/$seriesId/$volumeId'
   id:
     | '__root__'
-    | '/'
     | '/_app'
     | '/components'
     | '/components/audio'
@@ -401,6 +439,7 @@ export interface FileRouteTypes {
     | '/components/icon-button'
     | '/components/input'
     | '/components/menu'
+    | '/components/pagination'
     | '/components/progress'
     | '/components/scroll-area'
     | '/components/skeleton'
@@ -411,7 +450,10 @@ export interface FileRouteTypes {
     | '/components/toast'
     | '/components/tooltip'
     | '/components/typography'
+    | '/_app/'
     | '/components/'
+    | '/_app/characters/$characterId'
+    | '/_app/characters/'
     | '/_app/library/'
     | '/_app/library/$seriesId/'
     | '/_app/library/$seriesId/$volumeId/$chapterId'
@@ -419,7 +461,6 @@ export interface FileRouteTypes {
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
-  IndexRoute: typeof IndexRoute
   AppRouteRoute: typeof AppRouteRouteWithChildren
   ComponentsRouteRoute: typeof ComponentsRouteRouteWithChildren
 }
@@ -440,19 +481,19 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppRouteRouteImport
       parentRoute: typeof rootRouteImport
     }
-    '/': {
-      id: '/'
-      path: '/'
-      fullPath: '/'
-      preLoaderRoute: typeof IndexRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/components/': {
       id: '/components/'
       path: '/'
       fullPath: '/components/'
       preLoaderRoute: typeof ComponentsIndexRouteImport
       parentRoute: typeof ComponentsRouteRoute
+    }
+    '/_app/': {
+      id: '/_app/'
+      path: '/'
+      fullPath: '/'
+      preLoaderRoute: typeof AppIndexRouteImport
+      parentRoute: typeof AppRouteRoute
     }
     '/components/typography': {
       id: '/components/typography'
@@ -522,6 +563,13 @@ declare module '@tanstack/react-router' {
       path: '/progress'
       fullPath: '/components/progress'
       preLoaderRoute: typeof ComponentsProgressLazyRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/pagination': {
+      id: '/components/pagination'
+      path: '/pagination'
+      fullPath: '/components/pagination'
+      preLoaderRoute: typeof ComponentsPaginationLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/menu': {
@@ -601,6 +649,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppLibraryIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
+    '/_app/characters/': {
+      id: '/_app/characters/'
+      path: '/characters'
+      fullPath: '/characters/'
+      preLoaderRoute: typeof AppCharactersIndexRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
+    '/_app/characters/$characterId': {
+      id: '/_app/characters/$characterId'
+      path: '/characters/$characterId'
+      fullPath: '/characters/$characterId'
+      preLoaderRoute: typeof AppCharactersCharacterIdRouteImport
+      parentRoute: typeof AppRouteRoute
+    }
     '/_app/library/$seriesId/': {
       id: '/_app/library/$seriesId/'
       path: '/library/$seriesId'
@@ -626,6 +688,9 @@ declare module '@tanstack/react-router' {
 }
 
 interface AppRouteRouteChildren {
+  AppIndexRoute: typeof AppIndexRoute
+  AppCharactersCharacterIdRoute: typeof AppCharactersCharacterIdRoute
+  AppCharactersIndexRoute: typeof AppCharactersIndexRoute
   AppLibraryIndexRoute: typeof AppLibraryIndexRoute
   AppLibrarySeriesIdIndexRoute: typeof AppLibrarySeriesIdIndexRoute
   AppLibrarySeriesIdVolumeIdChapterIdRoute: typeof AppLibrarySeriesIdVolumeIdChapterIdRoute
@@ -633,6 +698,9 @@ interface AppRouteRouteChildren {
 }
 
 const AppRouteRouteChildren: AppRouteRouteChildren = {
+  AppIndexRoute: AppIndexRoute,
+  AppCharactersCharacterIdRoute: AppCharactersCharacterIdRoute,
+  AppCharactersIndexRoute: AppCharactersIndexRoute,
   AppLibraryIndexRoute: AppLibraryIndexRoute,
   AppLibrarySeriesIdIndexRoute: AppLibrarySeriesIdIndexRoute,
   AppLibrarySeriesIdVolumeIdChapterIdRoute:
@@ -655,6 +723,7 @@ interface ComponentsRouteRouteChildren {
   ComponentsIconButtonLazyRoute: typeof ComponentsIconButtonLazyRoute
   ComponentsInputLazyRoute: typeof ComponentsInputLazyRoute
   ComponentsMenuLazyRoute: typeof ComponentsMenuLazyRoute
+  ComponentsPaginationLazyRoute: typeof ComponentsPaginationLazyRoute
   ComponentsProgressLazyRoute: typeof ComponentsProgressLazyRoute
   ComponentsScrollAreaLazyRoute: typeof ComponentsScrollAreaLazyRoute
   ComponentsSkeletonLazyRoute: typeof ComponentsSkeletonLazyRoute
@@ -679,6 +748,7 @@ const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsIconButtonLazyRoute: ComponentsIconButtonLazyRoute,
   ComponentsInputLazyRoute: ComponentsInputLazyRoute,
   ComponentsMenuLazyRoute: ComponentsMenuLazyRoute,
+  ComponentsPaginationLazyRoute: ComponentsPaginationLazyRoute,
   ComponentsProgressLazyRoute: ComponentsProgressLazyRoute,
   ComponentsScrollAreaLazyRoute: ComponentsScrollAreaLazyRoute,
   ComponentsSkeletonLazyRoute: ComponentsSkeletonLazyRoute,
@@ -697,7 +767,6 @@ const ComponentsRouteRouteWithChildren = ComponentsRouteRoute._addFileChildren(
 )
 
 const rootRouteChildren: RootRouteChildren = {
-  IndexRoute: IndexRoute,
   AppRouteRoute: AppRouteRouteWithChildren,
   ComponentsRouteRoute: ComponentsRouteRouteWithChildren,
 }

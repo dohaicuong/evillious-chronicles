@@ -24,6 +24,7 @@ const navItems = [
   { to: "/components/slider", label: "Slider", exact: false },
   { to: "/components/switch", label: "Switch", exact: false },
   { to: "/components/progress", label: "Progress", exact: false },
+  { to: "/components/pagination", label: "Pagination", exact: false },
   { to: "/components/skeleton", label: "Skeleton", exact: false },
   { to: "/components/scroll-area", label: "Scroll Area", exact: false },
   { to: "/components/audio", label: "Audio", exact: false },

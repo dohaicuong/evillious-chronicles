@@ -87,6 +87,11 @@ const components = [
     description: "Linear progress bar. Determinate and indeterminate. Three sizes.",
   },
   {
+    to: "/components/pagination",
+    name: "Pagination",
+    description: "Numbered page navigation with prev/next carets and ellipses for large ranges.",
+  },
+  {
     to: "/components/skeleton",
     name: "Skeleton",
     description: "Loading placeholder. Rect, text (multi-line), and circle variants.",
