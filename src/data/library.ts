@@ -378,19 +378,6 @@ export const series: Series[] = [
           "First Cycle",
         ]),
       },
-      {
-        id: "praeludium-of-red",
-        number: 2,
-        title: "Praeludium of Red",
-        sin: null,
-        chapters: makeChapters("por", [
-          "Before the Sound of Bells",
-          "The Forest's Decree",
-          "A Servant Unborn",
-          "Held's Lament",
-          "The Curtain Rises",
-        ]),
-      },
     ],
   },
 ];

@@ -2,22 +2,33 @@ import { Link } from "@tanstack/react-router";
 import { Card } from "@src/components/primitives/card";
 import { Badge } from "@src/components/primitives/badge";
 import { SinGlyph } from "@src/components/thematic/sin-glyph";
+import { isVolumeAvailable } from "@src/data/volumes";
 import type { Series, Sin } from "@src/data/library";
 
 export function SeriesCard({ series }: { series: Series }) {
   const sins = [...new Set(series.volumes.map((v) => v.sin).filter((s): s is Sin => Boolean(s)))];
+  const total = series.volumes.length;
+  const available = series.volumes.filter((v) => isVolumeAvailable(v.id)).length;
 
   return (
     <Link
       to="/library/$seriesId"
       params={{ seriesId: series.id }}
-      className="block focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg rounded-sm"
+      className="block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
     >
       <Card variant="interactive">
         <Card.Header>
           <Card.Title>{series.title}</Card.Title>
           <Card.Description>
-            {series.volumes.length} volume{series.volumes.length !== 1 ? "s" : ""}
+            {available > 0 ? (
+              <>
+                {available} of {total} volume{total !== 1 ? "s" : ""} available
+              </>
+            ) : (
+              <>
+                {total} volume{total !== 1 ? "s" : ""} · not yet available
+              </>
+            )}
           </Card.Description>
         </Card.Header>
         <Card.Body>

@@ -3,6 +3,7 @@ import { DotsThreeVerticalIcon } from "@phosphor-icons/react";
 import { Badge } from "@src/components/primitives/badge";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { Menu } from "@src/components/primitives/menu";
+import { isVolumeAvailable } from "@src/data/volumes";
 import { markChapterComplete, resetChapterProgress, useChapterPercent } from "@src/lib/progress";
 import type { Chapter } from "@src/data/library";
 
@@ -13,10 +14,17 @@ type Props = {
 };
 
 export function ChapterList({ seriesId, volumeId, chapters }: Props) {
+  const available = isVolumeAvailable(volumeId);
   return (
     <ul className="flex flex-col">
       {chapters.map((c) => (
-        <ChapterRow key={c.id} seriesId={seriesId} volumeId={volumeId} chapter={c} />
+        <ChapterRow
+          key={c.id}
+          seriesId={seriesId}
+          volumeId={volumeId}
+          chapter={c}
+          disabled={!available}
+        />
       ))}
     </ul>
   );
@@ -26,30 +34,55 @@ function ChapterRow({
   seriesId,
   volumeId,
   chapter,
+  disabled,
 }: {
   seriesId: string;
   volumeId: string;
   chapter: Chapter;
+  disabled: boolean;
 }) {
   const progress = useChapterPercent(chapter.id, chapter.pageCount);
 
+  const rowContent = (
+    <>
+      <span className="w-8 text-right text-style-caption text-fg-muted tabular-nums">
+        {chapter.number}
+      </span>
+      <span className="flex-1 text-style-body text-fg">{chapter.title}</span>
+      <span className="hidden text-style-caption text-fg-muted sm:inline">
+        {chapter.pageCount} pages
+      </span>
+      {disabled ? (
+        <Badge variant="outline" size="sm">
+          Pending
+        </Badge>
+      ) : (
+        <ChapterStatus progress={progress} />
+      )}
+    </>
+  );
+
   return (
     <li className="flex items-center gap-1 border-t border-border last:border-b">
-      <Link
-        to="/library/$seriesId/$volumeId/$chapterId"
-        params={{ seriesId, volumeId, chapterId: chapter.id }}
-        className="flex flex-1 items-center gap-4 px-3 py-4 transition-colors hover:bg-accent-soft"
-      >
-        <span className="text-style-caption text-fg-muted w-8 text-right tabular-nums">
-          {chapter.number}
-        </span>
-        <span className="text-style-body text-fg flex-1">{chapter.title}</span>
-        <span className="text-style-caption text-fg-muted hidden sm:inline">
-          {chapter.pageCount} pages
-        </span>
-        <ChapterStatus progress={progress} />
-      </Link>
-      <ChapterRowMenu chapter={chapter} progress={progress} />
+      {disabled ? (
+        <div
+          aria-disabled="true"
+          className="flex flex-1 cursor-not-allowed items-center gap-4 px-3 py-4 opacity-50"
+        >
+          {rowContent}
+        </div>
+      ) : (
+        <>
+          <Link
+            to="/library/$seriesId/$volumeId/$chapterId"
+            params={{ seriesId, volumeId, chapterId: chapter.id }}
+            className="flex flex-1 items-center gap-4 px-3 py-4 transition-colors hover:bg-accent-soft"
+          >
+            {rowContent}
+          </Link>
+          <ChapterRowMenu chapter={chapter} progress={progress} />
+        </>
+      )}
     </li>
   );
 }

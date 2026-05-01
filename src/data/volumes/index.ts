@@ -18,4 +18,10 @@ export async function getVolume(id: string): Promise<Volume | undefined> {
   return load ? await load() : undefined;
 }
 
-export const availableVolumeIds = Object.keys(loaders);
+const availableSet = new Set(Object.keys(loaders));
+
+export const availableVolumeIds = Array.from(availableSet);
+
+export function isVolumeAvailable(id: string): boolean {
+  return availableSet.has(id);
+}
