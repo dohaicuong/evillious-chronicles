@@ -30,6 +30,12 @@ export function ScrollArea({
     <BaseScrollArea.Root className={cn("relative overflow-hidden", className)} {...props}>
       <BaseScrollArea.Viewport
         ref={viewportRef}
+        // base-ui makes the viewport focusable (tabindex=0) for keyboard
+        // scrolling. That puts the entire content region in the tab order
+        // with no useful visual cue (outlining the whole page is worse than
+        // useless), so pull it out of tab order. Mouse / wheel / keyboard
+        // arrows on a focused descendant still scroll normally.
+        tabIndex={-1}
         className={cn("h-full w-full overscroll-contain outline-none", viewportClassName)}
       >
         <BaseScrollArea.Content>{children}</BaseScrollArea.Content>
