@@ -29,9 +29,10 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
     if (!slim) throw notFound();
     const full = await getVolume(params.volumeId);
     if (!full) throw notFound();
-    const chapterIdx = full.chapters.findIndex((c) => c.id === params.chapterId);
+    const allChapters = full.afterword ? [...full.chapters, full.afterword] : full.chapters;
+    const chapterIdx = allChapters.findIndex((c) => c.id === params.chapterId);
     if (chapterIdx === -1) throw notFound();
-    const chapter = full.chapters[chapterIdx]!;
+    const chapter = allChapters[chapterIdx]!;
 
     const pageNum = Number.parseInt(params.pageNumber, 10);
     if (!Number.isFinite(pageNum)) throw notFound();
@@ -39,9 +40,9 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
     if (pageIdx === -1) throw notFound();
     const page = chapter.pages[pageIdx]!;
 
-    const prevChapter = chapterIdx > 0 ? full.chapters[chapterIdx - 1]! : null;
+    const prevChapter = chapterIdx > 0 ? allChapters[chapterIdx - 1]! : null;
     const nextChapter =
-      chapterIdx < full.chapters.length - 1 ? full.chapters[chapterIdx + 1]! : null;
+      chapterIdx < allChapters.length - 1 ? allChapters[chapterIdx + 1]! : null;
 
     const prev: PageTarget | null =
       pageIdx > 0
@@ -69,6 +70,7 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
 
 function PageReader() {
   const { series: s, volume, chapter, page, pageIdx, prev, next } = Route.useLoaderData();
+  const isAfterword = chapter.id === volume.afterword?.id;
   const { settings } = useReaderSettings();
   const cssVars = readerSettingsCssVars(settings);
   const totalPages = chapter.pages.length;
@@ -104,7 +106,7 @@ function PageReader() {
           {volume.sin ? (
             <SinGlyph sin={volume.sin} size={14} weight="light" className="text-accent" />
           ) : null}
-          Volume {volume.number} · Chapter {chapter.number}
+          Volume {volume.number} · {isAfterword ? "Afterword" : `Chapter ${chapter.number}`}
         </span>
         <h1 className="text-style-heading-1 text-fg">{chapter.title}</h1>
         <div className="flex items-center justify-between gap-3">

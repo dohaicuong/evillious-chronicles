@@ -16,7 +16,9 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
     if (!slim) throw notFound();
     const full = await getVolume(params.volumeId);
     if (!full) throw notFound();
-    const chapter = full.chapters.find((c) => c.id === params.chapterId);
+    const chapter =
+      full.chapters.find((c) => c.id === params.chapterId) ??
+      (full.afterword?.id === params.chapterId ? full.afterword : null);
     if (!chapter) throw notFound();
     if (chapter.pages.length === 0) {
       // Empty chapter — fall back to the volume detail page.

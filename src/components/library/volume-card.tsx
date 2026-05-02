@@ -12,11 +12,14 @@ export function VolumeCard({ seriesId, volume }: { seriesId: string; volume: Vol
   const available = isVolumeAvailable(volume.id);
 
   return (
-    <div data-sin={volume.sin ?? undefined} className={available ? undefined : "opacity-60"}>
+    <div
+      data-sin={volume.sin ?? undefined}
+      className={available ? "h-full" : "h-full opacity-60"}
+    >
       <Link
         to="/library/$seriesId/$volumeId"
         params={{ seriesId, volumeId: volume.id }}
-        className="block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        className="block h-full rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
       >
         <Card variant="interactive">
           <Card.Header>
@@ -44,7 +47,7 @@ export function VolumeCard({ seriesId, volume }: { seriesId: string; volume: Vol
               </div>
             </div>
           </Card.Header>
-          <Card.Body>
+          <Card.Body className="flex flex-col justify-end">
             <div className="flex flex-col gap-2">
               <div className="flex items-center justify-between">
                 <span className="text-style-caption text-fg-muted">

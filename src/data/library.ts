@@ -5,6 +5,7 @@ export type Chapter = {
   number: number;
   title: string;
   pageCount: number;
+  kind?: "afterword";
 };
 
 export type Volume = {
@@ -51,6 +52,16 @@ function pageCountFor(volumeSlug: string, chapterDir: string): number {
 // page-count comes from counting `.md` files there.
 function chap(volumeSlug: string, dir: string, id: string, number: number, title: string): Chapter {
   return { id, number, title, pageCount: pageCountFor(volumeSlug, dir) };
+}
+
+function afterword(volumeSlug: string, id: string): Chapter {
+  return {
+    id,
+    number: 99,
+    title: "Afterword",
+    pageCount: pageCountFor(volumeSlug, "afterword"),
+    kind: "afterword",
+  };
 }
 
 export const series: Series[] = [
@@ -248,6 +259,7 @@ export const series: Series[] = [
             8,
             "Epilogue · To the Blue Country",
           ),
+          afterword("praeludium-of-red", "pr-afterword"),
         ],
       },
       {
@@ -313,6 +325,7 @@ export const series: Series[] = [
             8,
             "Epilogue · Prelude of Things to Come",
           ),
+          afterword("praefacio-of-blue", "pb-afterword"),
         ],
       },
     ],

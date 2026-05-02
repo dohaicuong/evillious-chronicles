@@ -76,9 +76,13 @@ function ChapterRow({
 
   const rowContent = (
     <>
-      <span className="w-8 text-right text-style-caption text-fg-muted tabular-nums">
-        {chapter.number}
-      </span>
+      {chapter.kind === "afterword" ? (
+        <span className="w-8" aria-hidden />
+      ) : (
+        <span className="w-8 text-right text-style-caption text-fg-muted tabular-nums">
+          {chapter.number}
+        </span>
+      )}
       <span className="flex-1 text-style-body text-fg">{chapter.title}</span>
       {bookmarkCount > 0 || noteCount > 0 ? (
         <span className="hidden items-center gap-1 sm:inline-flex">
@@ -118,7 +122,7 @@ function ChapterRow({
   );
 
   return (
-    <li className="flex items-center gap-1 border-t border-border last:border-b">
+    <li className="flex items-center gap-1 border-t border-border">
       {disabled ? (
         <div
           aria-disabled="true"

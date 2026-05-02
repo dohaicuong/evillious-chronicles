@@ -31,6 +31,7 @@ function VolumePage() {
   const { series: s, slim, full } = Route.useLoaderData();
 
   const { totalPages, percent: overall } = useVolumeProgress(slim.chapters);
+  const chapterCount = slim.chapters.filter((c) => c.kind !== "afterword").length;
 
   return (
     <div data-sin={slim.sin ?? undefined} className="mx-auto max-w-4xl px-6 py-12 sm:py-16">
@@ -59,14 +60,13 @@ function VolumePage() {
         </header>
       )}
 
-      <div className="mt-12 flex flex-col gap-12">
+      <div className="mt-12 flex flex-col">
         <section className="flex flex-col gap-4">
           <h2 className="text-style-eyebrow text-fg-muted">Chapters</h2>
           <div className="flex flex-col gap-3">
             <div className="flex items-center justify-between text-style-caption text-fg-muted">
               <span>
-                {slim.chapters.length} chapter{slim.chapters.length !== 1 ? "s" : ""} · {totalPages}{" "}
-                pages
+                {chapterCount} chapter{chapterCount !== 1 ? "s" : ""} · {totalPages} pages
               </span>
               <div className="flex items-center gap-1">
                 <span>{overall}%</span>
@@ -80,7 +80,7 @@ function VolumePage() {
 
         {full?.openingPoetry ? (
           <>
-            <Ornament glyph="❦" />
+            <Ornament glyph="❦" className="mt-4" />
             <PoetrySection poetry={full.openingPoetry} />
           </>
         ) : null}
