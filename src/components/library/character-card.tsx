@@ -2,6 +2,7 @@ import { Link } from "@src/components/primitives/link";
 import { Card } from "@src/components/primitives/card";
 import { Badge } from "@src/components/primitives/badge";
 import { CharacterPortrait } from "@src/components/library/character-portrait";
+import { ReactionButton } from "@src/components/library/reaction-button";
 import type { Character } from "@src/data/characters";
 
 export function CharacterCard({ character }: { character: Character }) {
@@ -10,40 +11,48 @@ export function CharacterCard({ character }: { character: Character }) {
   const vocaloids = splitChips(character.vocaloid);
 
   return (
-    <Link
-      to="/characters/$characterId"
-      params={{ characterId: character.id }}
-      className="block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-    >
-      <Card variant="interactive" className="overflow-hidden">
-        <div className="aspect-[3/2] w-full overflow-hidden bg-surface">
-          <CharacterPortrait character={character} />
-        </div>
-        <Card.Header>
-          <Card.Title>{character.name}</Card.Title>
-          {epithet ? <Card.Description>{epithet}</Card.Description> : null}
-        </Card.Header>
-        {character.summary ? (
-          <Card.Body>
-            <p className="line-clamp-3 text-fg-muted">{character.summary}</p>
-          </Card.Body>
-        ) : null}
-        <Card.Footer>
-          <div className="flex flex-wrap gap-1.5">
-            {vocaloids.map((v) => (
-              <Badge key={`v:${v}`} variant="soft" size="sm">
-                {v}
-              </Badge>
-            ))}
-            {classifications.map((c) => (
-              <Badge key={`c:${c}`} variant="outline" size="sm">
-                {c}
-              </Badge>
-            ))}
+    <div className="relative h-full">
+      <Link
+        to="/characters/$characterId"
+        params={{ characterId: character.id }}
+        className="block h-full"
+      >
+        <Card variant="interactive" className="overflow-hidden">
+          <div className="aspect-[3/2] w-full overflow-hidden bg-surface">
+            <CharacterPortrait character={character} />
           </div>
-        </Card.Footer>
-      </Card>
-    </Link>
+          <Card.Header>
+            <Card.Title className="pr-10">{character.name}</Card.Title>
+            {epithet ? <Card.Description>{epithet}</Card.Description> : null}
+          </Card.Header>
+          {character.summary ? (
+            <Card.Body>
+              <p className="line-clamp-3 text-fg-muted">{character.summary}</p>
+            </Card.Body>
+          ) : null}
+          <Card.Footer>
+            <div className="flex flex-wrap gap-1.5">
+              {vocaloids.map((v) => (
+                <Badge key={`v:${v}`} variant="soft" size="sm">
+                  {v}
+                </Badge>
+              ))}
+              {classifications.map((c) => (
+                <Badge key={`c:${c}`} variant="outline" size="sm">
+                  {c}
+                </Badge>
+              ))}
+            </div>
+          </Card.Footer>
+        </Card>
+      </Link>
+      <ReactionButton
+        targetType="character"
+        targetId={character.id}
+        label={character.name}
+        className="absolute right-2 top-2 backdrop-blur-sm bg-bg/40 hover:bg-bg/60 rounded-sm"
+      />
+    </div>
   );
 }
 

@@ -2,6 +2,7 @@ import { PlayIcon } from "@phosphor-icons/react";
 import { useAudio } from "@src/lib/audio";
 import { getSong } from "@src/data/songs";
 import { cn } from "@src/lib/cn";
+import { ReactionButton } from "@src/components/library/reaction-button";
 
 const durationFmt = new Intl.DurationFormat("en", { style: "digital" });
 
@@ -59,19 +60,25 @@ export function SongList({ songIds }: { songIds: string[] }) {
         );
 
         return (
-          <li key={id} className="border-border border-t last:border-b">
+          <li key={id} className="border-border border-t last:border-b flex items-center gap-1">
             {hasSource ? (
               <button
                 type="button"
-                className={rowClass}
+                className={cn(rowClass, "flex-1")}
                 onClick={() => play(song)}
                 aria-label={isCurrent ? `Now playing: ${song.title}` : `Play ${song.title}`}
               >
                 {content}
               </button>
             ) : (
-              <div className={rowClass}>{content}</div>
+              <div className={cn(rowClass, "flex-1")}>{content}</div>
             )}
+            <ReactionButton
+              targetType="song"
+              targetId={song.id}
+              label={song.title}
+              className="mr-2"
+            />
           </li>
         );
       })}

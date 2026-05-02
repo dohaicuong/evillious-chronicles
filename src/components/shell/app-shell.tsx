@@ -6,6 +6,7 @@ import {
   BookOpenTextIcon,
   BookmarkSimpleIcon,
   GearIcon,
+  HeartIcon,
   ListIcon,
   NotebookIcon,
   PaletteIcon,
@@ -16,6 +17,7 @@ import { Link } from "@src/components/primitives/link";
 import { Menu } from "@src/components/primitives/menu";
 import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
+import { LikesDrawer } from "@src/components/library/likes-drawer";
 import { NotesDrawer } from "@src/components/library/notes-drawer";
 import { SettingsDrawer } from "@src/components/library/settings-drawer";
 import { cn } from "@src/lib/cn";
@@ -26,6 +28,7 @@ export function AppShell() {
   const location = useLocation();
   const isHome = location.pathname === "/";
   const [continueOpen, setContinueOpen] = useState(false);
+  const [likesOpen, setLikesOpen] = useState(false);
   const [bookmarksOpen, setBookmarksOpen] = useState(false);
   const [notesOpen, setNotesOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
@@ -82,14 +85,6 @@ export function AppShell() {
               >
                 <BookmarkSimpleIcon weight="light" />
               </IconButton>
-              <IconButton
-                variant="ghost"
-                size="sm"
-                aria-label="Open notes"
-                onClick={() => setNotesOpen(true)}
-              >
-                <NotebookIcon weight="light" />
-              </IconButton>
               <Menu>
                 <Menu.Trigger
                   render={
@@ -101,6 +96,15 @@ export function AppShell() {
                 <Menu.Portal>
                   <Menu.Positioner align="end">
                     <Menu.Popup>
+                      <Menu.Item onClick={() => setNotesOpen(true)}>
+                        <NotebookIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                        Notes
+                      </Menu.Item>
+                      <Menu.Item onClick={() => setLikesOpen(true)}>
+                        <HeartIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                        Likes
+                      </Menu.Item>
+                      <Menu.Separator />
                       <Menu.Item onClick={() => setSettingsOpen(true)}>
                         <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                         Reader settings
@@ -168,6 +172,10 @@ export function AppShell() {
                       <NotebookIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                       Notes
                     </Menu.Item>
+                    <Menu.Item onClick={() => setLikesOpen(true)}>
+                      <HeartIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      Likes
+                    </Menu.Item>
                     <Menu.Separator />
                     <Menu.Item onClick={() => setSettingsOpen(true)}>
                       <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
@@ -214,6 +222,7 @@ export function AppShell() {
         </main>
       </ScrollArea>
       <ContinueReadingDrawer open={continueOpen} onOpenChange={setContinueOpen} />
+      <LikesDrawer open={likesOpen} onOpenChange={setLikesOpen} />
       <BookmarksDrawer open={bookmarksOpen} onOpenChange={setBookmarksOpen} />
       <NotesDrawer open={notesOpen} onOpenChange={setNotesOpen} />
       <SettingsDrawer open={settingsOpen} onOpenChange={setSettingsOpen} />

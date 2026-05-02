@@ -5,6 +5,7 @@ import { getCharacter } from "@src/data/characters";
 import type { Character } from "@src/data/characters";
 import { series } from "@src/data/library";
 import { CharacterPortrait } from "@src/components/library/character-portrait";
+import { ReactionButton } from "@src/components/library/reaction-button";
 
 export const Route = createFileRoute("/_app/characters/$characterId")({
   component: CharacterDetailPage,
@@ -35,7 +36,10 @@ function CharacterDetailPage() {
       <header className="mb-10 flex flex-col gap-8 md:grid md:grid-cols-[1fr_280px] md:items-start md:gap-10">
         <div className="flex flex-col gap-3">
           <span className="text-style-eyebrow text-fg-muted">{epithet ?? "Character"}</span>
-          <h1 className="text-style-display text-fg">{c.name}</h1>
+          <div className="flex items-start gap-3">
+            <h1 className="text-style-display text-fg flex-1">{c.name}</h1>
+            <ReactionButton targetType="character" targetId={c.id} label={c.name} size="md" />
+          </div>
           {c.japaneseName ? (
             <p className="text-style-lead text-fg-muted">{c.japaneseName}</p>
           ) : null}

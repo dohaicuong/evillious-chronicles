@@ -3,6 +3,7 @@ import { Link } from "@src/components/primitives/link";
 import { CaretLeftIcon } from "@phosphor-icons/react";
 import { series } from "@src/data/library";
 import { VolumeCard } from "@src/components/library/volume-card";
+import { ReactionButton } from "@src/components/library/reaction-button";
 import { SongList } from "@src/components/audio/song-list";
 import { Ornament } from "@src/components/thematic/ornament";
 
@@ -28,7 +29,10 @@ function SeriesPage() {
       </Link>
       <header className="mb-12 flex flex-col gap-3 max-w-2xl">
         <span className="text-style-eyebrow text-fg-muted">Series</span>
-        <h1 className="text-style-display text-fg">{s.title}</h1>
+        <div className="flex items-start gap-3">
+          <h1 className="text-style-display text-fg flex-1">{s.title}</h1>
+          <ReactionButton targetType="series" targetId={s.id} label={s.title} size="md" />
+        </div>
         <p className="text-style-lead text-fg-muted">{s.description}</p>
       </header>
       <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">

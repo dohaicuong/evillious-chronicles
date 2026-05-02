@@ -1,6 +1,7 @@
 import { Link } from "@src/components/primitives/link";
 import { Card } from "@src/components/primitives/card";
 import { Badge } from "@src/components/primitives/badge";
+import { ReactionButton } from "@src/components/library/reaction-button";
 import { SinGlyph } from "@src/components/thematic/sin-glyph";
 import { isVolumeAvailable } from "@src/data/volumes";
 import type { Series, Sin } from "@src/data/library";
@@ -24,42 +25,50 @@ export function SeriesCard({ series }: { series: Series }) {
   }
 
   return (
-    <Link
-      to="/library/$seriesId"
-      params={{ seriesId: series.id }}
-      className="block rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
-    >
-      <Card variant="interactive">
-        <Card.Header>
-          <Card.Title>{series.title}</Card.Title>
-          {stats.length > 0 ? <Card.Description>{stats.join(" · ")}</Card.Description> : null}
-        </Card.Header>
-        <Card.Body>
-          <p className="line-clamp-3 text-fg-muted">{series.description}</p>
-        </Card.Body>
-        <Card.Footer>
-          <div className="flex flex-wrap gap-1.5">
-            {sins.length > 0 ? (
-              sins.map((sin) => (
-                <span key={sin} data-sin={sin}>
-                  <Badge
-                    variant="soft"
-                    size="sm"
-                    className="capitalize"
-                    icon={<SinGlyph sin={sin} weight="light" />}
-                  >
-                    {sin}
-                  </Badge>
-                </span>
-              ))
-            ) : (
-              <Badge variant="outline" size="sm">
-                Lore
-              </Badge>
-            )}
-          </div>
-        </Card.Footer>
-      </Card>
-    </Link>
+    <div className="relative h-full">
+      <Link
+        to="/library/$seriesId"
+        params={{ seriesId: series.id }}
+        className="block h-full"
+      >
+        <Card variant="interactive">
+          <Card.Header>
+            <Card.Title className="pr-10">{series.title}</Card.Title>
+            {stats.length > 0 ? <Card.Description>{stats.join(" · ")}</Card.Description> : null}
+          </Card.Header>
+          <Card.Body>
+            <p className="line-clamp-3 text-fg-muted">{series.description}</p>
+          </Card.Body>
+          <Card.Footer>
+            <div className="flex flex-wrap gap-1.5">
+              {sins.length > 0 ? (
+                sins.map((sin) => (
+                  <span key={sin} data-sin={sin}>
+                    <Badge
+                      variant="soft"
+                      size="sm"
+                      className="capitalize"
+                      icon={<SinGlyph sin={sin} weight="light" />}
+                    >
+                      {sin}
+                    </Badge>
+                  </span>
+                ))
+              ) : (
+                <Badge variant="outline" size="sm">
+                  Lore
+                </Badge>
+              )}
+            </div>
+          </Card.Footer>
+        </Card>
+      </Link>
+      <ReactionButton
+        targetType="series"
+        targetId={series.id}
+        label={series.title}
+        className="absolute right-2 top-2"
+      />
+    </div>
   );
 }
