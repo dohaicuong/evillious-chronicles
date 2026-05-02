@@ -1,10 +1,15 @@
 import { Link } from "@tanstack/react-router";
-import { XIcon } from "@phosphor-icons/react";
+import { DotsThreeVerticalIcon, XIcon } from "@phosphor-icons/react";
 import { Drawer } from "@src/components/primitives/drawer";
 import { IconButton } from "@src/components/primitives/icon-button";
+import { Menu } from "@src/components/primitives/menu";
 import { Progress } from "@src/components/primitives/progress";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
-import { useInProgressVolumes, type VolumeInProgress } from "@src/lib/progress";
+import {
+  resetVolumeProgress,
+  useInProgressVolumes,
+  type VolumeInProgress,
+} from "@src/lib/progress";
 
 export function ContinueReadingDrawer({
   open,
@@ -57,7 +62,10 @@ export function ContinueReadingDrawer({
 
 function VolumeRow({ volume, onNavigate }: { volume: VolumeInProgress; onNavigate: () => void }) {
   return (
-    <li data-sin={volume.sin ?? undefined} className="border-b border-border last:border-b-0 py-2">
+    <li
+      data-sin={volume.sin ?? undefined}
+      className="flex items-center gap-1 border-b border-border last:border-b-0 py-2"
+    >
       <Link
         to="/library/$seriesId/$volumeId/$chapterId/$pageNumber"
         params={{
@@ -67,7 +75,7 @@ function VolumeRow({ volume, onNavigate }: { volume: VolumeInProgress; onNavigat
           pageNumber: String(volume.resumePageNumber ?? 1),
         }}
         onClick={onNavigate}
-        className="flex flex-col gap-2 rounded-sm hover:bg-accent-soft -mx-2 px-2 py-2 transition-colors"
+        className="flex flex-1 flex-col gap-2 rounded-sm hover:bg-accent-soft -ml-2 px-2 py-2 transition-colors"
       >
         <div className="flex items-baseline justify-between gap-3">
           <div className="flex flex-col gap-0.5 min-w-0 flex-1">
@@ -82,6 +90,28 @@ function VolumeRow({ volume, onNavigate }: { volume: VolumeInProgress; onNavigat
         </div>
         <Progress value={volume.percent} aria-label={`${volume.volumeTitle} progress`} />
       </Link>
+      <Menu>
+        <Menu.Trigger
+          render={
+            <IconButton
+              size="sm"
+              variant="ghost"
+              aria-label={`Actions for ${volume.volumeTitle}`}
+            >
+              <DotsThreeVerticalIcon weight="bold" />
+            </IconButton>
+          }
+        />
+        <Menu.Portal>
+          <Menu.Positioner align="end">
+            <Menu.Popup>
+              <Menu.Item onClick={() => void resetVolumeProgress(volume.chapterIds)}>
+                Reset progress
+              </Menu.Item>
+            </Menu.Popup>
+          </Menu.Positioner>
+        </Menu.Portal>
+      </Menu>
     </li>
   );
 }

@@ -38,7 +38,7 @@ function Item({ className, ...props }: ComponentProps<typeof BaseMenu.Item>) {
   return (
     <BaseMenu.Item
       className={cn(
-        "text-sm text-fg",
+        "block text-sm text-fg",
         "px-3 py-1.5 rounded-sm",
         "cursor-pointer select-none outline-none",
         "transition-colors duration-100",

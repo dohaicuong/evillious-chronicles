@@ -7,10 +7,8 @@ import {
   BookmarkSimpleIcon,
   GearIcon,
   ListIcon,
-  MoonIcon,
   NotebookIcon,
   PaletteIcon,
-  SunIcon,
 } from "@phosphor-icons/react";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
 import { IconButton } from "@src/components/primitives/icon-button";
@@ -19,7 +17,6 @@ import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
 import { NotesDrawer } from "@src/components/library/notes-drawer";
 import { SettingsDrawer } from "@src/components/library/settings-drawer";
-import { useTheme } from "@src/lib/theme";
 import { cn } from "@src/lib/cn";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -31,8 +28,6 @@ export function AppShell() {
   const [bookmarksOpen, setBookmarksOpen] = useState(false);
   const [notesOpen, setNotesOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
-  const { resolvedTheme, setTheme } = useTheme();
-  const isDark = resolvedTheme === "dark";
 
   // Reset scroll on route change — the ScrollArea's own viewport scrolls,
   // not the document, so the router's default scroll restoration won't apply.
@@ -68,16 +63,8 @@ export function AppShell() {
             <span className="text-fg">Evillious</span>
             <span className="text-fg-muted">Chronicles</span>
           </Link>
-          <nav className="flex items-center">
+          <nav className="flex items-center gap-4">
             <div className="hidden sm:flex items-center gap-4">
-              <IconButton
-                variant="ghost"
-                size="sm"
-                aria-label="Component library"
-                render={<Link to="/components" />}
-              >
-                <PaletteIcon weight="light" />
-              </IconButton>
               <IconButton
                 variant="ghost"
                 size="sm"
@@ -102,37 +89,52 @@ export function AppShell() {
               >
                 <NotebookIcon weight="light" />
               </IconButton>
-              <IconButton
-                variant="ghost"
-                size="sm"
-                aria-label="Reader settings"
-                onClick={() => setSettingsOpen(true)}
-              >
-                <GearIcon weight="light" />
-              </IconButton>
-              <IconButton
-                variant="ghost"
-                size="sm"
-                aria-label="Reload for updates"
-                onClick={hardReload}
-              >
-                <ArrowClockwiseIcon weight="light" />
-              </IconButton>
-              <IconButton
-                variant="ghost"
-                size="sm"
-                aria-label="Open Evillious Chronicles wiki in a new tab"
-                render={
-                  <a
-                    href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  />
-                }
-              >
-                <ArrowSquareOutIcon weight="light" />
-              </IconButton>
-              <ThemeToggle />
+              <Menu>
+                <Menu.Trigger
+                  render={
+                    <IconButton variant="ghost" size="sm" aria-label="More options">
+                      <ListIcon weight="light" />
+                    </IconButton>
+                  }
+                />
+                <Menu.Portal>
+                  <Menu.Positioner align="end">
+                    <Menu.Popup>
+                      <Menu.Item onClick={() => setSettingsOpen(true)}>
+                        <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                        Reader settings
+                      </Menu.Item>
+                      <Menu.Item
+                        render={
+                          <a
+                            href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                          />
+                        }
+                      >
+                        <ArrowSquareOutIcon
+                          weight="light"
+                          className="inline-block mr-2 align-[-2px]"
+                        />
+                        Evillious Chronicles wiki
+                      </Menu.Item>
+                      <Menu.Separator />
+                      <Menu.Item onClick={hardReload}>
+                        <ArrowClockwiseIcon
+                          weight="light"
+                          className="inline-block mr-2 align-[-2px]"
+                        />
+                        Reload for updates
+                      </Menu.Item>
+                      <Menu.Item render={<Link to="/components" />}>
+                        <PaletteIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                        Component library
+                      </Menu.Item>
+                    </Menu.Popup>
+                  </Menu.Positioner>
+                </Menu.Portal>
+              </Menu>
             </div>
             <Menu>
               <Menu.Trigger
@@ -150,10 +152,6 @@ export function AppShell() {
               <Menu.Portal>
                 <Menu.Positioner align="end">
                   <Menu.Popup>
-                    <Menu.Item render={<Link to="/components" />}>
-                      <PaletteIcon weight="light" className="inline-block mr-2 align-[-2px]" />
-                      Component library
-                    </Menu.Item>
                     <Menu.Item onClick={() => setContinueOpen(true)}>
                       <BookOpenTextIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                       Continue reading
@@ -169,16 +167,10 @@ export function AppShell() {
                       <NotebookIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                       Notes
                     </Menu.Item>
+                    <Menu.Separator />
                     <Menu.Item onClick={() => setSettingsOpen(true)}>
                       <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                       Reader settings
-                    </Menu.Item>
-                    <Menu.Item onClick={hardReload}>
-                      <ArrowClockwiseIcon
-                        weight="light"
-                        className="inline-block mr-2 align-[-2px]"
-                      />
-                      Reload for updates
                     </Menu.Item>
                     <Menu.Item
                       render={
@@ -196,18 +188,22 @@ export function AppShell() {
                       Evillious Chronicles wiki
                     </Menu.Item>
                     <Menu.Separator />
-                    <Menu.Item onClick={() => setTheme(isDark ? "light" : "dark")}>
-                      {isDark ? (
-                        <SunIcon weight="light" className="inline-block mr-2 align-[-2px]" />
-                      ) : (
-                        <MoonIcon weight="light" className="inline-block mr-2 align-[-2px]" />
-                      )}
-                      {isDark ? "Switch to light theme" : "Switch to dark theme"}
+                    <Menu.Item onClick={hardReload}>
+                      <ArrowClockwiseIcon
+                        weight="light"
+                        className="inline-block mr-2 align-[-2px]"
+                      />
+                      Reload for updates
+                    </Menu.Item>
+                    <Menu.Item render={<Link to="/components" />}>
+                      <PaletteIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      Component library
                     </Menu.Item>
                   </Menu.Popup>
                 </Menu.Positioner>
               </Menu.Portal>
             </Menu>
+            <ThemeToggle />
           </nav>
         </div>
       </header>

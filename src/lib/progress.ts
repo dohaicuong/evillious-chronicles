@@ -116,6 +116,8 @@ export type VolumeInProgress = {
   pagesRead: number;
   percent: number;
   lastReadAt: number;
+  // Chapter ids in the volume — used to wipe progress for the entire volume.
+  chapterIds: string[];
   // "Continue reading" deep-link target: most recently read incomplete chapter,
   // or first untouched chapter if everything touched is complete.
   resumeChapterId: string;
@@ -191,6 +193,7 @@ export function useInProgressVolumes(): VolumeInProgress[] {
         pagesRead: v.pagesRead,
         percent,
         lastReadAt: v.lastReadAt,
+        chapterIds: v.volume.chapters.map((c) => c.id),
         resumeChapterId: target.chapterId,
         resumePageNumber: target.pageNumber,
       });
