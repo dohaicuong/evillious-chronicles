@@ -61,6 +61,8 @@ const primitivesGroup: NavGroupConfig = {
     { to: "/components/pagination", label: "Pagination" },
     { to: "/components/skeleton", label: "Skeleton" },
     { to: "/components/scroll-area", label: "Scroll Area" },
+    { to: "/components/qr-code", label: "QR Code" },
+    { to: "/components/qr-scanner", label: "QR Scanner" },
   ],
 };
 

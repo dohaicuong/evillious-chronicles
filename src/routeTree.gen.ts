@@ -41,6 +41,10 @@ const ComponentsSkeletonLazyRouteImport = createFileRoute(
 const ComponentsScrollAreaLazyRouteImport = createFileRoute(
   '/components/scroll-area',
 )()
+const ComponentsQrScannerLazyRouteImport = createFileRoute(
+  '/components/qr-scanner',
+)()
+const ComponentsQrCodeLazyRouteImport = createFileRoute('/components/qr-code')()
 const ComponentsProgressLazyRouteImport = createFileRoute(
   '/components/progress',
 )()
@@ -163,6 +167,20 @@ const ComponentsScrollAreaLazyRoute =
   } as any).lazy(() =>
     import('./routes/components/scroll-area.lazy').then((d) => d.Route),
   )
+const ComponentsQrScannerLazyRoute = ComponentsQrScannerLazyRouteImport.update({
+  id: '/qr-scanner',
+  path: '/qr-scanner',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any).lazy(() =>
+  import('./routes/components/qr-scanner.lazy').then((d) => d.Route),
+)
+const ComponentsQrCodeLazyRoute = ComponentsQrCodeLazyRouteImport.update({
+  id: '/qr-code',
+  path: '/qr-code',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any).lazy(() =>
+  import('./routes/components/qr-code.lazy').then((d) => d.Route),
+)
 const ComponentsProgressLazyRoute = ComponentsProgressLazyRouteImport.update({
   id: '/progress',
   path: '/progress',
@@ -400,6 +418,8 @@ export interface FileRoutesByFullPath {
   '/components/menu': typeof ComponentsMenuLazyRoute
   '/components/pagination': typeof ComponentsPaginationLazyRoute
   '/components/progress': typeof ComponentsProgressLazyRoute
+  '/components/qr-code': typeof ComponentsQrCodeLazyRoute
+  '/components/qr-scanner': typeof ComponentsQrScannerLazyRoute
   '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
   '/components/skeleton': typeof ComponentsSkeletonLazyRoute
   '/components/slider': typeof ComponentsSliderLazyRoute
@@ -442,6 +462,8 @@ export interface FileRoutesByTo {
   '/components/menu': typeof ComponentsMenuLazyRoute
   '/components/pagination': typeof ComponentsPaginationLazyRoute
   '/components/progress': typeof ComponentsProgressLazyRoute
+  '/components/qr-code': typeof ComponentsQrCodeLazyRoute
+  '/components/qr-scanner': typeof ComponentsQrScannerLazyRoute
   '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
   '/components/skeleton': typeof ComponentsSkeletonLazyRoute
   '/components/slider': typeof ComponentsSliderLazyRoute
@@ -488,6 +510,8 @@ export interface FileRoutesById {
   '/components/menu': typeof ComponentsMenuLazyRoute
   '/components/pagination': typeof ComponentsPaginationLazyRoute
   '/components/progress': typeof ComponentsProgressLazyRoute
+  '/components/qr-code': typeof ComponentsQrCodeLazyRoute
+  '/components/qr-scanner': typeof ComponentsQrScannerLazyRoute
   '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
   '/components/skeleton': typeof ComponentsSkeletonLazyRoute
   '/components/slider': typeof ComponentsSliderLazyRoute
@@ -535,6 +559,8 @@ export interface FileRouteTypes {
     | '/components/menu'
     | '/components/pagination'
     | '/components/progress'
+    | '/components/qr-code'
+    | '/components/qr-scanner'
     | '/components/scroll-area'
     | '/components/skeleton'
     | '/components/slider'
@@ -577,6 +603,8 @@ export interface FileRouteTypes {
     | '/components/menu'
     | '/components/pagination'
     | '/components/progress'
+    | '/components/qr-code'
+    | '/components/qr-scanner'
     | '/components/scroll-area'
     | '/components/skeleton'
     | '/components/slider'
@@ -622,6 +650,8 @@ export interface FileRouteTypes {
     | '/components/menu'
     | '/components/pagination'
     | '/components/progress'
+    | '/components/qr-code'
+    | '/components/qr-scanner'
     | '/components/scroll-area'
     | '/components/skeleton'
     | '/components/slider'
@@ -737,6 +767,20 @@ declare module '@tanstack/react-router' {
       path: '/scroll-area'
       fullPath: '/components/scroll-area'
       preLoaderRoute: typeof ComponentsScrollAreaLazyRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/qr-scanner': {
+      id: '/components/qr-scanner'
+      path: '/qr-scanner'
+      fullPath: '/components/qr-scanner'
+      preLoaderRoute: typeof ComponentsQrScannerLazyRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/qr-code': {
+      id: '/components/qr-code'
+      path: '/qr-code'
+      fullPath: '/components/qr-code'
+      preLoaderRoute: typeof ComponentsQrCodeLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/progress': {
@@ -1033,6 +1077,8 @@ interface ComponentsRouteRouteChildren {
   ComponentsMenuLazyRoute: typeof ComponentsMenuLazyRoute
   ComponentsPaginationLazyRoute: typeof ComponentsPaginationLazyRoute
   ComponentsProgressLazyRoute: typeof ComponentsProgressLazyRoute
+  ComponentsQrCodeLazyRoute: typeof ComponentsQrCodeLazyRoute
+  ComponentsQrScannerLazyRoute: typeof ComponentsQrScannerLazyRoute
   ComponentsScrollAreaLazyRoute: typeof ComponentsScrollAreaLazyRoute
   ComponentsSkeletonLazyRoute: typeof ComponentsSkeletonLazyRoute
   ComponentsSliderLazyRoute: typeof ComponentsSliderLazyRoute
@@ -1062,6 +1108,8 @@ const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsMenuLazyRoute: ComponentsMenuLazyRoute,
   ComponentsPaginationLazyRoute: ComponentsPaginationLazyRoute,
   ComponentsProgressLazyRoute: ComponentsProgressLazyRoute,
+  ComponentsQrCodeLazyRoute: ComponentsQrCodeLazyRoute,
+  ComponentsQrScannerLazyRoute: ComponentsQrScannerLazyRoute,
   ComponentsScrollAreaLazyRoute: ComponentsScrollAreaLazyRoute,
   ComponentsSkeletonLazyRoute: ComponentsSkeletonLazyRoute,
   ComponentsSliderLazyRoute: ComponentsSliderLazyRoute,

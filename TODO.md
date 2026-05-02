@@ -35,10 +35,6 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - **Search** — title-only across volumes / chapters / notes / bookmarks; library-page search box.
 - **Keyboard shortcuts** in the reader (`b` bookmark, `n` note, `g` settings, `?` cheatsheet); global discovery dialog.
 
-### Data hygiene
-
-- **Export / import** — one JSON file from the three Dexie tables (`chapterProgress`, `bookmarks`, `notes`). Cheap insurance against site-data clears.
-
 ### Future: TanStack DB
 
 - Worth considering if we ever add a sync server (multi-device reading, cross-device bookmark sync). Has a Dexie-backed collection adapter, so the migration would be mechanical. Skip for now — local-only personal reader doesn't benefit from the sync engine.
@@ -62,3 +58,8 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - ✅ Continue Reading on home page — top-3 in-progress cards above "Open Library", deep-link to last chapter / page (sin-tinted progress bar)
 - ✅ Next-chapter CTA — large card at the end of a chapter above the existing `ChapterNav` (only renders when there's a next chapter)
 - ✅ Per-chapter annotation chips — small bookmark/note count chips next to each chapter on the volume page (one Dexie query at the list level, hidden on mobile to keep the row compact)
+- ✅ Offline reading — per-volume download with progress, force-resync to bypass stale SW cache, online/offline detection. Writes the `ec-chapters` cache directly so it works in dev without an active SW.
+- ✅ Backup & restore — versioned JSON export covering all four Dexie tables + reader settings; import via paste or QR scan with newest-wins merge. `QRCode` and `QRScanner` shipped as reusable primitives with demo pages.
+- ✅ Volume detail over-fetch fix — `VolumeBundle` split into `meta()` (sync, manifest-only) and `chapter(id)` (one chapter's worth of fetches). Volume page entry costs zero `.md` fetches now; reader fetches one chapter at a time.
+- ✅ Chapter manifest as runtime JSON — replaced the build-time virtual module with a `chapter-manifest.json` served by middleware in dev / emitted into `dist/` for prod, fetched once at boot. Adding chapter `.md` files no longer requires a JS rebuild.
+- ✅ Lighthouse CI — `treosh/lighthouse-ci-action@v12` workflow on PRs and pushes to master, accessibility threshold at 0.95 (error), perf/SEO/best-practices at warn level.

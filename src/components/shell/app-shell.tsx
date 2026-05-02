@@ -6,6 +6,7 @@ import {
   BookOpenTextIcon,
   BookmarkSimpleIcon,
   CloudArrowDownIcon,
+  DatabaseIcon,
   GearIcon,
   HeartIcon,
   ListIcon,
@@ -18,6 +19,7 @@ import { ExternalLink, Link } from "@src/components/primitives/link";
 import { Menu } from "@src/components/primitives/menu";
 import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
+import { DataDrawer } from "@src/components/library/data-drawer";
 import { LikesDrawer } from "@src/components/library/likes-drawer";
 import { NotesDrawer } from "@src/components/library/notes-drawer";
 import { OfflineDrawer } from "@src/components/library/offline-drawer";
@@ -35,6 +37,7 @@ export function AppShell() {
   const [bookmarksOpen, setBookmarksOpen] = useState(false);
   const [notesOpen, setNotesOpen] = useState(false);
   const [offlineOpen, setOfflineOpen] = useState(false);
+  const [dataOpen, setDataOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   // Reset scroll on route change — the ScrollArea's own viewport scrolls,
@@ -135,6 +138,10 @@ export function AppShell() {
                           className="inline-block mr-2 align-[-2px]"
                         />
                         Offline reading
+                      </Menu.Item>
+                      <Menu.Item onClick={() => setDataOpen(true)}>
+                        <DatabaseIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                        Backup &amp; restore
                       </Menu.Item>
                       <Menu.Item onClick={() => setSettingsOpen(true)}>
                         <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
@@ -264,6 +271,7 @@ export function AppShell() {
       <BookmarksDrawer open={bookmarksOpen} onOpenChange={setBookmarksOpen} />
       <NotesDrawer open={notesOpen} onOpenChange={setNotesOpen} />
       <OfflineDrawer open={offlineOpen} onOpenChange={setOfflineOpen} />
+      <DataDrawer open={dataOpen} onOpenChange={setDataOpen} />
       <SettingsDrawer open={settingsOpen} onOpenChange={setSettingsOpen} />
     </div>
   );
