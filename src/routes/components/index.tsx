@@ -1,117 +1,8 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
 
 export const Route = createFileRoute("/components/")({
   component: ComponentsOverview,
 });
-
-const components = [
-  {
-    to: "/components/typography",
-    name: "Typography",
-    description: "10 type styles — display, headings, body, lead, quote, caption, eyebrow.",
-  },
-  {
-    to: "/components/icon",
-    name: "Icon",
-    description:
-      "Phosphor Icons in 6 weights. Light is the default, paired with the antique typography.",
-  },
-  {
-    to: "/components/button",
-    name: "Button",
-    description: "Primary, secondary, outline, and ghost variants. Themes per sin.",
-  },
-  {
-    to: "/components/icon-button",
-    name: "Icon Button",
-    description: "Icon-only square sibling of Button. Same variants, required aria-label.",
-  },
-  {
-    to: "/components/badge",
-    name: "Badge",
-    description: "Small pill for sin tags, status, metadata. Solid, soft, outline variants.",
-  },
-  {
-    to: "/components/card",
-    name: "Card",
-    description: "Surface container with header, body, footer. Flat or interactive.",
-  },
-  {
-    to: "/components/input",
-    name: "Input",
-    description: "Text field with optional left/right icon. Sizes, invalid, disabled states.",
-  },
-  {
-    to: "/components/dialog",
-    name: "Dialog",
-    description: "Centered modal for confirms and alerts. Backdrop, fade-and-scale entry.",
-  },
-  {
-    to: "/components/drawer",
-    name: "Drawer",
-    description: "Side panel from left or right. For settings, bookmarks, notes.",
-  },
-  {
-    to: "/components/menu",
-    name: "Menu",
-    description: "Dropdown menu with items, groups, separators. Keyboard navigable.",
-  },
-  {
-    to: "/components/tabs",
-    name: "Tabs",
-    description: "Switch between panels. Animated indicator follows the active tab.",
-  },
-  {
-    to: "/components/tooltip",
-    name: "Tooltip",
-    description: "Hover hint for icon-only controls. Court-dark popup on parchment.",
-  },
-  {
-    to: "/components/toast",
-    name: "Toast",
-    description: "Transient notifications. Info, success, error variants with action.",
-  },
-  {
-    to: "/components/slider",
-    name: "Slider",
-    description: "Single-thumb range input. For font size and audio scrubbing.",
-  },
-  {
-    to: "/components/switch",
-    name: "Switch",
-    description: "Toggle for binary preferences. Track fills with sin accent when on.",
-  },
-  {
-    to: "/components/progress",
-    name: "Progress",
-    description: "Linear progress bar. Determinate and indeterminate. Three sizes.",
-  },
-  {
-    to: "/components/pagination",
-    name: "Pagination",
-    description: "Numbered page navigation with prev/next carets and ellipses for large ranges.",
-  },
-  {
-    to: "/components/skeleton",
-    name: "Skeleton",
-    description: "Loading placeholder. Rect, text (multi-line), and circle variants.",
-  },
-  {
-    to: "/components/scroll-area",
-    name: "Scroll Area",
-    description: "Themed scrollbars that auto-reveal on hover or while scrolling. Both axes.",
-  },
-  {
-    to: "/components/audio",
-    name: "Audio",
-    description: "Persistent audio dock for YouTube + native audio. Triggered via useAudio().",
-  },
-  {
-    to: "/components/thematic",
-    name: "Thematic",
-    description: "Sin glyphs, clockwork spinner, ornamental dividers — chronicle flourishes.",
-  },
-] as const;
 
 function ComponentsOverview() {
   return (
@@ -119,24 +10,81 @@ function ComponentsOverview() {
       <header>
         <h1 className="text-style-heading-1 text-fg">Component Library</h1>
         <p className="text-style-lead mt-2 text-fg-muted">
-          Building blocks for the Evillious reader
+          A reader's gothic-storybook system: parchment and aged leather, candle gold against
+          court ink, and a per-sin accent that paints whole subtrees in the colour of their
+          curse.
         </p>
       </header>
 
-      <section className="flex flex-col gap-2">
-        <h2 className="text-style-eyebrow text-fg-muted mb-2">Catalog</h2>
-        {components.map((c) => (
-          <Link
-            key={c.to}
-            to={c.to}
-            className="group flex flex-col gap-1 border-t border-border py-5 hover:bg-accent-soft transition-colors -mx-3 px-3"
-          >
-            <span className="text-style-heading-3 text-fg group-hover:text-accent transition-colors">
-              {c.name}
-            </span>
-            <span className="text-style-caption text-fg-muted">{c.description}</span>
-          </Link>
-        ))}
+      <section className="flex flex-col gap-3">
+        <h2 className="text-style-heading-3 text-fg">Two parchments</h2>
+        <p className="text-style-body text-fg-muted">
+          The system ships with two themes that swap entirely via{" "}
+          <code>[data-theme]</code> on the document root. The light theme is{" "}
+          <em>parchment</em> — pale leaf with ink-violet text, a leaf for daylight reading. The
+          dark theme is <em>aged leather</em> — warm brown with a bone foreground, the inside of
+          a well-worn pocket-watch case. Both share the same candle-gold accent so the brand
+          stays anchored across the swap.
+        </p>
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <h2 className="text-style-heading-3 text-fg">Sin-tinted accents</h2>
+        <p className="text-style-body text-fg-muted">
+          Drop <code>data-sin="pride"</code> on any wrapper and every descendant's{" "}
+          <code>--accent</code> shifts to that sin's hue — Pride's yellow-olive, Lust's purple,
+          Sloth's dark teal, Gluttony's red, Greed's deep blue, Wrath's olive, Envy's magenta,
+          and the seafoam <em>origin</em> for Eve's arc. The cascade does the rest: badges,
+          progress bars, hover states, focus rings — all paint themselves the local colour.
+          Volumes, chapters, and series each carry the right <code>data-sin</code>, so the
+          chronicle re-skins itself as the reader walks through it.
+        </p>
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <h2 className="text-style-heading-3 text-fg">Semantic tokens</h2>
+        <p className="text-style-body text-fg-muted">
+          Components reach for <code>bg</code>, <code>surface</code>, <code>fg</code>,{" "}
+          <code>fg-muted</code>, <code>border</code>, and the <code>accent</code> family —
+          never raw palette names. Each token is a CSS variable resolved at the using element,
+          so a sin or theme change at any ancestor flows down without recomputation. Derived
+          shades (<code>accent-soft</code>, <code>accent-hover</code>,{" "}
+          <code>accent-active</code>, <code>accent-strong</code>) are mixed at runtime via{" "}
+          <code>color-mix</code>, which means hover automatically darkens the light sins and
+          lightens the dark ones.
+        </p>
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <h2 className="text-style-heading-3 text-fg">Typography</h2>
+        <p className="text-style-body text-fg-muted">
+          Four type families do most of the work. <em>Marcellus SC</em> handles display
+          headings — small caps with the slight pinch of an antique playbill. <em>EB Garamond</em>{" "}
+          carries body text and the italic <em>lead</em> paragraphs that introduce a section,
+          where lining figures and old-style ligatures make prose feel printed rather than
+          rendered. <em>IM Fell English SC</em> takes the largest hero-level display where the
+          rougher inked edges read as letterpress. <em>Pirata One</em> appears only in
+          accents — a fleuron between sections, the glyph in an ornament — sized just enough to
+          mark the page break without competing with the text. <em>Inter</em> covers captions
+          and small UI metadata where Garamond's serifs would crowd the line.
+        </p>
+        <p className="text-style-body text-fg-muted">
+          Sizes are fluid via <code>clamp()</code> from display down through heading-3 and lead,
+          so a chapter title scales naturally between phone and desktop without a stack of
+          breakpoints. Letter-spacing widens with size, mimicking the way old type would
+          air-out when set in larger fonts.
+        </p>
+      </section>
+
+      <section className="flex flex-col gap-3">
+        <h2 className="text-style-heading-3 text-fg">Reader-controlled prose</h2>
+        <p className="text-style-body text-fg-muted">
+          The chapter reader exposes its own font-size and line-height as CSS variables (
+          <code>--reader-font-size</code>, <code>--reader-line-height</code>) consumed by the{" "}
+          <code>text-style-reader-prose</code> utility. The Reader Settings drawer writes
+          straight into those variables so the sliders only affect prose — never the
+          surrounding UI — and changes apply instantly without re-render gymnastics.
+        </p>
       </section>
     </div>
   );

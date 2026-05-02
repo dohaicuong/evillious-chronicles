@@ -59,7 +59,10 @@ export function AppShell() {
     <div className="h-screen flex flex-col bg-bg">
       <header className={cn("shrink-0", !isHome && "border-b border-border")}>
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between gap-6">
-          <Link to="/" className="flex items-baseline gap-1.5 font-display tracking-wide text-2xl">
+          <Link
+            to="/"
+            className="flex items-baseline gap-1.5 font-display tracking-wide text-2xl focus-visible:outline-none focus-visible:underline focus-visible:decoration-fg focus-visible:underline-offset-4"
+          >
             <span className="text-fg">Evillious</span>
             <span className="text-fg-muted">Chronicles</span>
           </Link>

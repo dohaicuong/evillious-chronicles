@@ -3,6 +3,7 @@ import { Button } from "@src/components/primitives/button";
 import { ContinueReadingRow } from "@src/components/library/continue-reading-row";
 import { ClockFace } from "@src/components/thematic/clock-face";
 import { ClockworkOrnament } from "@src/components/thematic/clockwork-ornament";
+import { Vines } from "@src/components/thematic/vines";
 
 export const Route = createFileRoute("/_app/")({
   component: Home,
@@ -42,9 +43,11 @@ function Home() {
       </p>
 
       <div className="flex flex-wrap items-center justify-center gap-3 mt-4">
-        <Button variant="primary" render={<Link to="/library" />}>
-          Open Library
-        </Button>
+        <Vines>
+          <Button variant="primary" render={<Link to="/library" />}>
+            Open Library
+          </Button>
+        </Vines>
       </div>
 
       <ContinueReadingRow />

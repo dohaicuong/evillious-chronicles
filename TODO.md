@@ -2,10 +2,9 @@
 
 ## TOP PRIORITY
 
-    1. afterword not showing any where?
-    2. make the card list in series page height the same when in same line
-
 ## Pending
+
+- reaction feature(like) for novel, song and character
 
 ### Reader / content
 
@@ -15,7 +14,7 @@
 
 Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefacio sources. Use the existing pipeline (curl directory → parse posts → assemble chapter markdowns → fixture + loader + library entry). Drop cover/illustrations into the matching `public/<slug>/` when available.
 
-- **The Lunacy of Duke Venomania** — https://pokkoo-shuu.tumblr.com/thelunacyofdukevenomania
+- ✅ **The Lunacy of Duke Venomania** — https://pokkoo-shuu.tumblr.com/thelunacyofdukevenomania
 - **Evil Food Eater Conchita** — https://theevilfoodeaterconchita.tumblr.com/post/729399445695889408/directory
 - **Gift from the Princess Who Brought Sleep** — https://giftfromthesleepprincess.tumblr.com/post/729399840750125056/directory
 - **Fifth Pierrot** — https://thefifthclown.tumblr.com/directory
@@ -47,9 +46,6 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - **Export / import** — one JSON file from the three Dexie tables (`chapterProgress`, `bookmarks`, `notes`). Cheap insurance against site-data clears.
 
 ### Artistic touch-ups
-
-- **Home page** — old leather-bound book cover (texture, embossed title, raised hub bands via SVG).
-- **Reader pages** — old rotten paper feel (paper grain, yellowing/foxing, vignette). Watch the dark-mode palette interaction.
 
 ### Future: TanStack DB
 
