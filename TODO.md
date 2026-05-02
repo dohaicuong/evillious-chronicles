@@ -10,7 +10,7 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 
 - ✅ **The Lunacy of Duke Venomania** — https://pokkoo-shuu.tumblr.com/thelunacyofdukevenomania
 - **Evil Food Eater Conchita** — https://theevilfoodeaterconchita.tumblr.com/post/729399445695889408/directory
-- **Gift from the Princess Who Brought Sleep** — https://giftfromthesleepprincess.tumblr.com/post/729399840750125056/directory
+- ✅ **Gift from the Princess Who Brought Sleep** — https://giftfromthesleepprincess.tumblr.com/post/729399840750125056/directory
 - **Fifth Pierrot** — https://thefifthclown.tumblr.com/directory
 - **The Tailor of Enbizaka** — https://thetailorofenbizaka.tumblr.com/directory
 - **Judgment of Corruption** — https://judgmentofcorruption.tumblr.com/directory
@@ -19,7 +19,7 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 
 ### Translation sources to wire up (Original Sin Story novels)
 
-- **Original Sin Story: Crime** — https://oss-crime.tumblr.com/directory
+- ✅ **Original Sin Story: Crime** — https://oss-crime.tumblr.com/directory
 - **Original Sin Story: Punishment** — https://oss-punishment.tumblr.com/directory
 
 ### Notes

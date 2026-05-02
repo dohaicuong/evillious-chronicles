@@ -2,6 +2,7 @@ import type { SlimChapter, SlimVolume } from "@app/library/-volumes/_shared";
 import type { Sin } from "@src/lib/schema";
 import { clotureOfYellow } from "@app/library/-volumes/cloture-of-yellow";
 import { praefacioOfBlue } from "@app/library/-volumes/praefacio-of-blue";
+import { ossCrime } from "@app/library/-volumes/oss-crime";
 import { praeludiumOfRed } from "@app/library/-volumes/praeludium-of-red";
 import { princessSleep } from "@app/library/-volumes/princess-sleep";
 import { venomania } from "@app/library/-volumes/venomania";
@@ -183,19 +184,7 @@ export const series: Series[] = [
       "chrono-story",
     ],
     volumes: [
-      {
-        id: "oss-crime",
-        number: 1,
-        title: "Original Sin Story: Crime",
-        sin: "origin",
-        chapters: makeChapters("ossc", [
-          "Eve and Adam",
-          "Held's Forest",
-          "The Apple Falls",
-          "The Twins' Pact",
-          "A Sin Unspoken",
-        ]),
-      },
+      ossCrime.slim,
       {
         id: "oss-punishment",
         number: 2,
