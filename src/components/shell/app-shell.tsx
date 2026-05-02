@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "@tanstack/react-router";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import {
   ArrowClockwiseIcon,
   ArrowSquareOutIcon,
@@ -9,6 +9,7 @@ import {
   GearIcon,
   HeartIcon,
   ListIcon,
+  MagnifyingGlassIcon,
   NotebookIcon,
   PaletteIcon,
 } from "@phosphor-icons/react";
@@ -21,6 +22,7 @@ import { ContinueReadingDrawer } from "@src/components/library/continue-reading-
 import { LikesDrawer } from "@src/components/library/likes-drawer";
 import { NotesDrawer } from "@src/components/library/notes-drawer";
 import { OfflineDrawer } from "@src/components/library/offline-drawer";
+import { SearchDialog } from "@src/components/library/search-dialog";
 import { SettingsDrawer } from "@src/components/library/settings-drawer";
 import { cn } from "@src/lib/cn";
 import { forceUpdate } from "@src/lib/pwa";
@@ -37,6 +39,31 @@ export function AppShell() {
   const [notesOpen, setNotesOpen] = useState(false);
   const [offlineOpen, setOfflineOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
+
+  // Detect macOS once at mount so the search-trigger hint reads "⌘K" on
+  // Mac and "Ctrl K" everywhere else. SSR-safe via the typeof guard.
+  const isMac = useMemo(
+    () => typeof navigator !== "undefined" && /Mac|iPhone|iPad|iPod/i.test(navigator.platform),
+    [],
+  );
+
+  // Cmd/Ctrl+K toggles the search palette globally. Skip when the user is
+  // mid-edit in a contentEditable surface so reader annotations etc. keep
+  // their own bindings — plain inputs/textareas don't claim ⌘K so we let
+  // it through unconditionally there.
+  useEffect(() => {
+    function onKeyDown(e: KeyboardEvent) {
+      if (e.key !== "k" && e.key !== "K") return;
+      if (!(e.metaKey || e.ctrlKey)) return;
+      const target = e.target as HTMLElement | null;
+      if (target?.isContentEditable) return;
+      e.preventDefault();
+      setSearchOpen((open) => !open);
+    }
+    window.addEventListener("keydown", onKeyDown);
+    return () => window.removeEventListener("keydown", onKeyDown);
+  }, []);
 
   // Reset scroll on route change — the ScrollArea's own viewport scrolls,
   // not the document, so the router's default scroll restoration won't apply.
@@ -80,16 +107,40 @@ export function AppShell() {
             <span className="text-fg">Evillious</span>
             <span className="text-fg-muted">Chronicles</span>
           </Link>
-          <nav className="flex items-center gap-4">
-            <div className="hidden sm:flex items-center gap-4">
-              <IconButton
-                variant="ghost"
-                size="sm"
-                aria-label="Continue reading"
-                onClick={() => setContinueOpen(true)}
+          <nav className="flex items-center gap-2 sm:gap-4">
+            {/* Large screens: input-shaped trigger with ⌘K / Ctrl K hint. */}
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              aria-label="Search (Ctrl K)"
+              className={cn(
+                "hidden sm:inline-flex items-center gap-2 h-8 w-56 px-3",
+                "rounded-sm border border-border bg-surface",
+                "text-style-caption text-fg-muted",
+                "hover:border-accent/60 hover:text-fg transition-colors",
+                "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+              )}
+            >
+              <MagnifyingGlassIcon size={16} weight="light" className="shrink-0" aria-hidden />
+              <span className="flex-1 text-left">Search...</span>
+              <kbd
+                aria-hidden
+                className="ml-auto rounded-xs border border-border px-1.5 py-0.5 text-[10px] font-mono leading-none text-fg-muted"
               >
-                <BookOpenTextIcon weight="light" />
-              </IconButton>
+                {isMac ? "⌘K" : "Ctrl K"}
+              </kbd>
+            </button>
+            {/* Small screens: just the search icon. */}
+            <IconButton
+              variant="ghost"
+              size="sm"
+              aria-label="Search"
+              onClick={() => setSearchOpen(true)}
+              className="sm:hidden"
+            >
+              <MagnifyingGlassIcon weight="light" />
+            </IconButton>
+            <div className="hidden sm:flex items-center gap-4">
               <IconButton
                 variant="ghost"
                 size="sm"
@@ -109,6 +160,13 @@ export function AppShell() {
                 <Menu.Portal>
                   <Menu.Positioner align="end">
                     <Menu.Popup>
+                      <Menu.Item onClick={() => setContinueOpen(true)}>
+                        <BookOpenTextIcon
+                          weight="light"
+                          className="inline-block mr-2 align-[-2px]"
+                        />
+                        Continue reading
+                      </Menu.Item>
                       <Menu.Item onClick={() => setNotesOpen(true)}>
                         <NotebookIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                         Notes
@@ -254,6 +312,7 @@ export function AppShell() {
       <NotesDrawer open={notesOpen} onOpenChange={setNotesOpen} />
       <OfflineDrawer open={offlineOpen} onOpenChange={setOfflineOpen} />
       <SettingsDrawer open={settingsOpen} onOpenChange={setSettingsOpen} />
+      <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
     </div>
   );
 }

@@ -150,6 +150,10 @@ export type SlimVolume = {
   id: string;
   number: number;
   title: string;
+  // Carried into slim so synchronous catalogs (e.g. site-wide search) can
+  // match Japanese / romanized volume titles without `meta()` resolution.
+  originalTitle?: string;
+  romanizedTitle?: string;
   sin: Sin | null;
   chapters: SlimChapter[];
 };
@@ -174,6 +178,8 @@ function deriveSlim(m: VolumeManifest): SlimVolume {
     id: m.id,
     number: m.number,
     title: m.title,
+    ...(m.originalTitle ? { originalTitle: m.originalTitle } : {}),
+    ...(m.romanizedTitle ? { romanizedTitle: m.romanizedTitle } : {}),
     sin: m.sin,
     chapters: [
       ...m.chapter.map((c) => slimChapter(c)),

@@ -74,6 +74,7 @@ const overlaysGroup: NavGroupConfig = {
     { to: "/components/drawer", label: "Drawer" },
     { to: "/components/toast", label: "Toast" },
     { to: "/components/audio", label: "Audio" },
+    { to: "/components/search", label: "Search" },
   ],
 };
 

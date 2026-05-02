@@ -38,6 +38,7 @@ const ComponentsSliderLazyRouteImport = createFileRoute('/components/slider')()
 const ComponentsSkeletonLazyRouteImport = createFileRoute(
   '/components/skeleton',
 )()
+const ComponentsSearchLazyRouteImport = createFileRoute('/components/search')()
 const ComponentsScrollAreaLazyRouteImport = createFileRoute(
   '/components/scroll-area',
 )()
@@ -158,6 +159,13 @@ const ComponentsSkeletonLazyRoute = ComponentsSkeletonLazyRouteImport.update({
   getParentRoute: () => ComponentsRouteRoute,
 } as any).lazy(() =>
   import('./routes/components/skeleton.lazy').then((d) => d.Route),
+)
+const ComponentsSearchLazyRoute = ComponentsSearchLazyRouteImport.update({
+  id: '/search',
+  path: '/search',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any).lazy(() =>
+  import('./routes/components/search.lazy').then((d) => d.Route),
 )
 const ComponentsScrollAreaLazyRoute =
   ComponentsScrollAreaLazyRouteImport.update({
@@ -421,6 +429,7 @@ export interface FileRoutesByFullPath {
   '/components/qr-code': typeof ComponentsQrCodeLazyRoute
   '/components/qr-scanner': typeof ComponentsQrScannerLazyRoute
   '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
+  '/components/search': typeof ComponentsSearchLazyRoute
   '/components/skeleton': typeof ComponentsSkeletonLazyRoute
   '/components/slider': typeof ComponentsSliderLazyRoute
   '/components/switch': typeof ComponentsSwitchLazyRoute
@@ -465,6 +474,7 @@ export interface FileRoutesByTo {
   '/components/qr-code': typeof ComponentsQrCodeLazyRoute
   '/components/qr-scanner': typeof ComponentsQrScannerLazyRoute
   '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
+  '/components/search': typeof ComponentsSearchLazyRoute
   '/components/skeleton': typeof ComponentsSkeletonLazyRoute
   '/components/slider': typeof ComponentsSliderLazyRoute
   '/components/switch': typeof ComponentsSwitchLazyRoute
@@ -513,6 +523,7 @@ export interface FileRoutesById {
   '/components/qr-code': typeof ComponentsQrCodeLazyRoute
   '/components/qr-scanner': typeof ComponentsQrScannerLazyRoute
   '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
+  '/components/search': typeof ComponentsSearchLazyRoute
   '/components/skeleton': typeof ComponentsSkeletonLazyRoute
   '/components/slider': typeof ComponentsSliderLazyRoute
   '/components/switch': typeof ComponentsSwitchLazyRoute
@@ -562,6 +573,7 @@ export interface FileRouteTypes {
     | '/components/qr-code'
     | '/components/qr-scanner'
     | '/components/scroll-area'
+    | '/components/search'
     | '/components/skeleton'
     | '/components/slider'
     | '/components/switch'
@@ -606,6 +618,7 @@ export interface FileRouteTypes {
     | '/components/qr-code'
     | '/components/qr-scanner'
     | '/components/scroll-area'
+    | '/components/search'
     | '/components/skeleton'
     | '/components/slider'
     | '/components/switch'
@@ -653,6 +666,7 @@ export interface FileRouteTypes {
     | '/components/qr-code'
     | '/components/qr-scanner'
     | '/components/scroll-area'
+    | '/components/search'
     | '/components/skeleton'
     | '/components/slider'
     | '/components/switch'
@@ -760,6 +774,13 @@ declare module '@tanstack/react-router' {
       path: '/skeleton'
       fullPath: '/components/skeleton'
       preLoaderRoute: typeof ComponentsSkeletonLazyRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/search': {
+      id: '/components/search'
+      path: '/search'
+      fullPath: '/components/search'
+      preLoaderRoute: typeof ComponentsSearchLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/scroll-area': {
@@ -1080,6 +1101,7 @@ interface ComponentsRouteRouteChildren {
   ComponentsQrCodeLazyRoute: typeof ComponentsQrCodeLazyRoute
   ComponentsQrScannerLazyRoute: typeof ComponentsQrScannerLazyRoute
   ComponentsScrollAreaLazyRoute: typeof ComponentsScrollAreaLazyRoute
+  ComponentsSearchLazyRoute: typeof ComponentsSearchLazyRoute
   ComponentsSkeletonLazyRoute: typeof ComponentsSkeletonLazyRoute
   ComponentsSliderLazyRoute: typeof ComponentsSliderLazyRoute
   ComponentsSwitchLazyRoute: typeof ComponentsSwitchLazyRoute
@@ -1111,6 +1133,7 @@ const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsQrCodeLazyRoute: ComponentsQrCodeLazyRoute,
   ComponentsQrScannerLazyRoute: ComponentsQrScannerLazyRoute,
   ComponentsScrollAreaLazyRoute: ComponentsScrollAreaLazyRoute,
+  ComponentsSearchLazyRoute: ComponentsSearchLazyRoute,
   ComponentsSkeletonLazyRoute: ComponentsSkeletonLazyRoute,
   ComponentsSliderLazyRoute: ComponentsSliderLazyRoute,
   ComponentsSwitchLazyRoute: ComponentsSwitchLazyRoute,

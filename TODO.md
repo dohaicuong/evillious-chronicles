@@ -1,9 +1,5 @@
 # TODO
 
-### Reader / content
-
-- **Audio cues** — wire `Page.songCue` to the audio dock. Schema already in place at three levels (no changes needed): `Series.songIds` (rendered on series page), `Chapter.songIds` (a "tracks in this chapter" list — not rendered yet), `Page.songCue` (single id, intended to pin/highlight the song in the dock when the page is reached). Plan: IntersectionObserver on the page like progress; opt-in via a new `autoplaySongCues` toggle in `SettingsDrawer`.
-
 ### Translation sources to wire up (Deadly Sins of Evil novels)
 
 Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefacio sources. Use the existing pipeline (curl directory → parse posts → assemble chapter markdowns → fixture + loader + library entry). Drop cover/illustrations into the matching `public/<slug>/` when available.
@@ -17,10 +13,9 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - **The Muzzle of Nemesis** — https://themuzzleofnemesis.tumblr.com/directory
 - **Master of the Heavenly Yard** — https://dsoe-masteroftheheavenlyyard.tumblr.com/directory
 
-### Translation sources to wire up (Original Sin Story novels)
+### Reader / content
 
-- ✅ **Original Sin Story: Crime** — https://oss-crime.tumblr.com/directory
-- **Original Sin Story: Punishment** — https://oss-punishment.tumblr.com/directory
+- **Audio cues** — wire `Page.songCue` to the audio dock. Schema already in place at three levels (no changes needed): `Series.songIds` (rendered on series page), `Chapter.songIds` (a "tracks in this chapter" list — not rendered yet), `Page.songCue` (single id, intended to pin/highlight the song in the dock when the page is reached). Plan: IntersectionObserver on the page like progress; opt-in via a new `autoplaySongCues` toggle in `SettingsDrawer`.
 
 ### Notes
 
@@ -32,8 +27,8 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 
 ### Discoverability
 
-- **Search** — title-only across volumes / chapters / notes / bookmarks; library-page search box.
 - **Keyboard shortcuts** in the reader (`b` bookmark, `n` note, `g` settings, `?` cheatsheet); global discovery dialog.
+- **Search across notes / bookmarks** — the global palette covers volumes / chapters / songs / characters but not user-authored notes or bookmark labels yet. Add a fifth section that queries Dexie when a user types.
 
 ### Future: TanStack DB
 
@@ -63,3 +58,4 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - ✅ Volume detail over-fetch fix — `VolumeBundle` split into `meta()` (sync, manifest-only) and `chapter(id)` (one chapter's worth of fetches). Volume page entry costs zero `.md` fetches now; reader fetches one chapter at a time.
 - ✅ Chapter manifest as runtime JSON — replaced the build-time virtual module with a `chapter-manifest.json` served by middleware in dev / emitted into `dist/` for prod, fetched once at boot. Adding chapter `.md` files no longer requires a JS rebuild.
 - ✅ Lighthouse CI — `treosh/lighthouse-ci-action@v12` workflow on PRs and pushes to master, accessibility threshold at 0.95 (error), perf/SEO/best-practices at warn level.
+- ✅ Site-wide search — Cmd/Ctrl+K command palette in `AppShell` covering volumes (English + Japanese + romanized titles), chapters, songs (selecting plays via the audio dock), and characters (name / aliases / japanese name / romaji / vocaloid). Sectioned results, default browse list when empty, footer kbd hint ("Go to page" / "Play" depending on row kind). Documented at `/components/search`. Notes / bookmarks search not yet wired — see Discoverability backlog.
