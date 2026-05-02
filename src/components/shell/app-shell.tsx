@@ -25,6 +25,7 @@ import { NotesDrawer } from "@src/components/library/notes-drawer";
 import { OfflineDrawer } from "@src/components/library/offline-drawer";
 import { SettingsDrawer } from "@src/components/library/settings-drawer";
 import { cn } from "@src/lib/cn";
+import { forceUpdate } from "@src/lib/pwa";
 import { pruneOrphanReactions } from "@src/lib/reactions";
 import { ThemeToggle } from "./theme-toggle";
 
@@ -54,24 +55,12 @@ export function AppShell() {
     void pruneOrphanReactions();
   }, []);
 
-  // Hard reload — checks for SW updates, activates any waiting worker, then
-  // forces a reload. The standalone PWA has no URL bar so this is the only
-  // way for the user to pull a fresh version on demand.
-  async function hardReload() {
-    if ("serviceWorker" in navigator) {
-      try {
-        const registrations = await navigator.serviceWorker.getRegistrations();
-        await Promise.all(
-          registrations.map(async (reg) => {
-            await reg.update().catch(() => undefined);
-            reg.waiting?.postMessage({ type: "SKIP_WAITING" });
-          }),
-        );
-      } catch {
-        // ignore — fall through to reload regardless
-      }
-    }
-    window.location.reload();
+  // Force a fresh version on demand. The standalone PWA has no URL bar,
+  // and iOS Safari clings to disk-cached HTML, so the menu button defers
+  // to `forceUpdate` which knows how to wait for the SW hand-off and how
+  // to fall back to the unregister-and-reload path when needed.
+  function hardReload() {
+    void forceUpdate();
   }
 
   return (
