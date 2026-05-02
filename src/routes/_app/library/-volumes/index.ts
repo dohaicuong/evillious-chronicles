@@ -21,6 +21,7 @@ const loaders: Record<string, () => Promise<VolumeBundle>> = {
   venomania: () => import("./venomania").then((m) => m.venomania),
   "princess-sleep": () => import("./princess-sleep").then((m) => m.princessSleep),
   "oss-crime": () => import("./oss-crime").then((m) => m.ossCrime),
+  "oss-punishment": () => import("./oss-punishment").then((m) => m.ossPunishment),
 };
 
 export async function getVolumeMeta(id: string): Promise<VolumeMeta | undefined> {

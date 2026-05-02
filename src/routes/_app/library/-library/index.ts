@@ -3,6 +3,7 @@ import type { Sin } from "@src/lib/schema";
 import { clotureOfYellow } from "@app/library/-volumes/cloture-of-yellow";
 import { praefacioOfBlue } from "@app/library/-volumes/praefacio-of-blue";
 import { ossCrime } from "@app/library/-volumes/oss-crime";
+import { ossPunishment } from "@app/library/-volumes/oss-punishment";
 import { praeludiumOfRed } from "@app/library/-volumes/praeludium-of-red";
 import { princessSleep } from "@app/library/-volumes/princess-sleep";
 import { venomania } from "@app/library/-volumes/venomania";
@@ -183,22 +184,7 @@ export const series: Series[] = [
       "tale-of-abandonment-moonlit",
       "chrono-story",
     ],
-    volumes: [
-      ossCrime.slim,
-      {
-        id: "oss-punishment",
-        number: 2,
-        title: "Original Sin Story: Punishment",
-        sin: "origin",
-        chapters: makeChapters("ossp", [
-          "Levia's Reckoning",
-          "Behemo's Fall",
-          "The Forest Decrees",
-          "The Curtain Rises",
-          "The First Demon",
-        ]),
-      },
-    ],
+    volumes: [ossCrime.slim, ossPunishment.slim],
   },
   {
     id: "clockwork-lullaby",
