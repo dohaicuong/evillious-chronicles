@@ -1,20 +1,30 @@
 import { useCallback, useEffect, useRef, useState } from "react";
-import { getVolumeChapterUrls } from "@app/library/-volumes";
+import { getVolumeAssets } from "@app/library/-volumes";
 
 /**
- * Pre-fetches a volume's chapter `.md` files while online so they're in the
- * `ec-chapters` SW cache for later offline reads. The SW's
- * StaleWhileRevalidate rule for `*.md` is what actually persists each
- * response — `downloadVolume` just walks the URL list and lets the SW do
- * its job. Status is read back by inspecting the cache directly.
+ * Pre-fetches everything a volume needs for offline reading: chapter
+ * `.md` files **and** image assets (cover, opening / closing galleries,
+ * chapter illustrations). Each URL is fetched and written to the
+ * appropriate SW runtime cache so the on-page renderer (and the SW's
+ * own cache-first / SWR strategies) find a cached response when the
+ * browser is offline.
  *
- * `forceResyncVolume` deletes the volume's URLs from the cache before
+ *  - Chapter markdown → `ec-chapters` (StaleWhileRevalidate at runtime).
+ *  - Images → `ec-assets` (CacheFirst at runtime, keyed on the SW's
+ *    `request.destination === "image"` rule).
+ *
+ * Writing the cache entries ourselves makes the offline flow work the
+ * same in dev (where the SW isn't registered), prod, and incognito; if
+ * the SW is also active, both writes go to the same cache key so the
+ * cost is one harmless overwrite per asset.
+ *
+ * `forceResyncVolume` deletes the volume's URLs from both caches before
  * walking, which guarantees the next fetch hits the network instead of
- * the SWR-cached copy. Useful when the user suspects the offline copy is
- * stale (e.g. after content was updated on the server).
+ * a stale cached copy. Useful when content was updated on the server.
  */
 
 const CHAPTER_CACHE = "ec-chapters";
+const ASSET_CACHE = "ec-assets";
 const CONCURRENCY = 8;
 
 export type OfflineProgress = { done: number; total: number };
@@ -22,72 +32,98 @@ export type OfflineProgress = { done: number; total: number };
 export type OfflineStatus = {
   cached: number;
   total: number;
-  /** True when every chapter URL is present in the SW cache. */
+  /** True when every URL — chapters and images — is present in cache. */
   complete: boolean;
 };
 
-async function openCache(): Promise<Cache | null> {
-  if (typeof caches === "undefined") return null;
-  try {
-    return await caches.open(CHAPTER_CACHE);
-  } catch {
-    return null;
+type Task = { url: string; cacheName: string };
+
+async function getVolumeTasks(volumeId: string): Promise<Task[]> {
+  const { chapters, images } = await getVolumeAssets(volumeId);
+  return [
+    ...chapters.map((url) => ({ url, cacheName: CHAPTER_CACHE })),
+    ...images.map((url) => ({ url, cacheName: ASSET_CACHE })),
+  ];
+}
+
+async function openCaches(names: Iterable<string>): Promise<Map<string, Cache>> {
+  const map = new Map<string, Cache>();
+  if (typeof caches === "undefined") return map;
+  for (const name of new Set(names)) {
+    try {
+      map.set(name, await caches.open(name));
+    } catch {
+      // The cache for this name will be missing from the map; downstream
+      // code treats that as "no cache available" and skips writes/reads.
+    }
   }
+  return map;
 }
 
 export async function getVolumeOfflineStatus(volumeId: string): Promise<OfflineStatus> {
-  const urls = await getVolumeChapterUrls(volumeId);
-  const cache = await openCache();
-  if (!cache || urls.length === 0) {
-    return { cached: 0, total: urls.length, complete: false };
-  }
+  const tasks = await getVolumeTasks(volumeId);
+  if (tasks.length === 0) return { cached: 0, total: 0, complete: false };
+  const caches = await openCaches(tasks.map((t) => t.cacheName));
   let cached = 0;
   await Promise.all(
-    urls.map(async (url) => {
+    tasks.map(async ({ url, cacheName }) => {
+      const cache = caches.get(cacheName);
+      if (!cache) return;
       const hit = await cache.match(url);
       if (hit) cached += 1;
     }),
   );
-  return { cached, total: urls.length, complete: cached === urls.length };
+  return { cached, total: tasks.length, complete: cached === tasks.length };
 }
 
-async function deleteFromCache(urls: string[]): Promise<void> {
-  const cache = await openCache();
-  if (!cache) return;
-  await Promise.all(urls.map((url) => cache.delete(url)));
+async function deleteTasksFromCaches(tasks: Task[]): Promise<void> {
+  const caches = await openCaches(tasks.map((t) => t.cacheName));
+  await Promise.all(
+    tasks.map(async ({ url, cacheName }) => {
+      const cache = caches.get(cacheName);
+      if (cache) await cache.delete(url);
+    }),
+  );
+}
+
+/**
+ * Drop every entry from the offline reading caches (`ec-chapters` and
+ * `ec-assets`). Audio entries that landed in `ec-assets` while listening
+ * online go too. The app shell precache (`workbox-precache-*`) and the
+ * tiny `ec-chapter-manifest` are left alone — those aren't offline
+ * reading content, and removing them risks the next launch.
+ */
+export async function wipeOfflineCaches(): Promise<void> {
+  if (typeof caches === "undefined") return;
+  await Promise.all(
+    [CHAPTER_CACHE, ASSET_CACHE].map((name) => caches.delete(name).catch(() => false)),
+  );
 }
 
 // Concurrency-limited walk: fan out CONCURRENCY workers that each pull the
-// next URL from a shared cursor. Stops early on `signal.aborted`.
-//
-// Each worker fetches the URL and writes the response to `ec-chapters`
-// directly via the Cache API. We don't rely on the SW intercepting the
-// fetch and caching as a side effect — that path is fine in production but
-// dead in dev (the SW only registers when `devOptions.enabled` is true).
-// Writing the cache entry ourselves makes the offline flow work the same
-// in dev, prod, and incognito; if the SW is also active, both writes go
-// to the same cache key so the cost is one harmless overwrite per page.
+// next task from a shared cursor. Stops early on `signal.aborted`.
 async function fetchAll(
-  urls: string[],
+  tasks: Task[],
   signal: AbortSignal,
   onProgress: (p: OfflineProgress) => void,
 ): Promise<void> {
-  const cache = await openCache();
+  const cacheMap = await openCaches(tasks.map((t) => t.cacheName));
   let cursor = 0;
   let done = 0;
-  const total = urls.length;
+  const total = tasks.length;
   onProgress({ done, total });
 
   async function worker() {
     while (!signal.aborted) {
       const idx = cursor++;
       if (idx >= total) return;
-      const url = urls[idx]!;
+      const { url, cacheName } = tasks[idx]!;
       try {
         // `cache: "reload"` skips the browser's HTTP cache so we always
         // get a fresh response. The clone is what we persist; the
         // original is awaited for completion / status checks.
         const res = await fetch(url, { signal, cache: "reload" });
+        const cache = cacheMap.get(cacheName);
         if (cache && res.ok) {
           await cache.put(url, res.clone());
         }
@@ -109,12 +145,12 @@ export async function downloadVolume(
   signal: AbortSignal,
   onProgress: (p: OfflineProgress) => void,
 ): Promise<void> {
-  const urls = await getVolumeChapterUrls(volumeId);
-  if (urls.length === 0) {
+  const tasks = await getVolumeTasks(volumeId);
+  if (tasks.length === 0) {
     onProgress({ done: 0, total: 0 });
     return;
   }
-  await fetchAll(urls, signal, onProgress);
+  await fetchAll(tasks, signal, onProgress);
 }
 
 export async function forceResyncVolume(
@@ -122,13 +158,13 @@ export async function forceResyncVolume(
   signal: AbortSignal,
   onProgress: (p: OfflineProgress) => void,
 ): Promise<void> {
-  const urls = await getVolumeChapterUrls(volumeId);
-  if (urls.length === 0) {
+  const tasks = await getVolumeTasks(volumeId);
+  if (tasks.length === 0) {
     onProgress({ done: 0, total: 0 });
     return;
   }
-  await deleteFromCache(urls);
-  await fetchAll(urls, signal, onProgress);
+  await deleteTasksFromCaches(tasks);
+  await fetchAll(tasks, signal, onProgress);
 }
 
 // React state for one volume's sync. The drawer instantiates one of these

@@ -8,6 +8,7 @@ import type {
   TitlePage,
   Translation,
 } from "@src/lib/schema";
+import { asset } from "@src/lib/asset";
 import { getChapterManifest } from "@src/lib/chapter-manifest";
 
 const ILLUSTRATION_RE = /^\s*<!--\s*illustration:\s*([\w-]+)\s*-->\s*$/;
@@ -248,6 +249,13 @@ export type VolumeBundle = {
    * `ec-chapters` cache for offline reads.
    */
   chapterUrls: () => string[];
+  /**
+   * Cover, gallery (opening + closing), and chapter-illustration image
+   * URLs — everything `<img>` rendering needs offline. Resolved via
+   * `asset()` so the URLs match exactly what the browser requests when
+   * the corresponding `<img>` mounts.
+   */
+  imageUrls: () => string[];
 };
 
 /**
@@ -269,6 +277,18 @@ export function Volume(manifest: VolumeManifest): VolumeBundle {
     chapterUrls: () => {
       const all = manifest.chapter.flatMap((c) => urlsUnder(c.pages));
       return manifest.afterword ? [...all, ...urlsUnder(manifest.afterword.pages)] : all;
+    },
+    imageUrls: () => {
+      // Set-deduped: chapterIllustration entries can be referenced by
+      // multiple chapters but the underlying URL only needs caching once.
+      const urls = new Set<string>();
+      urls.add(asset(manifest.cover.src));
+      for (const a of manifest.openingGallery ?? []) urls.add(asset(a.illustration.src));
+      for (const a of manifest.closingGallery ?? []) urls.add(asset(a.illustration.src));
+      for (const ill of Object.values(manifest.chapterIllustration)) {
+        urls.add(asset(ill.src));
+      }
+      return Array.from(urls);
     },
   };
 }

@@ -40,13 +40,20 @@ export async function getVolumeChapter(
   return bundle.chapter(chapterId);
 }
 
-// Used by the offline-sync flow to enumerate every chapter `.md` URL for a
-// volume. Async because the volume module is lazy-imported, but the URL
-// derivation itself is sync (manifest-only).
-export async function getVolumeChapterUrls(volumeId: string): Promise<string[]> {
+// Used by the offline-sync flow to enumerate every URL needed to render a
+// volume offline — chapter `.md` files plus cover / gallery /
+// chapter-illustration images. The two lists are returned separately so
+// the offline downloader can route each to the correct SW cache:
+// chapters → `ec-chapters` (StaleWhileRevalidate), images → `ec-assets`
+// (CacheFirst). Async because the volume module is lazy-imported, but
+// the URL derivation itself is sync (manifest-only).
+export async function getVolumeAssets(
+  volumeId: string,
+): Promise<{ chapters: string[]; images: string[] }> {
   const load = loaders[volumeId];
-  if (!load) return [];
-  return (await load()).chapterUrls();
+  if (!load) return { chapters: [], images: [] };
+  const bundle = await load();
+  return { chapters: bundle.chapterUrls(), images: bundle.imageUrls() };
 }
 
 const availableSet = new Set(Object.keys(loaders));
