@@ -17,13 +17,7 @@ type Props = {
  * via Dexie — on toggle, the underlying reaction record is created or deleted
  * inside a transaction so concurrent taps stay coherent.
  */
-export function ReactionButton({
-  targetType,
-  targetId,
-  label,
-  size = "sm",
-  className,
-}: Props) {
+export function ReactionButton({ targetType, targetId, label, size = "sm", className }: Props) {
   const { active, toggle } = useReaction(targetType, targetId);
   const noun = label ?? targetType;
   return (

@@ -12,9 +12,9 @@ function VinesPage() {
       <header>
         <h1 className="text-style-heading-1 text-fg">Vines</h1>
         <p className="text-style-lead mt-2 text-fg-muted">
-          A curling vine that hugs the two edges meeting at the chosen corner — runs along one
-          edge, curls around the corner, and trails along the other with a small inward spiral
-          at the tip. Heart-shaped leaves dot the stem. Wraps a child element; aria-hidden /
+          A curling vine that hugs the two edges meeting at the chosen corner — runs along one edge,
+          curls around the corner, and trails along the other with a small inward spiral at the tip.
+          Heart-shaped leaves dot the stem. Wraps a child element; aria-hidden /
           pointer-events-none.
         </p>
       </header>

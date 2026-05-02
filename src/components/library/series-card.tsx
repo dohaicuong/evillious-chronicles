@@ -26,11 +26,7 @@ export function SeriesCard({ series }: { series: Series }) {
 
   return (
     <div className="relative h-full">
-      <Link
-        to="/library/$seriesId"
-        params={{ seriesId: series.id }}
-        className="block h-full"
-      >
+      <Link to="/library/$seriesId" params={{ seriesId: series.id }} className="block h-full">
         <Card variant="interactive">
           <Card.Header>
             <Card.Title className="pr-10">{series.title}</Card.Title>

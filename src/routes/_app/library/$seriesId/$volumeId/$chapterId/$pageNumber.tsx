@@ -42,8 +42,7 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
     const page = chapter.pages[pageIdx]!;
 
     const prevChapter = chapterIdx > 0 ? allChapters[chapterIdx - 1]! : null;
-    const nextChapter =
-      chapterIdx < allChapters.length - 1 ? allChapters[chapterIdx + 1]! : null;
+    const nextChapter = chapterIdx < allChapters.length - 1 ? allChapters[chapterIdx + 1]! : null;
 
     const prev: PageTarget | null =
       pageIdx > 0

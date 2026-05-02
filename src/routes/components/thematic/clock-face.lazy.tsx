@@ -11,9 +11,9 @@ function ClockFacePage() {
       <header>
         <h1 className="text-style-heading-1 text-fg">Clock Face</h1>
         <p className="text-style-lead mt-2 text-fg-muted">
-          Twelve tick marks, a static hour hand at 3 o'clock, and a minute hand that ticks once
-          per step (60-step rotation). Sized in <code>em</code> so it scales with surrounding
-          text; designed to overlay the "C" of a display heading.
+          Twelve tick marks, a static hour hand at 3 o'clock, and a minute hand that ticks once per
+          step (60-step rotation). Sized in <code>em</code> so it scales with surrounding text;
+          designed to overlay the "C" of a display heading.
         </p>
       </header>
 

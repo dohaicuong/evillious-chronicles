@@ -68,9 +68,9 @@ function ColorPage() {
       <section className="flex flex-col gap-4">
         <h2 className="text-style-eyebrow text-fg-muted">Sin palette</h2>
         <p className="text-style-caption text-fg-muted max-w-prose">
-          Each sin has a canonical hue. Apply <code>data-sin="&lt;name&gt;"</code> to a wrapper
-          and every descendant's <code>--accent</code> shifts to that sin — badges, focus
-          rings, progress bars retint automatically.
+          Each sin has a canonical hue. Apply <code>data-sin="&lt;name&gt;"</code> to a wrapper and
+          every descendant's <code>--accent</code> shifts to that sin — badges, focus rings,
+          progress bars retint automatically.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           {sins.map((s) => (
@@ -82,9 +82,9 @@ function ColorPage() {
       <section className="flex flex-col gap-4">
         <h2 className="text-style-eyebrow text-fg-muted">Semantic tokens</h2>
         <p className="text-style-caption text-fg-muted max-w-prose">
-          Resolved at the using element via CSS variables, so any{" "}
-          <code>[data-theme]</code> or <code>[data-sin]</code> ancestor cascades down. Use
-          these in component code — never raw palette names.
+          Resolved at the using element via CSS variables, so any <code>[data-theme]</code> or{" "}
+          <code>[data-sin]</code> ancestor cascades down. Use these in component code — never raw
+          palette names.
         </p>
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
           {semantic.map((s) => (

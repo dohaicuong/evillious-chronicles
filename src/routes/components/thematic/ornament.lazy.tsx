@@ -11,8 +11,8 @@ function OrnamentPage() {
       <header>
         <h1 className="text-style-heading-1 text-fg">Ornament</h1>
         <p className="text-style-lead mt-2 text-fg-muted">
-          Decorative section break: two thin rules with a centered glyph in Pirata One. Used
-          between volume sections for storybook pacing.
+          Decorative section break: two thin rules with a centered glyph in Pirata One. Used between
+          volume sections for storybook pacing.
         </p>
       </header>
 

@@ -107,11 +107,7 @@ function VolumeRow({ volume, onNavigate }: { volume: VolumeInProgress; onNavigat
       <Menu>
         <Menu.Trigger
           render={
-            <IconButton
-              size="sm"
-              variant="ghost"
-              aria-label={`Actions for ${volume.volumeTitle}`}
-            >
+            <IconButton size="sm" variant="ghost" aria-label={`Actions for ${volume.volumeTitle}`}>
               <DotsThreeVerticalIcon weight="bold" />
             </IconButton>
           }

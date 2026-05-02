@@ -19,10 +19,7 @@ export function useReaction(
 } {
   const reaction = useLiveQuery(
     () =>
-      db.reactions
-        .where("[targetType+targetId+kind]")
-        .equals([targetType, targetId, kind])
-        .first(),
+      db.reactions.where("[targetType+targetId+kind]").equals([targetType, targetId, kind]).first(),
     [targetType, targetId, kind],
   );
 

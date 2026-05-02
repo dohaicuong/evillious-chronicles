@@ -12,10 +12,7 @@ export function VolumeCard({ seriesId, volume }: { seriesId: string; volume: Vol
   const available = isVolumeAvailable(volume.id);
 
   return (
-    <div
-      data-sin={volume.sin ?? undefined}
-      className={available ? "h-full" : "h-full opacity-60"}
-    >
+    <div data-sin={volume.sin ?? undefined} className={available ? "h-full" : "h-full opacity-60"}>
       <Link
         to="/library/$seriesId/$volumeId"
         params={{ seriesId, volumeId: volume.id }}

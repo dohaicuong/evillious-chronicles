@@ -14,9 +14,8 @@ function SinGlyphPage() {
       <header>
         <h1 className="text-style-heading-1 text-fg">Sin Glyphs</h1>
         <p className="text-style-lead mt-2 text-fg-muted">
-          One symbolic icon per sin — picked from Phosphor for accessibility and consistency.
-          Color inherits via <code>currentColor</code>; size via Phosphor's <code>size</code>{" "}
-          prop.
+          One symbolic icon per sin — picked from Phosphor for accessibility and consistency. Color
+          inherits via <code>currentColor</code>; size via Phosphor's <code>size</code> prop.
         </p>
       </header>
 

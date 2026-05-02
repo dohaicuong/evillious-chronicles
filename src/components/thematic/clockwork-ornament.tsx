@@ -97,9 +97,7 @@ export function ClockworkOrnament({
   // anchoring the ornament (e.g. via `right-full`) keeps the big gear pinned
   // next to its neighbouring text — the chain just trails into/under the text.
   const width = Math.ceil(Math.max(size, mediumLeft + medium, count === 3 ? smallLeft + small : 0));
-  const height = Math.ceil(
-    Math.max(size, mediumTop + medium, count === 3 ? smallTop + small : 0),
-  );
+  const height = Math.ceil(Math.max(size, mediumTop + medium, count === 3 ? smallTop + small : 0));
 
   return (
     <div

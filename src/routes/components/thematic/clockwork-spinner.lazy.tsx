@@ -11,8 +11,8 @@ function ClockworkSpinnerPage() {
       <header>
         <h1 className="text-style-heading-1 text-fg">Clockwork Spinner</h1>
         <p className="text-style-lead mt-2 text-fg-muted">
-          Slow gear rotation (4s) — slower than Tailwind's default <code>animate-spin</code> to
-          fit the pocket-watch motif. Use for loading states.
+          Slow gear rotation (4s) — slower than Tailwind's default <code>animate-spin</code> to fit
+          the pocket-watch motif. Use for loading states.
         </p>
       </header>
 

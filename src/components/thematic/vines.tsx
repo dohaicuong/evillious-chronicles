@@ -44,8 +44,7 @@ const cornerClass: Record<Corner, string> = {
   "top-right": "right-0 top-0 translate-x-1/2 -translate-y-1/2",
   "top-left": "left-0 top-0 -translate-x-1/2 -translate-y-1/2 -scale-x-100",
   "bottom-right": "right-0 bottom-0 translate-x-1/2 translate-y-1/2 -scale-y-100",
-  "bottom-left":
-    "left-0 bottom-0 -translate-x-1/2 translate-y-1/2 -scale-x-100 -scale-y-100",
+  "bottom-left": "left-0 bottom-0 -translate-x-1/2 translate-y-1/2 -scale-x-100 -scale-y-100",
 };
 
 /**
@@ -75,13 +74,7 @@ function Vine({ corner }: { corner: Corner }) {
         cornerClass[corner],
       )}
     >
-      <path
-        d={STEM}
-        stroke="currentColor"
-        strokeWidth="1.5"
-        strokeLinecap="round"
-        fill="none"
-      />
+      <path d={STEM} stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" fill="none" />
       <path
         d={TERMINAL_CURL}
         stroke="currentColor"

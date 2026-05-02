@@ -11,9 +11,9 @@ function ClockworkOrnamentPage() {
       <header>
         <h1 className="text-style-heading-1 text-fg">Clockwork Ornament</h1>
         <p className="text-style-lead mt-2 text-fg-muted">
-          Decorative pair of interlocking gears — six-tooth gear (18s) and a smaller four-tooth
-          gear (12s reverse). Purely ornamental (<code>aria-hidden</code>); for loading semantics
-          use <code>ClockworkSpinner</code>.
+          Decorative pair of interlocking gears — six-tooth gear (18s) and a smaller four-tooth gear
+          (12s reverse). Purely ornamental (<code>aria-hidden</code>); for loading semantics use{" "}
+          <code>ClockworkSpinner</code>.
         </p>
       </header>
 

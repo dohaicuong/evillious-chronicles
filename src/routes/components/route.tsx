@@ -188,18 +188,8 @@ function ComponentsLayout() {
           onExpand={expand}
           query={trimmed}
         />
-        <NavGroup
-          config={overlaysGroup}
-          collapsed={collapsed}
-          onExpand={expand}
-          query={trimmed}
-        />
-        <NavGroup
-          config={thematicGroup}
-          collapsed={collapsed}
-          onExpand={expand}
-          query={trimmed}
-        />
+        <NavGroup config={overlaysGroup} collapsed={collapsed} onExpand={expand} query={trimmed} />
+        <NavGroup config={thematicGroup} collapsed={collapsed} onExpand={expand} query={trimmed} />
       </aside>
       <main className="flex-1 px-12 py-12 max-w-4xl">
         <Outlet />

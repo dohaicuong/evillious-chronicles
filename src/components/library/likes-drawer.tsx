@@ -134,9 +134,7 @@ function CharacterRow({ reaction, onNavigate }: { reaction: Reaction; onNavigate
         <div className="flex flex-col gap-0.5 min-w-0 flex-1">
           <span className="text-style-body text-fg line-clamp-1">{c.name}</span>
           {c.otherNames?.[0] ? (
-            <span className="text-style-caption text-fg-muted line-clamp-1">
-              {c.otherNames[0]}
-            </span>
+            <span className="text-style-caption text-fg-muted line-clamp-1">{c.otherNames[0]}</span>
           ) : null}
         </div>
       </Link>

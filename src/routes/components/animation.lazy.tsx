@@ -10,10 +10,10 @@ function AnimationPage() {
       <header>
         <h1 className="text-style-heading-1 text-fg">Animation</h1>
         <p className="text-style-lead mt-2 text-fg-muted">
-          A small set of named keyframes drives the moving parts — clockwork gears,
-          progress bars, and skeleton shimmer. Most other transitions use Tailwind's stock
-          utilities at deliberately slow durations so the storybook pacing reads as
-          contemplative rather than reactive.
+          A small set of named keyframes drives the moving parts — clockwork gears, progress bars,
+          and skeleton shimmer. Most other transitions use Tailwind's stock utilities at
+          deliberately slow durations so the storybook pacing reads as contemplative rather than
+          reactive.
         </p>
       </header>
 
@@ -78,9 +78,8 @@ function AnimationPage() {
         <h2 className="text-style-eyebrow text-fg-muted">When not to animate</h2>
         <p className="text-style-body text-fg-muted">
           Reading is the primary use — anything that distracts from prose, page-turn flow, or
-          progress should stay still. Reserve motion for state transitions the reader
-          initiated (drawer open, page advance) and for genuinely indeterminate work
-          (loading, syncing).
+          progress should stay still. Reserve motion for state transitions the reader initiated
+          (drawer open, page advance) and for genuinely indeterminate work (loading, syncing).
         </p>
       </section>
     </div>
