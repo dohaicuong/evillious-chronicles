@@ -1,5 +1,5 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
-import { Link } from "@src/components/primitives/link";
+import { ExternalLink, Link } from "@src/components/primitives/link";
 import { ArrowSquareOutIcon, CaretLeftIcon } from "@phosphor-icons/react";
 import { getCharacter } from "@src/data/characters";
 import type { Character } from "@src/data/characters";
@@ -95,7 +95,7 @@ function CharacterDetailPage() {
           ) : null}
 
           {c.wikiUrl ? (
-            <Link
+            <ExternalLink
               href={c.wikiUrl}
               target="_blank"
               rel="noopener noreferrer"
@@ -103,7 +103,7 @@ function CharacterDetailPage() {
             >
               <ArrowSquareOutIcon size={14} weight="light" />
               Read more on the Evillious Chronicles wiki
-            </Link>
+            </ExternalLink>
           ) : null}
         </section>
       </div>

@@ -1,5 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
-import { Link } from "@src/components/primitives/link";
+import { ArrowSquareOutIcon } from "@phosphor-icons/react";
+import { ExternalLink, Link } from "@src/components/primitives/link";
 
 export const Route = createLazyFileRoute("/components/link")({
   component: LinkPage,
@@ -11,12 +12,17 @@ function LinkPage() {
       <header>
         <h1 className="text-style-heading-1 text-fg">Link</h1>
         <p className="text-style-lead mt-2 text-fg-muted">
-          Routing-aware link wrapping TanStack Router's <code>&lt;Link&gt;</code>. Forwards every
-          routing prop (<code>to</code>, <code>params</code>, <code>search</code>,{" "}
-          <code>activeOptions</code>, <code>preload</code>, <code>mask</code>) and adds the design
-          system's focus treatment — an outline keyed to the local <code>--accent</code> so it
-          cascades cleanly under <code>[data-sin]</code>. Visual styling (colour, hover, underline)
-          stays with the caller via <code>className</code>.
+          Routing-aware link built via TanStack Router's <code>createLink</code>, so the route
+          tree's type-safe <code>to</code> / <code>params</code> / <code>search</code> /{" "}
+          <code>activeOptions</code> checking is preserved end-to-end. Visual styling (colour,
+          hover, underline) stays with the caller via <code>className</code>; the primitive only
+          owns transitions and a focus-visible outline keyed to the local <code>--accent</code> so
+          it cascades cleanly under <code>[data-sin]</code>.
+        </p>
+        <p className="text-style-body mt-3 text-fg-muted">
+          For external destinations, use the sibling <code>ExternalLink</code> export — it shares
+          the same base / focus styles but skips the route-tree typing and renders a plain{" "}
+          <code>&lt;a href=...&gt;</code>.
         </p>
       </header>
 
@@ -89,14 +95,42 @@ function LinkPage() {
         </div>
       </section>
 
+      <section className="flex flex-col gap-4">
+        <h2 className="text-style-eyebrow text-fg-muted">External</h2>
+        <p className="text-style-caption text-fg-muted max-w-prose">
+          <code>ExternalLink</code> renders a plain <code>&lt;a&gt;</code> with the same base and
+          focus styles as <code>Link</code>. Pass <code>href</code> directly. Add{" "}
+          <code>target="_blank" rel="noopener noreferrer"</code> when opening a new tab.
+        </p>
+        <div className="flex flex-col gap-3 border border-border rounded-sm p-6">
+          <ExternalLink
+            href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-1.5 text-style-body text-fg-muted hover:text-accent-strong w-fit"
+          >
+            <ArrowSquareOutIcon size={14} weight="light" />
+            Evillious Chronicles wiki
+          </ExternalLink>
+          <ExternalLink
+            href="https://tanstack.com/router"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-accent hover:text-accent-hover underline underline-offset-4 w-fit"
+          >
+            TanStack Router docs
+          </ExternalLink>
+        </div>
+      </section>
+
       <section className="flex flex-col gap-3">
         <h2 className="text-style-eyebrow text-fg-muted">When to use</h2>
         <p className="text-style-body text-fg-muted">
-          Reach for <code>Link</code> for any in-app navigation. Reach for <code>Button</code> (or{" "}
-          <code>IconButton</code>) for actions that <em>do</em> something other than navigate — even
-          if visually they look the same. Anchor tags rendering plain hrefs to external destinations
-          should use a regular <code>&lt;a&gt;</code> with the same focus treatment applied
-          directly.
+          Reach for <code>Link</code> for any in-app navigation — the type-safe <code>to</code> will
+          catch a typoed path at compile time. Reach for <code>ExternalLink</code> when you need a
+          plain anchor (external URLs, mailto, anchor jumps) so the focus styling stays consistent.
+          Reach for <code>Button</code> (or <code>IconButton</code>) when the action does something
+          other than navigate, even if it visually looks like a link.
         </p>
       </section>
     </div>

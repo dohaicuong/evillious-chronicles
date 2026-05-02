@@ -13,7 +13,7 @@ import {
 } from "@phosphor-icons/react";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
 import { IconButton } from "@src/components/primitives/icon-button";
-import { Link } from "@src/components/primitives/link";
+import { ExternalLink, Link } from "@src/components/primitives/link";
 import { Menu } from "@src/components/primitives/menu";
 import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
@@ -111,7 +111,7 @@ export function AppShell() {
                       </Menu.Item>
                       <Menu.Item
                         render={
-                          <Link
+                          <ExternalLink
                             href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -183,7 +183,7 @@ export function AppShell() {
                     </Menu.Item>
                     <Menu.Item
                       render={
-                        <Link
+                        <ExternalLink
                           href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
                           target="_blank"
                           rel="noopener noreferrer"

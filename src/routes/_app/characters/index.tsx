@@ -1,6 +1,6 @@
 import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
-import { Link } from "@src/components/primitives/link";
+import { ExternalLink, Link } from "@src/components/primitives/link";
 import { ArrowSquareOutIcon, CaretLeftIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
 import { characters } from "@src/data/characters";
 import { CharacterCard } from "@src/components/library/character-card";
@@ -96,7 +96,7 @@ function CharactersPage() {
             ))}
           </div>
           <div className="mt-10 flex flex-col items-start gap-4 sm:flex-row sm:items-center sm:justify-between">
-            <Link
+            <ExternalLink
               href="https://theevilliouschronicles.fandom.com/wiki/Category:Characters"
               target="_blank"
               rel="noopener noreferrer"
@@ -104,7 +104,7 @@ function CharactersPage() {
             >
               <ArrowSquareOutIcon size={14} weight="light" />
               Characters category on the Evillious Chronicles wiki
-            </Link>
+            </ExternalLink>
             {pageCount > 1 ? (
               <Pagination
                 page={page}
