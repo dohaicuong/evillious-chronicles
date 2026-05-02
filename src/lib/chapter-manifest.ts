@@ -19,10 +19,6 @@ export function getChapterManifest(): ChapterManifest {
   return manifest;
 }
 
-export function setChapterManifest(next: ChapterManifest): void {
-  manifest = next;
-}
-
 export async function loadChapterManifest(): Promise<void> {
   const url = `${import.meta.env.BASE_URL}chapter-manifest.json`;
   try {

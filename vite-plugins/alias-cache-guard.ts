@@ -1,6 +1,7 @@
 import { createHash } from "node:crypto";
 import { existsSync, mkdirSync, readFileSync, rmSync, writeFileSync } from "node:fs";
 import { resolve } from "node:path";
+import type { Plugin } from "vite";
 
 /**
  * Vite's dep prebundle cache is keyed on lockfile + config hash, but in
@@ -11,11 +12,11 @@ import { resolve } from "node:path";
  * `node_modules/.vite{,-temp}` if it changed, so aliasing edits don't
  * need a manual cache clean.
  */
-export function aliasCacheGuardPlugin() {
+export function aliasCacheGuardPlugin(): Plugin {
   return {
     name: "alias-cache-guard",
-    enforce: "pre" as const,
-    config(config: { resolve?: { alias?: unknown } }) {
+    enforce: "pre",
+    config(config) {
       const aliasFingerprint = JSON.stringify(config.resolve?.alias ?? {});
       const hash = createHash("sha1").update(aliasFingerprint).digest("hex");
       const cacheRoot = resolve("node_modules");

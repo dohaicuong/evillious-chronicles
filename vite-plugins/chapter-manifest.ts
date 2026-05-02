@@ -1,6 +1,7 @@
 import { readdirSync, statSync } from "node:fs";
 import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
+import type { Plugin } from "vite";
 
 /**
  * Scans every chapter `.md` under `public/<slug>/chapters/` and serves the
@@ -14,7 +15,7 @@ import { fileURLToPath } from "node:url";
  * Build: emitted into `dist/` via `generateBundle` so it ships alongside
  * the app shell and the chapter `.md` files copied out of `public/`.
  */
-export function chapterManifestPlugin() {
+export function chapterManifestPlugin(): Plugin {
   const MANIFEST_PATH = "chapter-manifest.json";
   const publicDir = fileURLToPath(new URL("../public", import.meta.url));
 
@@ -47,18 +48,7 @@ export function chapterManifestPlugin() {
 
   return {
     name: "chapter-manifest",
-    configureServer(server: {
-      middlewares: {
-        use: (
-          path: string,
-          handler: (
-            req: { url?: string },
-            res: { setHeader: (k: string, v: string) => void; end: (body: string) => void },
-            next: () => void,
-          ) => void,
-        ) => void;
-      };
-    }) {
+    configureServer(server) {
       // Serve a freshly-scanned manifest on each request so chapter `.md`
       // additions show up after a page refresh without restarting dev.
       server.middlewares.use(`/${MANIFEST_PATH}`, (_req, res, next) => {
@@ -71,22 +61,14 @@ export function chapterManifestPlugin() {
         }
       });
     },
-    generateBundle(this: {
-      emitFile: (file: { type: "asset"; fileName: string; source: string }) => void;
-    }) {
+    generateBundle() {
       this.emitFile({
         type: "asset",
         fileName: MANIFEST_PATH,
         source: JSON.stringify(buildManifest()),
       });
     },
-    handleHotUpdate({
-      file,
-      server,
-    }: {
-      file: string;
-      server: { ws: { send: (payload: { type: string }) => void } };
-    }) {
+    handleHotUpdate({ file, server }) {
       // When a chapter `.md` is added/removed/edited under public/, force a
       // full reload so the app re-fetches the freshly-scanned manifest.
       if (file.endsWith(".md") && file.includes("/public/")) {
