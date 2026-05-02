@@ -1,23 +1,21 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Link } from "@src/components/primitives/link";
-import { useMemo } from "react";
-import { CaretRightIcon } from "@phosphor-icons/react";
+import { lazy, Suspense } from "react";
 import { series } from "@src/routes/_app/library/-library";
-import { characters } from "@app/characters/-characters";
-import { songs } from "@app/songs/-songs";
 import { SeriesCard } from "@src/components/library/series-card";
-import { CharacterCard } from "@src/components/library/character-card";
-import { SongList } from "@src/components/audio/song-list";
-import { Ornament } from "@src/components/thematic/ornament";
+
+// Featured songs and characters live in a separate chunk so the heavy
+// character catalog (~180KB) doesn't sit on the LCP critical path of the
+// library landing page. The fold-above content (header + series grid)
+// renders immediately; the featured section streams in afterwards.
+const FeaturedSection = lazy(() =>
+  import("@src/components/library/featured-section").then((m) => ({ default: m.FeaturedSection })),
+);
 
 export const Route = createFileRoute("/_app/library/")({
   component: LibraryPage,
 });
 
 function LibraryPage() {
-  const featured = useMemo(() => pickRandom(characters, 4), []);
-  const featuredSongIds = useMemo(() => pickRandom(Object.keys(songs), 5), []);
-
   return (
     <div className="mx-auto max-w-6xl px-6 py-12 sm:py-16">
       <header className="mb-12 flex flex-col gap-3 max-w-2xl">
@@ -33,56 +31,9 @@ function LibraryPage() {
         ))}
       </div>
 
-      {featuredSongIds.length > 0 ? (
-        <>
-          <Ornament glyph="❦" />
-          <section className="flex flex-col gap-4">
-            <div className="flex items-baseline justify-between gap-4">
-              <h2 className="text-style-eyebrow text-fg-muted">Songs</h2>
-              <Link
-                to="/songs"
-                className="inline-flex items-center gap-1 text-style-eyebrow text-fg-muted transition-colors hover:text-fg"
-              >
-                View all
-                <CaretRightIcon size={14} />
-              </Link>
-            </div>
-            <SongList songIds={featuredSongIds} />
-          </section>
-        </>
-      ) : null}
-
-      {featured.length > 0 ? (
-        <>
-          <Ornament glyph="☙" />
-          <section className="flex flex-col gap-6">
-            <div className="flex items-baseline justify-between gap-4">
-              <h2 className="text-style-eyebrow text-fg-muted">Characters</h2>
-              <Link
-                to="/characters"
-                className="inline-flex items-center gap-1 text-style-eyebrow text-fg-muted transition-colors hover:text-fg"
-              >
-                View all
-                <CaretRightIcon size={14} />
-              </Link>
-            </div>
-            <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-3 md:[&>:nth-child(3)]:block lg:grid-cols-4 lg:[&>:nth-child(4)]:block [&>:nth-child(3)]:hidden [&>:nth-child(4)]:hidden">
-              {featured.map((c) => (
-                <CharacterCard key={c.id} character={c} />
-              ))}
-            </div>
-          </section>
-        </>
-      ) : null}
+      <Suspense fallback={null}>
+        <FeaturedSection />
+      </Suspense>
     </div>
   );
-}
-
-function pickRandom<T>(arr: readonly T[], n: number): T[] {
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j]!, copy[i]!];
-  }
-  return copy.slice(0, n);
 }

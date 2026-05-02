@@ -1,9 +1,6 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db, type Reaction, type ReactionKind, type ReactionTargetType } from "./db";
-import { characters } from "@app/characters/-characters";
-import { series } from "@app/library/-library";
-import { songs } from "@app/songs/-songs";
 
 export type { Reaction, ReactionKind, ReactionTargetType };
 
@@ -15,14 +12,23 @@ export type { Reaction, ReactionKind, ReactionTargetType };
  * Runs inside an rw transaction so concurrent reaction writes either commit
  * before the sweep starts or queue behind it; either way, every record the
  * sweep saw is the actual persisted state at that moment.
+ *
+ * The catalog modules are dynamically imported so the ~180KB characters
+ * dataset isn't pulled into the main bundle just because the shell calls
+ * this on mount — it loads in parallel with first paint, then prunes.
  */
-const validIds = {
-  series: new Set(series.map((s) => s.id)),
-  song: new Set(Object.keys(songs)),
-  character: new Set(characters.map((c) => c.id)),
-} satisfies Record<ReactionTargetType, Set<string>>;
-
 export async function pruneOrphanReactions(): Promise<number> {
+  const [{ characters }, { series }, { songs }] = await Promise.all([
+    import("@app/characters/-characters"),
+    import("@app/library/-library"),
+    import("@app/songs/-songs"),
+  ]);
+  const validIds = {
+    series: new Set(series.map((s) => s.id)),
+    song: new Set(Object.keys(songs)),
+    character: new Set(characters.map((c) => c.id)),
+  } satisfies Record<ReactionTargetType, Set<string>>;
+
   let deleted = 0;
   await db.transaction("rw", db.reactions, async () => {
     const all = await db.reactions.toArray();

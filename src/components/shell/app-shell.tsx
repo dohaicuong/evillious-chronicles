@@ -1,5 +1,5 @@
 import { Outlet, useLocation } from "@tanstack/react-router";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { lazy, Suspense, useEffect, useMemo, useRef, useState, type ReactNode } from "react";
 import {
   ArrowClockwiseIcon,
   ArrowSquareOutIcon,
@@ -17,17 +17,50 @@ import { ScrollArea } from "@src/components/primitives/scroll-area";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { ExternalLink, Link } from "@src/components/primitives/link";
 import { Menu } from "@src/components/primitives/menu";
-import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
-import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
-import { LikesDrawer } from "@src/components/library/likes-drawer";
-import { NotesDrawer } from "@src/components/library/notes-drawer";
-import { OfflineDrawer } from "@src/components/library/offline-drawer";
-import { SearchDialog } from "@src/components/library/search-dialog";
-import { SettingsDrawer } from "@src/components/library/settings-drawer";
 import { cn } from "@src/lib/cn";
 import { forceUpdate } from "@src/lib/pwa";
 import { pruneOrphanReactions } from "@src/lib/reactions";
 import { ThemeToggle } from "./theme-toggle";
+
+// Drawers and dialogs are mounted only after their first open. Each pulls
+// in non-trivial dependencies (the search and likes surfaces transitively
+// import the full character + song catalogs), so deferring keeps them out
+// of the main bundle and off the LCP critical path.
+const BookmarksDrawer = lazy(() =>
+  import("@src/components/library/bookmarks-drawer").then((m) => ({ default: m.BookmarksDrawer })),
+);
+const ContinueReadingDrawer = lazy(() =>
+  import("@src/components/library/continue-reading-drawer").then((m) => ({
+    default: m.ContinueReadingDrawer,
+  })),
+);
+const LikesDrawer = lazy(() =>
+  import("@src/components/library/likes-drawer").then((m) => ({ default: m.LikesDrawer })),
+);
+const NotesDrawer = lazy(() =>
+  import("@src/components/library/notes-drawer").then((m) => ({ default: m.NotesDrawer })),
+);
+const OfflineDrawer = lazy(() =>
+  import("@src/components/library/offline-drawer").then((m) => ({ default: m.OfflineDrawer })),
+);
+const SearchDialog = lazy(() =>
+  import("@src/components/library/search-dialog").then((m) => ({ default: m.SearchDialog })),
+);
+const SettingsDrawer = lazy(() =>
+  import("@src/components/library/settings-drawer").then((m) => ({ default: m.SettingsDrawer })),
+);
+
+// Mount children once `active` has been true at least once, then keep them
+// mounted so the drawer/dialog's close animation still has a tree to play
+// against. Suspense fallback is `null` because each lazy chunk is small and
+// the user just clicked — a flash of nothing reads better than a spinner.
+function DeferredMount({ active, children }: { active: boolean; children: ReactNode }) {
+  const [mounted, setMounted] = useState(active);
+  useEffect(() => {
+    if (active) setMounted(true);
+  }, [active]);
+  return mounted ? <Suspense fallback={null}>{children}</Suspense> : null;
+}
 
 export function AppShell() {
   const viewportRef = useRef<HTMLDivElement>(null);
@@ -306,13 +339,27 @@ export function AppShell() {
           <Outlet />
         </main>
       </ScrollArea>
-      <ContinueReadingDrawer open={continueOpen} onOpenChange={setContinueOpen} />
-      <LikesDrawer open={likesOpen} onOpenChange={setLikesOpen} />
-      <BookmarksDrawer open={bookmarksOpen} onOpenChange={setBookmarksOpen} />
-      <NotesDrawer open={notesOpen} onOpenChange={setNotesOpen} />
-      <OfflineDrawer open={offlineOpen} onOpenChange={setOfflineOpen} />
-      <SettingsDrawer open={settingsOpen} onOpenChange={setSettingsOpen} />
-      <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
+      <DeferredMount active={continueOpen}>
+        <ContinueReadingDrawer open={continueOpen} onOpenChange={setContinueOpen} />
+      </DeferredMount>
+      <DeferredMount active={likesOpen}>
+        <LikesDrawer open={likesOpen} onOpenChange={setLikesOpen} />
+      </DeferredMount>
+      <DeferredMount active={bookmarksOpen}>
+        <BookmarksDrawer open={bookmarksOpen} onOpenChange={setBookmarksOpen} />
+      </DeferredMount>
+      <DeferredMount active={notesOpen}>
+        <NotesDrawer open={notesOpen} onOpenChange={setNotesOpen} />
+      </DeferredMount>
+      <DeferredMount active={offlineOpen}>
+        <OfflineDrawer open={offlineOpen} onOpenChange={setOfflineOpen} />
+      </DeferredMount>
+      <DeferredMount active={settingsOpen}>
+        <SettingsDrawer open={settingsOpen} onOpenChange={setSettingsOpen} />
+      </DeferredMount>
+      <DeferredMount active={searchOpen}>
+        <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
+      </DeferredMount>
     </div>
   );
 }

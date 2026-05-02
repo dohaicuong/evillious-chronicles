@@ -5,6 +5,7 @@ import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { aliasCacheGuardPlugin } from "./vite-plugins/alias-cache-guard.ts";
 import { chapterManifestPlugin } from "./vite-plugins/chapter-manifest.ts";
+import { fontPreloadPlugin } from "./vite-plugins/font-preload.ts";
 import { pwaSetupPlugin } from "./vite-plugins/pwa-setup.ts";
 
 // https://vite.dev/config/
@@ -34,5 +35,14 @@ export default defineConfig({
     tailwindcss(),
     chapterManifestPlugin(),
     pwaSetupPlugin(),
+    fontPreloadPlugin([
+      // Body text — EB Garamond regular, the only weight rendered on first
+      // paint. Italic / 500 / 600 cuts swap in lazily once their callsites
+      // mount and don't need preloading.
+      /eb-garamond-latin-400-normal-[^/]+\.woff2$/,
+      // UI captions / eyebrow labels — Inter regular. 500 / 600 are used
+      // for in-page UI weight only and aren't on the LCP path.
+      /inter-latin-400-normal-[^/]+\.woff2$/,
+    ]),
   ],
 });
