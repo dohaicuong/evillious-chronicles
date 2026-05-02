@@ -46,14 +46,18 @@ function aliasCacheGuardPlugin() {
   };
 }
 
-// Build-time scan of every chapter `.md` under `public/<slug>/chapters/`,
-// exposed to the app as `virtual:chapter-manifest`. The chapter `.md` files
-// live in `public/` so they're served as static assets (not bundled); the
-// manifest gives the app a reliable directory listing it can iterate at
-// runtime to fetch each page.
+// Scan every chapter `.md` under `public/<slug>/chapters/` and serve the
+// listing as `chapter-manifest.json`. The chapter `.md` files live in
+// `public/` so they're served as static assets (not bundled). The app
+// fetches `chapter-manifest.json` once at boot (see
+// `src/lib/chapter-manifest.ts`) so adding or removing a chapter `.md`
+// only requires redeploying the JSON — no JS rebuild needed.
+//
+// Dev: served on the fly by middleware so edits show up after a refresh.
+// Build: emitted into `dist/` via `generateBundle` so it ships alongside
+// the app shell and the chapter `.md` files copied out of `public/`.
 function chapterManifestPlugin() {
-  const VIRTUAL_ID = "virtual:chapter-manifest";
-  const RESOLVED_ID = `\0${VIRTUAL_ID}`;
+  const MANIFEST_PATH = "chapter-manifest.json";
   const publicDir = fileURLToPath(new URL("./public", import.meta.url));
 
   function buildManifest(): Record<string, string[]> {
@@ -85,38 +89,50 @@ function chapterManifestPlugin() {
 
   return {
     name: "chapter-manifest",
-    resolveId(id: string) {
-      if (id === VIRTUAL_ID) return RESOLVED_ID;
-      return null;
+    configureServer(server: {
+      middlewares: {
+        use: (
+          path: string,
+          handler: (
+            req: { url?: string },
+            res: { setHeader: (k: string, v: string) => void; end: (body: string) => void },
+            next: () => void,
+          ) => void,
+        ) => void;
+      };
+    }) {
+      // Serve a freshly-scanned manifest on each request so chapter `.md`
+      // additions show up after a page refresh without restarting dev.
+      server.middlewares.use(`/${MANIFEST_PATH}`, (_req, res, next) => {
+        try {
+          res.setHeader("Content-Type", "application/json; charset=utf-8");
+          res.setHeader("Cache-Control", "no-store");
+          res.end(JSON.stringify(buildManifest()));
+        } catch {
+          next();
+        }
+      });
     },
-    load(id: string) {
-      if (id === RESOLVED_ID) {
-        return `export default ${JSON.stringify(buildManifest())};`;
-      }
-      return null;
+    generateBundle(this: {
+      emitFile: (file: { type: "asset"; fileName: string; source: string }) => void;
+    }) {
+      this.emitFile({
+        type: "asset",
+        fileName: MANIFEST_PATH,
+        source: JSON.stringify(buildManifest()),
+      });
     },
     handleHotUpdate({
       file,
       server,
     }: {
       file: string;
-      server: {
-        moduleGraph: {
-          getModulesByFile: (id: string) => Set<{ id?: string | null }> | undefined;
-          getModuleById: (id: string) => { id?: string | null } | null;
-        };
-        reloadModule: (mod: unknown) => Promise<void>;
-        ws: { send: (payload: { type: string }) => void };
-      };
+      server: { ws: { send: (payload: { type: string }) => void } };
     }) {
-      // When a chapter `.md` is added/removed/edited under public/, regenerate
-      // the manifest so consumers see the new file list without a full restart.
+      // When a chapter `.md` is added/removed/edited under public/, force a
+      // full reload so the app re-fetches the freshly-scanned manifest.
       if (file.endsWith(".md") && file.includes("/public/")) {
-        const mod = server.moduleGraph.getModuleById(RESOLVED_ID);
-        if (mod) {
-          void server.reloadModule(mod);
-          server.ws.send({ type: "full-reload" });
-        }
+        server.ws.send({ type: "full-reload" });
       }
     },
   };
@@ -220,6 +236,19 @@ export default defineConfig({
             options: {
               cacheName: "ec-chapters",
               expiration: { maxEntries: 2000, maxAgeSeconds: 60 * 60 * 24 * 90 },
+            },
+          },
+          {
+            // Chapter listing JSON emitted by `chapterManifestPlugin`. Fetched
+            // once at boot (see `src/lib/chapter-manifest.ts`); SWR so the
+            // app boots offline against the last-seen listing while a fresh
+            // copy is pulled in the background for the next visit.
+            urlPattern: ({ url, sameOrigin }) =>
+              sameOrigin && url.pathname.endsWith("/chapter-manifest.json"),
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "ec-chapter-manifest",
+              expiration: { maxEntries: 4, maxAgeSeconds: 60 * 60 * 24 * 30 },
             },
           },
         ],

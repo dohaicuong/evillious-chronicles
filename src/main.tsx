@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import { RouterProvider, createRouter } from "@tanstack/react-router";
 import { routeTree } from "./routeTree.gen";
 import { PendingScreen } from "./components/thematic/pending-screen";
+import { loadChapterManifest } from "./lib/chapter-manifest";
 
 // Self-hosted fonts (latin subset). Vite bundles these so they ship from our
 // own origin — removes the Google Fonts critical-path chain.
@@ -40,8 +41,19 @@ declare module "@tanstack/react-router" {
   }
 }
 
-createRoot(document.getElementById("root")!).render(
-  <StrictMode>
-    <RouterProvider router={router} />
-  </StrictMode>,
-);
+// Pull the chapter manifest before the first render so route loaders that
+// derive page-counts or fetch chapter pages see a populated listing. The
+// manifest is just a small JSON file served from the same origin (emitted
+// by `chapterManifestPlugin` in vite.config.ts), so the wait is trivial in
+// practice; it fails soft to an empty manifest if the fetch errors, in
+// which case chapter routes surface the failure through their error UI.
+async function bootstrap() {
+  await loadChapterManifest();
+  createRoot(document.getElementById("root")!).render(
+    <StrictMode>
+      <RouterProvider router={router} />
+    </StrictMode>,
+  );
+}
+
+void bootstrap();

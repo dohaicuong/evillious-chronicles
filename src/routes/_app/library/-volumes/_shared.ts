@@ -9,7 +9,7 @@ import type {
   Translation,
   Volume as VolumeType,
 } from "@src/lib/schema";
-import chapterManifest from "virtual:chapter-manifest";
+import { getChapterManifest } from "@src/lib/chapter-manifest";
 
 const ILLUSTRATION_RE = /^\s*<!--\s*illustration:\s*([\w-]+)\s*-->\s*$/;
 
@@ -34,18 +34,15 @@ export function makePagesBuilder(illustrations: Record<string, ImageAsset>) {
     });
 }
 
-/**
- * Manifest-driven directory listing for chapter pages. The chapter `.md`
- * content lives in `public/` (served as static assets, not bundled) so we
- * can't use Vite's `import.meta.glob` to enumerate them. The Vite plugin
- * `chapterManifestPlugin` scans `public/*\/chapters/**\/*.md` at build time
- * and exposes the listing as a virtual module.
- */
+// Manifest-driven directory listing for chapter pages. The chapter `.md`
+// content lives in `public/` (served as static assets, not bundled). The
+// Vite plugin `chapterManifestPlugin` scans `public/<slug>/chapters/...md`
+// and serves the listing as `chapter-manifest.json`, fetched at boot.
 function pagesUnder(prefix: string): string[] {
   // Strip leading "./" and trailing "/" — manifest keys are public-relative
   // paths like "venomania/chapters/01-ch1".
   const key = prefix.replace(/^\.?\//, "").replace(/\/$/, "");
-  return chapterManifest[key] ?? [];
+  return getChapterManifest()[key] ?? [];
 }
 
 export function pageCountUnder(prefix: string): number {
@@ -58,7 +55,7 @@ type ChapterProps = {
   title: string;
   // Path prefix (relative to `public/`) of the chapter's page directory —
   // e.g. `"./venomania/chapters/01-ch1"`. All `.md` files under that path
-  // are listed in `virtual:chapter-manifest` and fetched at runtime.
+  // are listed in `chapter-manifest.json` and fetched at runtime.
   pages: string;
   songIds?: string[];
   illustrations: Record<string, ImageAsset>;
@@ -150,11 +147,16 @@ export type SlimVolume = {
 };
 
 function slimChapter(c: VolumeChapter, kind?: "afterword"): SlimChapter {
+  // `pageCount` is a getter so slim derivation can run at module-load time —
+  // before `loadChapterManifest()` resolves — without baking in an empty
+  // count. Each access reads the current in-memory manifest.
   return {
     id: c.id,
     number: c.number,
     title: c.title,
-    pageCount: pageCountUnder(c.pages),
+    get pageCount() {
+      return pageCountUnder(c.pages);
+    },
     ...(kind ? { kind } : {}),
   };
 }
