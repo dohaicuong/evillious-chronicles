@@ -61,6 +61,18 @@ export function AppShell() {
 
   return (
     <div className="h-screen flex flex-col bg-bg">
+      {/*
+        Skip link — first focusable element on the page. Hidden visually until
+        focused, at which point it pops into the top-left so a keyboard user
+        can jump past the topbar straight to the main content. The target
+        `<main tabIndex={-1}>` accepts programmatic focus on activation.
+      */}
+      <a
+        href="#main-content"
+        className="sr-only focus-visible:not-sr-only focus-visible:fixed focus-visible:top-2 focus-visible:left-2 focus-visible:z-50 focus-visible:rounded-sm focus-visible:bg-surface focus-visible:text-fg focus-visible:px-3 focus-visible:py-2 focus-visible:text-style-eyebrow focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
+      >
+        Skip to main content
+      </a>
       <header className={cn("shrink-0", !isHome && "border-b border-border")}>
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between gap-6">
           <Link to="/" className="flex items-baseline gap-1.5 font-display tracking-wide text-2xl">
@@ -217,7 +229,7 @@ export function AppShell() {
         </div>
       </header>
       <ScrollArea viewportRef={viewportRef} className="flex-1">
-        <main>
+        <main id="main-content" tabIndex={-1} className="focus-visible:outline-none">
           <Outlet />
         </main>
       </ScrollArea>
