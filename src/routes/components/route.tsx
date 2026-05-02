@@ -92,12 +92,18 @@ function ComponentsLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const [query, setQuery] = useState("");
 
-  // Default to collapsed on small viewports. We sync once on mount rather
-  // than continuously, so a user who manually toggles isn't fought by resize.
+  // Auto-collapse on small viewports — both at mount and whenever the user
+  // resizes the window across the breakpoint. We only force-collapse when the
+  // viewport becomes small; we don't auto-expand on the way back up so a user
+  // who chose to keep it collapsed at desktop width isn't fought by resize.
   useEffect(() => {
-    if (window.matchMedia("(max-width: 640px)").matches) {
-      setCollapsed(true);
-    }
+    const mql = window.matchMedia("(max-width: 640px)");
+    if (mql.matches) setCollapsed(true);
+    const handler = (e: MediaQueryListEvent) => {
+      if (e.matches) setCollapsed(true);
+    };
+    mql.addEventListener("change", handler);
+    return () => mql.removeEventListener("change", handler);
   }, []);
 
   const expand = () => setCollapsed(false);
