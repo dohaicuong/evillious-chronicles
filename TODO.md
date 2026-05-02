@@ -71,6 +71,6 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - ✅ Bookmarks — per-page toggle, top-nav drawer, `#page-N` deep-link with smooth scroll, inline rename
 - ✅ Notes — per-page editor dialog (Cmd/Ctrl+Enter saves; empty deletes), top-nav drawer, `#page-N` deep-link
 - ✅ Reader settings (roadmap #5) — `SettingsDrawer` with font-size / line-height / reader-width sliders, live preview, reset; scoped to chapter prose via CSS vars + new `text-style-reader-prose` utility
-- ✅ Continue Reading on home page — top-3 in-progress cards above "Open the Library", deep-link to last chapter / page (sin-tinted progress bar)
+- ✅ Continue Reading on home page — top-3 in-progress cards above "Open Library", deep-link to last chapter / page (sin-tinted progress bar)
 - ✅ Next-chapter CTA — large card at the end of a chapter above the existing `ChapterNav` (only renders when there's a next chapter)
 - ✅ Per-chapter annotation chips — small bookmark/note count chips next to each chapter on the volume page (one Dexie query at the list level, hidden on mobile to keep the row compact)

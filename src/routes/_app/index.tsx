@@ -43,7 +43,7 @@ function Home() {
 
       <div className="flex flex-wrap items-center justify-center gap-3 mt-4">
         <Button variant="primary" render={<Link to="/library" />}>
-          Open the Library
+          Open Library
         </Button>
       </div>
 
