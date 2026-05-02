@@ -1,10 +1,12 @@
 import { Link } from "@src/components/primitives/link";
 import { DotsThreeVerticalIcon, XIcon } from "@phosphor-icons/react";
+import { Badge } from "@src/components/primitives/badge";
 import { Drawer } from "@src/components/primitives/drawer";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { Menu } from "@src/components/primitives/menu";
 import { Progress } from "@src/components/primitives/progress";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
+import { SinGlyph } from "@src/components/thematic/sin-glyph";
 import {
   resetVolumeProgress,
   useInProgressVolumes,
@@ -79,9 +81,21 @@ function VolumeRow({ volume, onNavigate }: { volume: VolumeInProgress; onNavigat
       >
         <div className="flex items-baseline justify-between gap-3">
           <div className="flex flex-col gap-0.5 min-w-0 flex-1">
-            <span className="text-style-eyebrow text-fg-muted line-clamp-1">
-              {volume.seriesTitle}
-            </span>
+            <div className="flex items-center justify-between gap-2">
+              <span className="text-style-eyebrow text-fg-muted line-clamp-1 flex-1">
+                {volume.seriesTitle}
+              </span>
+              {volume.sin ? (
+                <Badge
+                  variant="soft"
+                  size="sm"
+                  className="capitalize shrink-0"
+                  icon={<SinGlyph sin={volume.sin} weight="light" />}
+                >
+                  {volume.sin}
+                </Badge>
+              ) : null}
+            </div>
             <span className="text-style-body text-fg line-clamp-1">{volume.volumeTitle}</span>
           </div>
           <span className="text-style-caption text-fg-muted shrink-0 tabular-nums">
