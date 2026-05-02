@@ -21,6 +21,7 @@ import { LikesDrawer } from "@src/components/library/likes-drawer";
 import { NotesDrawer } from "@src/components/library/notes-drawer";
 import { SettingsDrawer } from "@src/components/library/settings-drawer";
 import { cn } from "@src/lib/cn";
+import { pruneOrphanReactions } from "@src/lib/reactions";
 import { ThemeToggle } from "./theme-toggle";
 
 export function AppShell() {
@@ -38,6 +39,14 @@ export function AppShell() {
   useEffect(() => {
     viewportRef.current?.scrollTo({ top: 0, behavior: "instant" });
   }, [location.pathname]);
+
+  // One-shot sweep: drop any reaction records whose target id no longer
+  // resolves to a current series / song / character. Catches orphans left
+  // behind by a slug rename so the LikesDrawer doesn't silently swallow
+  // them and the DB doesn't accumulate cruft over time.
+  useEffect(() => {
+    void pruneOrphanReactions();
+  }, []);
 
   // Hard reload — checks for SW updates, activates any waiting worker, then
   // forces a reload. The standalone PWA has no URL bar so this is the only

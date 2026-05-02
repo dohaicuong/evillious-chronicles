@@ -1,8 +1,40 @@
 import { useCallback, useEffect, useState } from "react";
 import { useLiveQuery } from "dexie-react-hooks";
 import { db, type Reaction, type ReactionKind, type ReactionTargetType } from "./db";
+import { characters } from "@app/characters/-characters";
+import { series } from "@app/library/-library";
+import { songs } from "@app/songs/-songs";
 
 export type { Reaction, ReactionKind, ReactionTargetType };
+
+/**
+ * Sweep the reactions table and delete records whose `targetId` no longer
+ * resolves to a current entity in the catalogs (i.e. orphans left behind by
+ * a slug rename). Idempotent — safe to call once per session.
+ *
+ * Runs inside an rw transaction so concurrent reaction writes either commit
+ * before the sweep starts or queue behind it; either way, every record the
+ * sweep saw is the actual persisted state at that moment.
+ */
+const validIds = {
+  series: new Set(series.map((s) => s.id)),
+  song: new Set(Object.keys(songs)),
+  character: new Set(characters.map((c) => c.id)),
+} satisfies Record<ReactionTargetType, Set<string>>;
+
+export async function pruneOrphanReactions(): Promise<number> {
+  let deleted = 0;
+  await db.transaction("rw", db.reactions, async () => {
+    const all = await db.reactions.toArray();
+    for (const r of all) {
+      if (!validIds[r.targetType].has(r.targetId) && r.id != null) {
+        await db.reactions.delete(r.id);
+        deleted += 1;
+      }
+    }
+  });
+  return deleted;
+}
 
 /**
  * Read-and-toggle hook for a single reaction.
