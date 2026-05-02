@@ -3,6 +3,7 @@ import type { Sin } from "@src/lib/schema";
 import { clotureOfYellow } from "@app/library/-volumes/cloture-of-yellow";
 import { praefacioOfBlue } from "@app/library/-volumes/praefacio-of-blue";
 import { praeludiumOfRed } from "@app/library/-volumes/praeludium-of-red";
+import { princessSleep } from "@app/library/-volumes/princess-sleep";
 import { venomania } from "@app/library/-volumes/venomania";
 import { wiegenliedOfGreen } from "@app/library/-volumes/wiegenlied-of-green";
 
@@ -92,19 +93,7 @@ export const series: Series[] = [
           "Conchita's Smile",
         ]),
       },
-      {
-        id: "princess-sleep",
-        number: 3,
-        title: "Gift from the Princess Who Brought Sleep",
-        sin: "sloth",
-        chapters: makeChapters("ps", [
-          "Margarita's Garden",
-          "The Sleeping Princess Gift",
-          "A Country Without Pain",
-          "The Doctor's Wife",
-          "The Final Cup",
-        ]),
-      },
+      princessSleep.slim,
       {
         id: "fifth-pierrot",
         number: 4,
