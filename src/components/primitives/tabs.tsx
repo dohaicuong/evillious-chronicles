@@ -47,7 +47,16 @@ function Indicator({ className, ...props }: ComponentProps<typeof BaseTabs.Indic
 }
 
 function Panel({ className, ...props }: ComponentProps<typeof BaseTabs.Panel>) {
-  return <BaseTabs.Panel className={cn("pt-6 focus-visible:outline-none", className)} {...props} />;
+  return (
+    <BaseTabs.Panel
+      className={cn(
+        "pt-6 rounded-sm",
+        "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+        className,
+      )}
+      {...props}
+    />
+  );
 }
 
 export const Tabs = Object.assign(Root, {

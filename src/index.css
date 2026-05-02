@@ -92,6 +92,12 @@
     --border: #5a4d38; /* more visible border */
     --accent: #c9a961;
     --accent-fg: #1f1610;
+
+    /* Greed's lore-canonical deep blue (#1921b2) is too dark against the
+       aged-leather bg — they read as a single mass with no contrast. Lift
+       it toward a vivid royal blue for dark theme only; light theme keeps
+       the original hex. */
+    --color-sin-greed: #4655d9;
   }
 
   /* ---------------------------------------------------------------------
