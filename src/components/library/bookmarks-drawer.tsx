@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from "react";
-import { Link } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import {
   BookmarkSimpleIcon,
   CheckIcon,

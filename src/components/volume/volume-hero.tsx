@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { BookOpenIcon } from "@phosphor-icons/react";
 import { Badge } from "@src/components/primitives/badge";
 import { Button } from "@src/components/primitives/button";

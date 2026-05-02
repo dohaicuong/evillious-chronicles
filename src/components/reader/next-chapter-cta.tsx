@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { ArrowRightIcon } from "@phosphor-icons/react";
 import type { Chapter } from "@src/data/schema";
 

@@ -1,4 +1,5 @@
-import { Link, createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { useEffect, useState } from "react";
 import {
   BookmarkSimpleIcon,

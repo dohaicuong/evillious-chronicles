@@ -15,7 +15,7 @@ const base = [
   "font-display tracking-[0.15em]",
   "transition-colors duration-150",
   "cursor-pointer select-none",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
   "disabled:opacity-50 disabled:cursor-not-allowed",
   "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
 ].join(" ");
@@ -39,12 +39,25 @@ export function Button({
   size = "md",
   render,
   nativeButton,
+  onKeyDown,
   ...props
 }: ButtonProps) {
+  const isNative = nativeButton ?? !render;
+
   return (
     <BaseButton
       render={render}
-      nativeButton={nativeButton ?? !render}
+      nativeButton={isNative}
+      onKeyDown={(event) => {
+        // When rendered as an anchor (e.g. render={<Link/>}), Space does not
+        // activate the element by default — only Enter does. Mirror native
+        // <button> semantics so keyboard users get the same affordance.
+        if (!isNative && event.key === " " && !event.defaultPrevented) {
+          event.preventDefault();
+          event.currentTarget.click();
+        }
+        onKeyDown?.(event);
+      }}
       className={cn(base, variants[variant], sizes[size], className)}
       {...props}
     />

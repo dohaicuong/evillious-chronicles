@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { BookmarkSimpleIcon, DotsThreeVerticalIcon, NotebookIcon } from "@phosphor-icons/react";
 import { useMemo } from "react";
 import { Badge } from "@src/components/primitives/badge";

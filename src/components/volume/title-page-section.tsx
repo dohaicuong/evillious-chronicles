@@ -1,3 +1,4 @@
+import { Link } from "@src/components/primitives/link";
 import type { Volume } from "@src/data/schema";
 
 export function TitlePageSection({ volume }: { volume: Volume }) {
@@ -22,14 +23,14 @@ export function TitlePageSection({ volume }: { volume: Volume }) {
       {translation?.url ? (
         <p className="text-style-caption text-fg-muted mt-3">
           Translation source:{" "}
-          <a
+          <Link
             href={translation.url}
             target="_blank"
             rel="noopener noreferrer"
-            className="text-accent underline underline-offset-2 decoration-accent/40 hover:decoration-accent transition-colors"
+            className="text-accent underline underline-offset-2 decoration-accent/40 hover:decoration-accent"
           >
             {translation.translator ?? translation.url}
-          </a>
+          </Link>
         </p>
       ) : null}
 

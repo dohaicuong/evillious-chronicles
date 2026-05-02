@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { Card } from "@src/components/primitives/card";
 import { Badge } from "@src/components/primitives/badge";
 import { SinGlyph } from "@src/components/thematic/sin-glyph";

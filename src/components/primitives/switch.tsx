@@ -9,7 +9,7 @@ const root = [
   "border border-border bg-surface",
   "transition-colors duration-150",
   "cursor-pointer",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
   "data-[checked]:border-accent data-[checked]:bg-accent",
   "disabled:opacity-50 disabled:cursor-not-allowed",
   "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",

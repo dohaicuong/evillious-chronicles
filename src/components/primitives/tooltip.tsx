@@ -25,11 +25,14 @@ function Popup({ className, ...props }: ComponentProps<typeof BaseTooltip.Popup>
     <BaseTooltip.Popup
       className={cn(
         "max-w-xs",
-        "bg-court text-bone",
+        // accent-fg is the theme-aware dark token used as readable text on a
+        // filled accent surface — ink purple in light theme, warm dark brown
+        // in dark theme. Pairs with bone for high contrast in both.
+        "bg-accent-fg text-bone",
         "text-style-caption",
         "px-2.5 py-1.5",
         "rounded-sm",
-        "border border-court-light/50",
+        "border border-fg-muted/20",
         "shadow-md shadow-ink/30",
         "transition-[opacity,transform,scale] duration-150 ease-out",
         "data-[starting-style]:opacity-0 data-[starting-style]:scale-95",
@@ -55,8 +58,8 @@ function Arrow({ className, ...props }: ComponentProps<typeof BaseTooltip.Arrow>
       {...props}
     >
       <svg width="12" height="6" viewBox="0 0 12 6" fill="none" aria-hidden>
-        <path d="M0 6 L6 0 L12 6 Z" className="fill-court" />
-        <path d="M0 6 L6 0 L12 6" className="stroke-court-light/50" strokeWidth="1" fill="none" />
+        <path d="M0 6 L6 0 L12 6 Z" className="fill-accent-fg" />
+        <path d="M0 6 L6 0 L12 6" className="stroke-fg-muted/20" strokeWidth="1" fill="none" />
       </svg>
     </BaseTooltip.Arrow>
   );

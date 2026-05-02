@@ -1,4 +1,5 @@
-import { Link, createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { CaretLeftIcon } from "@phosphor-icons/react";
 import { series } from "@src/data/library";
 import { getVolume } from "@src/data/volumes";

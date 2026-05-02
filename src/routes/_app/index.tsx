@@ -1,4 +1,5 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { Button } from "@src/components/primitives/button";
 import { ContinueReadingRow } from "@src/components/library/continue-reading-row";
 import { ClockFace } from "@src/components/thematic/clock-face";

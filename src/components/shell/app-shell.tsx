@@ -1,4 +1,4 @@
-import { Link, Outlet, useLocation } from "@tanstack/react-router";
+import { Outlet, useLocation } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowClockwiseIcon,
@@ -12,6 +12,7 @@ import {
 } from "@phosphor-icons/react";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
 import { IconButton } from "@src/components/primitives/icon-button";
+import { Link } from "@src/components/primitives/link";
 import { Menu } from "@src/components/primitives/menu";
 import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
@@ -59,10 +60,7 @@ export function AppShell() {
     <div className="h-screen flex flex-col bg-bg">
       <header className={cn("shrink-0", !isHome && "border-b border-border")}>
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between gap-6">
-          <Link
-            to="/"
-            className="flex items-baseline gap-1.5 font-display tracking-wide text-2xl focus-visible:outline-none focus-visible:underline focus-visible:decoration-fg focus-visible:underline-offset-4"
-          >
+          <Link to="/" className="flex items-baseline gap-1.5 font-display tracking-wide text-2xl">
             <span className="text-fg">Evillious</span>
             <span className="text-fg-muted">Chronicles</span>
           </Link>
@@ -109,7 +107,7 @@ export function AppShell() {
                       </Menu.Item>
                       <Menu.Item
                         render={
-                          <a
+                          <Link
                             href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
                             target="_blank"
                             rel="noopener noreferrer"
@@ -177,7 +175,7 @@ export function AppShell() {
                     </Menu.Item>
                     <Menu.Item
                       render={
-                        <a
+                        <Link
                           href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
                           target="_blank"
                           rel="noopener noreferrer"

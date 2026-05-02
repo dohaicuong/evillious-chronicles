@@ -1,4 +1,5 @@
-import { Link, createFileRoute } from "@tanstack/react-router";
+import { createFileRoute } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { useMemo } from "react";
 import { CaretRightIcon } from "@phosphor-icons/react";
 import { series } from "@src/data/library";

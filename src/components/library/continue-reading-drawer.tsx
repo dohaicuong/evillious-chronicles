@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { DotsThreeVerticalIcon, XIcon } from "@phosphor-icons/react";
 import { Drawer } from "@src/components/primitives/drawer";
 import { IconButton } from "@src/components/primitives/icon-button";

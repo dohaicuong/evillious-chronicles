@@ -1,4 +1,5 @@
-import { Link, createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { ArrowSquareOutIcon, CaretLeftIcon } from "@phosphor-icons/react";
 import { getCharacter } from "@src/data/characters";
 import type { Character } from "@src/data/characters";
@@ -90,15 +91,15 @@ function CharacterDetailPage() {
           ) : null}
 
           {c.wikiUrl ? (
-            <a
+            <Link
               href={c.wikiUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-1.5 text-style-caption text-fg-muted transition-colors hover:text-accent-strong"
+              className="inline-flex items-center gap-1.5 text-style-caption text-fg-muted hover:text-accent-strong"
             >
               <ArrowSquareOutIcon size={14} weight="light" />
               Read more on the Evillious Chronicles wiki
-            </a>
+            </Link>
           ) : null}
         </section>
       </div>

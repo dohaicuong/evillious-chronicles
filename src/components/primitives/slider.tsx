@@ -18,7 +18,7 @@ const thumb = [
   "transition-[transform,box-shadow] duration-150 ease-out",
   "cursor-grab",
   "hover:scale-110",
-  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
+  "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
   "data-[dragging]:cursor-grabbing data-[dragging]:scale-110",
   "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
 ].join(" ");

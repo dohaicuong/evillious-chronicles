@@ -1,4 +1,4 @@
-import { Link } from "@tanstack/react-router";
+import { Link } from "@src/components/primitives/link";
 import { Progress } from "@src/components/primitives/progress";
 import { useInProgressVolumes, type VolumeInProgress } from "@src/lib/progress";
 
