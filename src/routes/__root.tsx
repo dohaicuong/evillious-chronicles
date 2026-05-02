@@ -6,11 +6,14 @@ import { Toast } from "@src/components/primitives/toast";
 import { AudioProvider } from "@src/lib/audio";
 import { AudioDock } from "@src/components/audio/audio-dock";
 import { PwaUpdateToast } from "@src/components/shell/pwa-update-toast";
+import { RouteError, RouteNotFound } from "@src/components/shell/route-error";
 import { ThemeProvider } from "@src/lib/theme";
 import { ReaderSettingsProvider } from "@src/lib/reader-settings";
 
 export const Route = createRootRoute({
   component: RootLayout,
+  errorComponent: RouteError,
+  notFoundComponent: RouteNotFound,
 });
 
 const iconDefaults = { size: 20, weight: "light" as const };

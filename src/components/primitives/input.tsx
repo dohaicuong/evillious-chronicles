@@ -17,7 +17,7 @@ const base = [
   "border border-border rounded-sm",
   "transition-colors duration-150",
   "focus:outline-none focus:border-accent",
-  "focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
+  "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
   "disabled:opacity-50 disabled:cursor-not-allowed",
   "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
   "aria-invalid:border-sin-gluttony",

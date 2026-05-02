@@ -92,16 +92,14 @@ function ComponentsLayout() {
   const [collapsed, setCollapsed] = useState(false);
   const [query, setQuery] = useState("");
 
-  // Auto-collapse on small viewports — both at mount and whenever the user
-  // resizes the window across the breakpoint. We only force-collapse when the
-  // viewport becomes small; we don't auto-expand on the way back up so a user
-  // who chose to keep it collapsed at desktop width isn't fought by resize.
+  // Track the viewport across the small/large breakpoint and mirror it onto
+  // the collapsed state — collapse below 640px, expand at or above. Manual
+  // toggling within a viewport size still wins until the next breakpoint
+  // crossing, since the listener only fires on `change`.
   useEffect(() => {
     const mql = window.matchMedia("(max-width: 640px)");
-    if (mql.matches) setCollapsed(true);
-    const handler = (e: MediaQueryListEvent) => {
-      if (e.matches) setCollapsed(true);
-    };
+    setCollapsed(mql.matches);
+    const handler = (e: MediaQueryListEvent) => setCollapsed(e.matches);
     mql.addEventListener("change", handler);
     return () => mql.removeEventListener("change", handler);
   }, []);

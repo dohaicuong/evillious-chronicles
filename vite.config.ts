@@ -154,17 +154,32 @@ export default defineConfig({
       },
       workbox: {
         // Precache the app shell only — JS/CSS/HTML/fonts/SVG icons. Chapter
-        // images and audio fall through to the runtimeCaching rule below so a
-        // first install stays light and chapters cache as the reader visits.
+        // images, audio, and markdown fall through to the runtimeCaching rules
+        // below so a first install stays light and content caches as it's read.
         globPatterns: ["**/*.{js,css,html,svg,woff2}"],
         runtimeCaching: [
           {
+            // Cover art, opening galleries, in-prose illustrations, plus the
+            // reader's audio dock files. Cache-first because they almost
+            // never change once published.
             urlPattern: ({ request, sameOrigin }) =>
               sameOrigin && (request.destination === "image" || request.destination === "audio"),
             handler: "CacheFirst",
             options: {
               cacheName: "ec-assets",
               expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 30 },
+            },
+          },
+          {
+            // Chapter markdown lives at `public/<slug>/chapters/.../*.md` and
+            // is fetched at runtime by the `Chapter()` factory. SWR so the
+            // first read is offline-replayable and edits ship on the next
+            // online visit without a hard reload.
+            urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.endsWith(".md"),
+            handler: "StaleWhileRevalidate",
+            options: {
+              cacheName: "ec-chapters",
+              expiration: { maxEntries: 2000, maxAgeSeconds: 60 * 60 * 24 * 90 },
             },
           },
         ],

@@ -16,7 +16,7 @@ export function VolumeCard({ seriesId, volume }: { seriesId: string; volume: Vol
       <Link
         to="/library/$seriesId/$volumeId"
         params={{ seriesId, volumeId: volume.id }}
-        className="block h-full rounded-sm focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+        className="block h-full rounded-sm focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
       >
         <Card variant="interactive">
           <Card.Header>

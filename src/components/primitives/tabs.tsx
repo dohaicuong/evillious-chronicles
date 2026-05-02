@@ -22,7 +22,7 @@ function Tab({ className, ...props }: ComponentProps<typeof BaseTabs.Tab>) {
         "cursor-pointer select-none",
         "text-fg-muted hover:text-fg",
         "transition-colors duration-150",
-        "focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-accent focus-visible:ring-offset-2 focus-visible:ring-offset-bg",
+        "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
         "data-[selected]:text-accent",
         "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
         className,

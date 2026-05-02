@@ -66,7 +66,7 @@ export function NoteEditorDialog({
             }}
             placeholder="Write a note for this page…"
             rows={6}
-            className="mt-4 w-full font-serif text-style-body bg-surface text-fg placeholder:text-fg-muted border border-border rounded-sm p-3 resize-y focus:outline-none focus:border-accent focus-visible:ring-2 focus-visible:ring-fg/30 focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
+            className="mt-4 w-full font-serif text-style-body bg-surface text-fg placeholder:text-fg-muted border border-border rounded-sm p-3 resize-y focus:outline-none focus:border-accent focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2"
           />
           <div className="mt-1 text-style-caption text-fg-muted">
             <kbd>⌘/Ctrl</kbd> + <kbd>Enter</kbd> to save · <kbd>Esc</kbd> to cancel · empty saves to
