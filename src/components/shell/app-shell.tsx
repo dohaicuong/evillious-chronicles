@@ -19,7 +19,6 @@ import { ExternalLink, Link } from "@src/components/primitives/link";
 import { Menu } from "@src/components/primitives/menu";
 import { cn } from "@src/lib/cn";
 import { forceUpdate } from "@src/lib/pwa";
-import { pruneOrphanReactions } from "@src/lib/reactions";
 import { ThemeToggle } from "./theme-toggle";
 
 // Drawers and dialogs are mounted only after their first open. Each pulls
@@ -103,14 +102,6 @@ export function AppShell() {
   useEffect(() => {
     viewportRef.current?.scrollTo({ top: 0, behavior: "instant" });
   }, [location.pathname]);
-
-  // One-shot sweep: drop any reaction records whose target id no longer
-  // resolves to a current series / song / character. Catches orphans left
-  // behind by a slug rename so the LikesDrawer doesn't silently swallow
-  // them and the DB doesn't accumulate cruft over time.
-  useEffect(() => {
-    void pruneOrphanReactions();
-  }, []);
 
   // Force a fresh version on demand. The standalone PWA has no URL bar,
   // and iOS Safari clings to disk-cached HTML, so the menu button defers
