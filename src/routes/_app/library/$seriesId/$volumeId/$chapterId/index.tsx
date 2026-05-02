@@ -1,12 +1,14 @@
 import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
 import { series } from "@src/routes/_app/library/-library";
-import { getVolume } from "@app/library/-volumes";
 import { db } from "@src/lib/db";
 
 /*
  * Chapter root — resolves the chapter's resume page (last page the reader
  * touched, or page 1 if none) and redirects to it. Kept as a separate index
  * route so links to /library/.../$chapterId resolve cleanly.
+ *
+ * Reads only the slim chapter list; we don't need the chapter's actual page
+ * content to compute the redirect target since page numbers are 1..pageCount.
  */
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapterId/")({
   loader: async ({ params }) => {
@@ -14,13 +16,9 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
     if (!s) throw notFound();
     const slim = s.volumes.find((x) => x.id === params.volumeId);
     if (!slim) throw notFound();
-    const full = await getVolume(params.volumeId);
-    if (!full) throw notFound();
-    const chapter =
-      full.chapters.find((c) => c.id === params.chapterId) ??
-      (full.afterword?.id === params.chapterId ? full.afterword : null);
+    const chapter = slim.chapters.find((c) => c.id === params.chapterId);
     if (!chapter) throw notFound();
-    if (chapter.pages.length === 0) {
+    if (chapter.pageCount === 0) {
       // Empty chapter — fall back to the volume detail page.
       throw redirect({
         to: "/library/$seriesId/$volumeId",
@@ -33,9 +31,7 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
     // fall back to the first page when there's no record yet.
     const record = await db.chapterProgress.get(params.chapterId);
     const pagesRead = record?.pagesRead ?? 0;
-    const lastIdx = chapter.pages.length - 1;
-    const targetIdx = pagesRead > 0 ? Math.min(pagesRead - 1, lastIdx) : 0;
-    const targetPage = chapter.pages[targetIdx]!;
+    const targetNumber = pagesRead > 0 ? Math.min(pagesRead, chapter.pageCount) : 1;
 
     throw redirect({
       to: "/library/$seriesId/$volumeId/$chapterId/$pageNumber",
@@ -43,7 +39,7 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
         seriesId: params.seriesId,
         volumeId: params.volumeId,
         chapterId: params.chapterId,
-        pageNumber: String(targetPage.number),
+        pageNumber: String(targetNumber),
       },
     });
   },

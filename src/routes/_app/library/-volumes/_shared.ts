@@ -7,7 +7,6 @@ import type {
   Sin,
   TitlePage,
   Translation,
-  Volume as VolumeType,
 } from "@src/lib/schema";
 import { getChapterManifest } from "@src/lib/chapter-manifest";
 
@@ -174,43 +173,84 @@ function deriveSlim(m: VolumeManifest): SlimVolume {
   };
 }
 
-async function deriveFull(m: VolumeManifest): Promise<VolumeType> {
-  const { chapterIllustration, chapter, afterword, ...rest } = m;
-  const chapters = await Promise.all(
-    chapter.map((c) => Chapter({ ...c, illustrations: chapterIllustration })),
-  );
-  const afterwordResolved = afterword
-    ? await Chapter({ ...afterword, illustrations: chapterIllustration })
-    : undefined;
+// Volume detail / hero metadata — every Volume field except resolved chapter
+// content. `chapters` and `afterword` carry the slim chapter list (id /
+// number / title / pageCount / kind) so the chapter list and adjacency math
+// keep working without fetching any `.md` content.
+export type VolumeMeta = {
+  id: string;
+  slug: string;
+  number: number;
+
+  title: string;
+  originalTitle?: string;
+  romanizedTitle?: string;
+  subtitle?: string;
+
+  sin: Sin | null;
+  series: string;
+
+  cover: ImageAsset;
+  titlePage?: TitlePage;
+  openingPoetry?: Poetry;
+  openingGallery?: ArtworkPage[];
+  closingGallery?: ArtworkPage[];
+
+  chapters: SlimChapter[];
+  afterword?: SlimChapter;
+
+  description?: string;
+  publishedYear?: number;
+  isbn?: string;
+  translation?: Translation;
+};
+
+function deriveMeta(m: VolumeManifest): VolumeMeta {
+  const { chapterIllustration: _ill, chapter, afterword, ...rest } = m;
   return {
     ...rest,
-    chapters,
-    ...(afterwordResolved ? { afterword: afterwordResolved } : {}),
+    chapters: chapter.map((c) => slimChapter(c)),
+    ...(afterword ? { afterword: slimChapter(afterword, "afterword") } : {}),
   };
+}
+
+async function deriveChapter(m: VolumeManifest, chapterId: string): Promise<ChapterType> {
+  const target =
+    m.chapter.find((c) => c.id === chapterId) ??
+    (m.afterword?.id === chapterId ? m.afterword : undefined);
+  if (!target) throw new Error(`Unknown chapter "${chapterId}" in volume "${m.id}"`);
+  return Chapter({ ...target, illustrations: m.chapterIllustration });
 }
 
 export type VolumeBundle = {
   manifest: VolumeManifest;
   /** Sync slim metadata for catalogs (library, series page, chapter list). */
   slim: SlimVolume;
-  /** Lazy async resolver for the full Volume — fetches every chapter's pages. */
-  full: () => Promise<VolumeType>;
+  /**
+   * Sync volume metadata for the volume detail page — hero, poetry, gallery,
+   * title page, plus the slim chapter list. Reads the manifest only; no
+   * chapter `.md` fetches.
+   */
+  meta: () => VolumeMeta;
+  /** Lazy async resolver for one chapter's pages — single chapter's worth of fetches. */
+  chapter: (chapterId: string) => Promise<ChapterType>;
 };
 
 /**
  * Volume factory — single source of truth for one volume. Returns a bundle
- * exposing both views derived from the manifest:
+ * with three views derived from the manifest:
  *  - `slim` (sync) for catalogs that only need metadata + page-counts.
- *  - `full()` (async) for the page reader, which awaits every chapter's
- *    markdown content from `public/`.
+ *  - `meta()` (sync) for the volume detail page — hero / poetry / gallery /
+ *    title-page metadata plus the slim chapter list. Zero chapter fetches.
+ *  - `chapter(id)` (async) for the page reader — fetches one chapter's pages.
  *
- * The `-library.ts` slim catalog and the `-volumes/index.ts` lazy registry
- * both consume the same bundle, so titles, ids, sin, page-counts can't drift.
+ * Routes consume the same bundle, so titles, ids, sin, page-counts can't drift.
  */
 export function Volume(manifest: VolumeManifest): VolumeBundle {
   return {
     manifest,
     slim: deriveSlim(manifest),
-    full: () => deriveFull(manifest),
+    meta: () => deriveMeta(manifest),
+    chapter: (chapterId) => deriveChapter(manifest, chapterId),
   };
 }

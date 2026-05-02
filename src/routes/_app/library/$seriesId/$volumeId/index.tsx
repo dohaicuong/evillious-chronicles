@@ -2,7 +2,7 @@ import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Link } from "@src/components/primitives/link";
 import { CaretLeftIcon } from "@phosphor-icons/react";
 import { series } from "@src/routes/_app/library/-library";
-import { getVolume } from "@app/library/-volumes";
+import { getVolumeMeta } from "@app/library/-volumes";
 import { ChapterList } from "@src/components/library/chapter-list";
 import { Badge } from "@src/components/primitives/badge";
 import { Progress } from "@src/components/primitives/progress";
@@ -23,13 +23,16 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/")({
     const s = series.find((x) => x.id === params.seriesId);
     const slim = s?.volumes.find((x) => x.id === params.volumeId);
     if (!s || !slim) throw notFound();
-    const full = await getVolume(params.volumeId);
-    return { series: s, slim, full };
+    // `meta` carries hero/poetry/gallery/title-page metadata + the slim
+    // chapter list. No chapter `.md` content is fetched here — that's
+    // deferred to the page reader on a per-chapter basis.
+    const meta = await getVolumeMeta(params.volumeId);
+    return { series: s, slim, meta };
   },
 });
 
 function VolumePage() {
-  const { series: s, slim, full } = Route.useLoaderData();
+  const { series: s, slim, meta } = Route.useLoaderData();
 
   const { totalPages, percent: overall } = useVolumeProgress(slim.chapters);
   const chapterCount = slim.chapters.filter((c) => c.kind !== "afterword").length;
@@ -45,8 +48,8 @@ function VolumePage() {
         {s.title}
       </Link>
 
-      {full ? (
-        <VolumeHero volume={full} />
+      {meta ? (
+        <VolumeHero volume={meta} />
       ) : (
         <header className="flex flex-col gap-3">
           <div className="flex items-center gap-3">
@@ -79,24 +82,24 @@ function VolumePage() {
           <ChapterList seriesId={s.id} volumeId={slim.id} chapters={slim.chapters} />
         </section>
 
-        {full?.openingPoetry ? (
+        {meta?.openingPoetry ? (
           <>
             <Ornament glyph="❦" className="mt-4" />
-            <PoetrySection poetry={full.openingPoetry} />
+            <PoetrySection poetry={meta.openingPoetry} />
           </>
         ) : null}
 
-        {full?.openingGallery && full.openingGallery.length > 0 ? (
+        {meta?.openingGallery && meta.openingGallery.length > 0 ? (
           <>
             <Ornament glyph="❀" />
-            <GallerySection gallery={full.openingGallery} label="Opening Gallery" />
+            <GallerySection gallery={meta.openingGallery} label="Opening Gallery" />
           </>
         ) : null}
 
-        {full ? (
+        {meta ? (
           <>
             <Ornament glyph="☙" />
-            <TitlePageSection volume={full} />
+            <TitlePageSection volume={meta} />
           </>
         ) : null}
       </div>

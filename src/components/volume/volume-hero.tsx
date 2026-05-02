@@ -4,9 +4,9 @@ import { Badge } from "@src/components/primitives/badge";
 import { Button } from "@src/components/primitives/button";
 import { asset } from "@src/lib/asset";
 import { SinGlyph } from "@src/components/thematic/sin-glyph";
-import type { Volume } from "@src/lib/schema";
+import type { VolumeMeta } from "@app/library/-volumes/_shared";
 
-export function VolumeHero({ volume }: { volume: Volume }) {
+export function VolumeHero({ volume }: { volume: VolumeMeta }) {
   const firstChapter = volume.chapters[0];
   const { width, height } = volume.cover;
   const isPortrait = width && height ? height > width : true;

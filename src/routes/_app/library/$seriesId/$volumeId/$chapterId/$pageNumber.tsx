@@ -8,7 +8,7 @@ import {
   NotePencilIcon,
 } from "@phosphor-icons/react";
 import { series } from "@src/routes/_app/library/-library";
-import { getVolume } from "@app/library/-volumes";
+import { getVolumeChapter, getVolumeMeta } from "@app/library/-volumes";
 import { PageView } from "@src/components/reader/page-view";
 import { Button } from "@src/components/primitives/button";
 import { IconButton } from "@src/components/primitives/icon-button";
@@ -28,12 +28,19 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
     if (!s) throw notFound();
     const slim = s.volumes.find((x) => x.id === params.volumeId);
     if (!slim) throw notFound();
-    const full = await getVolume(params.volumeId);
-    if (!full) throw notFound();
-    const allChapters = full.afterword ? [...full.chapters, full.afterword] : full.chapters;
-    const chapterIdx = allChapters.findIndex((c) => c.id === params.chapterId);
+
+    // Hero metadata + slim chapter list (for adjacency math). The active
+    // chapter's actual pages come from `getVolumeChapter` below — only one
+    // chapter's worth of `.md` fetches per page navigation.
+    const [meta, chapter] = await Promise.all([
+      getVolumeMeta(params.volumeId),
+      getVolumeChapter(params.volumeId, params.chapterId),
+    ]);
+    if (!meta || !chapter) throw notFound();
+
+    const slimChapters = meta.afterword ? [...meta.chapters, meta.afterword] : meta.chapters;
+    const chapterIdx = slimChapters.findIndex((c) => c.id === params.chapterId);
     if (chapterIdx === -1) throw notFound();
-    const chapter = allChapters[chapterIdx]!;
 
     const pageNum = Number.parseInt(params.pageNumber, 10);
     if (!Number.isFinite(pageNum)) throw notFound();
@@ -41,30 +48,27 @@ export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/$chapter
     if (pageIdx === -1) throw notFound();
     const page = chapter.pages[pageIdx]!;
 
-    const prevChapter = chapterIdx > 0 ? allChapters[chapterIdx - 1]! : null;
-    const nextChapter = chapterIdx < allChapters.length - 1 ? allChapters[chapterIdx + 1]! : null;
+    // Prev/next are derived from slim page-counts. Page numbers are 1..N
+    // contiguous (see `makePagesBuilder`), so a count is sufficient — no
+    // reason to fetch the adjacent chapter's content just to build a link.
+    const prevSlim = chapterIdx > 0 ? slimChapters[chapterIdx - 1]! : null;
+    const nextSlim = chapterIdx < slimChapters.length - 1 ? slimChapters[chapterIdx + 1]! : null;
 
     const prev: PageTarget | null =
       pageIdx > 0
         ? { chapterId: chapter.id, pageNumber: String(chapter.pages[pageIdx - 1]!.number) }
-        : prevChapter && prevChapter.pages.length > 0
-          ? {
-              chapterId: prevChapter.id,
-              pageNumber: String(prevChapter.pages[prevChapter.pages.length - 1]!.number),
-            }
+        : prevSlim && prevSlim.pageCount > 0
+          ? { chapterId: prevSlim.id, pageNumber: String(prevSlim.pageCount) }
           : null;
 
     const next: PageTarget | null =
       pageIdx < chapter.pages.length - 1
         ? { chapterId: chapter.id, pageNumber: String(chapter.pages[pageIdx + 1]!.number) }
-        : nextChapter && nextChapter.pages.length > 0
-          ? {
-              chapterId: nextChapter.id,
-              pageNumber: String(nextChapter.pages[0]!.number),
-            }
+        : nextSlim && nextSlim.pageCount > 0
+          ? { chapterId: nextSlim.id, pageNumber: "1" }
           : null;
 
-    return { series: s, volume: full, chapter, page, pageIdx, prev, next };
+    return { series: s, volume: meta, chapter, page, pageIdx, prev, next };
   },
 });
 
