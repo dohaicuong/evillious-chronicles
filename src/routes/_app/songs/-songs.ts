@@ -1,4 +1,4 @@
-import type { Song } from "./schema";
+import type { Song } from "@src/lib/schema";
 
 /*
  * Global song catalog. Songs are independent works that cross-reference

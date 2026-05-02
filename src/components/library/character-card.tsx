@@ -3,7 +3,7 @@ import { Card } from "@src/components/primitives/card";
 import { Badge } from "@src/components/primitives/badge";
 import { CharacterPortrait } from "@src/components/library/character-portrait";
 import { ReactionButton } from "@src/components/library/reaction-button";
-import type { Character } from "@src/data/characters";
+import type { Character } from "@app/characters/-characters";
 
 export function CharacterCard({ character }: { character: Character }) {
   const epithet = character.otherNames?.[0];

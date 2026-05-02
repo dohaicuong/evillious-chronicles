@@ -8,7 +8,7 @@ import type {
   TitlePage,
   Translation,
   Volume as VolumeType,
-} from "@src/data/schema";
+} from "@src/lib/schema";
 import chapterManifest from "virtual:chapter-manifest";
 
 const ILLUSTRATION_RE = /^\s*<!--\s*illustration:\s*([\w-]+)\s*-->\s*$/;

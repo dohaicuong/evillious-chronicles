@@ -1,6 +1,6 @@
 import { Link } from "@src/components/primitives/link";
 import { CaretLeftIcon, CaretRightIcon } from "@phosphor-icons/react";
-import type { Chapter } from "@src/data/schema";
+import type { Chapter } from "@src/lib/schema";
 
 type Props = {
   seriesId: string;

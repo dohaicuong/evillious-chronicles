@@ -1,5 +1,5 @@
 import { asset } from "@src/lib/asset";
-import type { Page } from "@src/data/schema";
+import type { Page } from "@src/lib/schema";
 import { ProseRenderer } from "./prose-renderer";
 
 export function PageView({ page }: { page: Page }) {

@@ -1,6 +1,6 @@
 import { PlayIcon } from "@phosphor-icons/react";
 import { useAudio } from "@src/lib/audio";
-import { getSong } from "@src/data/songs";
+import { getSong } from "@app/songs/-songs";
 import { cn } from "@src/lib/cn";
 import { ReactionButton } from "@src/components/library/reaction-button";
 

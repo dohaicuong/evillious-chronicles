@@ -1,6 +1,6 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
 import { SinGlyph } from "@src/components/thematic/sin-glyph";
-import type { Sin } from "@src/data/schema";
+import type { Sin } from "@src/lib/schema";
 
 export const Route = createLazyFileRoute("/components/thematic/sin-glyph")({
   component: SinGlyphPage,

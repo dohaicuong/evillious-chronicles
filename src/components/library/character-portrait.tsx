@@ -1,6 +1,6 @@
 import { asset } from "@src/lib/asset";
 import { cn } from "@src/lib/cn";
-import type { Character } from "@src/data/characters";
+import type { Character } from "@app/characters/-characters";
 
 function initialsOf(name: string): string {
   return name

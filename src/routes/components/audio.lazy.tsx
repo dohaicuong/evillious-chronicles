@@ -2,7 +2,7 @@ import { createLazyFileRoute } from "@tanstack/react-router";
 import { MusicNotesIcon } from "@phosphor-icons/react";
 import { Button } from "@src/components/primitives/button";
 import { useAudio } from "@src/lib/audio";
-import { songs } from "@src/data/songs";
+import { songs } from "@app/songs/-songs";
 
 export const Route = createLazyFileRoute("/components/audio")({
   component: AudioPage,

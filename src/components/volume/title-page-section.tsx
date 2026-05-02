@@ -1,5 +1,5 @@
 import { ExternalLink } from "@src/components/primitives/link";
-import type { Volume } from "@src/data/schema";
+import type { Volume } from "@src/lib/schema";
 
 export function TitlePageSection({ volume }: { volume: Volume }) {
   const { titlePage, translation } = volume;

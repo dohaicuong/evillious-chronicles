@@ -1,5 +1,5 @@
 import { asset } from "@src/lib/asset";
-import type { ArtworkPage } from "@src/data/schema";
+import type { ArtworkPage } from "@src/lib/schema";
 
 export function GallerySection({ gallery, label }: { gallery: ArtworkPage[]; label: string }) {
   return (

@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@src/components/primitives/link";
 import { useMemo } from "react";
 import { CaretLeftIcon } from "@phosphor-icons/react";
-import { songs } from "@src/data/songs";
+import { songs } from "@app/songs/-songs";
 import { SongList } from "@src/components/audio/song-list";
 
 export const Route = createFileRoute("/_app/songs/")({

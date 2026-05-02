@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { useEffect, useMemo, useState } from "react";
 import { ExternalLink, Link } from "@src/components/primitives/link";
 import { ArrowSquareOutIcon, CaretLeftIcon, MagnifyingGlassIcon } from "@phosphor-icons/react";
-import { characters } from "@src/data/characters";
+import { characters } from "@app/characters/-characters";
 import { CharacterCard } from "@src/components/library/character-card";
 import { Input } from "@src/components/primitives/input";
 import { Pagination } from "@src/components/primitives/pagination";

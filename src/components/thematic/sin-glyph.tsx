@@ -9,7 +9,7 @@ import {
   ScissorsIcon,
 } from "@phosphor-icons/react";
 import type { ComponentProps } from "react";
-import type { Sin } from "@src/data/schema";
+import type { Sin } from "@src/lib/schema";
 
 const map = {
   pride: CrownIcon,

@@ -1,4 +1,4 @@
-import type { Volume } from "@src/data/schema";
+import type { Volume } from "@src/lib/schema";
 
 /*
  * Volume registry — dynamic imports so each volume's content (markdown

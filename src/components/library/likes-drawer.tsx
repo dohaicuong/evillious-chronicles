@@ -4,8 +4,8 @@ import { Drawer } from "@src/components/primitives/drawer";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
 import { series as seriesList } from "@src/routes/_app/library/-library";
-import { getSong } from "@src/data/songs";
-import { getCharacter } from "@src/data/characters";
+import { getSong } from "@app/songs/-songs";
+import { getCharacter } from "@app/characters/-characters";
 import { useReactions, type Reaction } from "@src/lib/reactions";
 
 export function LikesDrawer({

@@ -1,4 +1,4 @@
-import type { Poetry } from "@src/data/schema";
+import type { Poetry } from "@src/lib/schema";
 
 export function PoetrySection({ poetry }: { poetry: Poetry }) {
   return (
