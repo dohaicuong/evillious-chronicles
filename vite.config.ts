@@ -1,11 +1,50 @@
-import { readdirSync, statSync } from "node:fs";
-import { join, relative } from "node:path";
+import { createHash } from "node:crypto";
+import {
+  existsSync,
+  mkdirSync,
+  readFileSync,
+  readdirSync,
+  rmSync,
+  statSync,
+  writeFileSync,
+} from "node:fs";
+import { join, relative, resolve } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite-plus";
 import react from "@vitejs/plugin-react";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
+
+// Vite's dep prebundle cache is keyed on lockfile + config hash, but in
+// practice we've hit cases where editing `resolve.alias` mid-session leaves
+// the prebundle pointing at stale modules — most visibly as a "two copies of
+// React" error after adding `@app`. This plugin fingerprints the alias
+// config on each start, compares to the last-seen value, and wipes
+// `node_modules/.vite{,-temp}` if it changed. So aliasing edits don't need a
+// manual cache clean.
+function aliasCacheGuardPlugin() {
+  return {
+    name: "alias-cache-guard",
+    enforce: "pre" as const,
+    config(config: { resolve?: { alias?: unknown } }) {
+      const aliasFingerprint = JSON.stringify(config.resolve?.alias ?? {});
+      const hash = createHash("sha1").update(aliasFingerprint).digest("hex");
+      const cacheRoot = resolve("node_modules");
+      const stampFile = resolve(cacheRoot, ".vite", "alias.hash");
+
+      const previous = existsSync(stampFile) ? readFileSync(stampFile, "utf-8").trim() : null;
+      if (previous !== hash) {
+        for (const dir of [".vite", ".vite-temp"]) {
+          rmSync(resolve(cacheRoot, dir), { recursive: true, force: true });
+        }
+        mkdirSync(resolve(cacheRoot, ".vite"), { recursive: true });
+        writeFileSync(stampFile, hash);
+      }
+      return null;
+    },
+  };
+}
 
 // Build-time scan of every chapter `.md` under `public/<slug>/chapters/`,
 // exposed to the app as `virtual:chapter-manifest`. The chapter `.md` files
@@ -104,6 +143,7 @@ export default defineConfig({
     options: { typeAware: true, typeCheck: true },
   },
   plugins: [
+    aliasCacheGuardPlugin(),
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
     tailwindcss(),

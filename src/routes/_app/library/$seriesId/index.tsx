@@ -27,7 +27,7 @@ function SeriesPage() {
         <CaretLeftIcon size={14} />
         Library
       </Link>
-      <header className="mb-12 flex flex-col gap-3 max-w-2xl">
+      <header className="mb-12 flex flex-col gap-3 max-w-4xl">
         <span className="text-style-eyebrow text-fg-muted">Series</span>
         <div className="flex items-start gap-3">
           <h1 className="text-style-display text-fg flex-1">{s.title}</h1>
