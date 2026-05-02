@@ -5,6 +5,7 @@ import {
   ArrowSquareOutIcon,
   BookOpenTextIcon,
   BookmarkSimpleIcon,
+  CloudArrowDownIcon,
   GearIcon,
   HeartIcon,
   ListIcon,
@@ -19,6 +20,7 @@ import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
 import { LikesDrawer } from "@src/components/library/likes-drawer";
 import { NotesDrawer } from "@src/components/library/notes-drawer";
+import { OfflineDrawer } from "@src/components/library/offline-drawer";
 import { SettingsDrawer } from "@src/components/library/settings-drawer";
 import { cn } from "@src/lib/cn";
 import { pruneOrphanReactions } from "@src/lib/reactions";
@@ -32,6 +34,7 @@ export function AppShell() {
   const [likesOpen, setLikesOpen] = useState(false);
   const [bookmarksOpen, setBookmarksOpen] = useState(false);
   const [notesOpen, setNotesOpen] = useState(false);
+  const [offlineOpen, setOfflineOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
 
   // Reset scroll on route change — the ScrollArea's own viewport scrolls,
@@ -126,6 +129,13 @@ export function AppShell() {
                         Likes
                       </Menu.Item>
                       <Menu.Separator />
+                      <Menu.Item onClick={() => setOfflineOpen(true)}>
+                        <CloudArrowDownIcon
+                          weight="light"
+                          className="inline-block mr-2 align-[-2px]"
+                        />
+                        Offline reading
+                      </Menu.Item>
                       <Menu.Item onClick={() => setSettingsOpen(true)}>
                         <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                         Reader settings
@@ -198,6 +208,13 @@ export function AppShell() {
                       Likes
                     </Menu.Item>
                     <Menu.Separator />
+                    <Menu.Item onClick={() => setOfflineOpen(true)}>
+                      <CloudArrowDownIcon
+                        weight="light"
+                        className="inline-block mr-2 align-[-2px]"
+                      />
+                      Offline reading
+                    </Menu.Item>
                     <Menu.Item onClick={() => setSettingsOpen(true)}>
                       <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                       Reader settings
@@ -246,6 +263,7 @@ export function AppShell() {
       <LikesDrawer open={likesOpen} onOpenChange={setLikesOpen} />
       <BookmarksDrawer open={bookmarksOpen} onOpenChange={setBookmarksOpen} />
       <NotesDrawer open={notesOpen} onOpenChange={setNotesOpen} />
+      <OfflineDrawer open={offlineOpen} onOpenChange={setOfflineOpen} />
       <SettingsDrawer open={settingsOpen} onOpenChange={setSettingsOpen} />
     </div>
   );

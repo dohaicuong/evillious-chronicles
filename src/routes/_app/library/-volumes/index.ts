@@ -40,6 +40,15 @@ export async function getVolumeChapter(
   return bundle.chapter(chapterId);
 }
 
+// Used by the offline-sync flow to enumerate every chapter `.md` URL for a
+// volume. Async because the volume module is lazy-imported, but the URL
+// derivation itself is sync (manifest-only).
+export async function getVolumeChapterUrls(volumeId: string): Promise<string[]> {
+  const load = loaders[volumeId];
+  if (!load) return [];
+  return (await load()).chapterUrls();
+}
+
 const availableSet = new Set(Object.keys(loaders));
 
 export const availableVolumeIds = Array.from(availableSet);

@@ -1,11 +1,5 @@
 # TODO
 
-## TOP PRIORITY
-
-## Pending
-
-- reaction feature(like) for novel, song and character
-
 ### Reader / content
 
 - **Audio cues** — wire `Page.songCue` to the audio dock. Schema already in place at three levels (no changes needed): `Series.songIds` (rendered on series page), `Chapter.songIds` (a "tracks in this chapter" list — not rendered yet), `Page.songCue` (single id, intended to pin/highlight the song in the dock when the page is reached). Plan: IntersectionObserver on the page like progress; opt-in via a new `autoplaySongCues` toggle in `SettingsDrawer`.
@@ -44,8 +38,6 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 ### Data hygiene
 
 - **Export / import** — one JSON file from the three Dexie tables (`chapterProgress`, `bookmarks`, `notes`). Cheap insurance against site-data clears.
-
-### Artistic touch-ups
 
 ### Future: TanStack DB
 

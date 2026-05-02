@@ -48,6 +48,14 @@ export function pageCountUnder(prefix: string): number {
   return pagesUnder(prefix).length;
 }
 
+// Same URL shape as the runtime fetch in `Chapter()` — keeps the offline
+// pre-fetcher and the reader fetcher pointed at identical URLs so the SW
+// cache key matches.
+function urlsUnder(prefix: string): string[] {
+  const dirKey = prefix.replace(/^\.?\//, "").replace(/\/$/, "");
+  return pagesUnder(prefix).map((name) => `${import.meta.env.BASE_URL}${dirKey}/${name}`);
+}
+
 type ChapterProps = {
   id: string;
   number: number;
@@ -234,6 +242,12 @@ export type VolumeBundle = {
   meta: () => VolumeMeta;
   /** Lazy async resolver for one chapter's pages — single chapter's worth of fetches. */
   chapter: (chapterId: string) => Promise<ChapterType>;
+  /**
+   * All chapter `.md` URLs for this volume in reading order. Same URL shape
+   * as the runtime reader, so pre-fetching these populates the SW's
+   * `ec-chapters` cache for offline reads.
+   */
+  chapterUrls: () => string[];
 };
 
 /**
@@ -252,5 +266,9 @@ export function Volume(manifest: VolumeManifest): VolumeBundle {
     slim: deriveSlim(manifest),
     meta: () => deriveMeta(manifest),
     chapter: (chapterId) => deriveChapter(manifest, chapterId),
+    chapterUrls: () => {
+      const all = manifest.chapter.flatMap((c) => urlsUnder(c.pages));
+      return manifest.afterword ? [...all, ...urlsUnder(manifest.afterword.pages)] : all;
+    },
   };
 }
