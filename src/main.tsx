@@ -25,11 +25,13 @@ const router = createRouter({
   routeTree,
   basepath: import.meta.env.BASE_URL,
   // Loading UI: shown when a route's loader / lazy chunk takes longer than
-  // pendingMs to resolve. Kept on screen for at least pendingMinMs to avoid
-  // a flash on fast loads.
+  // pendingMs to resolve. Kept on screen for at least pendingMinMs once it
+  // appears, so the chronicle quote is actually readable rather than
+  // flashing past. Tuned high on both sides to favour stillness over
+  // responsiveness — a quick blank moment beats a stuttery spinner.
   defaultPendingComponent: PendingScreen,
-  defaultPendingMs: 200,
-  defaultPendingMinMs: 400,
+  defaultPendingMs: 400,
+  defaultPendingMinMs: 800,
 });
 
 declare module "@tanstack/react-router" {
