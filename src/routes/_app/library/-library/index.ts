@@ -1,31 +1,29 @@
-export type Sin = "pride" | "lust" | "sloth" | "gluttony" | "greed" | "wrath" | "envy" | "origin"; // Eve Moonlit / Original Sin Story — precursor to the seven
+import type { SlimChapter, SlimVolume } from "@app/library/-volumes/_shared";
+import type { Sin } from "@src/lib/schema";
+import { clotureOfYellow } from "@app/library/-volumes/cloture-of-yellow";
+import { praefacioOfBlue } from "@app/library/-volumes/praefacio-of-blue";
+import { praeludiumOfRed } from "@app/library/-volumes/praeludium-of-red";
+import { venomania } from "@app/library/-volumes/venomania";
+import { wiegenliedOfGreen } from "@app/library/-volumes/wiegenlied-of-green";
 
-export type Chapter = {
-  id: string;
-  number: number;
-  title: string;
-  pageCount: number;
-  kind?: "afterword";
-};
-
-export type Volume = {
-  id: string;
-  number: number;
-  title: string;
-  sin: Sin | null;
-  chapters: Chapter[];
-};
+export type { Sin };
+export type Chapter = SlimChapter;
+export type Volume = SlimVolume;
 
 export type Series = {
   id: string;
   title: string;
   description: string;
   volumes: Volume[];
-  // Songs from the global catalog (`src/data/songs.ts`) associated with this
+  // Songs from the global catalog (`@app/songs/-songs`) associated with this
   // series. Rendered as a list on the series detail page.
   songIds?: string[];
 };
 
+// Skeleton chapter list for volumes that haven't been wired in yet — page
+// counts are deterministic placeholders, ids follow `<prefix>-<n>`. Once a
+// volume gets a manifest in `-volumes/`, replace its entry below with the
+// imported `slim` view.
 function makeChapters(prefix: string, titles: string[]): Chapter[] {
   return titles.map((title, i) => ({
     id: `${prefix}-${i + 1}`,
@@ -33,33 +31,6 @@ function makeChapters(prefix: string, titles: string[]): Chapter[] {
     title,
     pageCount: 16 + ((i * 7) % 14),
   }));
-}
-
-// Page-count lookup driven by the build-time `virtual:chapter-manifest`
-// (Vite plugin in `vite.config.ts` scans `public/*/chapters/**/*.md`). The
-// chapter `.md` content lives in `public/`, so we can't `import.meta.glob`
-// it; the manifest is the source of truth for the file listing.
-import chapterManifest from "virtual:chapter-manifest";
-
-function pageCountFor(volumeSlug: string, chapterDir: string): number {
-  return chapterManifest[`${volumeSlug}/chapters/${chapterDir}`]?.length ?? 0;
-}
-
-// Compact chapter constructor for implemented volumes. `dir` is the
-// per-chapter folder name under `public/<slug>/chapters/`; the page-count
-// comes from the manifest's listing of `.md` files there.
-function chap(volumeSlug: string, dir: string, id: string, number: number, title: string): Chapter {
-  return { id, number, title, pageCount: pageCountFor(volumeSlug, dir) };
-}
-
-function afterword(volumeSlug: string, id: string): Chapter {
-  return {
-    id,
-    number: 99,
-    title: "Afterword",
-    pageCount: pageCountFor(volumeSlug, "afterword"),
-    kind: "afterword",
-  };
 }
 
 export const series: Series[] = [
@@ -84,248 +55,10 @@ export const series: Series[] = [
       "reach-for-the-stars",
     ],
     volumes: [
-      {
-        id: "cloture-of-yellow",
-        number: 1,
-        title: "Clôture of Yellow",
-        sin: "pride",
-        chapters: [
-          chap("cloture-of-yellow", "00-prologue", "cy-prologue", 0, "Prologue"),
-          chap(
-            "cloture-of-yellow",
-            "01-ch1-s1-fourteenth-birthday",
-            "cy-ch1-s1",
-            1,
-            "Chapter 1 · The Fourteenth Birthday",
-          ),
-          chap(
-            "cloture-of-yellow",
-            "02-ch1-s2-lodging",
-            "cy-ch1-s2",
-            2,
-            "Chapter 1 · Lodging in the Hearts of Evil",
-          ),
-          chap(
-            "cloture-of-yellow",
-            "03-ch2-s1-yearning",
-            "cy-ch2-s1",
-            3,
-            "Chapter 2 · The Yearning of a Twin",
-          ),
-          chap(
-            "cloture-of-yellow",
-            "04-ch2-s2-gear",
-            "cy-ch2-s2",
-            4,
-            "Chapter 2 · The Gear's Direction",
-          ),
-          chap(
-            "cloture-of-yellow",
-            "05-ch3-s1-allies",
-            "cy-ch3-s1",
-            5,
-            "Chapter 3 · Assembly of Allies",
-          ),
-          chap(
-            "cloture-of-yellow",
-            "06-ch3-s2-wish-for-end",
-            "cy-ch3-s2",
-            6,
-            "Chapter 3 · The Wish for an End",
-          ),
-          chap("cloture-of-yellow", "07-ch4-true-evil", "cy-ch4", 7, "Chapter 4 · True Evil?"),
-        ],
-      },
-      {
-        id: "wiegenlied-of-green",
-        number: 2,
-        title: "Wiegenlied of Green",
-        sin: "pride",
-        chapters: [
-          chap("wiegenlied-of-green", "00-prologue", "wg-prologue", 0, "Prologue"),
-          chap(
-            "wiegenlied-of-green",
-            "01-ch1-dream-of-mage",
-            "wg-ch1",
-            1,
-            "Chapter 1 · Dream of a Mage",
-          ),
-          chap(
-            "wiegenlied-of-green",
-            "02-ch2-s1-so-called-humans",
-            "wg-ch2-s1",
-            2,
-            "Chapter 2 · The So-called Humans",
-          ),
-          chap(
-            "wiegenlied-of-green",
-            "03-ch2-s2-wooden-girl",
-            "wg-ch2-s2",
-            3,
-            "Chapter 2 · Wooden Girl and White-Haired Girl",
-          ),
-          chap(
-            "wiegenlied-of-green",
-            "04-ch3-s1-waltz-of-diva",
-            "wg-ch3-s1",
-            4,
-            "Chapter 3 · Waltz of the Diva",
-          ),
-          chap(
-            "wiegenlied-of-green",
-            "05-ch3-s2-lady-who-staggered",
-            "wg-ch3-s2",
-            5,
-            "Chapter 3 · The Lady Who Staggered",
-          ),
-          chap(
-            "wiegenlied-of-green",
-            "06-ch4-s1-lost-destination",
-            "wg-ch4-s1",
-            6,
-            "Chapter 4 · Lost Destination",
-          ),
-          chap(
-            "wiegenlied-of-green",
-            "07-ch4-s2-seasides-small-bottle",
-            "wg-ch4-s2",
-            7,
-            "Chapter 4 · Seaside's Small Bottle",
-          ),
-        ],
-      },
-      {
-        id: "praeludium-of-red",
-        number: 3,
-        title: "Praeludium of Red",
-        sin: "pride",
-        chapters: [
-          chap("praeludium-of-red", "00-prologue", "pr-prologue", 0, "Prologue"),
-          chap(
-            "praeludium-of-red",
-            "01-ch1-s1-star-fortress",
-            "pr-ch1-s1",
-            1,
-            "Chapter 1 · The Star Fortress",
-          ),
-          chap(
-            "praeludium-of-red",
-            "02-ch1-s2-chance-meeting",
-            "pr-ch1-s2",
-            2,
-            "Chapter 1 · Chance Meeting of a Sworn Friend",
-          ),
-          chap(
-            "praeludium-of-red",
-            "03-ch2-s1-evil-food-eater",
-            "pr-ch2-s1",
-            3,
-            "Chapter 2 · Footprints of the Evil Food Eater",
-          ),
-          chap(
-            "praeludium-of-red",
-            "04-ch2-s2-counterattack",
-            "pr-ch2-s2",
-            4,
-            "Chapter 2 · The Signal Fire of a Counterattack",
-          ),
-          chap(
-            "praeludium-of-red",
-            "05-ch3-s1-king-and-girl",
-            "pr-ch3-s1",
-            5,
-            "Chapter 3 · The King and the Girl",
-          ),
-          chap(
-            "praeludium-of-red",
-            "06-ch3-s2-full-moon-visitor",
-            "pr-ch3-s2",
-            6,
-            "Chapter 3 · Full Moon Visitor",
-          ),
-          chap(
-            "praeludium-of-red",
-            "07-ch4-time-forest-song",
-            "pr-ch4",
-            7,
-            "Chapter 4 · Time and a Forest and a Song",
-          ),
-          chap(
-            "praeludium-of-red",
-            "08-epilogue-blue-country",
-            "pr-epilogue",
-            8,
-            "Epilogue · To the Blue Country",
-          ),
-          afterword("praeludium-of-red", "pr-afterword"),
-        ],
-      },
-      {
-        id: "praefacio-of-blue",
-        number: 4,
-        title: "Praefacio of Blue",
-        sin: "pride",
-        chapters: [
-          chap("praefacio-of-blue", "00-prologue", "pb-prologue", 0, "Prologue"),
-          chap(
-            "praefacio-of-blue",
-            "01-ch1-signs-of-enemy",
-            "pb-ch1",
-            1,
-            "Chapter 1 · Signs of the Enemy at Sea",
-          ),
-          chap(
-            "praefacio-of-blue",
-            "02-ch2-s1-hometown-misgivings",
-            "pb-ch2-s1",
-            2,
-            "Chapter 2 · Hometown of Misgivings",
-          ),
-          chap(
-            "praefacio-of-blue",
-            "03-ch2-s2-sorceress-and-forest",
-            "pb-ch2-s2",
-            3,
-            "Chapter 2 · The Sorceress and the Forest",
-          ),
-          chap(
-            "praefacio-of-blue",
-            "04-ch3-s1-inside-story",
-            "pb-ch3-s1",
-            4,
-            "Chapter 3 · The Inside Story on the Girl",
-          ),
-          chap(
-            "praefacio-of-blue",
-            "05-ch3-s2-heartbeat-rain",
-            "pb-ch3-s2",
-            5,
-            "Chapter 3 · A Heartbeat in the Rain",
-          ),
-          chap(
-            "praefacio-of-blue",
-            "06-ch4-s1-monastery-seashore",
-            "pb-ch4-s1",
-            6,
-            "Chapter 4 · The Monastery on the Seashore",
-          ),
-          chap(
-            "praefacio-of-blue",
-            "07-ch4-s2-with-that-person",
-            "pb-ch4-s2",
-            7,
-            "Chapter 4 · With That Person",
-          ),
-          chap(
-            "praefacio-of-blue",
-            "08-epilogue-prelude",
-            "pb-epilogue",
-            8,
-            "Epilogue · Prelude of Things to Come",
-          ),
-          afterword("praefacio-of-blue", "pb-afterword"),
-        ],
-      },
+      clotureOfYellow.slim,
+      wiegenliedOfGreen.slim,
+      praeludiumOfRed.slim,
+      praefacioOfBlue.slim,
     ],
   },
   {
@@ -343,19 +76,7 @@ export const series: Series[] = [
       "muzzle-of-nemesis",
     ],
     volumes: [
-      {
-        id: "venomania",
-        number: 1,
-        title: "The Lunacy of Duke Venomania",
-        sin: "lust",
-        chapters: [
-          chap("venomania", "00-prologue", "ven-prologue", 0, "Prologue"),
-          chap("venomania", "01-ch1", "ven-ch1", 1, "Chapter 1 · Lukana Octo"),
-          chap("venomania", "02-ch2", "ven-ch2", 2, "Chapter 2 · Mikulia Greeonio"),
-          chap("venomania", "03-ch3", "ven-ch3", 3, "Chapter 3 · Gumina Glassred"),
-          chap("venomania", "04-ch4", "ven-ch4", 4, "Chapter 4 · Yufina Marlon"),
-        ],
-      },
+      venomania.slim,
       {
         id: "conchita",
         number: 2,

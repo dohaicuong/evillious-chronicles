@@ -8,16 +8,18 @@ import type { Volume } from "@src/lib/schema";
  *
  * Lives in `src/routes/_app/library/-volumes/` (dash-prefix folder, excluded
  * from TanStack Router's file-based route generation) so volume declarations
- * sit next to the route files that consume them. Volumes that haven't yet
- * been migrated still import from `@src/data/volumes/...`.
+ * sit next to the route files that consume them. Each per-volume module
+ * exports a `VolumeBundle` (`{ manifest, slim, full }`); `full()` triggers
+ * the per-chapter fetches and returns the schema's `Volume` shape.
  */
 
 const loaders: Record<string, () => Promise<Volume>> = {
-  "cloture-of-yellow": () => import("./cloture-of-yellow").then((m) => m.clotureOfYellow),
-  "wiegenlied-of-green": () => import("./wiegenlied-of-green").then((m) => m.wiegenliedOfGreen),
-  "praeludium-of-red": () => import("./praeludium-of-red").then((m) => m.praeludiumOfRed),
-  "praefacio-of-blue": () => import("./praefacio-of-blue").then((m) => m.praefacioOfBlue),
-  venomania: () => import("./venomania").then((m) => m.venomania),
+  "cloture-of-yellow": () => import("./cloture-of-yellow").then((m) => m.clotureOfYellow.full()),
+  "wiegenlied-of-green": () =>
+    import("./wiegenlied-of-green").then((m) => m.wiegenliedOfGreen.full()),
+  "praeludium-of-red": () => import("./praeludium-of-red").then((m) => m.praeludiumOfRed.full()),
+  "praefacio-of-blue": () => import("./praefacio-of-blue").then((m) => m.praefacioOfBlue.full()),
+  venomania: () => import("./venomania").then((m) => m.venomania.full()),
 };
 
 export async function getVolume(id: string): Promise<Volume | undefined> {

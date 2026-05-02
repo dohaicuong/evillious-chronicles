@@ -101,7 +101,7 @@ export async function Chapter({
 // so each chapter just supplies id / number / title / pages-prefix.
 export type VolumeChapter = Omit<ChapterProps, "illustrations">;
 
-type VolumeProps = {
+export type VolumeManifest = {
   id: string;
   slug: string;
   number: number;
@@ -130,14 +130,50 @@ type VolumeProps = {
   afterword?: VolumeChapter;
 };
 
-/**
- * Volume factory — builds the schema's `Volume` shape from a flatter input.
- * Bundles the per-chapter illustrations once at volume scope, then resolves
- * every chapter (and the optional afterword) by fetching their markdown
- * pages in parallel from `public/`.
- */
-export async function Volume(props: VolumeProps): Promise<VolumeType> {
-  const { chapterIllustration, chapter, afterword, ...rest } = props;
+// Slim catalog shapes — minimal metadata used by the library / series cards
+// / chapter list, with no chapter content. Co-located here so the library
+// catalog can be derived from each volume manifest in one place.
+export type SlimChapter = {
+  id: string;
+  number: number;
+  title: string;
+  pageCount: number;
+  kind?: "afterword";
+};
+
+export type SlimVolume = {
+  id: string;
+  number: number;
+  title: string;
+  sin: Sin | null;
+  chapters: SlimChapter[];
+};
+
+function slimChapter(c: VolumeChapter, kind?: "afterword"): SlimChapter {
+  return {
+    id: c.id,
+    number: c.number,
+    title: c.title,
+    pageCount: pageCountUnder(c.pages),
+    ...(kind ? { kind } : {}),
+  };
+}
+
+function deriveSlim(m: VolumeManifest): SlimVolume {
+  return {
+    id: m.id,
+    number: m.number,
+    title: m.title,
+    sin: m.sin,
+    chapters: [
+      ...m.chapter.map((c) => slimChapter(c)),
+      ...(m.afterword ? [slimChapter(m.afterword, "afterword")] : []),
+    ],
+  };
+}
+
+async function deriveFull(m: VolumeManifest): Promise<VolumeType> {
+  const { chapterIllustration, chapter, afterword, ...rest } = m;
   const chapters = await Promise.all(
     chapter.map((c) => Chapter({ ...c, illustrations: chapterIllustration })),
   );
@@ -148,5 +184,31 @@ export async function Volume(props: VolumeProps): Promise<VolumeType> {
     ...rest,
     chapters,
     ...(afterwordResolved ? { afterword: afterwordResolved } : {}),
+  };
+}
+
+export type VolumeBundle = {
+  manifest: VolumeManifest;
+  /** Sync slim metadata for catalogs (library, series page, chapter list). */
+  slim: SlimVolume;
+  /** Lazy async resolver for the full Volume — fetches every chapter's pages. */
+  full: () => Promise<VolumeType>;
+};
+
+/**
+ * Volume factory — single source of truth for one volume. Returns a bundle
+ * exposing both views derived from the manifest:
+ *  - `slim` (sync) for catalogs that only need metadata + page-counts.
+ *  - `full()` (async) for the page reader, which awaits every chapter's
+ *    markdown content from `public/`.
+ *
+ * The `-library.ts` slim catalog and the `-volumes/index.ts` lazy registry
+ * both consume the same bundle, so titles, ids, sin, page-counts can't drift.
+ */
+export function Volume(manifest: VolumeManifest): VolumeBundle {
+  return {
+    manifest,
+    slim: deriveSlim(manifest),
+    full: () => deriveFull(manifest),
   };
 }
