@@ -3,7 +3,7 @@ import { ExternalLink, Link } from "@src/components/primitives/link";
 import { ArrowSquareOutIcon, CaretLeftIcon } from "@phosphor-icons/react";
 import { getCharacter } from "@src/data/characters";
 import type { Character } from "@src/data/characters";
-import { series } from "@src/data/library";
+import { series } from "@src/routes/_app/library/-library";
 import { CharacterPortrait } from "@src/components/library/character-portrait";
 import { ReactionButton } from "@src/components/library/reaction-button";
 

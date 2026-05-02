@@ -3,9 +3,9 @@ import { Card } from "@src/components/primitives/card";
 import { Badge } from "@src/components/primitives/badge";
 import { Progress } from "@src/components/primitives/progress";
 import { SinGlyph } from "@src/components/thematic/sin-glyph";
-import { isVolumeAvailable } from "@src/data/volumes";
+import { isVolumeAvailable } from "@app/library/-volumes";
 import { useVolumeProgress } from "@src/lib/progress";
-import type { Volume } from "@src/data/library";
+import type { Volume } from "@src/routes/_app/library/-library";
 
 export function VolumeCard({ seriesId, volume }: { seriesId: string; volume: Volume }) {
   const { percent: overall } = useVolumeProgress(volume.chapters);

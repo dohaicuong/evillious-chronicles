@@ -12,7 +12,7 @@ import { IconButton } from "@src/components/primitives/icon-button";
 import { Input } from "@src/components/primitives/input";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
 import { useAllBookmarks, removeBookmark, setBookmarkLabel } from "@src/lib/bookmarks";
-import { series as seriesList } from "@src/data/library";
+import { series as seriesList } from "@src/routes/_app/library/-library";
 import type { Bookmark } from "@src/lib/db";
 
 export function BookmarksDrawer({

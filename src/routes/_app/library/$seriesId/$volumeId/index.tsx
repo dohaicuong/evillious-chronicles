@@ -1,8 +1,8 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Link } from "@src/components/primitives/link";
 import { CaretLeftIcon } from "@phosphor-icons/react";
-import { series } from "@src/data/library";
-import { getVolume } from "@src/data/volumes";
+import { series } from "@src/routes/_app/library/-library";
+import { getVolume } from "@app/library/-volumes";
 import { ChapterList } from "@src/components/library/chapter-list";
 import { Badge } from "@src/components/primitives/badge";
 import { Progress } from "@src/components/primitives/progress";
@@ -15,7 +15,7 @@ import { IconButton } from "@src/components/primitives/icon-button";
 import { Menu } from "@src/components/primitives/menu";
 import { DotsThreeVerticalIcon } from "@phosphor-icons/react";
 import { markVolumeComplete, resetVolumeProgress, useVolumeProgress } from "@src/lib/progress";
-import type { Chapter } from "@src/data/library";
+import type { Chapter } from "@src/routes/_app/library/-library";
 
 export const Route = createFileRoute("/_app/library/$seriesId/$volumeId/")({
   component: VolumePage,

@@ -1,7 +1,7 @@
 import { createFileRoute, notFound } from "@tanstack/react-router";
 import { Link } from "@src/components/primitives/link";
 import { CaretLeftIcon } from "@phosphor-icons/react";
-import { series } from "@src/data/library";
+import { series } from "@src/routes/_app/library/-library";
 import { VolumeCard } from "@src/components/library/volume-card";
 import { ReactionButton } from "@src/components/library/reaction-button";
 import { SongList } from "@src/components/audio/song-list";

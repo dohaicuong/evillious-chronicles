@@ -1,17 +1,4 @@
-import type { ImageAsset } from "@src/data/schema";
-
 import { Volume } from "./_shared";
-
-const illustrations: Record<string, ImageAsset> = {
-  "illustration-1": {
-    src: "/venomania/illustration-1.jpg",
-    alt: "The Lunacy of Duke Venomania — illustration 1",
-  },
-  "illustration-2": {
-    src: "/venomania/illustration-2.png",
-    alt: "The Lunacy of Duke Venomania — illustration 2",
-  },
-};
 
 /*
  * The Lunacy of Duke Venomania (悪ノ大罪 — 毒/ヴェノマニア公爵の狂気)
@@ -25,6 +12,12 @@ const illustrations: Record<string, ImageAsset> = {
  * src/data/volumes/venomania/chapters/ to wire content in.
  *
  * Assets pending — drop cover/illustrations into public/venomania/.
+ *
+ * Note: this volume declaration lives in `src/routes/_app/library/-volumes/`
+ * (dash-prefix folder, excluded from TanStack Router's file-based route
+ * generation). The `pages` path strings are still anchored to
+ * `src/data/volumes/` because that's where `_shared.ts`'s `import.meta.glob`
+ * is rooted — the markdown content lives there until we migrate it too.
  */
 
 export const venomania = Volume({
@@ -81,7 +74,16 @@ export const venomania = Volume({
     url: "https://pokkoo-shuu.tumblr.com/thelunacyofdukevenomania",
   },
 
-  chapterIllustration: illustrations,
+  chapterIllustration: {
+    "illustration-1": {
+      src: "/venomania/illustration-1.jpg",
+      alt: "The Lunacy of Duke Venomania — illustration 1",
+    },
+    "illustration-2": {
+      src: "/venomania/illustration-2.png",
+      alt: "The Lunacy of Duke Venomania — illustration 2",
+    },
+  },
   chapter: [
     {
       id: "ven-prologue",

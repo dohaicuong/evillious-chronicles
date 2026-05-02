@@ -35,21 +35,19 @@ function makeChapters(prefix: string, titles: string[]): Chapter[] {
   }));
 }
 
-// Eager glob over every chapter page file across every volume. Returns a map
-// of project-relative paths → loader. We don't load the content here — just
-// count the keys per chapter directory to derive `pageCount`.
-const ALL_PAGE_FILES = import.meta.glob("./volumes/**/chapters/**/*.md");
+// Page-count lookup driven by the build-time `virtual:chapter-manifest`
+// (Vite plugin in `vite.config.ts` scans `public/*/chapters/**/*.md`). The
+// chapter `.md` content lives in `public/`, so we can't `import.meta.glob`
+// it; the manifest is the source of truth for the file listing.
+import chapterManifest from "virtual:chapter-manifest";
 
 function pageCountFor(volumeSlug: string, chapterDir: string): number {
-  const prefix = `./volumes/${volumeSlug}/chapters/${chapterDir}/`;
-  let n = 0;
-  for (const k in ALL_PAGE_FILES) if (k.startsWith(prefix)) n++;
-  return n;
+  return chapterManifest[`${volumeSlug}/chapters/${chapterDir}`]?.length ?? 0;
 }
 
 // Compact chapter constructor for implemented volumes. `dir` is the
-// per-chapter folder name under `src/data/volumes/<slug>/chapters/`; the
-// page-count comes from counting `.md` files there.
+// per-chapter folder name under `public/<slug>/chapters/`; the page-count
+// comes from the manifest's listing of `.md` files there.
 function chap(volumeSlug: string, dir: string, id: string, number: number, title: string): Chapter {
   return { id, number, title, pageCount: pageCountFor(volumeSlug, dir) };
 }

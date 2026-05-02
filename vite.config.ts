@@ -1,9 +1,87 @@
+import { readdirSync, statSync } from "node:fs";
+import { join, relative } from "node:path";
 import { fileURLToPath } from "node:url";
 import { defineConfig } from "vite-plus";
 import react from "@vitejs/plugin-react";
 import { tanstackRouter } from "@tanstack/router-plugin/vite";
 import tailwindcss from "@tailwindcss/vite";
 import { VitePWA } from "vite-plugin-pwa";
+
+// Build-time scan of every chapter `.md` under `public/<slug>/chapters/`,
+// exposed to the app as `virtual:chapter-manifest`. The chapter `.md` files
+// live in `public/` so they're served as static assets (not bundled); the
+// manifest gives the app a reliable directory listing it can iterate at
+// runtime to fetch each page.
+function chapterManifestPlugin() {
+  const VIRTUAL_ID = "virtual:chapter-manifest";
+  const RESOLVED_ID = `\0${VIRTUAL_ID}`;
+  const publicDir = fileURLToPath(new URL("./public", import.meta.url));
+
+  function buildManifest(): Record<string, string[]> {
+    const manifest: Record<string, string[]> = {};
+    function walk(dir: string) {
+      for (const entry of readdirSync(dir)) {
+        const full = join(dir, entry);
+        const stat = statSync(full);
+        if (stat.isDirectory()) {
+          walk(full);
+        } else if (entry.endsWith(".md")) {
+          const rel = relative(publicDir, full).replaceAll("\\", "/");
+          // rel = "venomania/chapters/00-prologue/01.md"
+          const slash = rel.lastIndexOf("/");
+          const dirKey = rel.slice(0, slash);
+          const file = rel.slice(slash + 1);
+          (manifest[dirKey] ??= []).push(file);
+        }
+      }
+    }
+    try {
+      walk(publicDir);
+    } catch {
+      // public/ may not exist yet on first run — fine.
+    }
+    for (const key in manifest) manifest[key]!.sort();
+    return manifest;
+  }
+
+  return {
+    name: "chapter-manifest",
+    resolveId(id: string) {
+      if (id === VIRTUAL_ID) return RESOLVED_ID;
+      return null;
+    },
+    load(id: string) {
+      if (id === RESOLVED_ID) {
+        return `export default ${JSON.stringify(buildManifest())};`;
+      }
+      return null;
+    },
+    handleHotUpdate({
+      file,
+      server,
+    }: {
+      file: string;
+      server: {
+        moduleGraph: {
+          getModulesByFile: (id: string) => Set<{ id?: string | null }> | undefined;
+          getModuleById: (id: string) => { id?: string | null } | null;
+        };
+        reloadModule: (mod: unknown) => Promise<void>;
+        ws: { send: (payload: { type: string }) => void };
+      };
+    }) {
+      // When a chapter `.md` is added/removed/edited under public/, regenerate
+      // the manifest so consumers see the new file list without a full restart.
+      if (file.endsWith(".md") && file.includes("/public/")) {
+        const mod = server.moduleGraph.getModuleById(RESOLVED_ID);
+        if (mod) {
+          void server.reloadModule(mod);
+          server.ws.send({ type: "full-reload" });
+        }
+      }
+    },
+  };
+}
 
 // https://vite.dev/config/
 export default defineConfig({
@@ -14,6 +92,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@src": fileURLToPath(new URL("./src", import.meta.url)),
+      "@app": fileURLToPath(new URL("./src/routes/_app", import.meta.url)),
     },
   },
   staged: {
@@ -28,6 +107,7 @@ export default defineConfig({
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
     tailwindcss(),
+    chapterManifestPlugin(),
     VitePWA({
       // Prompt mode: a new SW waits for explicit user opt-in via the update
       // toast (see PwaUpdateToast). Avoids ripping the page out from under a
@@ -95,14 +175,5 @@ export default defineConfig({
         enabled: false,
       },
     }),
-    {
-      name: "ignore-volume-md-files",
-      load(id) {
-        if (id.includes("/src/data/volumes/") && id.endsWith(".md")) {
-          return 'export default "";';
-        }
-        return null;
-      },
-    },
   ],
 });

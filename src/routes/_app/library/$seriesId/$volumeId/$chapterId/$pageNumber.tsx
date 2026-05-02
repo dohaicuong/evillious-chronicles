@@ -7,8 +7,8 @@ import {
   CaretRightIcon,
   NotePencilIcon,
 } from "@phosphor-icons/react";
-import { series } from "@src/data/library";
-import { getVolume } from "@src/data/volumes";
+import { series } from "@src/routes/_app/library/-library";
+import { getVolume } from "@app/library/-volumes";
 import { PageView } from "@src/components/reader/page-view";
 import { Button } from "@src/components/primitives/button";
 import { IconButton } from "@src/components/primitives/icon-button";

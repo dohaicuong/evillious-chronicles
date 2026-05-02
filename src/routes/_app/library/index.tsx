@@ -2,7 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { Link } from "@src/components/primitives/link";
 import { useMemo } from "react";
 import { CaretRightIcon } from "@phosphor-icons/react";
-import { series } from "@src/data/library";
+import { series } from "@src/routes/_app/library/-library";
 import { characters } from "@src/data/characters";
 import { songs } from "@src/data/songs";
 import { SeriesCard } from "@src/components/library/series-card";

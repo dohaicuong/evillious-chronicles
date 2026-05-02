@@ -1,5 +1,4 @@
-import type { ImageAsset, Volume } from "@src/data/schema";
-import { loadPagesGlob, makePagesBuilder } from "./_shared";
+import { Volume } from "./_shared";
 
 /*
  * The Daughter of Evil — Volume 2: Wiegenlied of Green (悪ノ娘 — 緑のヴィーゲンリート)
@@ -9,105 +8,7 @@ import { loadPagesGlob, makePagesBuilder } from "./_shared";
  * POV markers in the prose: ☯ Elluka, ✿ Michaela, ♥ Clarith.
  */
 
-const illustrations: Record<string, ImageAsset> = {
-  "illustration-1": {
-    src: "/wiegenlied-of-green/illustration-1.jpg",
-    alt: "Elluka in the Millennium Tree Forest with Michaela the robin on her shoulder",
-  },
-  "illustration-2": {
-    src: "/wiegenlied-of-green/illustration-2.jpg",
-    alt: "Michaela and Gumillia — the forest spirits in their new human bodies",
-  },
-  "illustration-3": {
-    src: "/wiegenlied-of-green/illustration-3.jpg",
-    alt: "Clarith in her village home — the white-haired Netsuma girl",
-  },
-  "illustration-4": {
-    src: "/wiegenlied-of-green/illustration-4.jpg",
-    alt: "Michaela singing the Music Box Lullaby on Yatski hill",
-  },
-  "illustration-5": {
-    src: "/wiegenlied-of-green/illustration-5.jpg",
-    alt: "Michaela and Clarith at the Freesis mansion",
-  },
-  "illustration-6": {
-    src: "/wiegenlied-of-green/illustration-6.jpg",
-    alt: "Leaving the Freesis mansion as Lucifenia closes in",
-  },
-  "illustration-7": {
-    src: "/wiegenlied-of-green/illustration-7.jpg",
-    alt: "Clarith at the Port Town monastery — refuge after the fall of Toragay",
-  },
-  "illustration-8": {
-    src: "/wiegenlied-of-green/illustration-8.jpg",
-    alt: "Clarith and the blonde stranger at the seaside monastery",
-  },
-  "illustration-9": {
-    src: "/wiegenlied-of-green/illustration-9.jpg",
-    alt: "The sapling planted on the unknown coast — Wooden Girl reborn",
-  },
-};
-
-const buildPages = makePagesBuilder(illustrations);
-
-const prologuePages = loadPagesGlob(
-  import.meta.glob("./wiegenlied-of-green/chapters/00-prologue/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch1Pages = loadPagesGlob(
-  import.meta.glob("./wiegenlied-of-green/chapters/01-ch1-dream-of-mage/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch2s1Pages = loadPagesGlob(
-  import.meta.glob("./wiegenlied-of-green/chapters/02-ch2-s1-so-called-humans/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch2s2Pages = loadPagesGlob(
-  import.meta.glob("./wiegenlied-of-green/chapters/03-ch2-s2-wooden-girl/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch3s1Pages = loadPagesGlob(
-  import.meta.glob("./wiegenlied-of-green/chapters/04-ch3-s1-waltz-of-diva/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch3s2Pages = loadPagesGlob(
-  import.meta.glob("./wiegenlied-of-green/chapters/05-ch3-s2-lady-who-staggered/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch4s1Pages = loadPagesGlob(
-  import.meta.glob("./wiegenlied-of-green/chapters/06-ch4-s1-lost-destination/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch4s2Pages = loadPagesGlob(
-  import.meta.glob("./wiegenlied-of-green/chapters/07-ch4-s2-seasides-small-bottle/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-
-export const wiegenliedOfGreen: Volume = {
+export const wiegenliedOfGreen = Volume({
   id: "wiegenlied-of-green",
   slug: "wiegenlied-of-green",
   number: 2,
@@ -259,58 +160,6 @@ export const wiegenliedOfGreen: Volume = {
     },
   ],
 
-  chapters: [
-    {
-      id: "wg-prologue",
-      number: 0,
-      title: "Prologue",
-      pages: buildPages(...prologuePages),
-      songIds: ["daughter-of-white"],
-    },
-    {
-      id: "wg-ch1",
-      number: 1,
-      title: "Chapter 1 · Dream of a Mage",
-      pages: buildPages(...ch1Pages),
-    },
-    {
-      id: "wg-ch2-s1",
-      number: 2,
-      title: "Chapter 2 · The So-called Humans",
-      pages: buildPages(...ch2s1Pages),
-    },
-    {
-      id: "wg-ch2-s2",
-      number: 3,
-      title: "Chapter 2 · Wooden Girl and White-Haired Girl",
-      pages: buildPages(...ch2s2Pages),
-    },
-    {
-      id: "wg-ch3-s1",
-      number: 4,
-      title: "Chapter 3 · Waltz of the Diva",
-      pages: buildPages(...ch3s1Pages),
-    },
-    {
-      id: "wg-ch3-s2",
-      number: 5,
-      title: "Chapter 3 · The Lady Who Staggered",
-      pages: buildPages(...ch3s2Pages),
-    },
-    {
-      id: "wg-ch4-s1",
-      number: 6,
-      title: "Chapter 4 · Lost Destination",
-      pages: buildPages(...ch4s1Pages),
-    },
-    {
-      id: "wg-ch4-s2",
-      number: 7,
-      title: "Chapter 4 · Seaside's Small Bottle",
-      pages: buildPages(...ch4s2Pages),
-    },
-  ],
-
   description:
     "The second volume of The Daughter of Evil — told from the green country, Elphegort, as the Lucifenian war engulfs it. The forest spirit Michaela takes human form to find a sin vessel; the white-haired outcast Clarith, despised as a Netsuma, finds her first friend. Their lullaby threads through the Story of Evil from the other side of the sea.",
 
@@ -318,4 +167,94 @@ export const wiegenliedOfGreen: Volume = {
     language: "en",
     source: "fan",
   },
-};
+
+  chapterIllustration: {
+    "illustration-1": {
+      src: "/wiegenlied-of-green/illustration-1.jpg",
+      alt: "Elluka in the Millennium Tree Forest with Michaela the robin on her shoulder",
+    },
+    "illustration-2": {
+      src: "/wiegenlied-of-green/illustration-2.jpg",
+      alt: "Michaela and Gumillia — the forest spirits in their new human bodies",
+    },
+    "illustration-3": {
+      src: "/wiegenlied-of-green/illustration-3.jpg",
+      alt: "Clarith in her village home — the white-haired Netsuma girl",
+    },
+    "illustration-4": {
+      src: "/wiegenlied-of-green/illustration-4.jpg",
+      alt: "Michaela singing the Music Box Lullaby on Yatski hill",
+    },
+    "illustration-5": {
+      src: "/wiegenlied-of-green/illustration-5.jpg",
+      alt: "Michaela and Clarith at the Freesis mansion",
+    },
+    "illustration-6": {
+      src: "/wiegenlied-of-green/illustration-6.jpg",
+      alt: "Leaving the Freesis mansion as Lucifenia closes in",
+    },
+    "illustration-7": {
+      src: "/wiegenlied-of-green/illustration-7.jpg",
+      alt: "Clarith at the Port Town monastery — refuge after the fall of Toragay",
+    },
+    "illustration-8": {
+      src: "/wiegenlied-of-green/illustration-8.jpg",
+      alt: "Clarith and the blonde stranger at the seaside monastery",
+    },
+    "illustration-9": {
+      src: "/wiegenlied-of-green/illustration-9.jpg",
+      alt: "The sapling planted on the unknown coast — Wooden Girl reborn",
+    },
+  },
+  chapter: [
+    {
+      id: "wg-prologue",
+      number: 0,
+      title: "Prologue",
+      pages: "./wiegenlied-of-green/chapters/00-prologue",
+      songIds: ["daughter-of-white"],
+    },
+    {
+      id: "wg-ch1",
+      number: 1,
+      title: "Chapter 1 · Dream of a Mage",
+      pages: "./wiegenlied-of-green/chapters/01-ch1-dream-of-mage",
+    },
+    {
+      id: "wg-ch2-s1",
+      number: 2,
+      title: "Chapter 2 · The So-called Humans",
+      pages: "./wiegenlied-of-green/chapters/02-ch2-s1-so-called-humans",
+    },
+    {
+      id: "wg-ch2-s2",
+      number: 3,
+      title: "Chapter 2 · Wooden Girl and White-Haired Girl",
+      pages: "./wiegenlied-of-green/chapters/03-ch2-s2-wooden-girl",
+    },
+    {
+      id: "wg-ch3-s1",
+      number: 4,
+      title: "Chapter 3 · Waltz of the Diva",
+      pages: "./wiegenlied-of-green/chapters/04-ch3-s1-waltz-of-diva",
+    },
+    {
+      id: "wg-ch3-s2",
+      number: 5,
+      title: "Chapter 3 · The Lady Who Staggered",
+      pages: "./wiegenlied-of-green/chapters/05-ch3-s2-lady-who-staggered",
+    },
+    {
+      id: "wg-ch4-s1",
+      number: 6,
+      title: "Chapter 4 · Lost Destination",
+      pages: "./wiegenlied-of-green/chapters/06-ch4-s1-lost-destination",
+    },
+    {
+      id: "wg-ch4-s2",
+      number: 7,
+      title: "Chapter 4 · Seaside's Small Bottle",
+      pages: "./wiegenlied-of-green/chapters/07-ch4-s2-seasides-small-bottle",
+    },
+  ],
+});

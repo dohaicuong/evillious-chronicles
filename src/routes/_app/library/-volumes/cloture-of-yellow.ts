@@ -1,5 +1,4 @@
-import type { ImageAsset, Volume } from "@src/data/schema";
-import { loadPagesGlob, makePagesBuilder } from "./_shared";
+import { Volume } from "./_shared";
 
 /*
  * The Daughter of Evil — Volume 1: Clôture of Yellow (悪ノ娘 — 黄のクロアチュール)
@@ -7,109 +6,13 @@ import { loadPagesGlob, makePagesBuilder } from "./_shared";
  * Assets live under `public/cloture-of-yellow/...` (cover + 5 artworks + N illustrations).
  * Chapter prose is loaded from .md files alongside this fixture.
  * Inline illustrations: place `<!-- illustration: NAME -->` in the markdown
- * and add NAME to the `illustrations` map below; buildPages splits the prose
- * around the marker and inserts an illustration Page at that position.
+ * and add NAME to the `chapterIllustration` map below; the page builder
+ * splits the prose around the marker and inserts an illustration page at
+ * that position.
  * Translation source: ltquick.nl
  */
 
-const illustrations: Record<string, ImageAsset> = {
-  "illustration-1": {
-    src: "/cloture-of-yellow/illustration-1.jpg",
-    alt: "Chapter 1 illustration — the missing princess",
-  },
-  "illustration-2": {
-    src: "/cloture-of-yellow/illustration-2.jpg",
-    alt: 'Allen\'s vow — "I will become evil for you"',
-  },
-  "illustration-3": {
-    src: "/cloture-of-yellow/illustration-3.jpg",
-    alt: "The courtyard — two girls washing clothes by the pool",
-  },
-  "illustration-4": {
-    src: "/cloture-of-yellow/illustration-4.jpg",
-    alt: "Mariam stopping Elluka in the corridor",
-  },
-  "illustration-5": {
-    src: "/cloture-of-yellow/illustration-5.jpg",
-    alt: "Clarith and Germaine — the resistance proposal",
-  },
-  "illustration-6": {
-    src: "/cloture-of-yellow/illustration-6.jpg",
-    alt: "Allen and Gast — the locked gaze",
-  },
-  "illustration-7": {
-    src: "/cloture-of-yellow/illustration-7.jpg",
-    alt: "Riliane holding back tears",
-  },
-  "illustration-8": {
-    src: "/cloture-of-yellow/illustration-8.jpg",
-    alt: "Riliane sobbing",
-  },
-  "illustration-9": {
-    src: "/cloture-of-yellow/illustration-9.jpg",
-    alt: "The third bell — Allen's farewell",
-  },
-};
-const buildPages = makePagesBuilder(illustrations);
-
-const prologuePages = loadPagesGlob(
-  import.meta.glob("./cloture-of-yellow/chapters/00-prologue/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch1s1Pages = loadPagesGlob(
-  import.meta.glob("./cloture-of-yellow/chapters/01-ch1-s1-fourteenth-birthday/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch1s2Pages = loadPagesGlob(
-  import.meta.glob("./cloture-of-yellow/chapters/02-ch1-s2-lodging/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch2s1Pages = loadPagesGlob(
-  import.meta.glob("./cloture-of-yellow/chapters/03-ch2-s1-yearning/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch2s2Pages = loadPagesGlob(
-  import.meta.glob("./cloture-of-yellow/chapters/04-ch2-s2-gear/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch3s1Pages = loadPagesGlob(
-  import.meta.glob("./cloture-of-yellow/chapters/05-ch3-s1-allies/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch3s2Pages = loadPagesGlob(
-  import.meta.glob("./cloture-of-yellow/chapters/06-ch3-s2-wish-for-end/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-const ch4Pages = loadPagesGlob(
-  import.meta.glob("./cloture-of-yellow/chapters/07-ch4-true-evil/*.md", {
-    eager: true,
-    query: "?raw",
-    import: "default",
-  }),
-);
-
-export const clotureOfYellow: Volume = {
+export const clotureOfYellow = Volume({
   id: "cloture-of-yellow",
   slug: "cloture-of-yellow",
   number: 1,
@@ -319,58 +222,6 @@ export const clotureOfYellow: Volume = {
     },
   ],
 
-  chapters: [
-    {
-      id: "cy-prologue",
-      number: 0,
-      title: "Prologue",
-      pages: buildPages(...prologuePages),
-      songIds: ["daughter-of-evil"],
-    },
-    {
-      id: "cy-ch1-s1",
-      number: 1,
-      title: "Chapter 1 · The Fourteenth Birthday",
-      pages: buildPages(...ch1s1Pages),
-    },
-    {
-      id: "cy-ch1-s2",
-      number: 2,
-      title: "Chapter 1 · Lodging in the Hearts of Evil",
-      pages: buildPages(...ch1s2Pages),
-    },
-    {
-      id: "cy-ch2-s1",
-      number: 3,
-      title: "Chapter 2 · The Yearning of a Twin",
-      pages: buildPages(...ch2s1Pages),
-    },
-    {
-      id: "cy-ch2-s2",
-      number: 4,
-      title: "Chapter 2 · The Gear's Direction",
-      pages: buildPages(...ch2s2Pages),
-    },
-    {
-      id: "cy-ch3-s1",
-      number: 5,
-      title: "Chapter 3 · Assembly of Allies",
-      pages: buildPages(...ch3s1Pages),
-    },
-    {
-      id: "cy-ch3-s2",
-      number: 6,
-      title: "Chapter 3 · The Wish for an End",
-      pages: buildPages(...ch3s2Pages),
-    },
-    {
-      id: "cy-ch4",
-      number: 7,
-      title: "Chapter 4 · True Evil?",
-      pages: buildPages(...ch4Pages),
-    },
-  ],
-
   description:
     "The first volume of The Daughter of Evil — told from Riliane's perspective. Fourteen years old and the absolute ruler of Lucifenia, the princess watches her kingdom turn to ruin while the servant who shares her face stands at her side.",
 
@@ -380,4 +231,94 @@ export const clotureOfYellow: Volume = {
     translator: "ltquick.nl",
     url: "https://www.ltquick.nl/pdf/ClotureofYellowBetterVersion.pdf",
   },
-};
+
+  chapterIllustration: {
+    "illustration-1": {
+      src: "/cloture-of-yellow/illustration-1.jpg",
+      alt: "Chapter 1 illustration — the missing princess",
+    },
+    "illustration-2": {
+      src: "/cloture-of-yellow/illustration-2.jpg",
+      alt: 'Allen\'s vow — "I will become evil for you"',
+    },
+    "illustration-3": {
+      src: "/cloture-of-yellow/illustration-3.jpg",
+      alt: "The courtyard — two girls washing clothes by the pool",
+    },
+    "illustration-4": {
+      src: "/cloture-of-yellow/illustration-4.jpg",
+      alt: "Mariam stopping Elluka in the corridor",
+    },
+    "illustration-5": {
+      src: "/cloture-of-yellow/illustration-5.jpg",
+      alt: "Clarith and Germaine — the resistance proposal",
+    },
+    "illustration-6": {
+      src: "/cloture-of-yellow/illustration-6.jpg",
+      alt: "Allen and Gast — the locked gaze",
+    },
+    "illustration-7": {
+      src: "/cloture-of-yellow/illustration-7.jpg",
+      alt: "Riliane holding back tears",
+    },
+    "illustration-8": {
+      src: "/cloture-of-yellow/illustration-8.jpg",
+      alt: "Riliane sobbing",
+    },
+    "illustration-9": {
+      src: "/cloture-of-yellow/illustration-9.jpg",
+      alt: "The third bell — Allen's farewell",
+    },
+  },
+  chapter: [
+    {
+      id: "cy-prologue",
+      number: 0,
+      title: "Prologue",
+      pages: "./cloture-of-yellow/chapters/00-prologue",
+      songIds: ["daughter-of-evil"],
+    },
+    {
+      id: "cy-ch1-s1",
+      number: 1,
+      title: "Chapter 1 · The Fourteenth Birthday",
+      pages: "./cloture-of-yellow/chapters/01-ch1-s1-fourteenth-birthday",
+    },
+    {
+      id: "cy-ch1-s2",
+      number: 2,
+      title: "Chapter 1 · Lodging in the Hearts of Evil",
+      pages: "./cloture-of-yellow/chapters/02-ch1-s2-lodging",
+    },
+    {
+      id: "cy-ch2-s1",
+      number: 3,
+      title: "Chapter 2 · The Yearning of a Twin",
+      pages: "./cloture-of-yellow/chapters/03-ch2-s1-yearning",
+    },
+    {
+      id: "cy-ch2-s2",
+      number: 4,
+      title: "Chapter 2 · The Gear's Direction",
+      pages: "./cloture-of-yellow/chapters/04-ch2-s2-gear",
+    },
+    {
+      id: "cy-ch3-s1",
+      number: 5,
+      title: "Chapter 3 · Assembly of Allies",
+      pages: "./cloture-of-yellow/chapters/05-ch3-s1-allies",
+    },
+    {
+      id: "cy-ch3-s2",
+      number: 6,
+      title: "Chapter 3 · The Wish for an End",
+      pages: "./cloture-of-yellow/chapters/06-ch3-s2-wish-for-end",
+    },
+    {
+      id: "cy-ch4",
+      number: 7,
+      title: "Chapter 4 · True Evil?",
+      pages: "./cloture-of-yellow/chapters/07-ch4-true-evil",
+    },
+  ],
+});

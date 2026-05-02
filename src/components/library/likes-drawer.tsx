@@ -3,7 +3,7 @@ import { Link } from "@src/components/primitives/link";
 import { Drawer } from "@src/components/primitives/drawer";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
-import { series as seriesList } from "@src/data/library";
+import { series as seriesList } from "@src/routes/_app/library/-library";
 import { getSong } from "@src/data/songs";
 import { getCharacter } from "@src/data/characters";
 import { useReactions, type Reaction } from "@src/lib/reactions";

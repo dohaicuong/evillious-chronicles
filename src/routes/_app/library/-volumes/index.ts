@@ -1,9 +1,15 @@
 import type { Volume } from "@src/data/schema";
 
 /*
- * Volume registry — dynamic imports so each volume's content (markdown chapters,
- * fixtures) becomes its own lazy chunk and stays out of the main bundle. The
- * volume route's loader awaits getVolume(id) when navigating to a volume page.
+ * Volume registry — dynamic imports so each volume's content (markdown
+ * chapters, fixtures) becomes its own lazy chunk and stays out of the main
+ * bundle. The volume / chapter / page route loaders await `getVolume(id)`
+ * when navigating into a volume.
+ *
+ * Lives in `src/routes/_app/library/-volumes/` (dash-prefix folder, excluded
+ * from TanStack Router's file-based route generation) so volume declarations
+ * sit next to the route files that consume them. Volumes that haven't yet
+ * been migrated still import from `@src/data/volumes/...`.
  */
 
 const loaders: Record<string, () => Promise<Volume>> = {

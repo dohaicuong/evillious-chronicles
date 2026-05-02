@@ -1,6 +1,6 @@
 import { createFileRoute, notFound, redirect } from "@tanstack/react-router";
-import { series } from "@src/data/library";
-import { getVolume } from "@src/data/volumes";
+import { series } from "@src/routes/_app/library/-library";
+import { getVolume } from "@app/library/-volumes";
 import { db } from "@src/lib/db";
 
 /*

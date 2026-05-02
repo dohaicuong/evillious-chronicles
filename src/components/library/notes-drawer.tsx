@@ -5,7 +5,7 @@ import { Drawer } from "@src/components/primitives/drawer";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
 import { useAllNotes, removeNote } from "@src/lib/notes";
-import { series as seriesList } from "@src/data/library";
+import { series as seriesList } from "@src/routes/_app/library/-library";
 import { NoteEditorDialog } from "./note-editor-dialog";
 import type { Note } from "@src/lib/db";
 

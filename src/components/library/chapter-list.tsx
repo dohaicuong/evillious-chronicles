@@ -4,11 +4,11 @@ import { useMemo } from "react";
 import { Badge } from "@src/components/primitives/badge";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { Menu } from "@src/components/primitives/menu";
-import { isVolumeAvailable } from "@src/data/volumes";
+import { isVolumeAvailable } from "@app/library/-volumes";
 import { useAllBookmarks } from "@src/lib/bookmarks";
 import { useAllNotes } from "@src/lib/notes";
 import { markChapterComplete, resetChapterProgress, useChapterPagesRead } from "@src/lib/progress";
-import type { Chapter } from "@src/data/library";
+import type { Chapter } from "@src/routes/_app/library/-library";
 
 type Props = {
   seriesId: string;

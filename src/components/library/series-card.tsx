@@ -3,8 +3,8 @@ import { Card } from "@src/components/primitives/card";
 import { Badge } from "@src/components/primitives/badge";
 import { ReactionButton } from "@src/components/library/reaction-button";
 import { SinGlyph } from "@src/components/thematic/sin-glyph";
-import { isVolumeAvailable } from "@src/data/volumes";
-import type { Series, Sin } from "@src/data/library";
+import { isVolumeAvailable } from "@app/library/-volumes";
+import type { Series, Sin } from "@src/routes/_app/library/-library";
 
 export function SeriesCard({ series }: { series: Series }) {
   const sins = [...new Set(series.volumes.map((v) => v.sin).filter((s): s is Sin => Boolean(s)))];

@@ -17,7 +17,8 @@
 
     /* Path aliases — keep in sync with vite.config.ts resolve.alias */
     "paths": {
-      "@src/*": ["./src/*"]
+      "@src/*": ["./src/*"],
+      "@app/*": ["./src/routes/_app/*"]
     },
 
     /* Linting */
