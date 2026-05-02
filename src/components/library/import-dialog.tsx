@@ -1,9 +1,10 @@
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { CameraIcon, CheckCircleIcon, ClipboardTextIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button } from "@src/components/primitives/button";
 import { Dialog } from "@src/components/primitives/dialog";
 import { QRScanner } from "@src/components/primitives/qr-scanner";
 import { Tabs } from "@src/components/primitives/tabs";
+import { decodeImportText } from "@src/lib/data-codec";
 import { applyImportBundle, parseImportBundle, type ImportSummary } from "@src/lib/data-import";
 import type { ExportBundle } from "@src/lib/data-export";
 
@@ -26,6 +27,9 @@ export function ImportDialog({
     parseError: null,
   });
   const [text, setText] = useState("");
+  // Sequence guard: keystrokes can fire decode promises that resolve out
+  // of order. Only the latest call commits its result.
+  const parseSeqRef = useRef(0);
 
   // Reset on open so reopening starts clean instead of carrying old state.
   useEffect(() => {
@@ -41,12 +45,28 @@ export function ImportDialog({
       setPhase({ kind: "input", bundle: null, parseError: null });
       return;
     }
-    const result = parseImportBundle(next);
-    if (result.ok) {
-      setPhase({ kind: "input", bundle: result.bundle, parseError: null });
-    } else {
-      setPhase({ kind: "input", bundle: null, parseError: result.error });
-    }
+    const seq = ++parseSeqRef.current;
+    void (async () => {
+      let decoded: string;
+      try {
+        // Strips the `EVCH1z:` marker + gunzips when present; otherwise
+        // returns the input unchanged. Plain JSON paths flow through as
+        // a no-op.
+        decoded = await decodeImportText(next);
+      } catch (err) {
+        if (seq !== parseSeqRef.current) return;
+        const message = err instanceof Error ? err.message : "Decode failed";
+        setPhase({ kind: "input", bundle: null, parseError: message });
+        return;
+      }
+      if (seq !== parseSeqRef.current) return;
+      const result = parseImportBundle(decoded);
+      if (result.ok) {
+        setPhase({ kind: "input", bundle: result.bundle, parseError: null });
+      } else {
+        setPhase({ kind: "input", bundle: null, parseError: result.error });
+      }
+    })();
   }
 
   async function handleApply() {

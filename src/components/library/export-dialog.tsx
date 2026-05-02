@@ -3,17 +3,26 @@ import { CheckIcon, CopyIcon, WarningIcon } from "@phosphor-icons/react";
 import { Button } from "@src/components/primitives/button";
 import { Dialog } from "@src/components/primitives/dialog";
 import { QRCode } from "@src/components/primitives/qr-code";
+import { encodeForQr } from "@src/lib/data-codec";
 import { buildExportBundle, summarize, type ExportSummary } from "@src/lib/data-export";
 
 // QR codes get unreliable for phone cameras above ~1500 bytes; the encoder
 // itself caps out near 2950 bytes (Version 40, EC level L). Above the soft
 // limit we show a warning; above the hard limit we skip the QR entirely.
+// The payload going through these gates is the gzip+base64 form, so the
+// raw JSON can be ~2-3x larger and still fit.
 const QR_SOFT_LIMIT = 1500;
 const QR_HARD_LIMIT = 2900;
 
 type State =
   | { kind: "loading" }
-  | { kind: "ready"; json: string; summary: ExportSummary }
+  | {
+      kind: "ready";
+      json: string;
+      summary: ExportSummary;
+      qrPayload: string;
+      qrBytes: number;
+    }
   | { kind: "error"; message: string };
 
 export function ExportDialog({
@@ -39,7 +48,9 @@ export function ExportDialog({
         const bundle = await buildExportBundle();
         const json = JSON.stringify(bundle);
         const summary = summarize(bundle, json);
-        if (!cancelled) setState({ kind: "ready", json, summary });
+        const qrPayload = await encodeForQr(json);
+        const qrBytes = new TextEncoder().encode(qrPayload).byteLength;
+        if (!cancelled) setState({ kind: "ready", json, summary, qrPayload, qrBytes });
       } catch (err) {
         if (cancelled) return;
         const message = err instanceof Error ? err.message : "Export failed";
@@ -117,7 +128,11 @@ export function ExportDialog({
 
               <div className="mt-6 border-t border-border pt-5">
                 <h3 className="text-style-eyebrow text-fg-muted mb-3">QR code</h3>
-                <QrSection json={state.json} bytes={state.summary.bytes} />
+                <QrSection
+                  payload={state.qrPayload}
+                  bytes={state.qrBytes}
+                  rawBytes={state.summary.bytes}
+                />
               </div>
             </>
           )}
@@ -157,21 +172,30 @@ function SummaryGrid({ summary }: { summary: ExportSummary }) {
   );
 }
 
-function QrSection({ json, bytes }: { json: string; bytes: number }) {
+function QrSection({
+  payload,
+  bytes,
+  rawBytes,
+}: {
+  payload: string;
+  bytes: number;
+  rawBytes: number;
+}) {
   if (bytes > QR_HARD_LIMIT) {
     return (
       <p className="inline-flex items-start gap-2 text-style-caption text-fg-muted">
         <WarningIcon weight="fill" className="mt-0.5 shrink-0 text-accent" />
-        Snapshot is too large ({formatBytes(bytes)}) to encode in a QR code. Use clipboard copy
-        instead.
+        Snapshot is too large ({formatBytes(bytes)} compressed) to encode in a QR code. Use
+        clipboard copy instead.
       </p>
     );
   }
   const oversized = bytes > QR_SOFT_LIMIT;
+  const sizeNote = `${formatBytes(bytes)} compressed (from ${formatBytes(rawBytes)} JSON)`;
   return (
     <div className="flex flex-col items-center gap-3">
       <QRCode
-        data={json}
+        data={payload}
         size={256}
         alt="Export bundle QR code"
         fallback={
@@ -183,11 +207,11 @@ function QrSection({ json, bytes }: { json: string; bytes: number }) {
       {oversized ? (
         <p className="inline-flex items-center gap-2 text-style-caption text-fg-muted">
           <WarningIcon weight="fill" className="text-accent" />
-          {formatBytes(bytes)} — may be hard to scan on some phones. Clipboard is more reliable.
+          {sizeNote} — may be hard to scan on some phones. Clipboard is more reliable.
         </p>
       ) : (
         <p className="text-style-caption text-fg-muted">
-          Scan from another device's import screen to transfer.
+          {sizeNote}. Scan from another device's import screen to transfer.
         </p>
       )}
     </div>

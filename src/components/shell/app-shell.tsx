@@ -211,6 +211,10 @@ export function AppShell() {
                       />
                       Offline reading
                     </Menu.Item>
+                    <Menu.Item onClick={() => setDataOpen(true)}>
+                      <DatabaseIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      Backup &amp; restore
+                    </Menu.Item>
                     <Menu.Item onClick={() => setSettingsOpen(true)}>
                       <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                       Reader settings
