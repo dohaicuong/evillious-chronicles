@@ -1,5 +1,5 @@
 import { Outlet, createRootRoute } from "@tanstack/react-router";
-import { TanStackRouterDevtools } from "@tanstack/react-router-devtools";
+import { lazy, Suspense } from "react";
 import { IconContext } from "@phosphor-icons/react";
 import { Tooltip } from "@src/components/primitives/tooltip";
 import { Toast } from "@src/components/primitives/toast";
@@ -9,6 +9,18 @@ import { PwaUpdateToast } from "@src/components/shell/pwa-update-toast";
 import { RouteError, RouteNotFound } from "@src/components/shell/route-error";
 import { ThemeProvider } from "@src/lib/theme";
 import { ReaderSettingsProvider } from "@src/lib/reader-settings";
+
+// Devtools ship a non-trivial chunk and are only ever useful in development.
+// Branching on `import.meta.env.DEV` lets Rolldown statically resolve the
+// prod side to a no-op and dead-code-eliminate the import — the devtools
+// package never ends up in the deployed bundle.
+const RouterDevtools = import.meta.env.DEV
+  ? lazy(() =>
+      import("@tanstack/react-router-devtools").then((m) => ({
+        default: m.TanStackRouterDevtools,
+      })),
+    )
+  : () => null;
 
 export const Route = createRootRoute({
   component: RootLayout,
@@ -30,7 +42,9 @@ function RootLayout() {
                 <AudioDock />
                 <Toast.Viewport />
                 <PwaUpdateToast />
-                <TanStackRouterDevtools position="bottom-right" />
+                <Suspense fallback={null}>
+                  <RouterDevtools position="bottom-right" />
+                </Suspense>
               </IconContext.Provider>
             </AudioProvider>
           </Toast.Provider>
