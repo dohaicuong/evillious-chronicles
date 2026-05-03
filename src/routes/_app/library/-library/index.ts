@@ -5,6 +5,7 @@ import { conchita } from "@app/library/-volumes/conchita";
 import { enbizaka } from "@app/library/-volumes/enbizaka";
 import { fifthPierrot } from "@app/library/-volumes/fifth-pierrot";
 import { judgment } from "@app/library/-volumes/judgment";
+import { heavenlyYard } from "@app/library/-volumes/heavenly-yard";
 import { nemesis } from "@app/library/-volumes/nemesis";
 import { praefacioOfBlue } from "@app/library/-volumes/praefacio-of-blue";
 import { ossCrime } from "@app/library/-volumes/oss-crime";
@@ -27,19 +28,6 @@ export type Series = {
   // series. Rendered as a list on the series detail page.
   songIds?: string[];
 };
-
-// Skeleton chapter list for volumes that haven't been wired in yet — page
-// counts are deterministic placeholders, ids follow `<prefix>-<n>`. Once a
-// volume gets a manifest in `-volumes/`, replace its entry below with the
-// imported `slim` view.
-function makeChapters(prefix: string, titles: string[]): Chapter[] {
-  return titles.map((title, i) => ({
-    id: `${prefix}-${i + 1}`,
-    number: i + 1,
-    title,
-    pageCount: 16 + ((i * 7) % 14),
-  }));
-}
 
 export const series: Series[] = [
   {
@@ -91,18 +79,7 @@ export const series: Series[] = [
       enbizaka.slim,
       judgment.slim,
       nemesis.slim,
-      {
-        id: "heavenly-yard",
-        number: 8,
-        title: "Master of the Heavenly Yard",
-        sin: "pride",
-        chapters: makeChapters("hy", [
-          "The Master Returns",
-          "All Seven Vessels",
-          "Allen's Reckoning",
-          "The Last Chapter",
-        ]),
-      },
+      heavenlyYard.slim,
     ],
   },
   {

@@ -25,6 +25,7 @@ const loaders: Record<string, () => Promise<VolumeBundle>> = {
   enbizaka: () => import("./enbizaka").then((m) => m.enbizaka),
   judgment: () => import("./judgment").then((m) => m.judgment),
   nemesis: () => import("./nemesis").then((m) => m.nemesis),
+  "heavenly-yard": () => import("./heavenly-yard").then((m) => m.heavenlyYard),
   "oss-crime": () => import("./oss-crime").then((m) => m.ossCrime),
   "oss-punishment": () => import("./oss-punishment").then((m) => m.ossPunishment),
 };

@@ -1,0 +1,25 @@
+{
+  "cover": {
+    "src": "/heavenly-yard/cover.webp",
+    "alt": "Master of the Heavenly Yard — cover"
+  },
+  "titlePage": {
+    "title": "The Deadly Sins of Evil",
+    "subtitle": "Master of the Heavenly Yard",
+    "credits": [
+      { "role": "Original Work", "name": "Akuno_P (mothy)" },
+      { "role": "Illustration", "name": "壱加 (Ichika)" },
+      { "role": "Publisher", "name": "PHP Institute" }
+    ],
+    "publisher": "PHP Institute"
+  },
+  "description": "The eighth and final volume of the Deadly Sins of Evil — the finale that gathers every cycle, vessel, and demon onto the same stage. Source uses a deliberate inversion: Chapter 1 is named \"Epilogue\". Hunt for the Deadly Sins, the Princess setting out, the Heroes, the BLACKBOX, the truths of Re_Birthday and the Pure Evil all converge on a single boy's choice. Master of the Heavenly Yard is the synthesis the entire chronicle has been spiralling toward.",
+  "publishedYear": 2017,
+  "translation": {
+    "language": "en",
+    "source": "fan",
+    "translator": "pricechecktranslations",
+    "url": "https://dsoe-masteroftheheavenlyyard.tumblr.com/directory"
+  },
+  "chapterIllustration": {}
+}

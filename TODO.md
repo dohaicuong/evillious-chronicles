@@ -11,7 +11,7 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - ✅ **The Tailor of Enbizaka** — https://thetailorofenbizaka.tumblr.com/directory
 - ✅ **Judgment of Corruption** — https://judgmentofcorruption.tumblr.com/directory
 - ✅ **The Muzzle of Nemesis** — https://themuzzleofnemesis.tumblr.com/directory
-- **Master of the Heavenly Yard** — https://dsoe-masteroftheheavenlyyard.tumblr.com/directory
+- ✅ **Master of the Heavenly Yard** — https://dsoe-masteroftheheavenlyyard.tumblr.com/directory
 
 ### Reader / content
 
