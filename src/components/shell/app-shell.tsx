@@ -104,9 +104,12 @@ export function AppShell() {
       </a>
       <header className={cn("shrink-0", !isHome && "border-b border-border")}>
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between gap-6">
-          <Link to="/" className="flex items-baseline gap-1.5 font-display tracking-wide text-2xl">
-            <span className="text-fg">Evillious</span>
-            <span className="text-fg-muted">Chronicles</span>
+          <Link to="/" aria-label="Evillious Chronicles" className="flex items-center gap-3">
+            <img src="/icon-192.png" alt="" aria-hidden className="h-8 w-8 rounded-sm" />
+            <span className="hidden sm:flex items-baseline gap-1.5 font-display tracking-wide text-2xl">
+              <span className="text-fg">Evillious</span>
+              <span className="text-fg-muted">Chronicles</span>
+            </span>
           </Link>
           <nav className="flex items-center gap-2 sm:gap-4">
             {/* Large screens: input-shaped trigger with ⌘K / Ctrl K hint. */}
@@ -141,85 +144,96 @@ export function AppShell() {
             >
               <MagnifyingGlassIcon weight="light" />
             </IconButton>
-            <div className="hidden sm:flex items-center gap-4">
-              <IconButton
-                variant="ghost"
-                size="sm"
-                aria-label="Open bookmarks"
-                onClick={() => setBookmarksOpen(true)}
-              >
-                <BookmarkSimpleIcon weight="light" />
-              </IconButton>
-              <Menu>
-                <Menu.Trigger
-                  render={
-                    <IconButton variant="ghost" size="sm" aria-label="More options">
-                      <ListIcon weight="light" />
-                    </IconButton>
-                  }
-                />
-                <Menu.Portal>
-                  <Menu.Positioner align="end">
-                    <Menu.Popup>
-                      <Menu.Item onClick={() => setContinueOpen(true)}>
-                        <BookOpenTextIcon
-                          weight="light"
-                          className="inline-block mr-2 align-[-2px]"
+            <IconButton
+              variant="ghost"
+              size="sm"
+              aria-label="Open bookmarks"
+              onClick={() => setBookmarksOpen(true)}
+              className="hidden sm:inline-flex"
+            >
+              <BookmarkSimpleIcon weight="light" />
+            </IconButton>
+            <IconButton
+              variant="ghost"
+              size="sm"
+              aria-label={bgEnabled ? "Mute background music" : "Play background music"}
+              aria-pressed={bgEnabled}
+              onClick={() => setBgEnabled(!bgEnabled)}
+            >
+              {bgEnabled ? <SpeakerLowIcon weight="light" /> : <SpeakerXIcon weight="light" />}
+            </IconButton>
+            <ThemeToggle />
+            <Menu>
+              <Menu.Trigger
+                render={
+                  <IconButton
+                    variant="ghost"
+                    size="sm"
+                    aria-label="More options"
+                    className="hidden sm:inline-flex"
+                  >
+                    <ListIcon weight="light" />
+                  </IconButton>
+                }
+              />
+              <Menu.Portal>
+                <Menu.Positioner align="end">
+                  <Menu.Popup>
+                    <Menu.Item onClick={() => setContinueOpen(true)}>
+                      <BookOpenTextIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      Continue reading
+                    </Menu.Item>
+                    <Menu.Item onClick={() => setNotesOpen(true)}>
+                      <NotebookIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      Notes
+                    </Menu.Item>
+                    <Menu.Item onClick={() => setLikesOpen(true)}>
+                      <HeartIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      Likes
+                    </Menu.Item>
+                    <Menu.Separator />
+                    <Menu.Item onClick={() => setOfflineOpen(true)}>
+                      <CloudArrowDownIcon
+                        weight="light"
+                        className="inline-block mr-2 align-[-2px]"
+                      />
+                      Offline reading
+                    </Menu.Item>
+                    <Menu.Item onClick={() => setSettingsOpen(true)}>
+                      <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      Reader settings
+                    </Menu.Item>
+                    <Menu.Item
+                      render={
+                        <ExternalLink
+                          href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
+                          target="_blank"
+                          rel="noopener noreferrer"
                         />
-                        Continue reading
-                      </Menu.Item>
-                      <Menu.Item onClick={() => setNotesOpen(true)}>
-                        <NotebookIcon weight="light" className="inline-block mr-2 align-[-2px]" />
-                        Notes
-                      </Menu.Item>
-                      <Menu.Item onClick={() => setLikesOpen(true)}>
-                        <HeartIcon weight="light" className="inline-block mr-2 align-[-2px]" />
-                        Likes
-                      </Menu.Item>
-                      <Menu.Separator />
-                      <Menu.Item onClick={() => setOfflineOpen(true)}>
-                        <CloudArrowDownIcon
-                          weight="light"
-                          className="inline-block mr-2 align-[-2px]"
-                        />
-                        Offline reading
-                      </Menu.Item>
-                      <Menu.Item onClick={() => setSettingsOpen(true)}>
-                        <GearIcon weight="light" className="inline-block mr-2 align-[-2px]" />
-                        Reader settings
-                      </Menu.Item>
-                      <Menu.Item
-                        render={
-                          <ExternalLink
-                            href="https://theevilliouschronicles.fandom.com/wiki/The_Evillious_Chronicles_Wiki"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                          />
-                        }
-                      >
-                        <ArrowSquareOutIcon
-                          weight="light"
-                          className="inline-block mr-2 align-[-2px]"
-                        />
-                        Evillious Chronicles wiki
-                      </Menu.Item>
-                      <Menu.Separator />
-                      <Menu.Item onClick={hardReload}>
-                        <ArrowClockwiseIcon
-                          weight="light"
-                          className="inline-block mr-2 align-[-2px]"
-                        />
-                        Reload for updates
-                      </Menu.Item>
-                      <Menu.Item render={<Link to="/components" />}>
-                        <PaletteIcon weight="light" className="inline-block mr-2 align-[-2px]" />
-                        Component library
-                      </Menu.Item>
-                    </Menu.Popup>
-                  </Menu.Positioner>
-                </Menu.Portal>
-              </Menu>
-            </div>
+                      }
+                    >
+                      <ArrowSquareOutIcon
+                        weight="light"
+                        className="inline-block mr-2 align-[-2px]"
+                      />
+                      Evillious Chronicles wiki
+                    </Menu.Item>
+                    <Menu.Separator />
+                    <Menu.Item onClick={hardReload}>
+                      <ArrowClockwiseIcon
+                        weight="light"
+                        className="inline-block mr-2 align-[-2px]"
+                      />
+                      Reload for updates
+                    </Menu.Item>
+                    <Menu.Item render={<Link to="/components" />}>
+                      <PaletteIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      Component library
+                    </Menu.Item>
+                  </Menu.Popup>
+                </Menu.Positioner>
+              </Menu.Portal>
+            </Menu>
             <Menu>
               <Menu.Trigger
                 render={
@@ -298,16 +312,6 @@ export function AppShell() {
                 </Menu.Positioner>
               </Menu.Portal>
             </Menu>
-            <IconButton
-              variant="ghost"
-              size="sm"
-              aria-label={bgEnabled ? "Mute background music" : "Play background music"}
-              aria-pressed={bgEnabled}
-              onClick={() => setBgEnabled(!bgEnabled)}
-            >
-              {bgEnabled ? <SpeakerLowIcon weight="light" /> : <SpeakerXIcon weight="light" />}
-            </IconButton>
-            <ThemeToggle />
           </nav>
         </div>
       </header>
