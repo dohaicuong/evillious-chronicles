@@ -17,7 +17,10 @@ const base = [
   "border border-border rounded-sm",
   "transition-colors duration-150",
   "focus:outline-none focus:border-accent",
-  "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+  // See Button: outline-color pinned to accent in base so it doesn't
+  // animate from currentColor to var(--accent) on focus.
+  "outline-accent outline-offset-2",
+  "focus-visible:outline-2",
   "disabled:opacity-50 disabled:cursor-not-allowed",
   "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
   "aria-invalid:border-sin-gluttony",

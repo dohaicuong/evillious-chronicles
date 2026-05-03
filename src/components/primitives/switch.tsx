@@ -9,7 +9,10 @@ const root = [
   "border border-border bg-surface",
   "transition-colors duration-150",
   "cursor-pointer",
-  "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+  // See Button: outline-color pinned to accent in base so it doesn't
+  // animate from currentColor to var(--accent) on focus.
+  "outline-accent outline-offset-2",
+  "focus-visible:outline-2",
   "data-[checked]:border-accent data-[checked]:bg-accent",
   "disabled:opacity-50 disabled:cursor-not-allowed",
   "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",

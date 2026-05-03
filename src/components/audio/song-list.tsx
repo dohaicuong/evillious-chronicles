@@ -26,7 +26,7 @@ export function SongList({ songIds }: { songIds: string[] }) {
 
         const rowClass = cn(
           "flex w-full items-center gap-4 px-3 py-3 text-left transition-colors",
-          "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+          "outline-accent outline-offset-2 focus-visible:outline-2",
           hasSource && "cursor-pointer hover:bg-accent-soft",
           !hasSource && "cursor-default",
         );

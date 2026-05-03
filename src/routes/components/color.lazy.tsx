@@ -8,10 +8,7 @@ const baseColors = [
   { name: "parchment", value: "#f4efe2" },
   { name: "parchment-aged", value: "#ebe4d3" },
   { name: "ink", value: "#1a1325" },
-  { name: "court", value: "#14101c" },
-  { name: "court-light", value: "#1f1830" },
   { name: "candle", value: "#c9a961" },
-  { name: "shadow", value: "#3d2e5c" },
   { name: "bone", value: "#e8d5a3" },
 ];
 
@@ -21,8 +18,8 @@ const sins = [
   { name: "sloth", value: "#297e63", hint: "dark teal — Margarita Blankenheim" },
   { name: "gluttony", value: "#c22a1c", hint: "red — Banica Conchita" },
   { name: "greed", value: "#1921b2", hint: "deep blue — Gallerian Marlon" },
-  { name: "wrath", value: "#748f46", hint: "olive green" },
-  { name: "envy", value: "#b82eb1", hint: "magenta" },
+  { name: "wrath", value: "#748f46", hint: "olive green — Nemesis Sudou" },
+  { name: "envy", value: "#b82eb1", hint: "magenta — Kayo Sudou" },
   { name: "origin", value: "#3fb3a8", hint: "seafoam teal — Eve Moonlit / Original Sin" },
 ];
 

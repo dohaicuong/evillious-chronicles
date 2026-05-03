@@ -73,7 +73,8 @@ export function SettingsDrawer({
                         style={{ fontFamily: opt.cssVar }}
                         className={cn(
                           "flex-1 rounded-sm px-3 py-1.5 text-style-body transition-colors",
-                          "focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+                          "outline-accent outline-offset-2",
+                          "focus:outline-none focus-visible:outline-2",
                           active
                             ? "bg-accent-soft text-fg"
                             : "text-fg-muted hover:bg-accent-soft/50 hover:text-fg",

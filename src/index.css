@@ -16,10 +16,7 @@
   --color-parchment: #f4efe2;
   --color-parchment-aged: #ebe4d3;
   --color-ink: #1a1325;
-  --color-court: #14101c;
-  --color-court-light: #1f1830;
   --color-candle: #c9a961;
-  --color-shadow: #3d2e5c;
   --color-bone: #e8d5a3;
 
   /* --- 2. Seven Deadly Sins (+ origin) --- */
@@ -28,8 +25,8 @@
   --color-sin-sloth: #297e63; /* dark teal     — Margarita Blankenheim */
   --color-sin-gluttony: #c22a1c; /* red          — Banica Conchita */
   --color-sin-greed: #1921b2; /* deep blue     — Gallerian Marlon */
-  --color-sin-wrath: #748f46; /* olive green */
-  --color-sin-envy: #b82eb1; /* magenta */
+  --color-sin-wrath: #748f46; /* olive green   — Nemesis Sudou */
+  --color-sin-envy: #b82eb1; /* magenta       — Kayo Sudou */
   --color-sin-origin: #3fb3a8; /* seafoam teal — Eve Moonlit / Original Sin */
 
   /* --- 4. Typography --- */

@@ -19,9 +19,10 @@ import { ThemeToggle } from "@src/components/shell/theme-toggle";
 
 // Shared focus-visible style for the bespoke nav buttons in this layout —
 // mirrors the outline used by the Link primitive so keyboard focus reads
-// the same whether it lands on a link or a toggle.
-const focusOutline =
-  "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2";
+// the same whether it lands on a link or a toggle. outline-color pinned
+// always so `transition-colors` can't animate it from currentColor on
+// focus (would flash white on light-text sins like lust/envy).
+const focusOutline = "outline-accent outline-offset-2 focus-visible:outline-2";
 
 export const Route = createFileRoute("/components")({
   component: ComponentsLayout,

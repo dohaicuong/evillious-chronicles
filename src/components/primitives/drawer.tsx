@@ -69,7 +69,10 @@ const closeBase = [
   "font-display tracking-[0.15em]",
   "text-fg hover:bg-surface active:bg-surface",
   "transition-colors duration-150 cursor-pointer select-none",
-  "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+  // See Button: outline-color pinned to accent in base so it doesn't
+  // animate from currentColor to var(--accent) on focus.
+  "outline-accent outline-offset-2",
+  "focus-visible:outline-2",
 ].join(" ");
 
 function Close({ className, children, ...props }: ComponentProps<typeof Dialog.Close>) {

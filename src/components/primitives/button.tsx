@@ -15,7 +15,12 @@ const base = [
   "font-display tracking-[0.15em]",
   "transition-colors duration-150",
   "cursor-pointer select-none",
-  "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+  // Pin outline-color/offset always so `transition-colors` doesn't animate
+  // outline-color from currentColor (= text-accent-fg, white on dark sins
+  // like lust/sloth/gluttony/greed/envy) to var(--accent) on focus —
+  // visible flash. Only outline-style/width flip on focus, not the color.
+  "outline-accent outline-offset-2",
+  "focus-visible:outline-2",
   "disabled:opacity-50 disabled:cursor-not-allowed",
   "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
 ].join(" ");

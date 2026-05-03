@@ -14,7 +14,10 @@ const rootBase = [
   "shadow-md shadow-ink/30",
   "p-4 pr-8",
   "transition-all duration-300 ease-out",
-  "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+  // See Button: outline-color pinned to accent in base so it doesn't
+  // animate from currentColor to var(--accent) on focus.
+  "outline-accent outline-offset-2",
+  "focus-visible:outline-2",
 
   // Collapsed (default): stack-of-cards — newest in front (index 0), older
   // behind, slightly offset down + scaled down. Z-index keeps newest on top.
@@ -74,7 +77,7 @@ function ToastList() {
                 "font-display tracking-[0.15em] text-sm",
                 "transition-colors duration-150 cursor-pointer select-none",
                 "hover:bg-accent-soft active:bg-accent-soft",
-                "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+                "outline-accent outline-offset-2 focus-visible:outline-2",
               )}
             />
           ) : null}
@@ -84,7 +87,7 @@ function ToastList() {
               "absolute top-2 right-2 inline-flex h-6 w-6 items-center justify-center rounded-sm",
               "text-fg-muted hover:text-fg hover:bg-surface",
               "transition-colors duration-150 cursor-pointer select-none",
-              "focus-visible:outline-2 focus-visible:outline-accent",
+              "outline-accent focus-visible:outline-2",
             )}
           >
             <svg

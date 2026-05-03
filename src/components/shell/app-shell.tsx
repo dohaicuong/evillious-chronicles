@@ -122,7 +122,7 @@ export function AppShell() {
                 "rounded-sm border border-border bg-surface",
                 "text-style-caption text-fg-muted",
                 "hover:border-accent/60 hover:text-fg transition-colors",
-                "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+                "outline-accent outline-offset-2 focus-visible:outline-2",
               )}
             >
               <MagnifyingGlassIcon size={16} weight="light" className="shrink-0" aria-hidden />

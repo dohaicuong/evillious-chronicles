@@ -538,7 +538,8 @@ function ResultRow({
     "flex w-full items-center gap-3 px-4 py-2 text-left transition-colors",
     "hover:bg-accent-soft",
     highlight && "bg-accent-soft",
-    "focus:outline-none focus-visible:bg-accent-soft focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-2px]",
+    "outline-accent outline-offset-[-2px]",
+    "focus:outline-none focus-visible:bg-accent-soft focus-visible:outline-2",
   );
 
   const setRef = (el: HTMLElement | null) => registerRef(index, el);

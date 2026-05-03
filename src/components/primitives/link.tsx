@@ -22,7 +22,10 @@ import { cn } from "@src/lib/cn";
  */
 const base = [
   "transition-colors duration-150 rounded-sm",
-  "focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+  // See Button: outline-color pinned to accent in base so it doesn't
+  // animate from currentColor to var(--accent) on focus.
+  "outline-accent outline-offset-2",
+  "focus-visible:outline-2",
 ].join(" ");
 
 const StyledAnchor = forwardRef<HTMLAnchorElement, AnchorHTMLAttributes<HTMLAnchorElement>>(
