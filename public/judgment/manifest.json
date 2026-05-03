@@ -1,0 +1,25 @@
+{
+  "cover": {
+    "src": "/judgment/cover.webp",
+    "alt": "Judgment of Corruption — cover"
+  },
+  "titlePage": {
+    "title": "The Deadly Sins of Evil",
+    "subtitle": "Judgment of Corruption",
+    "credits": [
+      { "role": "Original Work", "name": "Akuno_P (mothy)" },
+      { "role": "Illustration", "name": "壱加 (Ichika), you-ring" },
+      { "role": "Publisher", "name": "PHP Institute" }
+    ],
+    "publisher": "PHP Institute"
+  },
+  "description": "The sixth volume of the Deadly Sins of Evil — the greed-aligned tale of Gallerian Marlon, the corrupt judge of Levianta. Traces his childhood, his rise to the bench, his relationship with Ma, and the descent that follows his wish to collect the seven vessels of deadly sin and restore his deceased daughter Michelle. The Court of Greed sits at the Black Box and the verdicts are bought.",
+  "publishedYear": 2016,
+  "translation": {
+    "language": "en",
+    "source": "fan",
+    "translator": "pricechecktranslations",
+    "url": "https://judgmentofcorruption.tumblr.com/directory"
+  },
+  "chapterIllustration": {}
+}

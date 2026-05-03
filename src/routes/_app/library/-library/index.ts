@@ -4,6 +4,7 @@ import { clotureOfYellow } from "@app/library/-volumes/cloture-of-yellow";
 import { conchita } from "@app/library/-volumes/conchita";
 import { enbizaka } from "@app/library/-volumes/enbizaka";
 import { fifthPierrot } from "@app/library/-volumes/fifth-pierrot";
+import { judgment } from "@app/library/-volumes/judgment";
 import { praefacioOfBlue } from "@app/library/-volumes/praefacio-of-blue";
 import { ossCrime } from "@app/library/-volumes/oss-crime";
 import { ossPunishment } from "@app/library/-volumes/oss-punishment";
@@ -87,22 +88,7 @@ export const series: Series[] = [
       princessSleep.slim,
       fifthPierrot.slim,
       enbizaka.slim,
-      {
-        id: "judgment",
-        number: 6,
-        title: "Judgment of Corruption",
-        sin: "greed",
-        chapters: makeChapters("jc", [
-          "Master of the Court",
-          "The Black Box of Held",
-          "Coin and Conscience",
-          "The Daughter Gallerian Found",
-          "Verdicts in Gold",
-          "The Witch of Merrigod",
-          "Levia's Bargain",
-          "Hellish Yard",
-        ]),
-      },
+      judgment.slim,
       {
         id: "muzzle",
         number: 7,
