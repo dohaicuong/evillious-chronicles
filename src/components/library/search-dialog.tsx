@@ -530,12 +530,15 @@ function ResultRow({
   // Visual highlight only applies once focus is in the list — see the
   // `highlight` prop docs above. Hover styling is independent so the mouse
   // cursor still reads as interactive without competing with keyboard
-  // selection.
+  // selection. `focus-visible:bg-accent-soft` mirrors the highlight at the
+  // CSS layer so Tab-from-input lands the bg synchronously with the outline,
+  // instead of waiting on the React onFocus → setState → re-render tick that
+  // would otherwise leak a 150ms `transition-colors` fade-in.
   const className = cn(
     "flex w-full items-center gap-3 px-4 py-2 text-left transition-colors",
     "hover:bg-accent-soft",
     highlight && "bg-accent-soft",
-    "focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-2px]",
+    "focus:outline-none focus-visible:bg-accent-soft focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-[-2px]",
   );
 
   const setRef = (el: HTMLElement | null) => registerRef(index, el);
