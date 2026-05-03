@@ -22,10 +22,21 @@ const itemBase = [
   "data-[disabled]:opacity-50 data-[disabled]:cursor-not-allowed",
 ].join(" ");
 
+// Each non-sm size shrinks one tier on phones so the row fits in a 360–390px
+// viewport without wrapping. The advertised `size` only kicks in at the `sm`
+// breakpoint; below that, everything compacts to the smallest dimensions.
 const sizeClasses: Record<Size, { item: string; icon: number; text: string }> = {
   sm: { item: "h-8 min-w-8 px-2", icon: 14, text: "text-sm" },
-  md: { item: "h-10 min-w-10 px-3", icon: 16, text: "text-base" },
-  lg: { item: "h-12 min-w-12 px-4", icon: 18, text: "text-lg" },
+  md: {
+    item: "h-8 min-w-8 px-2 sm:h-10 sm:min-w-10 sm:px-3",
+    icon: 16,
+    text: "text-sm sm:text-base",
+  },
+  lg: {
+    item: "h-10 min-w-10 px-3 sm:h-12 sm:min-w-12 sm:px-4",
+    icon: 18,
+    text: "text-base sm:text-lg",
+  },
 };
 
 const inactive = "text-fg hover:bg-surface active:bg-surface";
@@ -46,7 +57,14 @@ export function Pagination({
   const sz = sizeClasses[size];
 
   return (
-    <nav aria-label={ariaLabel} className={cn("flex items-center gap-1", className)}>
+    <nav
+      aria-label={ariaLabel}
+      // `flex-wrap` lets the row break onto a second line when the page list
+      // is wider than the container — keeps mobile from overflowing the
+      // viewport when there are 7+ buttons. `justify-center` keeps the
+      // wrapped row visually centered with the first row.
+      className={cn("flex flex-wrap items-center justify-center gap-1", className)}
+    >
       <BaseButton
         nativeButton
         type="button"

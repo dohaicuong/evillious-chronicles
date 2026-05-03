@@ -12,25 +12,50 @@ import { asset } from "@src/lib/asset";
 import { getChapterManifest } from "@src/lib/chapter-manifest";
 
 const ILLUSTRATION_RE = /^\s*<!--\s*illustration:\s*([\w-]+)\s*-->\s*$/;
+const SONG_CUE_RE = /<!--\s*songCue:\s*([\w-]+)\s*-->/;
 
 /**
  * Builds a chapter's pages from per-page raw markdown strings. Each input is
  * one page in reading order: either prose, or a single line of the form
  * `<!-- illustration: illustration-N -->` that resolves against the supplied
  * `illustrations` map.
+ *
+ * Either kind of page may also carry a `<!-- songCue: song-id -->` directive
+ * (anywhere in the file, conventionally at the top). The directive is
+ * stripped from the body and surfaced as `Page.songCue` so the audio dock
+ * can highlight that song when the page mounts. Unknown song ids fail soft —
+ * the dock won't render a cue rather than throwing.
  */
 export function makePagesBuilder(illustrations: Record<string, ImageAsset>) {
   return (...rawPages: string[]): Page[] =>
     rawPages.map((raw, i) => {
-      const trimmed = raw.trim();
-      const m = trimmed.match(ILLUSTRATION_RE);
+      let body = raw;
+      let songCue: string | undefined;
+      const cueMatch = body.match(SONG_CUE_RE);
+      if (cueMatch) {
+        songCue = cueMatch[1];
+        body = body.replace(cueMatch[0], "");
+      }
+      body = body.trim();
+
+      const m = body.match(ILLUSTRATION_RE);
       if (m) {
         const id = m[1]!;
         const illustration = illustrations[id];
         if (!illustration) throw new Error(`Unknown illustration "${id}"`);
-        return { number: i + 1, layout: "illustration", illustration };
+        return {
+          number: i + 1,
+          layout: "illustration",
+          illustration,
+          ...(songCue ? { songCue } : {}),
+        };
       }
-      return { number: i + 1, layout: "prose", text: trimmed };
+      return {
+        number: i + 1,
+        layout: "prose",
+        text: body,
+        ...(songCue ? { songCue } : {}),
+      };
     });
 }
 

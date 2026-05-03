@@ -15,7 +15,7 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 
 ### Reader / content
 
-- **Audio cues** — wire `Page.songCue` to the audio dock. Schema already in place at three levels (no changes needed): `Series.songIds` (rendered on series page), `Chapter.songIds` (a "tracks in this chapter" list — not rendered yet), `Page.songCue` (single id, intended to pin/highlight the song in the dock when the page is reached). Plan: IntersectionObserver on the page like progress; opt-in via a new `autoplaySongCues` toggle in `SettingsDrawer`.
+- **Chapter track list** — render `Chapter.songIds` as a "tracks in this chapter" list (schema already populated, no UI surface yet).
 
 ### Notes
 
@@ -51,3 +51,4 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - ✅ Lighthouse CI — `treosh/lighthouse-ci-action@v12` workflow on PRs and pushes to master, accessibility threshold at 0.95 (error), perf/SEO/best-practices at warn level.
 - ✅ Site-wide search — Cmd/Ctrl+K command palette in `AppShell` covering volumes (English + Japanese + romanized titles), chapters, songs (selecting plays via the audio dock), and characters (name / aliases / japanese name / romaji / vocaloid). Sectioned results, default browse list when empty, footer kbd hint ("Go to page" / "Play" depending on row kind). Documented at `/components/search`.
 - ✅ Reader font family picker (Serif / Sans) and justify-text toggle in `SettingsDrawer`. Justify and auto-hyphenation flip together via shared CSS vars (`--reader-font-family`, `--reader-text-align`, `--reader-hyphens`); choices persist alongside the existing reader settings in `localStorage`.
+- ✅ Page scene-track cue — `Page.songCue` surfaces in the audio dock as a tap-to-play teaser when nothing's playing, an "Up next" switch line when a different song is playing, and a "Scene track" badge when the cue matches the current track. Highlight-only, no autoplay (sidesteps browser autoplay policy and avoids surprising readers). New `cuedSong` / `setCue` on the audio context; the page route sets/clears the cue on mount.

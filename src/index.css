@@ -255,3 +255,39 @@
     background-position: -200% 0;
   }
 }
+
+/*
+ * Scene-cue surfaces in the audio dock — enter on mount, pulse a soft accent
+ * ring when the cue itself changes (driven by a keyed overlay element so the
+ * animation re-fires reliably on each id transition).
+ */
+@keyframes scene-cue-enter {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scene-cue-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--color-accent-soft);
+  }
+  35% {
+    box-shadow: 0 0 0 6px var(--color-accent-soft);
+  }
+  100% {
+    box-shadow: 0 0 0 12px transparent;
+  }
+}
+
+@utility animate-scene-cue-enter {
+  animation: scene-cue-enter 200ms ease-out both;
+}
+
+@utility animate-scene-cue-pulse {
+  animation: scene-cue-pulse 700ms ease-out both;
+}

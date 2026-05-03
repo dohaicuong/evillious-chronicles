@@ -9,6 +9,8 @@ import {
 } from "@phosphor-icons/react";
 import { series } from "@src/routes/_app/library/-library";
 import { getVolumeChapter, getVolumeMeta } from "@app/library/-volumes";
+import { getSong } from "@app/songs/-songs";
+import { useAudio } from "@src/lib/audio";
 import { PageView } from "@src/components/reader/page-view";
 import { Button } from "@src/components/primitives/button";
 import { IconButton } from "@src/components/primitives/icon-button";
@@ -89,6 +91,17 @@ function PageReader() {
   useEffect(() => {
     void bumpChapterProgress(chapter.id, pageIdx + 1, totalPages);
   }, [chapter.id, pageIdx, totalPages]);
+
+  // Pin the page's scene-track cue (if any) into the audio dock — highlight
+  // only, never autoplay. Cleared on unmount so the cue doesn't leak past
+  // the reader.
+  const { setCue } = useAudio();
+  const cueId = page.songCue;
+  useEffect(() => {
+    const song = cueId ? getSong(cueId) : undefined;
+    setCue(song ?? null);
+    return () => setCue(null);
+  }, [cueId, setCue]);
 
   return (
     <div

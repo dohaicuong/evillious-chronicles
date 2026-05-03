@@ -1,8 +1,21 @@
 import { createLazyFileRoute } from "@tanstack/react-router";
+import { useEffect, useState } from "react";
 
 export const Route = createLazyFileRoute("/components/animation")({
   component: AnimationPage,
 });
+
+// One-shot animations need a replay tick for the docs page to keep showing
+// them off; this remounts its child on a fixed cadence so the underlying
+// CSS animation re-fires on each tick.
+function ReplayLoop({ intervalMs, children }: { intervalMs: number; children: React.ReactNode }) {
+  const [tick, setTick] = useState(0);
+  useEffect(() => {
+    const id = window.setInterval(() => setTick((t) => t + 1), intervalMs);
+    return () => window.clearInterval(id);
+  }, [intervalMs]);
+  return <div key={tick}>{children}</div>;
+}
 
 function AnimationPage() {
   return (
@@ -58,6 +71,38 @@ function AnimationPage() {
                 animation: "skeleton-shimmer 1.5s ease-in-out infinite",
               }}
             />
+          </KeyframeCard>
+
+          <KeyframeCard
+            name="scene-cue-enter"
+            source="Custom — index.css"
+            description="200ms fade + 6px slide-up that fires once on mount. Used by the audio dock's scene-cue surfaces (CueTeaser, UpNextCue, SceneTrackBadge) so they appear smoothly when the reader lands on a page that pins a song. Apply via the animate-scene-cue-enter utility."
+          >
+            <ReplayLoop intervalMs={2200}>
+              <div className="flex w-full justify-center">
+                <span className="rounded-sm border border-border bg-surface px-3 py-2 text-style-caption text-fg animate-scene-cue-enter">
+                  Scene track: Daughter of Evil
+                </span>
+              </div>
+            </ReplayLoop>
+          </KeyframeCard>
+
+          <KeyframeCard
+            name="scene-cue-pulse"
+            source="Custom — index.css"
+            description="700ms expanding box-shadow ring in --color-accent-soft. One-shot — fires when the page-bound song cue changes while the surface is already mounted (a counter-keyed PulseOverlay re-mounts to retrigger the animation on each transition). Skipped on first mount so it doesn't double up with scene-cue-enter."
+          >
+            <ReplayLoop intervalMs={1500}>
+              <div className="flex w-full justify-center">
+                <span className="relative rounded-sm border border-border bg-surface px-3 py-2 text-style-caption text-fg">
+                  <span
+                    aria-hidden
+                    className="pointer-events-none absolute inset-0 rounded-sm animate-scene-cue-pulse"
+                  />
+                  Scene track: Daughter of Evil
+                </span>
+              </div>
+            </ReplayLoop>
           </KeyframeCard>
         </div>
       </section>

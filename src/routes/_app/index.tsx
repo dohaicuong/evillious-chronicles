@@ -12,7 +12,7 @@ export const Route = createFileRoute("/_app/")({
 
 function Home() {
   return (
-    <div className="flex min-h-[calc(100vh-4rem)] flex-col items-center justify-center gap-8 px-6 py-20">
+    <div className="-mt-16 flex min-h-dvh flex-col items-center justify-center gap-8 px-6 py-20">
       <span className="text-style-eyebrow text-fg-muted">A multimedia chronicle by mothy</span>
 
       <h1 className="text-style-display text-fg text-center">
