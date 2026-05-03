@@ -8,17 +8,33 @@ import {
   type ReactNode,
 } from "react";
 
+export type FontFamily = "serif" | "sans";
+
 export type ReaderSettings = {
   fontSize: number; // px
   lineHeight: number; // unitless ratio
   readerWidth: number; // rem
+  // Justified body text with auto-hyphenation. Off → left-aligned with no
+  // hyphenation, the default for English prose. Both flip together because
+  // justify without hyphens produces ugly inter-word gaps.
+  justify: boolean;
+  // Reader prose typeface. Resolves to the matching `--font-*` token at
+  // render time so the choice tracks the design system if those tokens move.
+  fontFamily: FontFamily;
 };
 
 const DEFAULTS: ReaderSettings = {
   fontSize: 17,
   lineHeight: 1.7,
   readerWidth: 42,
+  justify: false,
+  fontFamily: "serif",
 };
+
+export const FONT_FAMILY_OPTIONS: { value: FontFamily; label: string; cssVar: string }[] = [
+  { value: "serif", label: "Serif", cssVar: "var(--font-serif)" },
+  { value: "sans", label: "Sans", cssVar: "var(--font-sans)" },
+];
 
 export const READER_DEFAULTS = DEFAULTS;
 
@@ -49,6 +65,11 @@ function readStorage(): ReaderSettings {
         typeof parsed.readerWidth === "number" && Number.isFinite(parsed.readerWidth)
           ? parsed.readerWidth
           : DEFAULTS.readerWidth,
+      justify: typeof parsed.justify === "boolean" ? parsed.justify : DEFAULTS.justify,
+      fontFamily:
+        parsed.fontFamily === "serif" || parsed.fontFamily === "sans"
+          ? parsed.fontFamily
+          : DEFAULTS.fontFamily,
     };
   } catch {
     return DEFAULTS;
@@ -98,9 +119,13 @@ export function useReaderSettings(): Ctx {
 }
 
 export function readerSettingsCssVars(s: ReaderSettings): CSSProperties {
+  const fontFamily = FONT_FAMILY_OPTIONS.find((o) => o.value === s.fontFamily)?.cssVar;
   return {
     "--reader-font-size": `${s.fontSize / 16}rem`,
     "--reader-line-height": `${s.lineHeight}`,
     "--reader-max-width": `${s.readerWidth}rem`,
+    "--reader-text-align": s.justify ? "justify" : "left",
+    "--reader-hyphens": s.justify ? "auto" : "manual",
+    ...(fontFamily ? { "--reader-font-family": fontFamily } : {}),
   } as CSSProperties;
 }

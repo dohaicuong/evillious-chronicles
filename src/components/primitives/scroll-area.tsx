@@ -6,6 +6,12 @@ type ScrollAreaProps = ComponentProps<typeof BaseScrollArea.Root> & {
   children?: ReactNode;
   viewportClassName?: string;
   viewportRef?: Ref<HTMLDivElement>;
+  // ID consumed by TanStack Router's scroll restoration. When set, the
+  // viewport (the actual scrolling element) is tagged with
+  // `data-scroll-restoration-id` so the router caches and restores scrollY
+  // for this container on back/forward navigation. Leave undefined for
+  // transient scroll areas (drawers, dialogs) that don't need restoration.
+  scrollRestorationId?: string;
 };
 
 const scrollbarBase = [
@@ -24,12 +30,14 @@ export function ScrollArea({
   children,
   viewportClassName,
   viewportRef,
+  scrollRestorationId,
   ...props
 }: ScrollAreaProps) {
   return (
     <BaseScrollArea.Root className={cn("relative overflow-hidden", className)} {...props}>
       <BaseScrollArea.Viewport
         ref={viewportRef}
+        data-scroll-restoration-id={scrollRestorationId}
         // base-ui makes the viewport focusable (tabindex=0) for keyboard
         // scrolling. That puts the entire content region in the tab order
         // with no useful visual cue (outlining the whole page is worse than

@@ -4,7 +4,14 @@ import { Drawer } from "@src/components/primitives/drawer";
 import { Button } from "@src/components/primitives/button";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { Slider } from "@src/components/primitives/slider";
-import { READER_BOUNDS, readerSettingsCssVars, useReaderSettings } from "@src/lib/reader-settings";
+import { Switch } from "@src/components/primitives/switch";
+import {
+  FONT_FAMILY_OPTIONS,
+  READER_BOUNDS,
+  readerSettingsCssVars,
+  useReaderSettings,
+} from "@src/lib/reader-settings";
+import { cn } from "@src/lib/cn";
 
 const PREVIEW_TEXT = `The princess of Lucifenia, only fourteen years old, watched her kingdom turn to ruin while the servant who shared her face stood at her side.
 
@@ -44,6 +51,37 @@ export function SettingsDrawer({
               <p className="text-style-reader-prose text-fg whitespace-pre-line">{PREVIEW_TEXT}</p>
             </div>
 
+            <SettingRow label="Font" value={settings.fontFamily === "serif" ? "Serif" : "Sans"}>
+              <div
+                role="radiogroup"
+                aria-label="Reader font family"
+                className="flex items-stretch gap-1 rounded-sm border border-border p-1"
+              >
+                {FONT_FAMILY_OPTIONS.map((opt) => {
+                  const active = settings.fontFamily === opt.value;
+                  return (
+                    <button
+                      key={opt.value}
+                      type="button"
+                      role="radio"
+                      aria-checked={active}
+                      onClick={() => set("fontFamily", opt.value)}
+                      style={{ fontFamily: opt.cssVar }}
+                      className={cn(
+                        "flex-1 rounded-sm px-3 py-1.5 text-style-body transition-colors",
+                        "focus:outline-none focus-visible:outline-2 focus-visible:outline-accent focus-visible:outline-offset-2",
+                        active
+                          ? "bg-accent-soft text-fg"
+                          : "text-fg-muted hover:bg-accent-soft/50 hover:text-fg",
+                      )}
+                    >
+                      {opt.label}
+                    </button>
+                  );
+                })}
+              </div>
+            </SettingRow>
+
             <SettingRow label="Font size" value={`${settings.fontSize}px`}>
               <Slider
                 aria-label="Font size"
@@ -76,6 +114,20 @@ export function SettingsDrawer({
                 step={READER_BOUNDS.readerWidth.step}
               />
             </SettingRow>
+
+            <div className="flex items-center justify-between gap-4">
+              <div className="flex flex-col">
+                <span className="text-style-body text-fg">Justify text</span>
+                <span className="text-style-caption text-fg-muted">
+                  Justified alignment with auto hyphenation.
+                </span>
+              </div>
+              <Switch
+                aria-label="Justify text"
+                checked={settings.justify}
+                onCheckedChange={(checked) => set("justify", checked)}
+              />
+            </div>
 
             <div className="border-t border-border pt-4 flex justify-end">
               <Button variant="outline" size="sm" onClick={reset}>

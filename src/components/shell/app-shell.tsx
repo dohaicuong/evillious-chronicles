@@ -298,7 +298,7 @@ export function AppShell() {
           </nav>
         </div>
       </header>
-      <ScrollArea viewportRef={viewportRef} className="flex-1">
+      <ScrollArea viewportRef={viewportRef} className="flex-1" scrollRestorationId="app-main">
         <main id="main-content" tabIndex={-1} className="focus-visible:outline-none">
           <Outlet />
         </main>

@@ -31,8 +31,12 @@ const router = createRouter({
   // flashing past. Tuned high on both sides to favour stillness over
   // responsiveness — a quick blank moment beats a stuttery spinner.
   defaultPendingComponent: PendingScreen,
-  defaultPendingMs: 400,
+  defaultPendingMs: 250,
   defaultPendingMinMs: 800,
+  // Restore scroll on back/forward across both window scroll and the app
+  // shell's custom ScrollArea viewport (tagged with
+  // `data-scroll-restoration-id="app-main"` in app-shell.tsx).
+  scrollRestoration: true,
 });
 
 declare module "@tanstack/react-router" {

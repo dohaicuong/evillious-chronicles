@@ -207,10 +207,12 @@
  * sliders only affect prose, not the surrounding UI.
  */
 @utility text-style-reader-prose {
-  font-family: var(--font-serif);
+  font-family: var(--reader-font-family, var(--font-serif));
   font-size: var(--reader-font-size, 1.0625rem);
   line-height: var(--reader-line-height, 1.7);
   font-feature-settings: "liga", "kern";
+  text-align: var(--reader-text-align, left);
+  hyphens: var(--reader-hyphens, manual);
 }
 
 @utility text-style-quote {
