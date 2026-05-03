@@ -5,6 +5,7 @@ import { conchita } from "@app/library/-volumes/conchita";
 import { enbizaka } from "@app/library/-volumes/enbizaka";
 import { fifthPierrot } from "@app/library/-volumes/fifth-pierrot";
 import { judgment } from "@app/library/-volumes/judgment";
+import { nemesis } from "@app/library/-volumes/nemesis";
 import { praefacioOfBlue } from "@app/library/-volumes/praefacio-of-blue";
 import { ossCrime } from "@app/library/-volumes/oss-crime";
 import { ossPunishment } from "@app/library/-volumes/oss-punishment";
@@ -89,19 +90,7 @@ export const series: Series[] = [
       fifthPierrot.slim,
       enbizaka.slim,
       judgment.slim,
-      {
-        id: "muzzle",
-        number: 7,
-        title: "The Muzzle of Nemesis",
-        sin: "wrath",
-        chapters: makeChapters("mn", [
-          "Nemesis Sudou",
-          "The Père Noël Contract",
-          "The Sniper's Vow",
-          "A Father's Reckoning",
-          "The Final Shot",
-        ]),
-      },
+      nemesis.slim,
       {
         id: "heavenly-yard",
         number: 8,

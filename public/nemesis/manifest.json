@@ -1,0 +1,25 @@
+{
+  "cover": {
+    "src": "/nemesis/cover.webp",
+    "alt": "The Muzzle of Nemesis — cover"
+  },
+  "titlePage": {
+    "title": "The Deadly Sins of Evil",
+    "subtitle": "The Muzzle of Nemesis",
+    "credits": [
+      { "role": "Original Work", "name": "Akuno_P (mothy)" },
+      { "role": "Illustration", "name": "壱加 (Ichika), Kyata" },
+      { "role": "Publisher", "name": "PHP Institute" }
+    ],
+    "publisher": "PHP Institute"
+  },
+  "description": "The seventh volume of the Deadly Sins of Evil — the wrath-aligned tale of Nemesis Sudou, the assassin who walks into Gallerian Marlon's Court of Greed with a gun pointed at the judge of corruption. Told as a chain of memories — settling the score, the forest, the four seasons, the battlefield, flames, mother, and the god — that drag a child of war up to the muzzle's recoil and the final shot. Contains a Documents of Evil supplement that gathers the era's primary sources.",
+  "publishedYear": 2017,
+  "translation": {
+    "language": "en",
+    "source": "fan",
+    "translator": "pricechecktranslations",
+    "url": "https://themuzzleofnemesis.tumblr.com/directory"
+  },
+  "chapterIllustration": {}
+}

@@ -2,8 +2,8 @@ import {
   AppleLogoIcon,
   BedIcon,
   CoinsIcon,
+  CrosshairIcon,
   CrownIcon,
-  EyeIcon,
   ForkKnifeIcon,
   MaskHappyIcon,
   ScissorsIcon,
@@ -17,8 +17,11 @@ const map = {
   sloth: BedIcon,
   gluttony: ForkKnifeIcon,
   greed: CoinsIcon,
-  wrath: ScissorsIcon,
-  envy: EyeIcon,
+  // Phosphor doesn't ship a gun/pistol — Crosshair stands in for the muzzle
+  // / gunsight semantics of "Muzzle of Nemesis" while staying recognisable.
+  wrath: CrosshairIcon,
+  // Enbizaka's tailor wields cursed scissors — direct vessel reference.
+  envy: ScissorsIcon,
   origin: AppleLogoIcon, // Eve and the apple — original sin
 } as const;
 
