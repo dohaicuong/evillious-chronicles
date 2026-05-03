@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { useAudio } from "@src/lib/audio";
+import { asset } from "@src/lib/asset";
 
 const BG_VOLUME = 0.15;
 const FADE_MS = 600;
@@ -103,6 +104,14 @@ export function BackgroundAudio() {
   }, [bgEnabled, hasGesture, currentSong]);
 
   return (
-    <audio ref={audioRef} src="/background.mp3" loop autoPlay preload="auto" aria-hidden hidden />
+    <audio
+      ref={audioRef}
+      src={asset("/background.mp3")}
+      loop
+      autoPlay
+      preload="auto"
+      aria-hidden
+      hidden
+    />
   );
 }

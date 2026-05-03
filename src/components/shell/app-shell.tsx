@@ -22,6 +22,7 @@ import { Menu } from "@src/components/primitives/menu";
 import { cn } from "@src/lib/cn";
 import { forceUpdate } from "@src/lib/pwa";
 import { useAudio } from "@src/lib/audio";
+import { asset } from "@src/lib/asset";
 import { ThemeToggle } from "./theme-toggle";
 import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
@@ -105,7 +106,7 @@ export function AppShell() {
       <header className={cn("shrink-0", !isHome && "border-b border-border")}>
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between gap-6">
           <Link to="/" aria-label="Evillious Chronicles" className="flex items-center gap-3">
-            <img src="/icon-192.png" alt="" aria-hidden className="h-8 w-8 rounded-sm" />
+            <img src={asset("/icon-192.png")} alt="" aria-hidden className="h-8 w-8 rounded-sm" />
             <span className="hidden sm:flex items-baseline gap-1.5 font-display tracking-wide text-2xl">
               <span className="text-fg">Evillious</span>
               <span className="text-fg-muted">Chronicles</span>
