@@ -21,15 +21,6 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 
 - Markdown body / preview in the editor (`react-markdown` already a dep).
 
-### Settings
-
-- Font family picker, justify/hyphenation, per-volume overrides.
-
-### Discoverability
-
-- **Keyboard shortcuts** in the reader (`b` bookmark, `n` note, `g` settings, `?` cheatsheet); global discovery dialog.
-- **Search across notes / bookmarks** — the global palette covers volumes / chapters / songs / characters but not user-authored notes or bookmark labels yet. Add a fifth section that queries Dexie when a user types.
-
 ### Future: TanStack DB
 
 - Worth considering if we ever add a sync server (multi-device reading, cross-device bookmark sync). Has a Dexie-backed collection adapter, so the migration would be mechanical. Skip for now — local-only personal reader doesn't benefit from the sync engine.
@@ -58,4 +49,5 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - ✅ Volume detail over-fetch fix — `VolumeBundle` split into `meta()` (sync, manifest-only) and `chapter(id)` (one chapter's worth of fetches). Volume page entry costs zero `.md` fetches now; reader fetches one chapter at a time.
 - ✅ Chapter manifest as runtime JSON — replaced the build-time virtual module with a `chapter-manifest.json` served by middleware in dev / emitted into `dist/` for prod, fetched once at boot. Adding chapter `.md` files no longer requires a JS rebuild.
 - ✅ Lighthouse CI — `treosh/lighthouse-ci-action@v12` workflow on PRs and pushes to master, accessibility threshold at 0.95 (error), perf/SEO/best-practices at warn level.
-- ✅ Site-wide search — Cmd/Ctrl+K command palette in `AppShell` covering volumes (English + Japanese + romanized titles), chapters, songs (selecting plays via the audio dock), and characters (name / aliases / japanese name / romaji / vocaloid). Sectioned results, default browse list when empty, footer kbd hint ("Go to page" / "Play" depending on row kind). Documented at `/components/search`. Notes / bookmarks search not yet wired — see Discoverability backlog.
+- ✅ Site-wide search — Cmd/Ctrl+K command palette in `AppShell` covering volumes (English + Japanese + romanized titles), chapters, songs (selecting plays via the audio dock), and characters (name / aliases / japanese name / romaji / vocaloid). Sectioned results, default browse list when empty, footer kbd hint ("Go to page" / "Play" depending on row kind). Documented at `/components/search`.
+- ✅ Reader font family picker (Serif / Sans) and justify-text toggle in `SettingsDrawer`. Justify and auto-hyphenation flip together via shared CSS vars (`--reader-font-family`, `--reader-text-align`, `--reader-hyphens`); choices persist alongside the existing reader settings in `localStorage`.
