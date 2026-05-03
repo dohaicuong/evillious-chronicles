@@ -82,8 +82,9 @@ export function PwaUpdateToast() {
 
     toast.add({
       type: "success",
-      title: "Available offline",
-      description: "The chronicle is now cached and readable without a connection.",
+      title: "Reader ready for offline",
+      description:
+        "The app is cached. To read a volume without a connection, open the Offline drawer and download it.",
       onClose: () => {
         setOfflineReady(false);
       },
