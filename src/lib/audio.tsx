@@ -1,4 +1,12 @@
-import { createContext, useCallback, useContext, useMemo, useState, type ReactNode } from "react";
+import {
+  createContext,
+  useCallback,
+  useContext,
+  useEffect,
+  useMemo,
+  useState,
+  type ReactNode,
+} from "react";
 import type { Song } from "@src/lib/schema";
 
 type AudioContextValue = {
@@ -11,6 +19,11 @@ type AudioContextValue = {
    * policy and surprise users reading without sound).
    */
   cuedSong: Song | null;
+  /**
+   * Whether the low-volume ambient track plays during silence (when
+   * `currentSong` is null). User-toggled via the nav button; persisted.
+   */
+  bgEnabled: boolean;
   play: (song: Song) => void;
   close: () => void;
   /**
@@ -18,7 +31,29 @@ type AudioContextValue = {
    * unmount; passing null clears the highlight.
    */
   setCue: (song: Song | null) => void;
+  setBgEnabled: (enabled: boolean) => void;
 };
+
+const BG_STORAGE_KEY = "evillious-bg-audio-enabled";
+
+function readBgEnabled(): boolean {
+  if (typeof window === "undefined") return true;
+  try {
+    const raw = window.localStorage.getItem(BG_STORAGE_KEY);
+    if (raw === null) return true;
+    return raw === "true";
+  } catch {
+    return true;
+  }
+}
+
+function writeBgEnabled(v: boolean): void {
+  try {
+    window.localStorage.setItem(BG_STORAGE_KEY, String(v));
+  } catch {
+    /* quota / private mode: silently drop */
+  }
+}
 
 const AudioContext = createContext<AudioContextValue | null>(null);
 
@@ -31,14 +66,20 @@ export function useAudio() {
 export function AudioProvider({ children }: { children: ReactNode }) {
   const [currentSong, setCurrentSong] = useState<Song | null>(null);
   const [cuedSong, setCuedSong] = useState<Song | null>(null);
+  const [bgEnabled, setBgEnabledState] = useState<boolean>(() => readBgEnabled());
+
+  useEffect(() => {
+    writeBgEnabled(bgEnabled);
+  }, [bgEnabled]);
 
   const play = useCallback((song: Song) => setCurrentSong(song), []);
   const close = useCallback(() => setCurrentSong(null), []);
   const setCue = useCallback((song: Song | null) => setCuedSong(song), []);
+  const setBgEnabled = useCallback((v: boolean) => setBgEnabledState(v), []);
 
   const value = useMemo(
-    () => ({ currentSong, cuedSong, play, close, setCue }),
-    [currentSong, cuedSong, play, close, setCue],
+    () => ({ currentSong, cuedSong, bgEnabled, play, close, setCue, setBgEnabled }),
+    [currentSong, cuedSong, bgEnabled, play, close, setCue, setBgEnabled],
   );
 
   return <AudioContext.Provider value={value}>{children}</AudioContext.Provider>;

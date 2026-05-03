@@ -1,5 +1,57 @@
 # TODO
 
+## Waltz of Evil databook
+
+- Companion guidebook to the Deadly Sins of Evil series (_Aku no Taizai Tairiku Kanzen Kaisetsu Sho ~Aku no Enbukyoku~_). Worth adding alongside the eight novels — likely fits as a non-fiction volume under the `deadly-sins-of-evil` series, or as its own entry if it bridges other arcs. Confirm scope (TOC / sections) before deciding structure.
+
+## Short stories tied to existing series
+
+Full short-story catalog from the wiki's [Category:Short Stories](https://theevilliouschronicles.fandom.com/wiki/Category:Short_Stories), grouped by the existing `series` entry each one slots into. Open question: render as a `Volume`-shaped entry, or introduce a lighter-weight "short story" type? Leaning toward the former for consistency, with a flag/tag to mark them as shorts (and possibly a separate "Side stories" section on each series page).
+
+- **The Daughter of Evil**
+  - Her Reason (_Aku no Musume: Kanojo no Riyuu_)
+  - The Daughter of Evil: Retrouver of Silver
+  - The Daughter of Evil: Graduation
+  - The Daughter of Evil: Illustration Story
+  - The Daughter of Evil: Novelette of White
+  - The Daughter of Evil: The Doll Festival
+  - Twiright Prank (story)
+  - The Adventure of a Boy and a Girl — bundled with _Entr'acte of Evil: The Daughter of Evil Worldguide_ (2011-08-30); Avadonia siblings rescue Chartette from the Lost Woods
+  - The Demonic Twin Blades — bundled with the _Clôture of Yellow_ online release (2017-11-02); blacksmith Langley and the Vessel of Envy
+  - Song of the Black Bird — bundled with the _Wiegenlied of Green_ e-book (2017-12-07); Lich Arklow's first meeting with Banica Conchita
+  - The Daughter of Fog — from _Epic of Evil: The Daughter of Evil Fanbook_ (2012-08-26); Gast Venom backstory and the Vessel of Wrath
+  - The Horse of Evil (story) and The Horse of Evil (manga short) — both 2022-08-23, from the Kagamine Rin & Len 14th Birthday Novels / Comics anthologies; Riliane's horse Josephine
+- **Deadly Sins of Evil**
+  - Welcome to Conchita Dining Room (gluttony / Conchita)
+  - E.A.T Prologue (story) (gluttony)
+  - Evil Food Eater Conchita: Setsubun (gluttony)
+  - Gloom of Held — bundled with _Evil Food Eater Conchita_ (2013-09-24); Held meets Elluka and Irina Clockworker
+  - The Lunacy of Duke Venomania: Valentine's Day (lust)
+  - Gift Bonus Story (sloth / Princess Sleep)
+  - Gift from the Princess who Brought Sleep (manga short) (sloth)
+  - Fifth Pierrot (manga short)
+  - Pierrot & SCP Bonus Story (Pierrot × Seven Crimes and Punishments crossover)
+  - Judgment of Corruption Side Story: Gallerian (greed)
+  - Heavenly Yard (story) (finale)
+  - Outlaw & Lychgate (finale)
+  - Deadly Sins of Evil (manga) — separate manga adaptation, may warrant its own bucket
+- **Original Sin Story**
+  - Original Sin Story: To
+  - Moonlit Bear (story)
+  - Tale of Abandonment on a Moonlit Night (story)
+- **Clockwork Lullaby**
+  - Seven Crimes and Punishments (story)
+- **Companion / cross-series**
+  - Waltz of Evil Bonus Stories — ships with the _Waltz of Evil_ databook (see section above)
+
+## Story of Evil series (2 volumes)
+
+- Separate light-novel series from _The Daughter of Evil_ — set in the **Fourth Period** (modern-day Japan, Tsuruki City), the post-rebirth era after Allen & Riliane's reset. Not a retelling; closer to a successor arc that follows the cycle into a new world. Should get its own `series` entry (suggested id: `story-of-evil`), distinct from `the-daughter-of-evil`.
+- Volumes (both written by Akuno-P / mothy, illustrated by Yuzuki Kihiro, published by PHP):
+  - **Story of Evil: The Paper Demon and the Secret Archive** — released 2018-02-18. Itsuki uncovers his uncle's secret archive and inadvertently forges a contract with the demon Marie.
+  - **Story of Evil: The Twilight Demon and the False Queen** — released 2018-07-11. Hadzuki Mana finds a clockwork ram, names it Deus after forging a contract, and gains powers that draw the boys in her class.
+- Themes: "Paper Demons" and "Clockwork Demons", witching-hour magic. Likely cross-references to existing songs/characters in the catalog — confirm `songIds` mapping when wiring up.
+
 ## Future: TanStack DB
 
 - Worth considering if we ever add a sync server (multi-device reading, cross-device bookmark sync). Has a Dexie-backed collection adapter, so the migration would be mechanical. Skip for now — local-only personal reader doesn't benefit from the sync engine.

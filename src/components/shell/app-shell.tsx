@@ -12,6 +12,8 @@ import {
   MagnifyingGlassIcon,
   NotebookIcon,
   PaletteIcon,
+  SpeakerLowIcon,
+  SpeakerXIcon,
 } from "@phosphor-icons/react";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
 import { IconButton } from "@src/components/primitives/icon-button";
@@ -19,6 +21,7 @@ import { ExternalLink, Link } from "@src/components/primitives/link";
 import { Menu } from "@src/components/primitives/menu";
 import { cn } from "@src/lib/cn";
 import { forceUpdate } from "@src/lib/pwa";
+import { useAudio } from "@src/lib/audio";
 import { ThemeToggle } from "./theme-toggle";
 import { BookmarksDrawer } from "@src/components/library/bookmarks-drawer";
 import { ContinueReadingDrawer } from "@src/components/library/continue-reading-drawer";
@@ -45,6 +48,7 @@ export function AppShell() {
   const [offlineOpen, setOfflineOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const { bgEnabled, setBgEnabled } = useAudio();
 
   // Detect macOS once at mount so the search-trigger hint reads "⌘K" on
   // Mac and "Ctrl K" everywhere else. SSR-safe via the typeof guard.
@@ -294,6 +298,15 @@ export function AppShell() {
                 </Menu.Positioner>
               </Menu.Portal>
             </Menu>
+            <IconButton
+              variant="ghost"
+              size="sm"
+              aria-label={bgEnabled ? "Mute background music" : "Play background music"}
+              aria-pressed={bgEnabled}
+              onClick={() => setBgEnabled(!bgEnabled)}
+            >
+              {bgEnabled ? <SpeakerLowIcon weight="light" /> : <SpeakerXIcon weight="light" />}
+            </IconButton>
             <ThemeToggle />
           </nav>
         </div>
