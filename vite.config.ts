@@ -6,6 +6,7 @@ import tailwindcss from "@tailwindcss/vite";
 import { aliasCacheGuardPlugin } from "./vite-plugins/alias-cache-guard.ts";
 import { chapterManifestPlugin } from "./vite-plugins/chapter-manifest.ts";
 import { fontPreloadPlugin } from "./vite-plugins/font-preload.ts";
+import { phosphorStripWeightsPlugin } from "./vite-plugins/phosphor-strip-weights.ts";
 import { pwaSetupPlugin } from "./vite-plugins/pwa-setup.ts";
 
 // https://vite.dev/config/
@@ -30,6 +31,10 @@ export default defineConfig({
   },
   plugins: [
     aliasCacheGuardPlugin(),
+    // Strip unused Phosphor icon weights at build time — keep this list in
+    // sync with `weight="…"` usage in the codebase (run
+    // `grep -rohE 'weight="[a-z]+"' src` to audit).
+    phosphorStripWeightsPlugin({ weights: ["bold", "duotone", "fill", "light"] }),
     tanstackRouter({ target: "react", autoCodeSplitting: true }),
     react(),
     tailwindcss(),
