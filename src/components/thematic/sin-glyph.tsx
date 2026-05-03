@@ -1,10 +1,10 @@
 import {
   AppleLogoIcon,
-  BedIcon,
   CoinsIcon,
   CrosshairIcon,
   CrownIcon,
   ForkKnifeIcon,
+  GiftIcon,
   MaskHappyIcon,
   ScissorsIcon,
 } from "@phosphor-icons/react";
@@ -14,7 +14,9 @@ import type { Sin } from "@src/lib/schema";
 const map = {
   pride: CrownIcon,
   lust: MaskHappyIcon,
-  sloth: BedIcon,
+  // Margarita Blankenheim's poison was named "Gift" (German for poison) —
+  // a deceptive present she bestowed on her hometown. Direct double meaning.
+  sloth: GiftIcon,
   gluttony: ForkKnifeIcon,
   greed: CoinsIcon,
   // Phosphor doesn't ship a gun/pistol — Crosshair stands in for the muzzle
