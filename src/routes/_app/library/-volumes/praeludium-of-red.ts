@@ -8,7 +8,9 @@ import { Volume } from "./_shared";
  * each section gets fetched and cleaned.
  *
  * Translation source: doe-praeludiumofred.tumblr.com
- * Assets pending — drop cover/artwork/illustrations into public/praeludium-of-red/.
+ *
+ * Heavy metadata (cover, title page, opening poetry, description, translation)
+ * lives in `public/praeludium-of-red/manifest.json`.
  */
 
 export const praeludiumOfRed = Volume({
@@ -23,56 +25,6 @@ export const praeludiumOfRed = Volume({
   sin: "pride",
   series: "the-daughter-of-evil",
 
-  cover: {
-    src: "/praeludium-of-red/cover.jpg",
-    alt: "Praeludium of Red — Germaine drawing her sword as Yukina shields herself behind her",
-    width: 500,
-    height: 730,
-  },
-
-  titlePage: {
-    title: "The Daughter of Evil",
-    subtitle: "Praeludium of Red",
-    credits: [{ role: "Original Work", name: "Akuno_P (mothy)" }],
-  },
-
-  openingPoetry: {
-    title: "Opening",
-    attribution: "From the prologue of Praeludium of Red",
-    stanzas: [
-      {
-        lines: ["Dwelling in each of the seven “Vessels of Deadly Sin” there was a unique demon."],
-      },
-      {
-        lines: [
-          "In the glass was the demon of “Gluttony”.",
-          "In the mirrors was the demon of “Pride”.",
-          "In the scissors was the demon of “Envy”.",
-          "In the doll was the demon of “Sloth”.",
-          "In the blade was the demon of “Lust”.",
-          "In the spoon was the demon of “Greed”.",
-        ],
-      },
-      {
-        lines: [
-          "And… I can’t for the life of me recall what the last one was,",
-          "But in there dwelled the demon of “Wrath”.",
-        ],
-      },
-    ],
-  },
-
-  description:
-    "The third volume of The Daughter of Evil — set five years after the revolution, told from the perspectives of Yukina Freesis and King Kyle of Marlon. Despite the “red” subtitle, this is not Germaine's story; it is the prelude to a fourth volume yet to come. The stage moves between Held's monastery and the courts of those left behind.",
-
-  translation: {
-    language: "en",
-    source: "fan",
-    translator: "doe-praeludiumofred.tumblr.com",
-    url: "https://doe-praeludiumofred.tumblr.com/directory",
-  },
-
-  chapterIllustration: {},
   chapter: [
     {
       id: "pr-prologue",

@@ -10,7 +10,7 @@ import type { VolumeBundle, VolumeMeta } from "./_shared";
  * Lives in `src/routes/_app/library/-volumes/` (dash-prefix folder, excluded
  * from TanStack Router's file-based route generation) so volume declarations
  * sit next to the route files that consume them. Each per-volume module
- * exports a `VolumeBundle` (`{ manifest, slim, meta, chapter }`).
+ * exports a `VolumeBundle` (`{ slim, meta, chapter, chapterUrls, imageUrls }`).
  */
 
 const loaders: Record<string, () => Promise<VolumeBundle>> = {
@@ -56,7 +56,11 @@ export async function getVolumeAssets(
   const load = loaders[volumeId];
   if (!load) return { chapters: [], images: [] };
   const bundle = await load();
-  return { chapters: bundle.chapterUrls(), images: bundle.imageUrls() };
+  const [chapters, images] = await Promise.all([
+    Promise.resolve(bundle.chapterUrls()),
+    bundle.imageUrls(),
+  ]);
+  return { chapters, images };
 }
 
 const availableSet = new Set(Object.keys(loaders));

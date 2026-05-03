@@ -106,7 +106,19 @@ export async function Chapter({
 // so each chapter just supplies id / number / title / pages-prefix.
 export type VolumeChapter = Omit<ChapterProps, "illustrations">;
 
-export type VolumeManifest = {
+// ---------------------------------------------------------------------------
+// Volume manifest split: slim (in TS bundle) vs. heavy (in public JSON).
+// ---------------------------------------------------------------------------
+//
+// Slim — everything search, continue-reading, and the catalog need to render
+// synchronously. Stays in the TS bundle so those features keep working
+// without an async load.
+//
+// Heavy — hero / poetry / gallery / illustration metadata that's only needed
+// once the user opens a volume. Lives in `public/<slug>/manifest.json`,
+// fetched lazily and memoized per slug.
+
+export type VolumeSlim = {
   id: string;
   slug: string;
   number: number;
@@ -114,10 +126,22 @@ export type VolumeManifest = {
   title: string;
   originalTitle?: string;
   romanizedTitle?: string;
-  subtitle?: string;
 
   sin: Sin | null;
   series: string;
+
+  // Public asset directory for this volume — where `manifest.json`, cover,
+  // gallery, illustrations, and chapter `.md` files live under `public/`.
+  // Defaults to `slug` when omitted; set explicitly when slug and dir name
+  // diverge (e.g. slug `princess-sleep` ↔ dir `sleep-princess`).
+  publicDir?: string;
+
+  chapter: VolumeChapter[];
+  afterword?: VolumeChapter;
+};
+
+export type VolumeHeavy = {
+  subtitle?: string;
 
   cover: ImageAsset;
   titlePage?: TitlePage;
@@ -131,9 +155,12 @@ export type VolumeManifest = {
   translation?: Translation;
 
   chapterIllustration: Record<string, ImageAsset>;
-  chapter: VolumeChapter[];
-  afterword?: VolumeChapter;
 };
+
+// Back-compat input shape: heavy fields can be passed inline alongside slim
+// during the migration. Once every volume is migrated, callers will pass
+// only `VolumeSlim` and the factory will lazy-fetch heavy.
+export type VolumeArgs = VolumeSlim & Partial<VolumeHeavy>;
 
 // Slim catalog shapes — minimal metadata used by the library / series cards
 // / chapter list, with no chapter content. Co-located here so the library
@@ -173,17 +200,17 @@ function slimChapter(c: VolumeChapter, kind?: "afterword"): SlimChapter {
   };
 }
 
-function deriveSlim(m: VolumeManifest): SlimVolume {
+function deriveSlim(s: VolumeSlim): SlimVolume {
   return {
-    id: m.id,
-    number: m.number,
-    title: m.title,
-    ...(m.originalTitle ? { originalTitle: m.originalTitle } : {}),
-    ...(m.romanizedTitle ? { romanizedTitle: m.romanizedTitle } : {}),
-    sin: m.sin,
+    id: s.id,
+    number: s.number,
+    title: s.title,
+    ...(s.originalTitle ? { originalTitle: s.originalTitle } : {}),
+    ...(s.romanizedTitle ? { romanizedTitle: s.romanizedTitle } : {}),
+    sin: s.sin,
     chapters: [
-      ...m.chapter.map((c) => slimChapter(c)),
-      ...(m.afterword ? [slimChapter(m.afterword, "afterword")] : []),
+      ...s.chapter.map((c) => slimChapter(c)),
+      ...(s.afterword ? [slimChapter(s.afterword, "afterword")] : []),
     ],
   };
 }
@@ -220,78 +247,148 @@ export type VolumeMeta = {
   translation?: Translation;
 };
 
-function deriveMeta(m: VolumeManifest): VolumeMeta {
-  const { chapterIllustration: _ill, chapter, afterword, ...rest } = m;
+function deriveMeta(s: VolumeSlim, h: VolumeHeavy): VolumeMeta {
+  // `chapterIllustration` is reader-only and not part of `VolumeMeta`.
+  const { chapterIllustration: _ill, ...heavyForMeta } = h;
   return {
-    ...rest,
-    chapters: chapter.map((c) => slimChapter(c)),
-    ...(afterword ? { afterword: slimChapter(afterword, "afterword") } : {}),
+    id: s.id,
+    slug: s.slug,
+    number: s.number,
+    title: s.title,
+    ...(s.originalTitle ? { originalTitle: s.originalTitle } : {}),
+    ...(s.romanizedTitle ? { romanizedTitle: s.romanizedTitle } : {}),
+    sin: s.sin,
+    series: s.series,
+    ...heavyForMeta,
+    chapters: s.chapter.map((c) => slimChapter(c)),
+    ...(s.afterword ? { afterword: slimChapter(s.afterword, "afterword") } : {}),
   };
 }
 
-async function deriveChapter(m: VolumeManifest, chapterId: string): Promise<ChapterType> {
+async function deriveChapter(
+  s: VolumeSlim,
+  h: VolumeHeavy,
+  chapterId: string,
+): Promise<ChapterType> {
   const target =
-    m.chapter.find((c) => c.id === chapterId) ??
-    (m.afterword?.id === chapterId ? m.afterword : undefined);
-  if (!target) throw new Error(`Unknown chapter "${chapterId}" in volume "${m.id}"`);
-  return Chapter({ ...target, illustrations: m.chapterIllustration });
+    s.chapter.find((c) => c.id === chapterId) ??
+    (s.afterword?.id === chapterId ? s.afterword : undefined);
+  if (!target) throw new Error(`Unknown chapter "${chapterId}" in volume "${s.id}"`);
+  return Chapter({ ...target, illustrations: h.chapterIllustration });
 }
 
 export type VolumeBundle = {
-  manifest: VolumeManifest;
   /** Sync slim metadata for catalogs (library, series page, chapter list). */
   slim: SlimVolume;
   /**
-   * Sync volume metadata for the volume detail page — hero, poetry, gallery,
-   * title page, plus the slim chapter list. Reads the manifest only; no
-   * chapter `.md` fetches.
+   * Async volume metadata for the volume detail page — hero, poetry, gallery,
+   * title page, plus the slim chapter list. Awaits the heavy manifest (inline
+   * during migration; lazy-fetched from `public/<slug>/manifest.json` once
+   * the volume's TS file no longer carries heavy fields).
    */
-  meta: () => VolumeMeta;
+  meta: () => Promise<VolumeMeta>;
   /** Lazy async resolver for one chapter's pages — single chapter's worth of fetches. */
   chapter: (chapterId: string) => Promise<ChapterType>;
   /**
    * All chapter `.md` URLs for this volume in reading order. Same URL shape
    * as the runtime reader, so pre-fetching these populates the SW's
-   * `ec-chapters` cache for offline reads.
+   * `ec-chapters` cache for offline reads. Sync — paths come from slim.
    */
   chapterUrls: () => string[];
   /**
    * Cover, gallery (opening + closing), and chapter-illustration image
    * URLs — everything `<img>` rendering needs offline. Resolved via
    * `asset()` so the URLs match exactly what the browser requests when
-   * the corresponding `<img>` mounts.
+   * the corresponding `<img>` mounts. Async because the heavy manifest is
+   * lazy-loaded for migrated volumes.
    */
-  imageUrls: () => string[];
+  imageUrls: () => Promise<string[]>;
 };
+
+// Heavy fields mounted inline on the args object — non-empty when the volume
+// hasn't been migrated yet. We treat the presence of `cover` (the only
+// strictly-required heavy field) as the signal.
+function inlineHeavy(args: VolumeArgs): VolumeHeavy | null {
+  if (!args.cover) return null;
+  return {
+    ...(args.subtitle !== undefined ? { subtitle: args.subtitle } : {}),
+    cover: args.cover,
+    ...(args.titlePage ? { titlePage: args.titlePage } : {}),
+    ...(args.openingPoetry ? { openingPoetry: args.openingPoetry } : {}),
+    ...(args.openingGallery ? { openingGallery: args.openingGallery } : {}),
+    ...(args.closingGallery ? { closingGallery: args.closingGallery } : {}),
+    ...(args.description !== undefined ? { description: args.description } : {}),
+    ...(args.publishedYear !== undefined ? { publishedYear: args.publishedYear } : {}),
+    ...(args.isbn !== undefined ? { isbn: args.isbn } : {}),
+    ...(args.translation ? { translation: args.translation } : {}),
+    chapterIllustration: args.chapterIllustration ?? {},
+  };
+}
+
+function heavyManifestUrl(slim: VolumeSlim): string {
+  return `${import.meta.env.BASE_URL}${slim.publicDir ?? slim.slug}/manifest.json`;
+}
 
 /**
  * Volume factory — single source of truth for one volume. Returns a bundle
- * with three views derived from the manifest:
+ * with three views derived from a slim TS object plus a heavy manifest:
+ *
  *  - `slim` (sync) for catalogs that only need metadata + page-counts.
- *  - `meta()` (sync) for the volume detail page — hero / poetry / gallery /
- *    title-page metadata plus the slim chapter list. Zero chapter fetches.
+ *  - `meta()` (async) for the volume detail page. Heavy metadata is either
+ *    passed inline (back-compat during migration) or lazily fetched from
+ *    `public/<slug>/manifest.json` and memoized.
  *  - `chapter(id)` (async) for the page reader — fetches one chapter's pages.
  *
  * Routes consume the same bundle, so titles, ids, sin, page-counts can't drift.
  */
-export function Volume(manifest: VolumeManifest): VolumeBundle {
+export function Volume(args: VolumeArgs): VolumeBundle {
+  // Strip heavy fields off the args so `slim` is exactly the slim shape.
+  const {
+    subtitle: _s,
+    cover: _c,
+    titlePage: _tp,
+    openingPoetry: _op,
+    openingGallery: _og,
+    closingGallery: _cg,
+    description: _d,
+    publishedYear: _py,
+    isbn: _isbn,
+    translation: _tr,
+    chapterIllustration: _ci,
+    ...slim
+  } = args;
+
+  const inline = inlineHeavy(args);
+
+  let cachedHeavy: Promise<VolumeHeavy> | undefined;
+  function getHeavy(): Promise<VolumeHeavy> {
+    if (inline) return Promise.resolve(inline);
+    cachedHeavy ??= (async () => {
+      const url = heavyManifestUrl(slim);
+      const res = await fetch(url);
+      if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
+      return (await res.json()) as VolumeHeavy;
+    })();
+    return cachedHeavy;
+  }
+
   return {
-    manifest,
-    slim: deriveSlim(manifest),
-    meta: () => deriveMeta(manifest),
-    chapter: (chapterId) => deriveChapter(manifest, chapterId),
+    slim: deriveSlim(slim),
+    meta: async () => deriveMeta(slim, await getHeavy()),
+    chapter: async (chapterId) => deriveChapter(slim, await getHeavy(), chapterId),
     chapterUrls: () => {
-      const all = manifest.chapter.flatMap((c) => urlsUnder(c.pages));
-      return manifest.afterword ? [...all, ...urlsUnder(manifest.afterword.pages)] : all;
+      const all = slim.chapter.flatMap((c) => urlsUnder(c.pages));
+      return slim.afterword ? [...all, ...urlsUnder(slim.afterword.pages)] : all;
     },
-    imageUrls: () => {
+    imageUrls: async () => {
+      const heavy = await getHeavy();
       // Set-deduped: chapterIllustration entries can be referenced by
       // multiple chapters but the underlying URL only needs caching once.
       const urls = new Set<string>();
-      urls.add(asset(manifest.cover.src));
-      for (const a of manifest.openingGallery ?? []) urls.add(asset(a.illustration.src));
-      for (const a of manifest.closingGallery ?? []) urls.add(asset(a.illustration.src));
-      for (const ill of Object.values(manifest.chapterIllustration)) {
+      urls.add(asset(heavy.cover.src));
+      for (const a of heavy.openingGallery ?? []) urls.add(asset(a.illustration.src));
+      for (const a of heavy.closingGallery ?? []) urls.add(asset(a.illustration.src));
+      for (const ill of Object.values(heavy.chapterIllustration)) {
         urls.add(asset(ill.src));
       }
       return Array.from(urls);

@@ -1,0 +1,241 @@
+{
+  "cover": {
+    "src": "/cloture-of-yellow/cover.jpg",
+    "alt": "Clôture of Yellow — twin protagonists framed by gears and a candlelit castle",
+    "credit": "Cover Illustration by 一色",
+    "width": 830,
+    "height": 474
+  },
+  "titlePage": {
+    "title": "The Daughter of Evil",
+    "subtitle": "Clôture of Yellow",
+    "credits": [
+      { "role": "Original Work", "name": "Akuno_P (mothy)" },
+      { "role": "Illustration", "name": "壱加 (Ichika), 忱, ゆのみ (Yunomi)" },
+      { "role": "Publisher", "name": "雪名残" },
+      { "role": "Distributor", "name": "雪名残" }
+    ],
+    "publisher": "雪名残",
+    "distributor": "雪名残"
+  },
+  "openingPoetry": {
+    "title": "Daughter of Evil",
+    "attribution": "Poetry: Akuno_P (mothy)",
+    "songId": "daughter-of-evil",
+    "stanzas": [
+      {
+        "lines": [
+          "A long, long time ago in a certain place",
+          "Was a kingdom so evil no person dared to face",
+          "And there as ruler was a girl so mean",
+          "A little, tiny princess of only age 14!"
+        ]
+      },
+      {
+        "lines": [
+          "Luxurious furniture littered her abode",
+          "With a loyal servant whose likeness surely showed",
+          "Josephine is what her beloved horse was named",
+          "All the riches of the world is what she had claimed"
+        ]
+      },
+      {
+        "lines": [
+          "If you were short on money that was no fearful thing",
+          "Just squeeze it out from those whom you dangle on a string",
+          "As for those who feel that they can bring me down,",
+          "They'll just tidy up my gown!"
+        ]
+      },
+      { "lines": ["\"Now, bow before me!\""] },
+      {
+        "lines": [
+          "Evil Flowers",
+          "Steadily bloom",
+          "With an array of colorful doom",
+          "As for the weeds who feel they want to stay",
+          "Ah, they'll just die and feed me the same anyway"
+        ]
+      },
+      {
+        "lines": [
+          "The princess held a love for a man",
+          "Of blue from across the sea who wasn't very much her fan",
+          "Instead he chose his neighbor's girl",
+          "Of green whose eyes shone like a pearl!"
+        ]
+      },
+      {
+        "lines": [
+          "The princess knew this and was filled with rage",
+          "She called up the minister and locked her in a cage",
+          "And said in a quiet voice not to be heard"
+        ]
+      },
+      { "lines": ["\"Make sure the country of green is boldly stirred\""] },
+      {
+        "lines": [
+          "Numerous houses were burnt to the ground",
+          "So many voices would no longer make a sound",
+          "All the people who had suffered so much pain",
+          "Does not get pity from the one who'd slain"
+        ]
+      },
+      { "lines": ["\"Oh, it's snack time!\""] },
+      {
+        "lines": [
+          "Evil flowers",
+          "Steadily bloom",
+          "With an array of bloodied doom",
+          "Even though the flower is so very refined",
+          "Ah, it thorns has caused its garden to decline"
+        ]
+      },
+      {
+        "lines": [
+          "To defeat this evil princess was no easy task",
+          "But now the people would no longer wear their mask",
+          "So like a bevy of birds they were led by",
+          "A red swordsman into the nigh!"
+        ]
+      },
+      {
+        "lines": [
+          "All the anger that had piled over the years",
+          "Now consumed them without any fears",
+          "Since now the army was weak from the war before",
+          "Their attacks weren't much of a chore"
+        ]
+      },
+      {
+        "lines": [
+          "Finally the countrymen surrounded the court",
+          "Servants also ran away as time was short",
+          "Lovely dainty princess would not pose a fight",
+          "And was finally captured into the night!"
+        ]
+      },
+      { "lines": ["\"This is very rude of you!\""] },
+      {
+        "lines": [
+          "Evil flowers",
+          "Steadily bloom",
+          "With an array of very fun doom",
+          "How is that the paradise she made for herself",
+          "Ah, put this broken doll back onto the shelf!"
+        ]
+      },
+      {
+        "lines": [
+          "A long, long time ago in a certain place",
+          "Was a kingdom so evil no person dared to face",
+          "And there as ruler was a girl so mean",
+          "A little tiny princess of only age 14!"
+        ]
+      },
+      {
+        "lines": [
+          "She was to be punished at 3 o'clock",
+          "The time when the church bell resounded a tock",
+          "The person who was once royalty",
+          "Was bored in jail with no loyalty"
+        ]
+      },
+      {
+        "lines": [
+          "Soon the time finally came",
+          "To her, the church bells sounded rather lame",
+          "Then without looking at the faces of the crowd",
+          "Said with her eyes in a shroud,"
+        ]
+      },
+      { "lines": ["\"Oh, it's snack time.\""] },
+      {
+        "lines": [
+          "Evil flower",
+          "Steadily blooms",
+          "With an array of colorful doom",
+          "Now people speak of her without second thought",
+          "\"Ah, the Daughter of Evil had received what she sought!\""
+        ]
+      }
+    ]
+  },
+  "openingGallery": [
+    {
+      "illustration": {
+        "src": "/cloture-of-yellow/artwork-1.jpg",
+        "alt": "Clôture of Yellow — opening artwork 1"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/cloture-of-yellow/artwork-2.jpg",
+        "alt": "Clôture of Yellow — opening artwork 2"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/cloture-of-yellow/artwork-3.jpg",
+        "alt": "Clôture of Yellow — opening artwork 3"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/cloture-of-yellow/artwork-4.jpg",
+        "alt": "Clôture of Yellow — opening artwork 4"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/cloture-of-yellow/artwork-5.jpg",
+        "alt": "Clôture of Yellow — opening artwork 5"
+      }
+    }
+  ],
+  "description": "The first volume of The Daughter of Evil — told from Riliane's perspective. Fourteen years old and the absolute ruler of Lucifenia, the princess watches her kingdom turn to ruin while the servant who shares her face stands at her side.",
+  "translation": {
+    "language": "en",
+    "source": "fan",
+    "translator": "ltquick.nl",
+    "url": "https://www.ltquick.nl/pdf/ClotureofYellowBetterVersion.pdf"
+  },
+  "chapterIllustration": {
+    "illustration-1": {
+      "src": "/cloture-of-yellow/illustration-1.jpg",
+      "alt": "Chapter 1 illustration — the missing princess"
+    },
+    "illustration-2": {
+      "src": "/cloture-of-yellow/illustration-2.jpg",
+      "alt": "Allen's vow — \"I will become evil for you\""
+    },
+    "illustration-3": {
+      "src": "/cloture-of-yellow/illustration-3.jpg",
+      "alt": "The courtyard — two girls washing clothes by the pool"
+    },
+    "illustration-4": {
+      "src": "/cloture-of-yellow/illustration-4.jpg",
+      "alt": "Mariam stopping Elluka in the corridor"
+    },
+    "illustration-5": {
+      "src": "/cloture-of-yellow/illustration-5.jpg",
+      "alt": "Clarith and Germaine — the resistance proposal"
+    },
+    "illustration-6": {
+      "src": "/cloture-of-yellow/illustration-6.jpg",
+      "alt": "Allen and Gast — the locked gaze"
+    },
+    "illustration-7": {
+      "src": "/cloture-of-yellow/illustration-7.jpg",
+      "alt": "Riliane holding back tears"
+    },
+    "illustration-8": {
+      "src": "/cloture-of-yellow/illustration-8.jpg",
+      "alt": "Riliane sobbing"
+    },
+    "illustration-9": {
+      "src": "/cloture-of-yellow/illustration-9.jpg",
+      "alt": "The third bell — Allen's farewell"
+    }
+  }
+}

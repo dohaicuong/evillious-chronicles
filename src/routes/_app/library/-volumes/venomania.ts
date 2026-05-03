@@ -7,17 +7,12 @@ import { Volume } from "./_shared";
  * lunacy-of-venomania.tumblr.com (chapters 2–4). Translation is incomplete:
  * the fan release stops at Chapter 4 Part 5 — Chapter 4 Part 6 (and any
  * subsequent epilogue / afterword) were never published in English by this
- * translator. Each chapter file contains a stub pointing at the source post;
- * drop the prose body into the corresponding markdown file under
- * src/data/volumes/venomania/chapters/ to wire content in.
+ * translator.
  *
- * Assets pending — drop cover/illustrations into public/venomania/.
- *
- * Note: this volume declaration lives in `src/routes/_app/library/-volumes/`
- * (dash-prefix folder, excluded from TanStack Router's file-based route
- * generation). The `pages` path strings are still anchored to
- * `src/data/volumes/` because that's where `_shared.ts`'s `import.meta.glob`
- * is rooted — the markdown content lives there until we migrate it too.
+ * Heavy metadata (cover, gallery, title page, illustrations, description,
+ * translation) lives in `public/venomania/manifest.json` and is fetched
+ * lazily when the volume detail page or reader mounts. The slim shape below
+ * stays in the bundle so search and continue-reading resolve synchronously.
  */
 
 export const venomania = Volume({
@@ -32,58 +27,6 @@ export const venomania = Volume({
   sin: "lust",
   series: "deadly-sins-of-evil",
 
-  cover: {
-    src: "/venomania/cover.webp",
-    alt: "The Lunacy of Duke Venomania — cover (asset pending)",
-  },
-
-  titlePage: {
-    title: "The Deadly Sins of Evil",
-    subtitle: "The Lunacy of Duke Venomania",
-    credits: [{ role: "Original Work", name: "Akuno_P (mothy)" }],
-  },
-
-  openingGallery: [
-    {
-      illustration: {
-        src: "/venomania/artwork-1.jpg",
-        alt: "The Lunacy of Duke Venomania — opening artwork 1",
-      },
-    },
-    {
-      illustration: {
-        src: "/venomania/artwork-2.jpg",
-        alt: "The Lunacy of Duke Venomania — opening artwork 2",
-      },
-    },
-    {
-      illustration: {
-        src: "/venomania/artwork-3.jpg",
-        alt: "The Lunacy of Duke Venomania — opening artwork 3",
-      },
-    },
-  ],
-
-  description:
-    "The first volume of the Deadly Sins of Evil — the lust-aligned tale of Sateriasis Venomania, the ostracized noble who pierces himself with a cursed katana and pulls the women of Asmodean into a charm-bound harem. Each chapter is named for one of the women caught in his orbit (Lukana, Mikulia, Gumina, Yufina) as the demon possessing him gathers its tribute.",
-
-  translation: {
-    language: "en",
-    source: "fan",
-    translator: "pokkoo-shuu.tumblr.com",
-    url: "https://pokkoo-shuu.tumblr.com/thelunacyofdukevenomania",
-  },
-
-  chapterIllustration: {
-    "illustration-1": {
-      src: "/venomania/illustration-1.jpg",
-      alt: "The Lunacy of Duke Venomania — illustration 1",
-    },
-    "illustration-2": {
-      src: "/venomania/illustration-2.png",
-      alt: "The Lunacy of Duke Venomania — illustration 2",
-    },
-  },
   chapter: [
     {
       id: "ven-prologue",

@@ -1,0 +1,25 @@
+{
+  "cover": {
+    "src": "/original-sin-punishment/cover.jpg",
+    "alt": "Original Sin Story: Punishment — cover"
+  },
+  "titlePage": {
+    "title": "Original Sin Story",
+    "subtitle": "Punishment",
+    "credits": [
+      { "role": "Original Work", "name": "Akuno_P (mothy)" },
+      { "role": "Illustration", "name": "壱加 (Ichika)" },
+      { "role": "Publisher", "name": "the heavenly yard" }
+    ],
+    "publisher": "the heavenly yard"
+  },
+  "description": "The second volume of the Original Sin Story — the punishment phase that follows Eve's crime in Held's forest. The 'Ma' survival arc threads through the lives of Ly, Milky, Elluka, and Irina as the gods' fragmented vessels seek their bearers; the Whereabouts of the Miracle, a Song Heard Somewhere, and a tale of abandonment beneath a moonlit night carry the cycle forward, until the Chrono Story closes the genesis arc and opens the door to the Deadly Sins.",
+  "publishedYear": 2022,
+  "translation": {
+    "language": "en",
+    "source": "fan",
+    "translator": "pricechecktranslations",
+    "url": "https://oss-punishment.tumblr.com/directory"
+  },
+  "chapterIllustration": {}
+}

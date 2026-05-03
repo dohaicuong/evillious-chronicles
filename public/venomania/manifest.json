@@ -1,0 +1,48 @@
+{
+  "cover": {
+    "src": "/venomania/cover.webp",
+    "alt": "The Lunacy of Duke Venomania — cover (asset pending)"
+  },
+  "titlePage": {
+    "title": "The Deadly Sins of Evil",
+    "subtitle": "The Lunacy of Duke Venomania",
+    "credits": [{ "role": "Original Work", "name": "Akuno_P (mothy)" }]
+  },
+  "openingGallery": [
+    {
+      "illustration": {
+        "src": "/venomania/artwork-1.jpg",
+        "alt": "The Lunacy of Duke Venomania — opening artwork 1"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/venomania/artwork-2.jpg",
+        "alt": "The Lunacy of Duke Venomania — opening artwork 2"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/venomania/artwork-3.jpg",
+        "alt": "The Lunacy of Duke Venomania — opening artwork 3"
+      }
+    }
+  ],
+  "description": "The first volume of the Deadly Sins of Evil — the lust-aligned tale of Sateriasis Venomania, the ostracized noble who pierces himself with a cursed katana and pulls the women of Asmodean into a charm-bound harem. Each chapter is named for one of the women caught in his orbit (Lukana, Mikulia, Gumina, Yufina) as the demon possessing him gathers its tribute.",
+  "translation": {
+    "language": "en",
+    "source": "fan",
+    "translator": "pokkoo-shuu.tumblr.com",
+    "url": "https://pokkoo-shuu.tumblr.com/thelunacyofdukevenomania"
+  },
+  "chapterIllustration": {
+    "illustration-1": {
+      "src": "/venomania/illustration-1.jpg",
+      "alt": "The Lunacy of Duke Venomania — illustration 1"
+    },
+    "illustration-2": {
+      "src": "/venomania/illustration-2.png",
+      "alt": "The Lunacy of Duke Venomania — illustration 2"
+    }
+  }
+}
