@@ -1,0 +1,19 @@
+{
+  "cover": {
+    "src": "/conchita/cover.jpg",
+    "alt": "Evil Food Eater Conchita — cover"
+  },
+  "titlePage": {
+    "title": "The Deadly Sins of Evil",
+    "subtitle": "Evil Food Eater Conchita",
+    "credits": [{ "role": "Original Work", "name": "Akuno_P (mothy)" }]
+  },
+  "description": "The second volume of the Deadly Sins of Evil — the gluttony-aligned tale of Banica Conchita, the Beelzenian noblewoman whose appetite consumed her household, her servants, and finally herself. Framed as a multi-course meal at the 'Graveyard' restaurant: each chapter's narrator-host pairs a dish with another step of Banica's descent — from the Tasan pig liver pâté of her childhood to the combo platter that closes her final banquet — narrated alongside the demon dwelling in the wineglass she has come to call master.",
+  "translation": {
+    "language": "en",
+    "source": "fan",
+    "translator": "theevilfoodeaterconchita.tumblr.com",
+    "url": "https://theevilfoodeaterconchita.tumblr.com/post/729399445695889408/directory"
+  },
+  "chapterIllustration": {}
+}

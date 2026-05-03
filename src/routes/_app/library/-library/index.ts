@@ -1,6 +1,8 @@
 import type { SlimChapter, SlimVolume } from "@app/library/-volumes/_shared";
 import type { Sin } from "@src/lib/schema";
 import { clotureOfYellow } from "@app/library/-volumes/cloture-of-yellow";
+import { conchita } from "@app/library/-volumes/conchita";
+import { enbizaka } from "@app/library/-volumes/enbizaka";
 import { praefacioOfBlue } from "@app/library/-volumes/praefacio-of-blue";
 import { ossCrime } from "@app/library/-volumes/oss-crime";
 import { ossPunishment } from "@app/library/-volumes/oss-punishment";
@@ -80,21 +82,7 @@ export const series: Series[] = [
     ],
     volumes: [
       venomania.slim,
-      {
-        id: "conchita",
-        number: 2,
-        title: "Evil Food Eater Conchita",
-        sin: "gluttony",
-        chapters: makeChapters("con", [
-          "The Banquet at Beelzenia",
-          "The Glass of Conchita",
-          "The Royal Chef",
-          "Twenty-Six Courses",
-          "Marrow and Bone",
-          "What the Vessel Holds",
-          "Conchita's Smile",
-        ]),
-      },
+      conchita.slim,
       princessSleep.slim,
       {
         id: "fifth-pierrot",
@@ -109,20 +97,7 @@ export const series: Series[] = [
           "The Final Bow",
         ]),
       },
-      {
-        id: "enbizaka",
-        number: 5,
-        title: "The Tailor of Enbizaka",
-        sin: "envy",
-        chapters: makeChapters("enb", [
-          "The Shop on Enbizaka Street",
-          "The Red Kimono",
-          "The Green Obi",
-          "The Yellow Hairpin",
-          "The Blue Geta",
-          "Kayo's Stitches",
-        ]),
-      },
+      enbizaka.slim,
       {
         id: "judgment",
         number: 6,

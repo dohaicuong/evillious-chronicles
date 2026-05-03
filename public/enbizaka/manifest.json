@@ -1,0 +1,19 @@
+{
+  "cover": {
+    "src": "/enbizaka/cover.png",
+    "alt": "The Tailor of Enbizaka — cover"
+  },
+  "titlePage": {
+    "title": "The Deadly Sins of Evil",
+    "subtitle": "The Tailor of Enbizaka",
+    "credits": [{ "role": "Original Work", "name": "Akuno_P (mothy)" }]
+  },
+  "description": "The fifth volume of the Deadly Sins of Evil — the envy-aligned tale of Kayo Sudou, the tailor of Enbizaka in the island nation of Jakoku. Told from the perspective of a pair of cursed scissors that watched her life from beginning to end: a great fire takes her husband and child, her grief curdles into the certainty that he has taken up with other women, and she stalks the streets of Enbizaka to dress the man she has already murdered in fragments of their kimono. Frames the lust-driven cycle inside a wider sweep of Jakoku — the Tale of the Monk, of Kokutan, of the Mermaid, and of Enbizaka itself.",
+  "translation": {
+    "language": "en",
+    "source": "fan",
+    "translator": "thetailorofenbizaka.tumblr.com",
+    "url": "https://thetailorofenbizaka.tumblr.com/directory"
+  },
+  "chapterIllustration": {}
+}
