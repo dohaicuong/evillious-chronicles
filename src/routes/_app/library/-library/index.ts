@@ -3,6 +3,7 @@ import type { Sin } from "@src/lib/schema";
 import { clotureOfYellow } from "@app/library/-volumes/cloture-of-yellow";
 import { conchita } from "@app/library/-volumes/conchita";
 import { enbizaka } from "@app/library/-volumes/enbizaka";
+import { fifthPierrot } from "@app/library/-volumes/fifth-pierrot";
 import { praefacioOfBlue } from "@app/library/-volumes/praefacio-of-blue";
 import { ossCrime } from "@app/library/-volumes/oss-crime";
 import { ossPunishment } from "@app/library/-volumes/oss-punishment";
@@ -84,19 +85,7 @@ export const series: Series[] = [
       venomania.slim,
       conchita.slim,
       princessSleep.slim,
-      {
-        id: "fifth-pierrot",
-        number: 4,
-        title: "Fifth Pierrot",
-        sin: "pride",
-        chapters: makeChapters("fp", [
-          "The Travelling Troupe",
-          "Behind the Mask",
-          "A Pierrot's Confession",
-          "The Stage at Lucifenia",
-          "The Final Bow",
-        ]),
-      },
+      fifthPierrot.slim,
       enbizaka.slim,
       {
         id: "judgment",

@@ -7,7 +7,7 @@ Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefa
 - ✅ **The Lunacy of Duke Venomania** — https://pokkoo-shuu.tumblr.com/thelunacyofdukevenomania
 - ✅ **Evil Food Eater Conchita** — https://theevilfoodeaterconchita.tumblr.com/post/729399445695889408/directory
 - ✅ **Gift from the Princess Who Brought Sleep** — https://giftfromthesleepprincess.tumblr.com/post/729399840750125056/directory
-- **Fifth Pierrot** — https://thefifthclown.tumblr.com/directory
+- ✅ **Fifth Pierrot** — https://thefifthclown.tumblr.com/directory
 - ✅ **The Tailor of Enbizaka** — https://thetailorofenbizaka.tumblr.com/directory
 - **Judgment of Corruption** — https://judgmentofcorruption.tumblr.com/directory
 - **The Muzzle of Nemesis** — https://themuzzleofnemesis.tumblr.com/directory

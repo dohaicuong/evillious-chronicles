@@ -1,0 +1,25 @@
+{
+  "cover": {
+    "src": "/fifth-pierrot/cover.webp",
+    "alt": "Fifth Pierrot — cover"
+  },
+  "titlePage": {
+    "title": "The Deadly Sins of Evil",
+    "subtitle": "Fifth Pierrot",
+    "credits": [
+      { "role": "Original Work", "name": "Akuno_P (mothy)" },
+      { "role": "Illustration", "name": "壱加 (Ichika), You (yuu), Zain" },
+      { "role": "Publisher", "name": "PHP Institute" }
+    ],
+    "publisher": "PHP Institute"
+  },
+  "description": "The fourth volume of the Deadly Sins of Evil — the pride-aligned tale of intrigue around the criminal organization Père Noël in the wake of Lucifenia's collapse. A new chairman is installed, a search begins for the Seventh, Magician, and a duel on Merrigod Plateau brings demons of pride, wrath, and lust onto the same stage. Spans a Prologue, two parts (Fifth, Pierrot / The Duel of Merrigod Plateau), an Epilogue, and an Extra Chapter, Bonus Story, and Afterword tail.",
+  "publishedYear": 2015,
+  "translation": {
+    "language": "en",
+    "source": "fan",
+    "translator": "pricechecktranslations",
+    "url": "https://thefifthclown.tumblr.com/"
+  },
+  "chapterIllustration": {}
+}
