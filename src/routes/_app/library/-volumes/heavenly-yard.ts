@@ -95,22 +95,32 @@ export const heavenlyYard = Volume({
       pages: "./heavenly-yard/chapters/09-ch9",
     },
     {
-      id: "hy-ch10",
+      // Source presents Re_Birthday Truth as 9 parts split 5+4 — wired here
+      // as two ordered chapter entries (sequential `number` for the chapter
+      // list / page navigation, both titled "Chapter 10" so the original
+      // labelling stays intact for readers).
+      id: "hy-ch10-pt1",
       number: 10,
-      title: "Chapter 10 — Re_Birthday Truth",
-      pages: "./heavenly-yard/chapters/10-ch10",
+      title: "Chapter 10 — Re_Birthday Truth, Part 1",
+      pages: "./heavenly-yard/chapters/10-ch10-pt1",
+    },
+    {
+      id: "hy-ch10-pt2",
+      number: 11,
+      title: "Chapter 10 — Re_Birthday Truth, Part 2",
+      pages: "./heavenly-yard/chapters/11-ch10-pt2",
     },
     {
       id: "hy-ch11",
-      number: 11,
+      number: 12,
       title: "Chapter 11 — Prologue",
-      pages: "./heavenly-yard/chapters/11-ch11",
+      pages: "./heavenly-yard/chapters/12-ch11",
     },
   ],
   afterword: {
     id: "hy-afterword",
     number: 99,
     title: "Afterword",
-    pages: "./heavenly-yard/chapters/12-afterword",
+    pages: "./heavenly-yard/chapters/13-afterword",
   },
 });

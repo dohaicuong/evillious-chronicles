@@ -1,27 +1,6 @@
 # TODO
 
-### Translation sources to wire up (Deadly Sins of Evil novels)
-
-Each of these is a Tumblr fan translation, same shape as the Praeludium / Praefacio sources. Use the existing pipeline (curl directory → parse posts → assemble chapter markdowns → fixture + loader + library entry). Drop cover/illustrations into the matching `public/<slug>/` when available.
-
-- ✅ **The Lunacy of Duke Venomania** — https://pokkoo-shuu.tumblr.com/thelunacyofdukevenomania
-- ✅ **Evil Food Eater Conchita** — https://theevilfoodeaterconchita.tumblr.com/post/729399445695889408/directory
-- ✅ **Gift from the Princess Who Brought Sleep** — https://giftfromthesleepprincess.tumblr.com/post/729399840750125056/directory
-- ✅ **Fifth Pierrot** — https://thefifthclown.tumblr.com/directory
-- ✅ **The Tailor of Enbizaka** — https://thetailorofenbizaka.tumblr.com/directory
-- ✅ **Judgment of Corruption** — https://judgmentofcorruption.tumblr.com/directory
-- ✅ **The Muzzle of Nemesis** — https://themuzzleofnemesis.tumblr.com/directory
-- ✅ **Master of the Heavenly Yard** — https://dsoe-masteroftheheavenlyyard.tumblr.com/directory
-
-### Reader / content
-
-- **Chapter track list** — render `Chapter.songIds` as a "tracks in this chapter" list (schema already populated, no UI surface yet).
-
-### Notes
-
-- Markdown body / preview in the editor (`react-markdown` already a dep).
-
-### Future: TanStack DB
+## Future: TanStack DB
 
 - Worth considering if we ever add a sync server (multi-device reading, cross-device bookmark sync). Has a Dexie-backed collection adapter, so the migration would be mechanical. Skip for now — local-only personal reader doesn't benefit from the sync engine.
 
