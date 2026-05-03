@@ -19,7 +19,12 @@ export function VolumeHero({ volume }: { volume: VolumeMeta }) {
       height={height}
       className={
         isPortrait
-          ? "w-full max-w-xs rounded-sm border border-border shadow-md shadow-ink/30 md:max-w-sm"
+          ? // Fixed widths (not max-widths) so portrait covers all render at the
+            // same size regardless of source resolution. `w-full max-w-*` on an
+            // <img> in a flex item caps at the image's natural width when the
+            // flex item has no explicit width — which silently shrinks any
+            // cover whose natural pixels are below the cap.
+            "w-72 rounded-sm border border-border shadow-md shadow-ink/30 md:w-96"
           : "mx-auto max-h-[70vh] w-auto max-w-full rounded-sm border border-border object-contain shadow-md shadow-ink/30"
       }
     />
