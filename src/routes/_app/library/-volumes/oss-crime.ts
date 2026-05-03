@@ -9,11 +9,18 @@ import { Volume } from "./_shared";
  * `public/original-sin-crime/...` — cover only; the fan release ships
  * without artwork or chapter illustrations. The prose uses scene breaks
  * (a lone "." line) rather than glyph POV markers.
+ *
+ * `publicDir` is set explicitly because the asset directory
+ * (`original-sin-crime`) is more descriptive than the URL slug (`oss-crime`).
+ *
+ * Heavy metadata (cover, title page, description, translation) lives in
+ * `public/original-sin-crime/manifest.json`.
  */
 
 export const ossCrime = Volume({
   id: "oss-crime",
   slug: "oss-crime",
+  publicDir: "original-sin-crime",
   number: 1,
 
   title: "Original Sin Story: Crime",
@@ -23,34 +30,6 @@ export const ossCrime = Volume({
   sin: "origin",
   series: "original-sin",
 
-  cover: {
-    src: "/original-sin-crime/cover.jpg",
-    alt: "Original Sin Story: Crime — cover",
-  },
-
-  titlePage: {
-    title: "Original Sin Story",
-    subtitle: "Crime",
-    credits: [
-      { role: "Original Work", name: "Akuno_P (mothy)" },
-      { role: "Illustration", name: "壱加 (Ichika)" },
-      { role: "Publisher", name: "the heavenly yard" },
-    ],
-    publisher: "the heavenly yard",
-  },
-
-  description:
-    "The first volume of the Original Sin Story — the genesis of every cycle that follows. Maria Moonlit, the prophet-queen renamed Alice Merry-Go-Round, conveys the gods' demand for vessels and sets Project 'Ma' in motion. Eve, Adam, and Seth are pulled into the experiment; Salmhofer the Witch flees with a forbidden secret; and in Held's forest a moonlit bear acts on a grief that will fracture into seven sins. Told from both Eve's and Adam's perspectives in its closing chapters.",
-
-  publishedYear: 2019,
-  translation: {
-    language: "en",
-    source: "fan",
-    translator: "pricechecktranslations",
-    url: "https://oss-crime.tumblr.com/directory",
-  },
-
-  chapterIllustration: {},
   chapter: [
     {
       id: "ossc-prologue",

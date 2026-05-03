@@ -4,8 +4,10 @@ import { Volume } from "./_shared";
  * The Daughter of Evil — Volume 4: Praefacio of Blue (悪ノ娘 — 青のプラエファチオ)
  *
  * Translation source: doe-praefacioofblue.tumblr.com
- * Assets pending — drop cover/artwork/illustrations into public/praefacio-of-blue/.
  * POV markers in the prose: ✥ Kyle (King of Marlon).
+ *
+ * Heavy metadata (cover, title page, opening poetry, description, translation)
+ * lives in `public/praefacio-of-blue/manifest.json`.
  */
 
 export const praefacioOfBlue = Volume({
@@ -20,53 +22,6 @@ export const praefacioOfBlue = Volume({
   sin: "pride",
   series: "the-daughter-of-evil",
 
-  cover: {
-    src: "/praefacio-of-blue/cover.jpg",
-    alt: "Praefacio of Blue — Allen and Riliane reunited, blade between them",
-    width: 500,
-    height: 734,
-  },
-
-  titlePage: {
-    title: "The Daughter of Evil",
-    subtitle: "Praefacio of Blue",
-    credits: [{ role: "Original Work", name: "Akuno_P (mothy)" }],
-  },
-
-  openingPoetry: {
-    title: "Opening",
-    attribution: "From the prologue of Praefacio of Blue",
-    stanzas: [
-      {
-        lines: [
-          "She committed sin.",
-          "She indulged in the love she had with her husband.",
-          "She was overconfident that her wishes would be granted.",
-          "She shirked her responsibilities, and her children died.",
-          "She was jealous of the happiness of her neighbors.",
-        ],
-      },
-      {
-        lines: [
-          "Eventually her feelings changed to anger,",
-          "And she tried to obtain that which she had lost.",
-          "And then–because she was hungry, she gathered two fruits.",
-        ],
-      },
-    ],
-  },
-
-  description:
-    "The fourth and final volume of The Daughter of Evil — set after the events of Praeludium of Red, told primarily from King Kyle of Marlon's perspective. The story finally reaches the Blue Country across the sea, closing the chronology that the earlier volumes spiralled inward toward.",
-
-  translation: {
-    language: "en",
-    source: "fan",
-    translator: "doe-praefacioofblue.tumblr.com",
-    url: "https://doe-praefacioofblue.tumblr.com/directory",
-  },
-
-  chapterIllustration: {},
   chapter: [
     {
       id: "pb-prologue",

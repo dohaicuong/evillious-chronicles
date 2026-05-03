@@ -9,11 +9,19 @@ import { Volume } from "./_shared";
  * cover only; no artwork or chapter illustrations were available with the
  * fan release. The prose uses scene breaks (a lone "." line) rather than
  * glyph POV markers, so no per-character glyph map is needed.
+ *
+ * `publicDir` overrides the default (which would be `slug`) because the asset
+ * directory was named `sleep-princess` before the slug landed on
+ * `princess-sleep`.
+ *
+ * Heavy metadata (cover, title page, description, translation) lives in
+ * `public/sleep-princess/manifest.json`.
  */
 
 export const princessSleep = Volume({
   id: "princess-sleep",
   slug: "princess-sleep",
+  publicDir: "sleep-princess",
   number: 3,
 
   title: "Gift from the Princess Who Brought Sleep",
@@ -23,28 +31,6 @@ export const princessSleep = Volume({
   sin: "sloth",
   series: "deadly-sins-of-evil",
 
-  cover: {
-    src: "/sleep-princess/cover.png",
-    alt: "Gift from the Princess Who Brought Sleep — cover",
-  },
-
-  titlePage: {
-    title: "The Deadly Sins of Evil",
-    subtitle: "Gift from the Princess Who Brought Sleep",
-    credits: [{ role: "Original Work", name: "Akuno_P (mothy)" }],
-  },
-
-  description:
-    "The third volume of the Deadly Sins of Evil — the sloth-aligned tale of Margarita Blankenheim, the Marchioness of Toragay who poisoned her loveless husband and then her hometown with the medicine she called Gift. Framed as a journalist's investigation centuries after the fact: Hanne Lorre of the Freezis Foundation rides to Merrigod Plateau chasing a forgotten Yukina Freezis fairytale, and follows the trail through Père Noël, the eternal sorceress, and the green-haired doll that wore Margarita's face.",
-
-  translation: {
-    language: "en",
-    source: "fan",
-    translator: "giftfromthesleepprincess.tumblr.com",
-    url: "https://giftfromthesleepprincess.tumblr.com/directory",
-  },
-
-  chapterIllustration: {},
   chapter: [
     {
       id: "ps-prologue",

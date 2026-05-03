@@ -157,11 +157,6 @@ export type VolumeHeavy = {
   chapterIllustration: Record<string, ImageAsset>;
 };
 
-// Back-compat input shape: heavy fields can be passed inline alongside slim
-// during the migration. Once every volume is migrated, callers will pass
-// only `VolumeSlim` and the factory will lazy-fetch heavy.
-export type VolumeArgs = VolumeSlim & Partial<VolumeHeavy>;
-
 // Slim catalog shapes — minimal metadata used by the library / series cards
 // / chapter list, with no chapter content. Co-located here so the library
 // catalog can be derived from each volume manifest in one place.
@@ -282,17 +277,18 @@ export type VolumeBundle = {
   slim: SlimVolume;
   /**
    * Async volume metadata for the volume detail page — hero, poetry, gallery,
-   * title page, plus the slim chapter list. Awaits the heavy manifest (inline
-   * during migration; lazy-fetched from `public/<slug>/manifest.json` once
-   * the volume's TS file no longer carries heavy fields).
+   * title page, plus the slim chapter list. Lazy-fetches the heavy manifest
+   * from `public/<publicDir>/manifest.json` and memoizes the result.
    */
   meta: () => Promise<VolumeMeta>;
   /** Lazy async resolver for one chapter's pages — single chapter's worth of fetches. */
   chapter: (chapterId: string) => Promise<ChapterType>;
   /**
-   * All chapter `.md` URLs for this volume in reading order. Same URL shape
-   * as the runtime reader, so pre-fetching these populates the SW's
-   * `ec-chapters` cache for offline reads. Sync — paths come from slim.
+   * Static URLs for offline pre-fetch into the `ec-chapters` SWR cache —
+   * the volume's heavy `manifest.json` plus every chapter `.md` file in
+   * reading order. The manifest is bundled with the chapter list so the
+   * offline reader can resolve cover / gallery / illustration paths
+   * without network access. Sync — paths come from slim.
    */
   chapterUrls: () => string[];
   /**
@@ -300,30 +296,10 @@ export type VolumeBundle = {
    * URLs — everything `<img>` rendering needs offline. Resolved via
    * `asset()` so the URLs match exactly what the browser requests when
    * the corresponding `<img>` mounts. Async because the heavy manifest is
-   * lazy-loaded for migrated volumes.
+   * lazy-fetched.
    */
   imageUrls: () => Promise<string[]>;
 };
-
-// Heavy fields mounted inline on the args object — non-empty when the volume
-// hasn't been migrated yet. We treat the presence of `cover` (the only
-// strictly-required heavy field) as the signal.
-function inlineHeavy(args: VolumeArgs): VolumeHeavy | null {
-  if (!args.cover) return null;
-  return {
-    ...(args.subtitle !== undefined ? { subtitle: args.subtitle } : {}),
-    cover: args.cover,
-    ...(args.titlePage ? { titlePage: args.titlePage } : {}),
-    ...(args.openingPoetry ? { openingPoetry: args.openingPoetry } : {}),
-    ...(args.openingGallery ? { openingGallery: args.openingGallery } : {}),
-    ...(args.closingGallery ? { closingGallery: args.closingGallery } : {}),
-    ...(args.description !== undefined ? { description: args.description } : {}),
-    ...(args.publishedYear !== undefined ? { publishedYear: args.publishedYear } : {}),
-    ...(args.isbn !== undefined ? { isbn: args.isbn } : {}),
-    ...(args.translation ? { translation: args.translation } : {}),
-    chapterIllustration: args.chapterIllustration ?? {},
-  };
-}
 
 function heavyManifestUrl(slim: VolumeSlim): string {
   return `${import.meta.env.BASE_URL}${slim.publicDir ?? slim.slug}/manifest.json`;
@@ -331,38 +307,19 @@ function heavyManifestUrl(slim: VolumeSlim): string {
 
 /**
  * Volume factory — single source of truth for one volume. Returns a bundle
- * with three views derived from a slim TS object plus a heavy manifest:
+ * with three views derived from the slim TS object plus a lazily-fetched
+ * heavy manifest from `public/<publicDir>/manifest.json`:
  *
  *  - `slim` (sync) for catalogs that only need metadata + page-counts.
- *  - `meta()` (async) for the volume detail page. Heavy metadata is either
- *    passed inline (back-compat during migration) or lazily fetched from
- *    `public/<slug>/manifest.json` and memoized.
+ *  - `meta()` (async) for the volume detail page — hero / poetry / gallery /
+ *    title-page metadata plus the slim chapter list.
  *  - `chapter(id)` (async) for the page reader — fetches one chapter's pages.
  *
  * Routes consume the same bundle, so titles, ids, sin, page-counts can't drift.
  */
-export function Volume(args: VolumeArgs): VolumeBundle {
-  // Strip heavy fields off the args so `slim` is exactly the slim shape.
-  const {
-    subtitle: _s,
-    cover: _c,
-    titlePage: _tp,
-    openingPoetry: _op,
-    openingGallery: _og,
-    closingGallery: _cg,
-    description: _d,
-    publishedYear: _py,
-    isbn: _isbn,
-    translation: _tr,
-    chapterIllustration: _ci,
-    ...slim
-  } = args;
-
-  const inline = inlineHeavy(args);
-
+export function Volume(slim: VolumeSlim): VolumeBundle {
   let cachedHeavy: Promise<VolumeHeavy> | undefined;
   function getHeavy(): Promise<VolumeHeavy> {
-    if (inline) return Promise.resolve(inline);
     cachedHeavy ??= (async () => {
       const url = heavyManifestUrl(slim);
       const res = await fetch(url);
@@ -377,8 +334,11 @@ export function Volume(args: VolumeArgs): VolumeBundle {
     meta: async () => deriveMeta(slim, await getHeavy()),
     chapter: async (chapterId) => deriveChapter(slim, await getHeavy(), chapterId),
     chapterUrls: () => {
-      const all = slim.chapter.flatMap((c) => urlsUnder(c.pages));
-      return slim.afterword ? [...all, ...urlsUnder(slim.afterword.pages)] : all;
+      const md = slim.chapter.flatMap((c) => urlsUnder(c.pages));
+      const all = slim.afterword ? [...md, ...urlsUnder(slim.afterword.pages)] : md;
+      // Heavy manifest first so an offline reader has it in cache before
+      // any page render that depends on it (cover / illustration paths).
+      return [heavyManifestUrl(slim), ...all];
     },
     imageUrls: async () => {
       const heavy = await getHeavy();

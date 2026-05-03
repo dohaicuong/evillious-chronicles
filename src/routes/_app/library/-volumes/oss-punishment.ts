@@ -9,11 +9,19 @@ import { Volume } from "./_shared";
  * under `public/original-sin-punishment/...` — cover only; the fan release
  * ships without artwork or chapter illustrations. The prose uses scene
  * breaks (a lone "." line) rather than glyph POV markers.
+ *
+ * `publicDir` is set explicitly because the asset directory
+ * (`original-sin-punishment`) is more descriptive than the URL slug
+ * (`oss-punishment`).
+ *
+ * Heavy metadata (cover, title page, description, translation) lives in
+ * `public/original-sin-punishment/manifest.json`.
  */
 
 export const ossPunishment = Volume({
   id: "oss-punishment",
   slug: "oss-punishment",
+  publicDir: "original-sin-punishment",
   number: 2,
 
   title: "Original Sin Story: Punishment",
@@ -23,34 +31,6 @@ export const ossPunishment = Volume({
   sin: "origin",
   series: "original-sin",
 
-  cover: {
-    src: "/original-sin-punishment/cover.jpg",
-    alt: "Original Sin Story: Punishment — cover",
-  },
-
-  titlePage: {
-    title: "Original Sin Story",
-    subtitle: "Punishment",
-    credits: [
-      { role: "Original Work", name: "Akuno_P (mothy)" },
-      { role: "Illustration", name: "壱加 (Ichika)" },
-      { role: "Publisher", name: "the heavenly yard" },
-    ],
-    publisher: "the heavenly yard",
-  },
-
-  description:
-    "The second volume of the Original Sin Story — the punishment phase that follows Eve's crime in Held's forest. The 'Ma' survival arc threads through the lives of Ly, Milky, Elluka, and Irina as the gods' fragmented vessels seek their bearers; the Whereabouts of the Miracle, a Song Heard Somewhere, and a tale of abandonment beneath a moonlit night carry the cycle forward, until the Chrono Story closes the genesis arc and opens the door to the Deadly Sins.",
-
-  publishedYear: 2022,
-  translation: {
-    language: "en",
-    source: "fan",
-    translator: "pricechecktranslations",
-    url: "https://oss-punishment.tumblr.com/directory",
-  },
-
-  chapterIllustration: {},
   chapter: [
     {
       id: "ossp-prologue",
