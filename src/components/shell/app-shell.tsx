@@ -148,11 +148,11 @@ export function AppShell() {
             <IconButton
               variant="ghost"
               size="sm"
-              aria-label="Open bookmarks"
-              onClick={() => setBookmarksOpen(true)}
+              aria-label="Continue reading"
+              onClick={() => setContinueOpen(true)}
               className="hidden sm:inline-flex"
             >
-              <BookmarkSimpleIcon weight="light" />
+              <BookOpenTextIcon weight="light" />
             </IconButton>
             <IconButton
               variant="ghost"
@@ -180,9 +180,12 @@ export function AppShell() {
               <Menu.Portal>
                 <Menu.Positioner align="end">
                   <Menu.Popup>
-                    <Menu.Item onClick={() => setContinueOpen(true)}>
-                      <BookOpenTextIcon weight="light" className="inline-block mr-2 align-[-2px]" />
-                      Continue reading
+                    <Menu.Item onClick={() => setBookmarksOpen(true)}>
+                      <BookmarkSimpleIcon
+                        weight="light"
+                        className="inline-block mr-2 align-[-2px]"
+                      />
+                      Bookmarks
                     </Menu.Item>
                     <Menu.Item onClick={() => setNotesOpen(true)}>
                       <NotebookIcon weight="light" className="inline-block mr-2 align-[-2px]" />
@@ -251,16 +254,16 @@ export function AppShell() {
               <Menu.Portal>
                 <Menu.Positioner align="end">
                   <Menu.Popup>
-                    <Menu.Item onClick={() => setContinueOpen(true)}>
-                      <BookOpenTextIcon weight="light" className="inline-block mr-2 align-[-2px]" />
-                      Continue reading
-                    </Menu.Item>
                     <Menu.Item onClick={() => setBookmarksOpen(true)}>
                       <BookmarkSimpleIcon
                         weight="light"
                         className="inline-block mr-2 align-[-2px]"
                       />
                       Bookmarks
+                    </Menu.Item>
+                    <Menu.Item onClick={() => setContinueOpen(true)}>
+                      <BookOpenTextIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      Continue reading
                     </Menu.Item>
                     <Menu.Item onClick={() => setNotesOpen(true)}>
                       <NotebookIcon weight="light" className="inline-block mr-2 align-[-2px]" />
