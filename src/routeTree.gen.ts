@@ -32,6 +32,9 @@ const ComponentsTooltipLazyRouteImport = createFileRoute(
   '/components/tooltip',
 )()
 const ComponentsToastLazyRouteImport = createFileRoute('/components/toast')()
+const ComponentsThemeToggleLazyRouteImport = createFileRoute(
+  '/components/theme-toggle',
+)()
 const ComponentsTabsLazyRouteImport = createFileRoute('/components/tabs')()
 const ComponentsSwitchLazyRouteImport = createFileRoute('/components/switch')()
 const ComponentsSliderLazyRouteImport = createFileRoute('/components/slider')()
@@ -62,6 +65,7 @@ const ComponentsIconLazyRouteImport = createFileRoute('/components/icon')()
 const ComponentsDrawerLazyRouteImport = createFileRoute('/components/drawer')()
 const ComponentsDialogLazyRouteImport = createFileRoute('/components/dialog')()
 const ComponentsColorLazyRouteImport = createFileRoute('/components/color')()
+const ComponentsCodeLazyRouteImport = createFileRoute('/components/code')()
 const ComponentsCardLazyRouteImport = createFileRoute('/components/card')()
 const ComponentsButtonLazyRouteImport = createFileRoute('/components/button')()
 const ComponentsBreakpointsLazyRouteImport = createFileRoute(
@@ -132,6 +136,14 @@ const ComponentsToastLazyRoute = ComponentsToastLazyRouteImport.update({
 } as any).lazy(() =>
   import('./routes/components/toast.lazy').then((d) => d.Route),
 )
+const ComponentsThemeToggleLazyRoute =
+  ComponentsThemeToggleLazyRouteImport.update({
+    id: '/theme-toggle',
+    path: '/theme-toggle',
+    getParentRoute: () => ComponentsRouteRoute,
+  } as any).lazy(() =>
+    import('./routes/components/theme-toggle.lazy').then((d) => d.Route),
+  )
 const ComponentsTabsLazyRoute = ComponentsTabsLazyRouteImport.update({
   id: '/tabs',
   path: '/tabs',
@@ -260,6 +272,13 @@ const ComponentsColorLazyRoute = ComponentsColorLazyRouteImport.update({
   getParentRoute: () => ComponentsRouteRoute,
 } as any).lazy(() =>
   import('./routes/components/color.lazy').then((d) => d.Route),
+)
+const ComponentsCodeLazyRoute = ComponentsCodeLazyRouteImport.update({
+  id: '/code',
+  path: '/code',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any).lazy(() =>
+  import('./routes/components/code.lazy').then((d) => d.Route),
 )
 const ComponentsCardLazyRoute = ComponentsCardLazyRouteImport.update({
   id: '/card',
@@ -416,6 +435,7 @@ export interface FileRoutesByFullPath {
   '/components/breakpoints': typeof ComponentsBreakpointsLazyRoute
   '/components/button': typeof ComponentsButtonLazyRoute
   '/components/card': typeof ComponentsCardLazyRoute
+  '/components/code': typeof ComponentsCodeLazyRoute
   '/components/color': typeof ComponentsColorLazyRoute
   '/components/dialog': typeof ComponentsDialogLazyRoute
   '/components/drawer': typeof ComponentsDrawerLazyRoute
@@ -434,6 +454,7 @@ export interface FileRoutesByFullPath {
   '/components/slider': typeof ComponentsSliderLazyRoute
   '/components/switch': typeof ComponentsSwitchLazyRoute
   '/components/tabs': typeof ComponentsTabsLazyRoute
+  '/components/theme-toggle': typeof ComponentsThemeToggleLazyRoute
   '/components/toast': typeof ComponentsToastLazyRoute
   '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
@@ -461,6 +482,7 @@ export interface FileRoutesByTo {
   '/components/breakpoints': typeof ComponentsBreakpointsLazyRoute
   '/components/button': typeof ComponentsButtonLazyRoute
   '/components/card': typeof ComponentsCardLazyRoute
+  '/components/code': typeof ComponentsCodeLazyRoute
   '/components/color': typeof ComponentsColorLazyRoute
   '/components/dialog': typeof ComponentsDialogLazyRoute
   '/components/drawer': typeof ComponentsDrawerLazyRoute
@@ -479,6 +501,7 @@ export interface FileRoutesByTo {
   '/components/slider': typeof ComponentsSliderLazyRoute
   '/components/switch': typeof ComponentsSwitchLazyRoute
   '/components/tabs': typeof ComponentsTabsLazyRoute
+  '/components/theme-toggle': typeof ComponentsThemeToggleLazyRoute
   '/components/toast': typeof ComponentsToastLazyRoute
   '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
@@ -510,6 +533,7 @@ export interface FileRoutesById {
   '/components/breakpoints': typeof ComponentsBreakpointsLazyRoute
   '/components/button': typeof ComponentsButtonLazyRoute
   '/components/card': typeof ComponentsCardLazyRoute
+  '/components/code': typeof ComponentsCodeLazyRoute
   '/components/color': typeof ComponentsColorLazyRoute
   '/components/dialog': typeof ComponentsDialogLazyRoute
   '/components/drawer': typeof ComponentsDrawerLazyRoute
@@ -528,6 +552,7 @@ export interface FileRoutesById {
   '/components/slider': typeof ComponentsSliderLazyRoute
   '/components/switch': typeof ComponentsSwitchLazyRoute
   '/components/tabs': typeof ComponentsTabsLazyRoute
+  '/components/theme-toggle': typeof ComponentsThemeToggleLazyRoute
   '/components/toast': typeof ComponentsToastLazyRoute
   '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
@@ -560,6 +585,7 @@ export interface FileRouteTypes {
     | '/components/breakpoints'
     | '/components/button'
     | '/components/card'
+    | '/components/code'
     | '/components/color'
     | '/components/dialog'
     | '/components/drawer'
@@ -578,6 +604,7 @@ export interface FileRouteTypes {
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
+    | '/components/theme-toggle'
     | '/components/toast'
     | '/components/tooltip'
     | '/components/typography'
@@ -605,6 +632,7 @@ export interface FileRouteTypes {
     | '/components/breakpoints'
     | '/components/button'
     | '/components/card'
+    | '/components/code'
     | '/components/color'
     | '/components/dialog'
     | '/components/drawer'
@@ -623,6 +651,7 @@ export interface FileRouteTypes {
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
+    | '/components/theme-toggle'
     | '/components/toast'
     | '/components/tooltip'
     | '/components/typography'
@@ -653,6 +682,7 @@ export interface FileRouteTypes {
     | '/components/breakpoints'
     | '/components/button'
     | '/components/card'
+    | '/components/code'
     | '/components/color'
     | '/components/dialog'
     | '/components/drawer'
@@ -671,6 +701,7 @@ export interface FileRouteTypes {
     | '/components/slider'
     | '/components/switch'
     | '/components/tabs'
+    | '/components/theme-toggle'
     | '/components/toast'
     | '/components/tooltip'
     | '/components/typography'
@@ -746,6 +777,13 @@ declare module '@tanstack/react-router' {
       path: '/toast'
       fullPath: '/components/toast'
       preLoaderRoute: typeof ComponentsToastLazyRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/theme-toggle': {
+      id: '/components/theme-toggle'
+      path: '/theme-toggle'
+      fullPath: '/components/theme-toggle'
+      preLoaderRoute: typeof ComponentsThemeToggleLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/tabs': {
@@ -872,6 +910,13 @@ declare module '@tanstack/react-router' {
       path: '/color'
       fullPath: '/components/color'
       preLoaderRoute: typeof ComponentsColorLazyRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/code': {
+      id: '/components/code'
+      path: '/code'
+      fullPath: '/components/code'
+      preLoaderRoute: typeof ComponentsCodeLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/card': {
@@ -1088,6 +1133,7 @@ interface ComponentsRouteRouteChildren {
   ComponentsBreakpointsLazyRoute: typeof ComponentsBreakpointsLazyRoute
   ComponentsButtonLazyRoute: typeof ComponentsButtonLazyRoute
   ComponentsCardLazyRoute: typeof ComponentsCardLazyRoute
+  ComponentsCodeLazyRoute: typeof ComponentsCodeLazyRoute
   ComponentsColorLazyRoute: typeof ComponentsColorLazyRoute
   ComponentsDialogLazyRoute: typeof ComponentsDialogLazyRoute
   ComponentsDrawerLazyRoute: typeof ComponentsDrawerLazyRoute
@@ -1106,6 +1152,7 @@ interface ComponentsRouteRouteChildren {
   ComponentsSliderLazyRoute: typeof ComponentsSliderLazyRoute
   ComponentsSwitchLazyRoute: typeof ComponentsSwitchLazyRoute
   ComponentsTabsLazyRoute: typeof ComponentsTabsLazyRoute
+  ComponentsThemeToggleLazyRoute: typeof ComponentsThemeToggleLazyRoute
   ComponentsToastLazyRoute: typeof ComponentsToastLazyRoute
   ComponentsTooltipLazyRoute: typeof ComponentsTooltipLazyRoute
   ComponentsTypographyLazyRoute: typeof ComponentsTypographyLazyRoute
@@ -1120,6 +1167,7 @@ const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsBreakpointsLazyRoute: ComponentsBreakpointsLazyRoute,
   ComponentsButtonLazyRoute: ComponentsButtonLazyRoute,
   ComponentsCardLazyRoute: ComponentsCardLazyRoute,
+  ComponentsCodeLazyRoute: ComponentsCodeLazyRoute,
   ComponentsColorLazyRoute: ComponentsColorLazyRoute,
   ComponentsDialogLazyRoute: ComponentsDialogLazyRoute,
   ComponentsDrawerLazyRoute: ComponentsDrawerLazyRoute,
@@ -1138,6 +1186,7 @@ const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsSliderLazyRoute: ComponentsSliderLazyRoute,
   ComponentsSwitchLazyRoute: ComponentsSwitchLazyRoute,
   ComponentsTabsLazyRoute: ComponentsTabsLazyRoute,
+  ComponentsThemeToggleLazyRoute: ComponentsThemeToggleLazyRoute,
   ComponentsToastLazyRoute: ComponentsToastLazyRoute,
   ComponentsTooltipLazyRoute: ComponentsTooltipLazyRoute,
   ComponentsTypographyLazyRoute: ComponentsTypographyLazyRoute,

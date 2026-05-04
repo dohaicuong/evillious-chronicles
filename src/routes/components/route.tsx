@@ -39,6 +39,7 @@ const themeGroup: NavGroupConfig = {
     { to: "/components/typography", label: "Typography" },
     { to: "/components/breakpoints", label: "Breakpoints" },
     { to: "/components/animation", label: "Animation" },
+    { to: "/components/theme-toggle", label: "Theme Toggle" },
   ],
 };
 
@@ -52,6 +53,7 @@ const primitivesGroup: NavGroupConfig = {
     { to: "/components/link", label: "Link" },
     { to: "/components/badge", label: "Badge" },
     { to: "/components/card", label: "Card" },
+    { to: "/components/code", label: "Code" },
     { to: "/components/input", label: "Input" },
     { to: "/components/menu", label: "Menu" },
     { to: "/components/tabs", label: "Tabs" },
@@ -199,7 +201,7 @@ function ComponentsLayout() {
         <NavGroup config={overlaysGroup} collapsed={collapsed} onExpand={expand} query={trimmed} />
         <NavGroup config={thematicGroup} collapsed={collapsed} onExpand={expand} query={trimmed} />
       </aside>
-      <main className="flex-1 px-12 py-12 max-w-4xl">
+      <main className="flex-1 px-12 py-12 max-w-6xl">
         <Outlet />
       </main>
     </div>
