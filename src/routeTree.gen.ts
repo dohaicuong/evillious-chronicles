@@ -28,54 +28,22 @@ import { Route as AppLibrarySeriesIdVolumeIdChapterIdPageNumberRouteImport } fro
 const ComponentsTypographyLazyRouteImport = createFileRoute(
   '/components/typography',
 )()
-const ComponentsTooltipLazyRouteImport = createFileRoute(
-  '/components/tooltip',
-)()
 const ComponentsToastLazyRouteImport = createFileRoute('/components/toast')()
 const ComponentsThemeToggleLazyRouteImport = createFileRoute(
   '/components/theme-toggle',
 )()
-const ComponentsTabsLazyRouteImport = createFileRoute('/components/tabs')()
-const ComponentsSwitchLazyRouteImport = createFileRoute('/components/switch')()
-const ComponentsSliderLazyRouteImport = createFileRoute('/components/slider')()
-const ComponentsSkeletonLazyRouteImport = createFileRoute(
-  '/components/skeleton',
-)()
 const ComponentsSearchLazyRouteImport = createFileRoute('/components/search')()
-const ComponentsScrollAreaLazyRouteImport = createFileRoute(
-  '/components/scroll-area',
-)()
-const ComponentsQrScannerLazyRouteImport = createFileRoute(
-  '/components/qr-scanner',
-)()
-const ComponentsQrCodeLazyRouteImport = createFileRoute('/components/qr-code')()
-const ComponentsProgressLazyRouteImport = createFileRoute(
-  '/components/progress',
-)()
-const ComponentsPaginationLazyRouteImport = createFileRoute(
-  '/components/pagination',
-)()
-const ComponentsMenuLazyRouteImport = createFileRoute('/components/menu')()
-const ComponentsLinkLazyRouteImport = createFileRoute('/components/link')()
-const ComponentsInputLazyRouteImport = createFileRoute('/components/input')()
-const ComponentsIconButtonLazyRouteImport = createFileRoute(
-  '/components/icon-button',
-)()
-const ComponentsIconLazyRouteImport = createFileRoute('/components/icon')()
 const ComponentsDrawerLazyRouteImport = createFileRoute('/components/drawer')()
 const ComponentsDialogLazyRouteImport = createFileRoute('/components/dialog')()
 const ComponentsColorLazyRouteImport = createFileRoute('/components/color')()
-const ComponentsCodeLazyRouteImport = createFileRoute('/components/code')()
-const ComponentsCardLazyRouteImport = createFileRoute('/components/card')()
-const ComponentsButtonLazyRouteImport = createFileRoute('/components/button')()
 const ComponentsBreakpointsLazyRouteImport = createFileRoute(
   '/components/breakpoints',
 )()
-const ComponentsBadgeLazyRouteImport = createFileRoute('/components/badge')()
 const ComponentsAudioLazyRouteImport = createFileRoute('/components/audio')()
 const ComponentsAnimationLazyRouteImport = createFileRoute(
   '/components/animation',
 )()
+const ComponentsSlugLazyRouteImport = createFileRoute('/components/$slug')()
 const ComponentsThematicVinesLazyRouteImport = createFileRoute(
   '/components/thematic/vines',
 )()
@@ -122,13 +90,6 @@ const ComponentsTypographyLazyRoute =
   } as any).lazy(() =>
     import('./routes/components/typography.lazy').then((d) => d.Route),
   )
-const ComponentsTooltipLazyRoute = ComponentsTooltipLazyRouteImport.update({
-  id: '/tooltip',
-  path: '/tooltip',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/tooltip.lazy').then((d) => d.Route),
-)
 const ComponentsToastLazyRoute = ComponentsToastLazyRouteImport.update({
   id: '/toast',
   path: '/toast',
@@ -144,113 +105,12 @@ const ComponentsThemeToggleLazyRoute =
   } as any).lazy(() =>
     import('./routes/components/theme-toggle.lazy').then((d) => d.Route),
   )
-const ComponentsTabsLazyRoute = ComponentsTabsLazyRouteImport.update({
-  id: '/tabs',
-  path: '/tabs',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/tabs.lazy').then((d) => d.Route),
-)
-const ComponentsSwitchLazyRoute = ComponentsSwitchLazyRouteImport.update({
-  id: '/switch',
-  path: '/switch',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/switch.lazy').then((d) => d.Route),
-)
-const ComponentsSliderLazyRoute = ComponentsSliderLazyRouteImport.update({
-  id: '/slider',
-  path: '/slider',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/slider.lazy').then((d) => d.Route),
-)
-const ComponentsSkeletonLazyRoute = ComponentsSkeletonLazyRouteImport.update({
-  id: '/skeleton',
-  path: '/skeleton',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/skeleton.lazy').then((d) => d.Route),
-)
 const ComponentsSearchLazyRoute = ComponentsSearchLazyRouteImport.update({
   id: '/search',
   path: '/search',
   getParentRoute: () => ComponentsRouteRoute,
 } as any).lazy(() =>
   import('./routes/components/search.lazy').then((d) => d.Route),
-)
-const ComponentsScrollAreaLazyRoute =
-  ComponentsScrollAreaLazyRouteImport.update({
-    id: '/scroll-area',
-    path: '/scroll-area',
-    getParentRoute: () => ComponentsRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/scroll-area.lazy').then((d) => d.Route),
-  )
-const ComponentsQrScannerLazyRoute = ComponentsQrScannerLazyRouteImport.update({
-  id: '/qr-scanner',
-  path: '/qr-scanner',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/qr-scanner.lazy').then((d) => d.Route),
-)
-const ComponentsQrCodeLazyRoute = ComponentsQrCodeLazyRouteImport.update({
-  id: '/qr-code',
-  path: '/qr-code',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/qr-code.lazy').then((d) => d.Route),
-)
-const ComponentsProgressLazyRoute = ComponentsProgressLazyRouteImport.update({
-  id: '/progress',
-  path: '/progress',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/progress.lazy').then((d) => d.Route),
-)
-const ComponentsPaginationLazyRoute =
-  ComponentsPaginationLazyRouteImport.update({
-    id: '/pagination',
-    path: '/pagination',
-    getParentRoute: () => ComponentsRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/pagination.lazy').then((d) => d.Route),
-  )
-const ComponentsMenuLazyRoute = ComponentsMenuLazyRouteImport.update({
-  id: '/menu',
-  path: '/menu',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/menu.lazy').then((d) => d.Route),
-)
-const ComponentsLinkLazyRoute = ComponentsLinkLazyRouteImport.update({
-  id: '/link',
-  path: '/link',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/link.lazy').then((d) => d.Route),
-)
-const ComponentsInputLazyRoute = ComponentsInputLazyRouteImport.update({
-  id: '/input',
-  path: '/input',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/input.lazy').then((d) => d.Route),
-)
-const ComponentsIconButtonLazyRoute =
-  ComponentsIconButtonLazyRouteImport.update({
-    id: '/icon-button',
-    path: '/icon-button',
-    getParentRoute: () => ComponentsRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/icon-button.lazy').then((d) => d.Route),
-  )
-const ComponentsIconLazyRoute = ComponentsIconLazyRouteImport.update({
-  id: '/icon',
-  path: '/icon',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/icon.lazy').then((d) => d.Route),
 )
 const ComponentsDrawerLazyRoute = ComponentsDrawerLazyRouteImport.update({
   id: '/drawer',
@@ -273,27 +133,6 @@ const ComponentsColorLazyRoute = ComponentsColorLazyRouteImport.update({
 } as any).lazy(() =>
   import('./routes/components/color.lazy').then((d) => d.Route),
 )
-const ComponentsCodeLazyRoute = ComponentsCodeLazyRouteImport.update({
-  id: '/code',
-  path: '/code',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/code.lazy').then((d) => d.Route),
-)
-const ComponentsCardLazyRoute = ComponentsCardLazyRouteImport.update({
-  id: '/card',
-  path: '/card',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/card.lazy').then((d) => d.Route),
-)
-const ComponentsButtonLazyRoute = ComponentsButtonLazyRouteImport.update({
-  id: '/button',
-  path: '/button',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/button.lazy').then((d) => d.Route),
-)
 const ComponentsBreakpointsLazyRoute =
   ComponentsBreakpointsLazyRouteImport.update({
     id: '/breakpoints',
@@ -302,13 +141,6 @@ const ComponentsBreakpointsLazyRoute =
   } as any).lazy(() =>
     import('./routes/components/breakpoints.lazy').then((d) => d.Route),
   )
-const ComponentsBadgeLazyRoute = ComponentsBadgeLazyRouteImport.update({
-  id: '/badge',
-  path: '/badge',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/badge.lazy').then((d) => d.Route),
-)
 const ComponentsAudioLazyRoute = ComponentsAudioLazyRouteImport.update({
   id: '/audio',
   path: '/audio',
@@ -322,6 +154,13 @@ const ComponentsAnimationLazyRoute = ComponentsAnimationLazyRouteImport.update({
   getParentRoute: () => ComponentsRouteRoute,
 } as any).lazy(() =>
   import('./routes/components/animation.lazy').then((d) => d.Route),
+)
+const ComponentsSlugLazyRoute = ComponentsSlugLazyRouteImport.update({
+  id: '/$slug',
+  path: '/$slug',
+  getParentRoute: () => ComponentsRouteRoute,
+} as any).lazy(() =>
+  import('./routes/components/$slug.lazy').then((d) => d.Route),
 )
 const ComponentsThematicRouteRoute = ComponentsThematicRouteRouteImport.update({
   id: '/thematic',
@@ -429,34 +268,16 @@ export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
   '/components': typeof ComponentsRouteRouteWithChildren
   '/components/thematic': typeof ComponentsThematicRouteRouteWithChildren
+  '/components/$slug': typeof ComponentsSlugLazyRoute
   '/components/animation': typeof ComponentsAnimationLazyRoute
   '/components/audio': typeof ComponentsAudioLazyRoute
-  '/components/badge': typeof ComponentsBadgeLazyRoute
   '/components/breakpoints': typeof ComponentsBreakpointsLazyRoute
-  '/components/button': typeof ComponentsButtonLazyRoute
-  '/components/card': typeof ComponentsCardLazyRoute
-  '/components/code': typeof ComponentsCodeLazyRoute
   '/components/color': typeof ComponentsColorLazyRoute
   '/components/dialog': typeof ComponentsDialogLazyRoute
   '/components/drawer': typeof ComponentsDrawerLazyRoute
-  '/components/icon': typeof ComponentsIconLazyRoute
-  '/components/icon-button': typeof ComponentsIconButtonLazyRoute
-  '/components/input': typeof ComponentsInputLazyRoute
-  '/components/link': typeof ComponentsLinkLazyRoute
-  '/components/menu': typeof ComponentsMenuLazyRoute
-  '/components/pagination': typeof ComponentsPaginationLazyRoute
-  '/components/progress': typeof ComponentsProgressLazyRoute
-  '/components/qr-code': typeof ComponentsQrCodeLazyRoute
-  '/components/qr-scanner': typeof ComponentsQrScannerLazyRoute
-  '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
   '/components/search': typeof ComponentsSearchLazyRoute
-  '/components/skeleton': typeof ComponentsSkeletonLazyRoute
-  '/components/slider': typeof ComponentsSliderLazyRoute
-  '/components/switch': typeof ComponentsSwitchLazyRoute
-  '/components/tabs': typeof ComponentsTabsLazyRoute
   '/components/theme-toggle': typeof ComponentsThemeToggleLazyRoute
   '/components/toast': typeof ComponentsToastLazyRoute
-  '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
   '/components/': typeof ComponentsIndexRoute
   '/characters/$characterId': typeof AppCharactersCharacterIdRoute
@@ -476,34 +297,16 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/components/thematic': typeof ComponentsThematicRouteRouteWithChildren
+  '/components/$slug': typeof ComponentsSlugLazyRoute
   '/components/animation': typeof ComponentsAnimationLazyRoute
   '/components/audio': typeof ComponentsAudioLazyRoute
-  '/components/badge': typeof ComponentsBadgeLazyRoute
   '/components/breakpoints': typeof ComponentsBreakpointsLazyRoute
-  '/components/button': typeof ComponentsButtonLazyRoute
-  '/components/card': typeof ComponentsCardLazyRoute
-  '/components/code': typeof ComponentsCodeLazyRoute
   '/components/color': typeof ComponentsColorLazyRoute
   '/components/dialog': typeof ComponentsDialogLazyRoute
   '/components/drawer': typeof ComponentsDrawerLazyRoute
-  '/components/icon': typeof ComponentsIconLazyRoute
-  '/components/icon-button': typeof ComponentsIconButtonLazyRoute
-  '/components/input': typeof ComponentsInputLazyRoute
-  '/components/link': typeof ComponentsLinkLazyRoute
-  '/components/menu': typeof ComponentsMenuLazyRoute
-  '/components/pagination': typeof ComponentsPaginationLazyRoute
-  '/components/progress': typeof ComponentsProgressLazyRoute
-  '/components/qr-code': typeof ComponentsQrCodeLazyRoute
-  '/components/qr-scanner': typeof ComponentsQrScannerLazyRoute
-  '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
   '/components/search': typeof ComponentsSearchLazyRoute
-  '/components/skeleton': typeof ComponentsSkeletonLazyRoute
-  '/components/slider': typeof ComponentsSliderLazyRoute
-  '/components/switch': typeof ComponentsSwitchLazyRoute
-  '/components/tabs': typeof ComponentsTabsLazyRoute
   '/components/theme-toggle': typeof ComponentsThemeToggleLazyRoute
   '/components/toast': typeof ComponentsToastLazyRoute
-  '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
   '/': typeof AppIndexRoute
   '/components': typeof ComponentsIndexRoute
@@ -527,34 +330,16 @@ export interface FileRoutesById {
   '/_app': typeof AppRouteRouteWithChildren
   '/components': typeof ComponentsRouteRouteWithChildren
   '/components/thematic': typeof ComponentsThematicRouteRouteWithChildren
+  '/components/$slug': typeof ComponentsSlugLazyRoute
   '/components/animation': typeof ComponentsAnimationLazyRoute
   '/components/audio': typeof ComponentsAudioLazyRoute
-  '/components/badge': typeof ComponentsBadgeLazyRoute
   '/components/breakpoints': typeof ComponentsBreakpointsLazyRoute
-  '/components/button': typeof ComponentsButtonLazyRoute
-  '/components/card': typeof ComponentsCardLazyRoute
-  '/components/code': typeof ComponentsCodeLazyRoute
   '/components/color': typeof ComponentsColorLazyRoute
   '/components/dialog': typeof ComponentsDialogLazyRoute
   '/components/drawer': typeof ComponentsDrawerLazyRoute
-  '/components/icon': typeof ComponentsIconLazyRoute
-  '/components/icon-button': typeof ComponentsIconButtonLazyRoute
-  '/components/input': typeof ComponentsInputLazyRoute
-  '/components/link': typeof ComponentsLinkLazyRoute
-  '/components/menu': typeof ComponentsMenuLazyRoute
-  '/components/pagination': typeof ComponentsPaginationLazyRoute
-  '/components/progress': typeof ComponentsProgressLazyRoute
-  '/components/qr-code': typeof ComponentsQrCodeLazyRoute
-  '/components/qr-scanner': typeof ComponentsQrScannerLazyRoute
-  '/components/scroll-area': typeof ComponentsScrollAreaLazyRoute
   '/components/search': typeof ComponentsSearchLazyRoute
-  '/components/skeleton': typeof ComponentsSkeletonLazyRoute
-  '/components/slider': typeof ComponentsSliderLazyRoute
-  '/components/switch': typeof ComponentsSwitchLazyRoute
-  '/components/tabs': typeof ComponentsTabsLazyRoute
   '/components/theme-toggle': typeof ComponentsThemeToggleLazyRoute
   '/components/toast': typeof ComponentsToastLazyRoute
-  '/components/tooltip': typeof ComponentsTooltipLazyRoute
   '/components/typography': typeof ComponentsTypographyLazyRoute
   '/_app/': typeof AppIndexRoute
   '/components/': typeof ComponentsIndexRoute
@@ -579,34 +364,16 @@ export interface FileRouteTypes {
     | '/'
     | '/components'
     | '/components/thematic'
+    | '/components/$slug'
     | '/components/animation'
     | '/components/audio'
-    | '/components/badge'
     | '/components/breakpoints'
-    | '/components/button'
-    | '/components/card'
-    | '/components/code'
     | '/components/color'
     | '/components/dialog'
     | '/components/drawer'
-    | '/components/icon'
-    | '/components/icon-button'
-    | '/components/input'
-    | '/components/link'
-    | '/components/menu'
-    | '/components/pagination'
-    | '/components/progress'
-    | '/components/qr-code'
-    | '/components/qr-scanner'
-    | '/components/scroll-area'
     | '/components/search'
-    | '/components/skeleton'
-    | '/components/slider'
-    | '/components/switch'
-    | '/components/tabs'
     | '/components/theme-toggle'
     | '/components/toast'
-    | '/components/tooltip'
     | '/components/typography'
     | '/components/'
     | '/characters/$characterId'
@@ -626,34 +393,16 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/components/thematic'
+    | '/components/$slug'
     | '/components/animation'
     | '/components/audio'
-    | '/components/badge'
     | '/components/breakpoints'
-    | '/components/button'
-    | '/components/card'
-    | '/components/code'
     | '/components/color'
     | '/components/dialog'
     | '/components/drawer'
-    | '/components/icon'
-    | '/components/icon-button'
-    | '/components/input'
-    | '/components/link'
-    | '/components/menu'
-    | '/components/pagination'
-    | '/components/progress'
-    | '/components/qr-code'
-    | '/components/qr-scanner'
-    | '/components/scroll-area'
     | '/components/search'
-    | '/components/skeleton'
-    | '/components/slider'
-    | '/components/switch'
-    | '/components/tabs'
     | '/components/theme-toggle'
     | '/components/toast'
-    | '/components/tooltip'
     | '/components/typography'
     | '/'
     | '/components'
@@ -676,34 +425,16 @@ export interface FileRouteTypes {
     | '/_app'
     | '/components'
     | '/components/thematic'
+    | '/components/$slug'
     | '/components/animation'
     | '/components/audio'
-    | '/components/badge'
     | '/components/breakpoints'
-    | '/components/button'
-    | '/components/card'
-    | '/components/code'
     | '/components/color'
     | '/components/dialog'
     | '/components/drawer'
-    | '/components/icon'
-    | '/components/icon-button'
-    | '/components/input'
-    | '/components/link'
-    | '/components/menu'
-    | '/components/pagination'
-    | '/components/progress'
-    | '/components/qr-code'
-    | '/components/qr-scanner'
-    | '/components/scroll-area'
     | '/components/search'
-    | '/components/skeleton'
-    | '/components/slider'
-    | '/components/switch'
-    | '/components/tabs'
     | '/components/theme-toggle'
     | '/components/toast'
-    | '/components/tooltip'
     | '/components/typography'
     | '/_app/'
     | '/components/'
@@ -765,13 +496,6 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsTypographyLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
-    '/components/tooltip': {
-      id: '/components/tooltip'
-      path: '/tooltip'
-      fullPath: '/components/tooltip'
-      preLoaderRoute: typeof ComponentsTooltipLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
     '/components/toast': {
       id: '/components/toast'
       path: '/toast'
@@ -786,109 +510,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsThemeToggleLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
-    '/components/tabs': {
-      id: '/components/tabs'
-      path: '/tabs'
-      fullPath: '/components/tabs'
-      preLoaderRoute: typeof ComponentsTabsLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/switch': {
-      id: '/components/switch'
-      path: '/switch'
-      fullPath: '/components/switch'
-      preLoaderRoute: typeof ComponentsSwitchLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/slider': {
-      id: '/components/slider'
-      path: '/slider'
-      fullPath: '/components/slider'
-      preLoaderRoute: typeof ComponentsSliderLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/skeleton': {
-      id: '/components/skeleton'
-      path: '/skeleton'
-      fullPath: '/components/skeleton'
-      preLoaderRoute: typeof ComponentsSkeletonLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
     '/components/search': {
       id: '/components/search'
       path: '/search'
       fullPath: '/components/search'
       preLoaderRoute: typeof ComponentsSearchLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/scroll-area': {
-      id: '/components/scroll-area'
-      path: '/scroll-area'
-      fullPath: '/components/scroll-area'
-      preLoaderRoute: typeof ComponentsScrollAreaLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/qr-scanner': {
-      id: '/components/qr-scanner'
-      path: '/qr-scanner'
-      fullPath: '/components/qr-scanner'
-      preLoaderRoute: typeof ComponentsQrScannerLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/qr-code': {
-      id: '/components/qr-code'
-      path: '/qr-code'
-      fullPath: '/components/qr-code'
-      preLoaderRoute: typeof ComponentsQrCodeLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/progress': {
-      id: '/components/progress'
-      path: '/progress'
-      fullPath: '/components/progress'
-      preLoaderRoute: typeof ComponentsProgressLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/pagination': {
-      id: '/components/pagination'
-      path: '/pagination'
-      fullPath: '/components/pagination'
-      preLoaderRoute: typeof ComponentsPaginationLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/menu': {
-      id: '/components/menu'
-      path: '/menu'
-      fullPath: '/components/menu'
-      preLoaderRoute: typeof ComponentsMenuLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/link': {
-      id: '/components/link'
-      path: '/link'
-      fullPath: '/components/link'
-      preLoaderRoute: typeof ComponentsLinkLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/input': {
-      id: '/components/input'
-      path: '/input'
-      fullPath: '/components/input'
-      preLoaderRoute: typeof ComponentsInputLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/icon-button': {
-      id: '/components/icon-button'
-      path: '/icon-button'
-      fullPath: '/components/icon-button'
-      preLoaderRoute: typeof ComponentsIconButtonLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/icon': {
-      id: '/components/icon'
-      path: '/icon'
-      fullPath: '/components/icon'
-      preLoaderRoute: typeof ComponentsIconLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/drawer': {
@@ -912,39 +538,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ComponentsColorLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
-    '/components/code': {
-      id: '/components/code'
-      path: '/code'
-      fullPath: '/components/code'
-      preLoaderRoute: typeof ComponentsCodeLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/card': {
-      id: '/components/card'
-      path: '/card'
-      fullPath: '/components/card'
-      preLoaderRoute: typeof ComponentsCardLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/button': {
-      id: '/components/button'
-      path: '/button'
-      fullPath: '/components/button'
-      preLoaderRoute: typeof ComponentsButtonLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
     '/components/breakpoints': {
       id: '/components/breakpoints'
       path: '/breakpoints'
       fullPath: '/components/breakpoints'
       preLoaderRoute: typeof ComponentsBreakpointsLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/badge': {
-      id: '/components/badge'
-      path: '/badge'
-      fullPath: '/components/badge'
-      preLoaderRoute: typeof ComponentsBadgeLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/audio': {
@@ -959,6 +557,13 @@ declare module '@tanstack/react-router' {
       path: '/animation'
       fullPath: '/components/animation'
       preLoaderRoute: typeof ComponentsAnimationLazyRouteImport
+      parentRoute: typeof ComponentsRouteRoute
+    }
+    '/components/$slug': {
+      id: '/components/$slug'
+      path: '/$slug'
+      fullPath: '/components/$slug'
+      preLoaderRoute: typeof ComponentsSlugLazyRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/components/thematic': {
@@ -1127,68 +732,32 @@ const ComponentsThematicRouteRouteWithChildren =
 
 interface ComponentsRouteRouteChildren {
   ComponentsThematicRouteRoute: typeof ComponentsThematicRouteRouteWithChildren
+  ComponentsSlugLazyRoute: typeof ComponentsSlugLazyRoute
   ComponentsAnimationLazyRoute: typeof ComponentsAnimationLazyRoute
   ComponentsAudioLazyRoute: typeof ComponentsAudioLazyRoute
-  ComponentsBadgeLazyRoute: typeof ComponentsBadgeLazyRoute
   ComponentsBreakpointsLazyRoute: typeof ComponentsBreakpointsLazyRoute
-  ComponentsButtonLazyRoute: typeof ComponentsButtonLazyRoute
-  ComponentsCardLazyRoute: typeof ComponentsCardLazyRoute
-  ComponentsCodeLazyRoute: typeof ComponentsCodeLazyRoute
   ComponentsColorLazyRoute: typeof ComponentsColorLazyRoute
   ComponentsDialogLazyRoute: typeof ComponentsDialogLazyRoute
   ComponentsDrawerLazyRoute: typeof ComponentsDrawerLazyRoute
-  ComponentsIconLazyRoute: typeof ComponentsIconLazyRoute
-  ComponentsIconButtonLazyRoute: typeof ComponentsIconButtonLazyRoute
-  ComponentsInputLazyRoute: typeof ComponentsInputLazyRoute
-  ComponentsLinkLazyRoute: typeof ComponentsLinkLazyRoute
-  ComponentsMenuLazyRoute: typeof ComponentsMenuLazyRoute
-  ComponentsPaginationLazyRoute: typeof ComponentsPaginationLazyRoute
-  ComponentsProgressLazyRoute: typeof ComponentsProgressLazyRoute
-  ComponentsQrCodeLazyRoute: typeof ComponentsQrCodeLazyRoute
-  ComponentsQrScannerLazyRoute: typeof ComponentsQrScannerLazyRoute
-  ComponentsScrollAreaLazyRoute: typeof ComponentsScrollAreaLazyRoute
   ComponentsSearchLazyRoute: typeof ComponentsSearchLazyRoute
-  ComponentsSkeletonLazyRoute: typeof ComponentsSkeletonLazyRoute
-  ComponentsSliderLazyRoute: typeof ComponentsSliderLazyRoute
-  ComponentsSwitchLazyRoute: typeof ComponentsSwitchLazyRoute
-  ComponentsTabsLazyRoute: typeof ComponentsTabsLazyRoute
   ComponentsThemeToggleLazyRoute: typeof ComponentsThemeToggleLazyRoute
   ComponentsToastLazyRoute: typeof ComponentsToastLazyRoute
-  ComponentsTooltipLazyRoute: typeof ComponentsTooltipLazyRoute
   ComponentsTypographyLazyRoute: typeof ComponentsTypographyLazyRoute
   ComponentsIndexRoute: typeof ComponentsIndexRoute
 }
 
 const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
   ComponentsThematicRouteRoute: ComponentsThematicRouteRouteWithChildren,
+  ComponentsSlugLazyRoute: ComponentsSlugLazyRoute,
   ComponentsAnimationLazyRoute: ComponentsAnimationLazyRoute,
   ComponentsAudioLazyRoute: ComponentsAudioLazyRoute,
-  ComponentsBadgeLazyRoute: ComponentsBadgeLazyRoute,
   ComponentsBreakpointsLazyRoute: ComponentsBreakpointsLazyRoute,
-  ComponentsButtonLazyRoute: ComponentsButtonLazyRoute,
-  ComponentsCardLazyRoute: ComponentsCardLazyRoute,
-  ComponentsCodeLazyRoute: ComponentsCodeLazyRoute,
   ComponentsColorLazyRoute: ComponentsColorLazyRoute,
   ComponentsDialogLazyRoute: ComponentsDialogLazyRoute,
   ComponentsDrawerLazyRoute: ComponentsDrawerLazyRoute,
-  ComponentsIconLazyRoute: ComponentsIconLazyRoute,
-  ComponentsIconButtonLazyRoute: ComponentsIconButtonLazyRoute,
-  ComponentsInputLazyRoute: ComponentsInputLazyRoute,
-  ComponentsLinkLazyRoute: ComponentsLinkLazyRoute,
-  ComponentsMenuLazyRoute: ComponentsMenuLazyRoute,
-  ComponentsPaginationLazyRoute: ComponentsPaginationLazyRoute,
-  ComponentsProgressLazyRoute: ComponentsProgressLazyRoute,
-  ComponentsQrCodeLazyRoute: ComponentsQrCodeLazyRoute,
-  ComponentsQrScannerLazyRoute: ComponentsQrScannerLazyRoute,
-  ComponentsScrollAreaLazyRoute: ComponentsScrollAreaLazyRoute,
   ComponentsSearchLazyRoute: ComponentsSearchLazyRoute,
-  ComponentsSkeletonLazyRoute: ComponentsSkeletonLazyRoute,
-  ComponentsSliderLazyRoute: ComponentsSliderLazyRoute,
-  ComponentsSwitchLazyRoute: ComponentsSwitchLazyRoute,
-  ComponentsTabsLazyRoute: ComponentsTabsLazyRoute,
   ComponentsThemeToggleLazyRoute: ComponentsThemeToggleLazyRoute,
   ComponentsToastLazyRoute: ComponentsToastLazyRoute,
-  ComponentsTooltipLazyRoute: ComponentsTooltipLazyRoute,
   ComponentsTypographyLazyRoute: ComponentsTypographyLazyRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,
 }

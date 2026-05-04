@@ -9,9 +9,10 @@ import { cn } from "@src/lib/cn";
 // Public API
 // -----------------------------------------------------------------------------
 
-// Identifiers made available to JSX in `tsx preview` markdown fences. Anything
-// referenced by the example code (Button, Link, helper arrays, etc.) must be
-// passed in here.
+// The full pool of identifiers the markdown's `tsx preview` JSX is allowed to
+// reference. Each markdown then declares its own subset via a top-of-file
+// ```scope ... ``` fence; the renderer narrows this pool to that subset before
+// handing it to react-live.
 export type DocScope = Record<string, unknown>;
 
 type ComponentDocProps = {
@@ -27,29 +28,34 @@ export function ComponentDoc({ path, scope }: ComponentDocProps) {
 }
 
 function ComponentDocBody({ markdown, scope }: { markdown: string; scope: DocScope }) {
-  const { header, sections } = useMemo(() => splitDocument(markdown), [markdown]);
-  const tocItems = useMemo(() => buildToc(markdown), [markdown]);
+  // Pull the ```scope ... ``` directive out of the markdown so it doesn't
+  // render as a code block; what's left is what we parse and display.
+  const { names, cleaned } = useMemo(() => extractScopeBlock(markdown), [markdown]);
+  const liveScope = useMemo<DocScope>(() => narrowScope(scope, names), [scope, names]);
+
+  const { header, sections } = useMemo(() => splitDocument(cleaned), [cleaned]);
+  const tocItems = useMemo(() => buildToc(cleaned), [cleaned]);
 
   return (
     <div className="flex items-start gap-12">
       <article className="flex-1 min-w-0 flex flex-col gap-14">
         {header ? (
           <header className="flex flex-col gap-4">
-            <RenderBody body={header} scope={scope} headerLead />
+            <RenderBody body={header} scope={liveScope} headerLead />
           </header>
         ) : null}
         {sections.map((section) => {
           const key = section.heading.toLowerCase();
           if (key === "examples") {
-            return <ExamplesSection key={section.id} section={section} scope={scope} />;
+            return <ExamplesSection key={section.id} section={section} scope={liveScope} />;
           }
           if (key === "props") {
-            return <PropsSection key={section.id} section={section} scope={scope} />;
+            return <PropsSection key={section.id} section={section} scope={liveScope} />;
           }
           return (
             <section key={section.id} id={section.id} className="flex flex-col gap-4 scroll-mt-12">
               <h2 className="text-style-heading-3 text-fg">{section.heading}</h2>
-              <RenderBody body={section.body} scope={scope} />
+              <RenderBody body={section.body} scope={liveScope} />
             </section>
           );
         })}
@@ -57,6 +63,35 @@ function ComponentDocBody({ markdown, scope }: { markdown: string; scope: DocSco
       <Toc items={tocItems} />
     </div>
   );
+}
+
+// Pulls the first ```scope ... ``` fence out of the markdown. Lines inside are
+// bare identifier names; blank lines and `// comments` are ignored. Returns
+// null `names` if no block is present (renderer will fall back to the full
+// pool).
+function extractScopeBlock(md: string): { names: string[] | null; cleaned: string } {
+  const re = /^```scope[^\n]*\n([\s\S]*?)^```[ \t]*\n?/m;
+  const m = re.exec(md);
+  if (!m) return { names: null, cleaned: md };
+  const names = (m[1] ?? "")
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l && !l.startsWith("//"));
+  const cleaned = md.slice(0, m.index) + md.slice(m.index + m[0].length);
+  return { names, cleaned: cleaned.replace(/^\s+/, "") };
+}
+
+function narrowScope(pool: DocScope, names: string[] | null): DocScope {
+  if (!names) return pool;
+  const out: DocScope = {};
+  for (const name of names) {
+    if (name in pool) {
+      out[name] = pool[name];
+    } else if (typeof console !== "undefined") {
+      console.warn(`[ComponentDoc] scope identifier "${name}" not found in pool`);
+    }
+  }
+  return out;
 }
 
 function useMarkdown(path: string) {

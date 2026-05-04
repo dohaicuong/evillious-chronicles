@@ -1,3 +1,8 @@
+```scope
+Button
+Link
+```
+
 # Button
 
 The reader's primary call-to-action surface. Four variants for emphasis hierarchy, three sizes for density, and a sin-aware accent so the same component reads correctly inside any `data-sin` scope.

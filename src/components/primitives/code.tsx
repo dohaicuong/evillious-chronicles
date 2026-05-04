@@ -1,5 +1,6 @@
 import type { ComponentProps } from "react";
 import { cn } from "@src/lib/cn";
+import { ScrollArea } from "@src/components/primitives/scroll-area";
 
 type CodeProps = ComponentProps<"code"> & {
   // Render as a multi-line block (wrapped in <pre>) instead of inline.
@@ -13,19 +14,18 @@ const inlineCls = [
   "text-fg",
 ].join(" ");
 
-const blockCls = [
-  "font-mono text-sm leading-relaxed",
-  "rounded-sm border border-border bg-surface",
-  "p-4 overflow-x-auto",
-  "text-fg",
-].join(" ");
+const blockShellCls = "rounded-sm border border-border bg-surface";
+const blockViewportCls = "py-4";
+const blockPreCls = "font-mono text-sm leading-relaxed px-4 text-fg";
 
 export function Code({ block, className, children, ...props }: CodeProps) {
   if (block) {
     return (
-      <pre className={cn(blockCls, className)}>
-        <code {...props}>{children}</code>
-      </pre>
+      <ScrollArea className={cn(blockShellCls, className)} viewportClassName={blockViewportCls}>
+        <pre className={blockPreCls}>
+          <code {...props}>{children}</code>
+        </pre>
+      </ScrollArea>
     );
   }
   return (
