@@ -1,7 +1,6 @@
 ```scope
 QRScanner
 QRCode
-QRScannerDemo
 ```
 
 # QR Scanner
@@ -11,7 +10,35 @@ Camera-driven QR decoder. Wraps lazy-loaded [`qr-scanner`](https://github.com/ni
 The camera does **not** auto-start — the user clicks the _Start camera_ button to grant permission. This keeps the docs page polite and matches the production UX (the dialog renders the scanner before the user has decided to scan).
 
 ```tsx preview
-<QRScannerDemo />
+() => {
+  const [decoded, setDecoded] = useState(null);
+  const [error, setError] = useState(null);
+  return (
+    <div className="grid w-full max-w-3xl grid-cols-1 gap-6 md:grid-cols-2">
+      <QRScanner
+        onDecoded={(text) => {
+          setDecoded(text);
+          setError(null);
+        }}
+        onError={(err) => setError(err.message)}
+        hint="Aim at any QR code."
+      />
+      <div className="flex flex-col gap-3">
+        <h3 className="text-style-eyebrow text-fg-muted">Result</h3>
+        {decoded ? (
+          <pre className="font-mono text-style-caption text-fg bg-surface border border-border rounded-sm p-3 whitespace-pre-wrap break-all max-h-48 overflow-auto">
+            {decoded}
+          </pre>
+        ) : (
+          <p className="text-style-caption text-fg-muted italic">
+            Nothing decoded yet — start the camera and point at a QR.
+          </p>
+        )}
+        {error ? <p className="text-style-caption text-fg">Error: {error}</p> : null}
+      </div>
+    </div>
+  );
+};
 ```
 
 ## Anatomy
@@ -37,7 +64,35 @@ const [decoded, setDecoded] = useState<string | null>(null);
 The demo wires the scanner to a result panel so you can verify decoded text. Click _Start camera_, allow access, then point at any QR code (the QR Code component on the previous page works as a test target).
 
 ```tsx preview
-<QRScannerDemo />
+() => {
+  const [decoded, setDecoded] = useState(null);
+  const [error, setError] = useState(null);
+  return (
+    <div className="grid w-full max-w-3xl grid-cols-1 gap-6 md:grid-cols-2">
+      <QRScanner
+        onDecoded={(text) => {
+          setDecoded(text);
+          setError(null);
+        }}
+        onError={(err) => setError(err.message)}
+        hint="Aim at any QR code."
+      />
+      <div className="flex flex-col gap-3">
+        <h3 className="text-style-eyebrow text-fg-muted">Result</h3>
+        {decoded ? (
+          <pre className="font-mono text-style-caption text-fg bg-surface border border-border rounded-sm p-3 whitespace-pre-wrap break-all max-h-48 overflow-auto">
+            {decoded}
+          </pre>
+        ) : (
+          <p className="text-style-caption text-fg-muted italic">
+            Nothing decoded yet — start the camera and point at a QR.
+          </p>
+        )}
+        {error ? <p className="text-style-caption text-fg">Error: {error}</p> : null}
+      </div>
+    </div>
+  );
+};
 ```
 
 ### Pair with a printed code

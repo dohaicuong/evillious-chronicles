@@ -1,4 +1,3 @@
-import { useState } from "react";
 import {
   ArrowSquareOutIcon,
   BookOpenIcon,
@@ -10,6 +9,7 @@ import {
   InfoIcon,
   MagnifyingGlassIcon,
   MoonIcon,
+  MusicNotesIcon,
   NoteIcon,
   PauseIcon,
   PlayIcon,
@@ -20,6 +20,8 @@ import { Badge } from "@src/components/primitives/badge";
 import { Button } from "@src/components/primitives/button";
 import { Card } from "@src/components/primitives/card";
 import { Code } from "@src/components/primitives/code";
+import { Dialog } from "@src/components/primitives/dialog";
+import { Drawer } from "@src/components/primitives/drawer";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { Input } from "@src/components/primitives/input";
 import { ExternalLink, Link } from "@src/components/primitives/link";
@@ -34,69 +36,23 @@ import { Slider } from "@src/components/primitives/slider";
 import { Switch } from "@src/components/primitives/switch";
 import { Tabs } from "@src/components/primitives/tabs";
 import { Tooltip } from "@src/components/primitives/tooltip";
+import { useToast } from "@src/components/primitives/toast";
+import { SearchDialog } from "@src/components/library/search-dialog";
+import { ThemeToggle } from "@src/components/shell/theme-toggle";
+import { ClockFace } from "@src/components/thematic/clock-face";
+import { ClockworkOrnament } from "@src/components/thematic/clockwork-ornament";
+import { ClockworkSpinner } from "@src/components/thematic/clockwork-spinner";
+import { Ornament } from "@src/components/thematic/ornament";
+import { SinGlyph } from "@src/components/thematic/sin-glyph";
+import { Vines } from "@src/components/thematic/vines";
+import { useAudio } from "@src/lib/audio";
 import type { DocScope } from "@src/components/docs/component-doc";
-
-// Live previews can't host hooks (react-live wraps the code in a fragment, not
-// a function component), so controlled primitives need stateful host components
-// the markdown can drop in directly via `scope`.
-
-function PaginationDemo({
-  pageCount,
-  initialPage,
-  siblings,
-  size,
-}: {
-  pageCount: number;
-  initialPage: number;
-  siblings?: number;
-  size?: "sm" | "md" | "lg";
-}) {
-  const [page, setPage] = useState(initialPage);
-  return (
-    <Pagination
-      page={page}
-      pageCount={pageCount}
-      onPageChange={setPage}
-      siblings={siblings}
-      size={size}
-    />
-  );
-}
-
-function QRScannerDemo() {
-  const [decoded, setDecoded] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-  return (
-    <div className="grid w-full max-w-3xl grid-cols-1 gap-6 md:grid-cols-2">
-      <QRScanner
-        onDecoded={(text) => {
-          setDecoded(text);
-          setErrorMessage(null);
-        }}
-        onError={(err) => setErrorMessage(err.message)}
-        hint="Aim at any QR code."
-      />
-      <div className="flex flex-col gap-3">
-        <h3 className="text-style-eyebrow text-fg-muted">Result</h3>
-        {decoded ? (
-          <pre className="font-mono text-style-caption text-fg bg-surface border border-border rounded-sm p-3 whitespace-pre-wrap break-all max-h-48 overflow-auto">
-            {decoded}
-          </pre>
-        ) : (
-          <p className="text-style-caption text-fg-muted italic">
-            Nothing decoded yet — start the camera and point at a QR.
-          </p>
-        )}
-        {errorMessage ? <p className="text-style-caption text-fg">Error: {errorMessage}</p> : null}
-      </div>
-    </div>
-  );
-}
 
 // The full pool of identifiers any component-doc markdown is allowed to use
 // inside `tsx preview` blocks. Each markdown declares its own subset via a
 // top-of-file ```scope ... ``` fence; <ComponentDoc> narrows this pool to
-// that subset before passing to react-live.
+// that subset before passing to react-live. Common React hooks (useState,
+// useEffect, …) are merged in by <ComponentDoc> and don't need to live here.
 //
 // Adding a new component doc:
 //   1. Drop the markdown under `public/design-system/components/<slug>.md`
@@ -108,6 +64,8 @@ export const docPool: DocScope = {
   Button,
   Card,
   Code,
+  Dialog,
+  Drawer,
   ExternalLink,
   IconButton,
   Input,
@@ -118,11 +76,20 @@ export const docPool: DocScope = {
   QRCode,
   QRScanner,
   ScrollArea,
+  SearchDialog,
   Skeleton,
   Slider,
   Switch,
   Tabs,
+  ThemeToggle,
   Tooltip,
+  // Thematic
+  ClockFace,
+  ClockworkOrnament,
+  ClockworkSpinner,
+  Ornament,
+  SinGlyph,
+  Vines,
   // Phosphor icons used by previews
   ArrowSquareOutIcon,
   BookOpenIcon,
@@ -134,12 +101,13 @@ export const docPool: DocScope = {
   InfoIcon,
   MagnifyingGlassIcon,
   MoonIcon,
+  MusicNotesIcon,
   NoteIcon,
   PauseIcon,
   PlayIcon,
   SunIcon,
   XIcon,
-  // Stateful demo wrappers (live previews can't host hooks)
-  PaginationDemo,
-  QRScannerDemo,
+  // Doc-specific hooks
+  useAudio,
+  useToast,
 };

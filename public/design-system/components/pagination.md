@@ -1,5 +1,5 @@
 ```scope
-PaginationDemo
+Pagination
 ```
 
 # Pagination
@@ -7,12 +7,15 @@ PaginationDemo
 Numbered page navigation with prev/next caret buttons. Renders ellipses when the range exceeds the visible slot budget. Three sizes; the row wraps onto a second line on narrow viewports rather than overflowing.
 
 ```tsx preview
-<PaginationDemo pageCount={12} initialPage={1} />
+() => {
+  const [page, setPage] = useState(1);
+  return <Pagination page={page} pageCount={12} onPageChange={setPage} />;
+};
 ```
 
 ## Anatomy
 
-`Pagination` is a single component (not compound). The route page passes a thin `PaginationDemo` wrapper to the docs scope so the previews can hold the active page without a hook in the live block — production usage is always controlled, with the parent owning `page`.
+`Pagination` is a single component (not compound). Always controlled — the parent owns `page` and reacts to `onPageChange`.
 
 ```tsx
 import { Pagination } from "@src/components/primitives/pagination";
@@ -29,7 +32,10 @@ const [page, setPage] = useState(1);
 The standard surface. Caret buttons disable at the ends; the active page renders with the accent fill.
 
 ```tsx preview
-<PaginationDemo pageCount={12} initialPage={1} />
+() => {
+  const [page, setPage] = useState(1);
+  return <Pagination page={page} pageCount={12} onPageChange={setPage} />;
+};
 ```
 
 ### Mid-range — page 7 of 12
@@ -37,7 +43,10 @@ The standard surface. Caret buttons disable at the ends; the active page renders
 Both ellipses show when the active page is far from either end and `pageCount` exceeds the slot budget (`5 + 2 × siblings`).
 
 ```tsx preview
-<PaginationDemo pageCount={12} initialPage={7} />
+() => {
+  const [page, setPage] = useState(7);
+  return <Pagination page={page} pageCount={12} onPageChange={setPage} />;
+};
 ```
 
 ### Large set — 100 pages
@@ -45,7 +54,10 @@ Both ellipses show when the active page is far from either end and `pageCount` e
 The slot budget keeps the row compact regardless of total page count.
 
 ```tsx preview
-<PaginationDemo pageCount={100} initialPage={50} />
+() => {
+  const [page, setPage] = useState(50);
+  return <Pagination page={page} pageCount={100} onPageChange={setPage} />;
+};
 ```
 
 ### Few pages — no ellipses
@@ -53,7 +65,10 @@ The slot budget keeps the row compact regardless of total page count.
 Below the slot budget (default 7) every page renders without ellipses.
 
 ```tsx preview
-<PaginationDemo pageCount={5} initialPage={1} />
+() => {
+  const [page, setPage] = useState(1);
+  return <Pagination page={page} pageCount={5} onPageChange={setPage} />;
+};
 ```
 
 ### Sizes
@@ -61,11 +76,16 @@ Below the slot budget (default 7) every page renders without ellipses.
 `sm` keeps the row at a constant 32 px tall; `md` and `lg` shrink to `sm` on phones (so the 7-button row fits ~360 px viewports) and grow at the `sm:` breakpoint.
 
 ```tsx preview
-<div className="flex flex-col items-start gap-4">
-  <PaginationDemo pageCount={20} initialPage={1} size="sm" />
-  <PaginationDemo pageCount={20} initialPage={1} size="md" />
-  <PaginationDemo pageCount={20} initialPage={1} size="lg" />
-</div>
+() => {
+  const [page, setPage] = useState(1);
+  return (
+    <div className="flex flex-col items-start gap-4">
+      <Pagination page={page} pageCount={20} onPageChange={setPage} size="sm" />
+      <Pagination page={page} pageCount={20} onPageChange={setPage} size="md" />
+      <Pagination page={page} pageCount={20} onPageChange={setPage} size="lg" />
+    </div>
+  );
+};
 ```
 
 ### Siblings
@@ -73,7 +93,10 @@ Below the slot budget (default 7) every page renders without ellipses.
 `siblings` controls how many pages render on each side of the active page. The default is 1; bumping to 2 shows a wider window at the cost of a longer row.
 
 ```tsx preview
-<PaginationDemo pageCount={100} initialPage={50} siblings={2} />
+() => {
+  const [page, setPage] = useState(50);
+  return <Pagination page={page} pageCount={100} onPageChange={setPage} siblings={2} />;
+};
 ```
 
 ## Props

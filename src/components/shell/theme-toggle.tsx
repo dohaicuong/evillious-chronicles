@@ -37,8 +37,11 @@ export function ThemeToggle() {
       });
     });
 
-    transition.ready.then(() => {
-      document.documentElement
+    // Fire-and-forget: the wipe animation runs in the background, and the
+    // commit-to-next-theme `setTheme` is queued behind its `finished` promise.
+    // We don't await either — `void` makes the lint rule's intent explicit.
+    void transition.ready.then(() => {
+      void document.documentElement
         .animate(
           { clipPath: ["inset(0 100% 0 0)", "inset(0 0 0 0)"] },
           {

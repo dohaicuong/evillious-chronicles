@@ -15,7 +15,6 @@ import { Route as ComponentsRouteRouteImport } from './routes/components/route'
 import { Route as AppRouteRouteImport } from './routes/_app/route'
 import { Route as ComponentsIndexRouteImport } from './routes/components/index'
 import { Route as AppIndexRouteImport } from './routes/_app/index'
-import { Route as ComponentsThematicRouteRouteImport } from './routes/components/thematic/route'
 import { Route as AppSongsIndexRouteImport } from './routes/_app/songs/index'
 import { Route as AppLibraryIndexRouteImport } from './routes/_app/library/index'
 import { Route as AppCharactersIndexRouteImport } from './routes/_app/characters/index'
@@ -25,43 +24,7 @@ import { Route as AppLibrarySeriesIdVolumeIdIndexRouteImport } from './routes/_a
 import { Route as AppLibrarySeriesIdVolumeIdChapterIdIndexRouteImport } from './routes/_app/library/$seriesId/$volumeId/$chapterId/index'
 import { Route as AppLibrarySeriesIdVolumeIdChapterIdPageNumberRouteImport } from './routes/_app/library/$seriesId/$volumeId/$chapterId/$pageNumber'
 
-const ComponentsTypographyLazyRouteImport = createFileRoute(
-  '/components/typography',
-)()
-const ComponentsToastLazyRouteImport = createFileRoute('/components/toast')()
-const ComponentsThemeToggleLazyRouteImport = createFileRoute(
-  '/components/theme-toggle',
-)()
-const ComponentsSearchLazyRouteImport = createFileRoute('/components/search')()
-const ComponentsDrawerLazyRouteImport = createFileRoute('/components/drawer')()
-const ComponentsDialogLazyRouteImport = createFileRoute('/components/dialog')()
-const ComponentsColorLazyRouteImport = createFileRoute('/components/color')()
-const ComponentsBreakpointsLazyRouteImport = createFileRoute(
-  '/components/breakpoints',
-)()
-const ComponentsAudioLazyRouteImport = createFileRoute('/components/audio')()
-const ComponentsAnimationLazyRouteImport = createFileRoute(
-  '/components/animation',
-)()
 const ComponentsSlugLazyRouteImport = createFileRoute('/components/$slug')()
-const ComponentsThematicVinesLazyRouteImport = createFileRoute(
-  '/components/thematic/vines',
-)()
-const ComponentsThematicSinGlyphLazyRouteImport = createFileRoute(
-  '/components/thematic/sin-glyph',
-)()
-const ComponentsThematicOrnamentLazyRouteImport = createFileRoute(
-  '/components/thematic/ornament',
-)()
-const ComponentsThematicClockworkSpinnerLazyRouteImport = createFileRoute(
-  '/components/thematic/clockwork-spinner',
-)()
-const ComponentsThematicClockworkOrnamentLazyRouteImport = createFileRoute(
-  '/components/thematic/clockwork-ornament',
-)()
-const ComponentsThematicClockFaceLazyRouteImport = createFileRoute(
-  '/components/thematic/clock-face',
-)()
 
 const ComponentsRouteRoute = ComponentsRouteRouteImport.update({
   id: '/components',
@@ -82,79 +45,6 @@ const AppIndexRoute = AppIndexRouteImport.update({
   path: '/',
   getParentRoute: () => AppRouteRoute,
 } as any)
-const ComponentsTypographyLazyRoute =
-  ComponentsTypographyLazyRouteImport.update({
-    id: '/typography',
-    path: '/typography',
-    getParentRoute: () => ComponentsRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/typography.lazy').then((d) => d.Route),
-  )
-const ComponentsToastLazyRoute = ComponentsToastLazyRouteImport.update({
-  id: '/toast',
-  path: '/toast',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/toast.lazy').then((d) => d.Route),
-)
-const ComponentsThemeToggleLazyRoute =
-  ComponentsThemeToggleLazyRouteImport.update({
-    id: '/theme-toggle',
-    path: '/theme-toggle',
-    getParentRoute: () => ComponentsRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/theme-toggle.lazy').then((d) => d.Route),
-  )
-const ComponentsSearchLazyRoute = ComponentsSearchLazyRouteImport.update({
-  id: '/search',
-  path: '/search',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/search.lazy').then((d) => d.Route),
-)
-const ComponentsDrawerLazyRoute = ComponentsDrawerLazyRouteImport.update({
-  id: '/drawer',
-  path: '/drawer',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/drawer.lazy').then((d) => d.Route),
-)
-const ComponentsDialogLazyRoute = ComponentsDialogLazyRouteImport.update({
-  id: '/dialog',
-  path: '/dialog',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/dialog.lazy').then((d) => d.Route),
-)
-const ComponentsColorLazyRoute = ComponentsColorLazyRouteImport.update({
-  id: '/color',
-  path: '/color',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/color.lazy').then((d) => d.Route),
-)
-const ComponentsBreakpointsLazyRoute =
-  ComponentsBreakpointsLazyRouteImport.update({
-    id: '/breakpoints',
-    path: '/breakpoints',
-    getParentRoute: () => ComponentsRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/breakpoints.lazy').then((d) => d.Route),
-  )
-const ComponentsAudioLazyRoute = ComponentsAudioLazyRouteImport.update({
-  id: '/audio',
-  path: '/audio',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/audio.lazy').then((d) => d.Route),
-)
-const ComponentsAnimationLazyRoute = ComponentsAnimationLazyRouteImport.update({
-  id: '/animation',
-  path: '/animation',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any).lazy(() =>
-  import('./routes/components/animation.lazy').then((d) => d.Route),
-)
 const ComponentsSlugLazyRoute = ComponentsSlugLazyRouteImport.update({
   id: '/$slug',
   path: '/$slug',
@@ -162,11 +52,6 @@ const ComponentsSlugLazyRoute = ComponentsSlugLazyRouteImport.update({
 } as any).lazy(() =>
   import('./routes/components/$slug.lazy').then((d) => d.Route),
 )
-const ComponentsThematicRouteRoute = ComponentsThematicRouteRouteImport.update({
-  id: '/thematic',
-  path: '/thematic',
-  getParentRoute: () => ComponentsRouteRoute,
-} as any)
 const AppSongsIndexRoute = AppSongsIndexRouteImport.update({
   id: '/songs/',
   path: '/songs/',
@@ -182,58 +67,6 @@ const AppCharactersIndexRoute = AppCharactersIndexRouteImport.update({
   path: '/characters/',
   getParentRoute: () => AppRouteRoute,
 } as any)
-const ComponentsThematicVinesLazyRoute =
-  ComponentsThematicVinesLazyRouteImport.update({
-    id: '/vines',
-    path: '/vines',
-    getParentRoute: () => ComponentsThematicRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/thematic/vines.lazy').then((d) => d.Route),
-  )
-const ComponentsThematicSinGlyphLazyRoute =
-  ComponentsThematicSinGlyphLazyRouteImport.update({
-    id: '/sin-glyph',
-    path: '/sin-glyph',
-    getParentRoute: () => ComponentsThematicRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/thematic/sin-glyph.lazy').then((d) => d.Route),
-  )
-const ComponentsThematicOrnamentLazyRoute =
-  ComponentsThematicOrnamentLazyRouteImport.update({
-    id: '/ornament',
-    path: '/ornament',
-    getParentRoute: () => ComponentsThematicRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/thematic/ornament.lazy').then((d) => d.Route),
-  )
-const ComponentsThematicClockworkSpinnerLazyRoute =
-  ComponentsThematicClockworkSpinnerLazyRouteImport.update({
-    id: '/clockwork-spinner',
-    path: '/clockwork-spinner',
-    getParentRoute: () => ComponentsThematicRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/thematic/clockwork-spinner.lazy').then(
-      (d) => d.Route,
-    ),
-  )
-const ComponentsThematicClockworkOrnamentLazyRoute =
-  ComponentsThematicClockworkOrnamentLazyRouteImport.update({
-    id: '/clockwork-ornament',
-    path: '/clockwork-ornament',
-    getParentRoute: () => ComponentsThematicRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/thematic/clockwork-ornament.lazy').then(
-      (d) => d.Route,
-    ),
-  )
-const ComponentsThematicClockFaceLazyRoute =
-  ComponentsThematicClockFaceLazyRouteImport.update({
-    id: '/clock-face',
-    path: '/clock-face',
-    getParentRoute: () => ComponentsThematicRouteRoute,
-  } as any).lazy(() =>
-    import('./routes/components/thematic/clock-face.lazy').then((d) => d.Route),
-  )
 const AppCharactersCharacterIdRoute =
   AppCharactersCharacterIdRouteImport.update({
     id: '/characters/$characterId',
@@ -267,26 +100,9 @@ const AppLibrarySeriesIdVolumeIdChapterIdPageNumberRoute =
 export interface FileRoutesByFullPath {
   '/': typeof AppIndexRoute
   '/components': typeof ComponentsRouteRouteWithChildren
-  '/components/thematic': typeof ComponentsThematicRouteRouteWithChildren
   '/components/$slug': typeof ComponentsSlugLazyRoute
-  '/components/animation': typeof ComponentsAnimationLazyRoute
-  '/components/audio': typeof ComponentsAudioLazyRoute
-  '/components/breakpoints': typeof ComponentsBreakpointsLazyRoute
-  '/components/color': typeof ComponentsColorLazyRoute
-  '/components/dialog': typeof ComponentsDialogLazyRoute
-  '/components/drawer': typeof ComponentsDrawerLazyRoute
-  '/components/search': typeof ComponentsSearchLazyRoute
-  '/components/theme-toggle': typeof ComponentsThemeToggleLazyRoute
-  '/components/toast': typeof ComponentsToastLazyRoute
-  '/components/typography': typeof ComponentsTypographyLazyRoute
   '/components/': typeof ComponentsIndexRoute
   '/characters/$characterId': typeof AppCharactersCharacterIdRoute
-  '/components/thematic/clock-face': typeof ComponentsThematicClockFaceLazyRoute
-  '/components/thematic/clockwork-ornament': typeof ComponentsThematicClockworkOrnamentLazyRoute
-  '/components/thematic/clockwork-spinner': typeof ComponentsThematicClockworkSpinnerLazyRoute
-  '/components/thematic/ornament': typeof ComponentsThematicOrnamentLazyRoute
-  '/components/thematic/sin-glyph': typeof ComponentsThematicSinGlyphLazyRoute
-  '/components/thematic/vines': typeof ComponentsThematicVinesLazyRoute
   '/characters/': typeof AppCharactersIndexRoute
   '/library/': typeof AppLibraryIndexRoute
   '/songs/': typeof AppSongsIndexRoute
@@ -296,27 +112,10 @@ export interface FileRoutesByFullPath {
   '/library/$seriesId/$volumeId/$chapterId/': typeof AppLibrarySeriesIdVolumeIdChapterIdIndexRoute
 }
 export interface FileRoutesByTo {
-  '/components/thematic': typeof ComponentsThematicRouteRouteWithChildren
   '/components/$slug': typeof ComponentsSlugLazyRoute
-  '/components/animation': typeof ComponentsAnimationLazyRoute
-  '/components/audio': typeof ComponentsAudioLazyRoute
-  '/components/breakpoints': typeof ComponentsBreakpointsLazyRoute
-  '/components/color': typeof ComponentsColorLazyRoute
-  '/components/dialog': typeof ComponentsDialogLazyRoute
-  '/components/drawer': typeof ComponentsDrawerLazyRoute
-  '/components/search': typeof ComponentsSearchLazyRoute
-  '/components/theme-toggle': typeof ComponentsThemeToggleLazyRoute
-  '/components/toast': typeof ComponentsToastLazyRoute
-  '/components/typography': typeof ComponentsTypographyLazyRoute
   '/': typeof AppIndexRoute
   '/components': typeof ComponentsIndexRoute
   '/characters/$characterId': typeof AppCharactersCharacterIdRoute
-  '/components/thematic/clock-face': typeof ComponentsThematicClockFaceLazyRoute
-  '/components/thematic/clockwork-ornament': typeof ComponentsThematicClockworkOrnamentLazyRoute
-  '/components/thematic/clockwork-spinner': typeof ComponentsThematicClockworkSpinnerLazyRoute
-  '/components/thematic/ornament': typeof ComponentsThematicOrnamentLazyRoute
-  '/components/thematic/sin-glyph': typeof ComponentsThematicSinGlyphLazyRoute
-  '/components/thematic/vines': typeof ComponentsThematicVinesLazyRoute
   '/characters': typeof AppCharactersIndexRoute
   '/library': typeof AppLibraryIndexRoute
   '/songs': typeof AppSongsIndexRoute
@@ -329,27 +128,10 @@ export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/_app': typeof AppRouteRouteWithChildren
   '/components': typeof ComponentsRouteRouteWithChildren
-  '/components/thematic': typeof ComponentsThematicRouteRouteWithChildren
   '/components/$slug': typeof ComponentsSlugLazyRoute
-  '/components/animation': typeof ComponentsAnimationLazyRoute
-  '/components/audio': typeof ComponentsAudioLazyRoute
-  '/components/breakpoints': typeof ComponentsBreakpointsLazyRoute
-  '/components/color': typeof ComponentsColorLazyRoute
-  '/components/dialog': typeof ComponentsDialogLazyRoute
-  '/components/drawer': typeof ComponentsDrawerLazyRoute
-  '/components/search': typeof ComponentsSearchLazyRoute
-  '/components/theme-toggle': typeof ComponentsThemeToggleLazyRoute
-  '/components/toast': typeof ComponentsToastLazyRoute
-  '/components/typography': typeof ComponentsTypographyLazyRoute
   '/_app/': typeof AppIndexRoute
   '/components/': typeof ComponentsIndexRoute
   '/_app/characters/$characterId': typeof AppCharactersCharacterIdRoute
-  '/components/thematic/clock-face': typeof ComponentsThematicClockFaceLazyRoute
-  '/components/thematic/clockwork-ornament': typeof ComponentsThematicClockworkOrnamentLazyRoute
-  '/components/thematic/clockwork-spinner': typeof ComponentsThematicClockworkSpinnerLazyRoute
-  '/components/thematic/ornament': typeof ComponentsThematicOrnamentLazyRoute
-  '/components/thematic/sin-glyph': typeof ComponentsThematicSinGlyphLazyRoute
-  '/components/thematic/vines': typeof ComponentsThematicVinesLazyRoute
   '/_app/characters/': typeof AppCharactersIndexRoute
   '/_app/library/': typeof AppLibraryIndexRoute
   '/_app/songs/': typeof AppSongsIndexRoute
@@ -363,26 +145,9 @@ export interface FileRouteTypes {
   fullPaths:
     | '/'
     | '/components'
-    | '/components/thematic'
     | '/components/$slug'
-    | '/components/animation'
-    | '/components/audio'
-    | '/components/breakpoints'
-    | '/components/color'
-    | '/components/dialog'
-    | '/components/drawer'
-    | '/components/search'
-    | '/components/theme-toggle'
-    | '/components/toast'
-    | '/components/typography'
     | '/components/'
     | '/characters/$characterId'
-    | '/components/thematic/clock-face'
-    | '/components/thematic/clockwork-ornament'
-    | '/components/thematic/clockwork-spinner'
-    | '/components/thematic/ornament'
-    | '/components/thematic/sin-glyph'
-    | '/components/thematic/vines'
     | '/characters/'
     | '/library/'
     | '/songs/'
@@ -392,27 +157,10 @@ export interface FileRouteTypes {
     | '/library/$seriesId/$volumeId/$chapterId/'
   fileRoutesByTo: FileRoutesByTo
   to:
-    | '/components/thematic'
     | '/components/$slug'
-    | '/components/animation'
-    | '/components/audio'
-    | '/components/breakpoints'
-    | '/components/color'
-    | '/components/dialog'
-    | '/components/drawer'
-    | '/components/search'
-    | '/components/theme-toggle'
-    | '/components/toast'
-    | '/components/typography'
     | '/'
     | '/components'
     | '/characters/$characterId'
-    | '/components/thematic/clock-face'
-    | '/components/thematic/clockwork-ornament'
-    | '/components/thematic/clockwork-spinner'
-    | '/components/thematic/ornament'
-    | '/components/thematic/sin-glyph'
-    | '/components/thematic/vines'
     | '/characters'
     | '/library'
     | '/songs'
@@ -424,27 +172,10 @@ export interface FileRouteTypes {
     | '__root__'
     | '/_app'
     | '/components'
-    | '/components/thematic'
     | '/components/$slug'
-    | '/components/animation'
-    | '/components/audio'
-    | '/components/breakpoints'
-    | '/components/color'
-    | '/components/dialog'
-    | '/components/drawer'
-    | '/components/search'
-    | '/components/theme-toggle'
-    | '/components/toast'
-    | '/components/typography'
     | '/_app/'
     | '/components/'
     | '/_app/characters/$characterId'
-    | '/components/thematic/clock-face'
-    | '/components/thematic/clockwork-ornament'
-    | '/components/thematic/clockwork-spinner'
-    | '/components/thematic/ornament'
-    | '/components/thematic/sin-glyph'
-    | '/components/thematic/vines'
     | '/_app/characters/'
     | '/_app/library/'
     | '/_app/songs/'
@@ -489,88 +220,11 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AppIndexRouteImport
       parentRoute: typeof AppRouteRoute
     }
-    '/components/typography': {
-      id: '/components/typography'
-      path: '/typography'
-      fullPath: '/components/typography'
-      preLoaderRoute: typeof ComponentsTypographyLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/toast': {
-      id: '/components/toast'
-      path: '/toast'
-      fullPath: '/components/toast'
-      preLoaderRoute: typeof ComponentsToastLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/theme-toggle': {
-      id: '/components/theme-toggle'
-      path: '/theme-toggle'
-      fullPath: '/components/theme-toggle'
-      preLoaderRoute: typeof ComponentsThemeToggleLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/search': {
-      id: '/components/search'
-      path: '/search'
-      fullPath: '/components/search'
-      preLoaderRoute: typeof ComponentsSearchLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/drawer': {
-      id: '/components/drawer'
-      path: '/drawer'
-      fullPath: '/components/drawer'
-      preLoaderRoute: typeof ComponentsDrawerLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/dialog': {
-      id: '/components/dialog'
-      path: '/dialog'
-      fullPath: '/components/dialog'
-      preLoaderRoute: typeof ComponentsDialogLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/color': {
-      id: '/components/color'
-      path: '/color'
-      fullPath: '/components/color'
-      preLoaderRoute: typeof ComponentsColorLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/breakpoints': {
-      id: '/components/breakpoints'
-      path: '/breakpoints'
-      fullPath: '/components/breakpoints'
-      preLoaderRoute: typeof ComponentsBreakpointsLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/audio': {
-      id: '/components/audio'
-      path: '/audio'
-      fullPath: '/components/audio'
-      preLoaderRoute: typeof ComponentsAudioLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/animation': {
-      id: '/components/animation'
-      path: '/animation'
-      fullPath: '/components/animation'
-      preLoaderRoute: typeof ComponentsAnimationLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
     '/components/$slug': {
       id: '/components/$slug'
       path: '/$slug'
       fullPath: '/components/$slug'
       preLoaderRoute: typeof ComponentsSlugLazyRouteImport
-      parentRoute: typeof ComponentsRouteRoute
-    }
-    '/components/thematic': {
-      id: '/components/thematic'
-      path: '/thematic'
-      fullPath: '/components/thematic'
-      preLoaderRoute: typeof ComponentsThematicRouteRouteImport
       parentRoute: typeof ComponentsRouteRoute
     }
     '/_app/songs/': {
@@ -593,48 +247,6 @@ declare module '@tanstack/react-router' {
       fullPath: '/characters/'
       preLoaderRoute: typeof AppCharactersIndexRouteImport
       parentRoute: typeof AppRouteRoute
-    }
-    '/components/thematic/vines': {
-      id: '/components/thematic/vines'
-      path: '/vines'
-      fullPath: '/components/thematic/vines'
-      preLoaderRoute: typeof ComponentsThematicVinesLazyRouteImport
-      parentRoute: typeof ComponentsThematicRouteRoute
-    }
-    '/components/thematic/sin-glyph': {
-      id: '/components/thematic/sin-glyph'
-      path: '/sin-glyph'
-      fullPath: '/components/thematic/sin-glyph'
-      preLoaderRoute: typeof ComponentsThematicSinGlyphLazyRouteImport
-      parentRoute: typeof ComponentsThematicRouteRoute
-    }
-    '/components/thematic/ornament': {
-      id: '/components/thematic/ornament'
-      path: '/ornament'
-      fullPath: '/components/thematic/ornament'
-      preLoaderRoute: typeof ComponentsThematicOrnamentLazyRouteImport
-      parentRoute: typeof ComponentsThematicRouteRoute
-    }
-    '/components/thematic/clockwork-spinner': {
-      id: '/components/thematic/clockwork-spinner'
-      path: '/clockwork-spinner'
-      fullPath: '/components/thematic/clockwork-spinner'
-      preLoaderRoute: typeof ComponentsThematicClockworkSpinnerLazyRouteImport
-      parentRoute: typeof ComponentsThematicRouteRoute
-    }
-    '/components/thematic/clockwork-ornament': {
-      id: '/components/thematic/clockwork-ornament'
-      path: '/clockwork-ornament'
-      fullPath: '/components/thematic/clockwork-ornament'
-      preLoaderRoute: typeof ComponentsThematicClockworkOrnamentLazyRouteImport
-      parentRoute: typeof ComponentsThematicRouteRoute
-    }
-    '/components/thematic/clock-face': {
-      id: '/components/thematic/clock-face'
-      path: '/clock-face'
-      fullPath: '/components/thematic/clock-face'
-      preLoaderRoute: typeof ComponentsThematicClockFaceLazyRouteImport
-      parentRoute: typeof ComponentsThematicRouteRoute
     }
     '/_app/characters/$characterId': {
       id: '/_app/characters/$characterId'
@@ -704,61 +316,13 @@ const AppRouteRouteWithChildren = AppRouteRoute._addFileChildren(
   AppRouteRouteChildren,
 )
 
-interface ComponentsThematicRouteRouteChildren {
-  ComponentsThematicClockFaceLazyRoute: typeof ComponentsThematicClockFaceLazyRoute
-  ComponentsThematicClockworkOrnamentLazyRoute: typeof ComponentsThematicClockworkOrnamentLazyRoute
-  ComponentsThematicClockworkSpinnerLazyRoute: typeof ComponentsThematicClockworkSpinnerLazyRoute
-  ComponentsThematicOrnamentLazyRoute: typeof ComponentsThematicOrnamentLazyRoute
-  ComponentsThematicSinGlyphLazyRoute: typeof ComponentsThematicSinGlyphLazyRoute
-  ComponentsThematicVinesLazyRoute: typeof ComponentsThematicVinesLazyRoute
-}
-
-const ComponentsThematicRouteRouteChildren: ComponentsThematicRouteRouteChildren =
-  {
-    ComponentsThematicClockFaceLazyRoute: ComponentsThematicClockFaceLazyRoute,
-    ComponentsThematicClockworkOrnamentLazyRoute:
-      ComponentsThematicClockworkOrnamentLazyRoute,
-    ComponentsThematicClockworkSpinnerLazyRoute:
-      ComponentsThematicClockworkSpinnerLazyRoute,
-    ComponentsThematicOrnamentLazyRoute: ComponentsThematicOrnamentLazyRoute,
-    ComponentsThematicSinGlyphLazyRoute: ComponentsThematicSinGlyphLazyRoute,
-    ComponentsThematicVinesLazyRoute: ComponentsThematicVinesLazyRoute,
-  }
-
-const ComponentsThematicRouteRouteWithChildren =
-  ComponentsThematicRouteRoute._addFileChildren(
-    ComponentsThematicRouteRouteChildren,
-  )
-
 interface ComponentsRouteRouteChildren {
-  ComponentsThematicRouteRoute: typeof ComponentsThematicRouteRouteWithChildren
   ComponentsSlugLazyRoute: typeof ComponentsSlugLazyRoute
-  ComponentsAnimationLazyRoute: typeof ComponentsAnimationLazyRoute
-  ComponentsAudioLazyRoute: typeof ComponentsAudioLazyRoute
-  ComponentsBreakpointsLazyRoute: typeof ComponentsBreakpointsLazyRoute
-  ComponentsColorLazyRoute: typeof ComponentsColorLazyRoute
-  ComponentsDialogLazyRoute: typeof ComponentsDialogLazyRoute
-  ComponentsDrawerLazyRoute: typeof ComponentsDrawerLazyRoute
-  ComponentsSearchLazyRoute: typeof ComponentsSearchLazyRoute
-  ComponentsThemeToggleLazyRoute: typeof ComponentsThemeToggleLazyRoute
-  ComponentsToastLazyRoute: typeof ComponentsToastLazyRoute
-  ComponentsTypographyLazyRoute: typeof ComponentsTypographyLazyRoute
   ComponentsIndexRoute: typeof ComponentsIndexRoute
 }
 
 const ComponentsRouteRouteChildren: ComponentsRouteRouteChildren = {
-  ComponentsThematicRouteRoute: ComponentsThematicRouteRouteWithChildren,
   ComponentsSlugLazyRoute: ComponentsSlugLazyRoute,
-  ComponentsAnimationLazyRoute: ComponentsAnimationLazyRoute,
-  ComponentsAudioLazyRoute: ComponentsAudioLazyRoute,
-  ComponentsBreakpointsLazyRoute: ComponentsBreakpointsLazyRoute,
-  ComponentsColorLazyRoute: ComponentsColorLazyRoute,
-  ComponentsDialogLazyRoute: ComponentsDialogLazyRoute,
-  ComponentsDrawerLazyRoute: ComponentsDrawerLazyRoute,
-  ComponentsSearchLazyRoute: ComponentsSearchLazyRoute,
-  ComponentsThemeToggleLazyRoute: ComponentsThemeToggleLazyRoute,
-  ComponentsToastLazyRoute: ComponentsToastLazyRoute,
-  ComponentsTypographyLazyRoute: ComponentsTypographyLazyRoute,
   ComponentsIndexRoute: ComponentsIndexRoute,
 }
 

@@ -85,12 +85,12 @@ const thematicGroup: NavGroupConfig = {
   label: "Thematic",
   icon: SparkleIcon,
   items: [
-    { to: "/components/thematic/sin-glyph", label: "Sin Glyphs" },
-    { to: "/components/thematic/clockwork-spinner", label: "Clockwork Spinner" },
-    { to: "/components/thematic/clockwork-ornament", label: "Clockwork Ornament" },
-    { to: "/components/thematic/clock-face", label: "Clock Face" },
-    { to: "/components/thematic/vines", label: "Vines" },
-    { to: "/components/thematic/ornament", label: "Ornament" },
+    { to: "/components/sin-glyph", label: "Sin Glyphs" },
+    { to: "/components/clockwork-spinner", label: "Clockwork Spinner" },
+    { to: "/components/clockwork-ornament", label: "Clockwork Ornament" },
+    { to: "/components/clock-face", label: "Clock Face" },
+    { to: "/components/vines", label: "Vines" },
+    { to: "/components/ornament", label: "Ornament" },
   ],
 };
 
