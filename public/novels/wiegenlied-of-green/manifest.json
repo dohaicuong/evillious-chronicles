@@ -1,6 +1,6 @@
 {
   "cover": {
-    "src": "/wiegenlied-of-green/cover.webp",
+    "src": "/novels/wiegenlied-of-green/cover.webp",
     "alt": "Wiegenlied of Green — Michaela and Clarith beneath the Millennium Tree at dusk",
     "credit": "Cover Illustration by 鈴ノ助",
     "width": 960,
@@ -94,43 +94,43 @@
   "openingGallery": [
     {
       "illustration": {
-        "src": "/wiegenlied-of-green/artwork-1.jpg",
+        "src": "/novels/wiegenlied-of-green/artwork-1.jpg",
         "alt": "Wiegenlied of Green — opening artwork 1"
       }
     },
     {
       "illustration": {
-        "src": "/wiegenlied-of-green/artwork-2.jpg",
+        "src": "/novels/wiegenlied-of-green/artwork-2.jpg",
         "alt": "Wiegenlied of Green — opening artwork 2"
       }
     },
     {
       "illustration": {
-        "src": "/wiegenlied-of-green/artwork-3.jpg",
+        "src": "/novels/wiegenlied-of-green/artwork-3.jpg",
         "alt": "Wiegenlied of Green — opening artwork 3"
       }
     },
     {
       "illustration": {
-        "src": "/wiegenlied-of-green/artwork-4.jpg",
+        "src": "/novels/wiegenlied-of-green/artwork-4.jpg",
         "alt": "Wiegenlied of Green — opening artwork 4"
       }
     },
     {
       "illustration": {
-        "src": "/wiegenlied-of-green/artwork-5.jpg",
+        "src": "/novels/wiegenlied-of-green/artwork-5.jpg",
         "alt": "Wiegenlied of Green — opening artwork 5"
       }
     },
     {
       "illustration": {
-        "src": "/wiegenlied-of-green/artwork-6.jpg",
+        "src": "/novels/wiegenlied-of-green/artwork-6.jpg",
         "alt": "Wiegenlied of Green — opening artwork 6"
       }
     },
     {
       "illustration": {
-        "src": "/wiegenlied-of-green/artwork-7.jpg",
+        "src": "/novels/wiegenlied-of-green/artwork-7.jpg",
         "alt": "Wiegenlied of Green — opening artwork 7"
       }
     }
@@ -142,39 +142,39 @@
   },
   "chapterIllustration": {
     "illustration-1": {
-      "src": "/wiegenlied-of-green/illustration-1.jpg",
+      "src": "/novels/wiegenlied-of-green/illustration-1.jpg",
       "alt": "Elluka in the Millennium Tree Forest with Michaela the robin on her shoulder"
     },
     "illustration-2": {
-      "src": "/wiegenlied-of-green/illustration-2.jpg",
+      "src": "/novels/wiegenlied-of-green/illustration-2.jpg",
       "alt": "Michaela and Gumillia — the forest spirits in their new human bodies"
     },
     "illustration-3": {
-      "src": "/wiegenlied-of-green/illustration-3.jpg",
+      "src": "/novels/wiegenlied-of-green/illustration-3.jpg",
       "alt": "Clarith in her village home — the white-haired Netsuma girl"
     },
     "illustration-4": {
-      "src": "/wiegenlied-of-green/illustration-4.jpg",
+      "src": "/novels/wiegenlied-of-green/illustration-4.jpg",
       "alt": "Michaela singing the Music Box Lullaby on Yatski hill"
     },
     "illustration-5": {
-      "src": "/wiegenlied-of-green/illustration-5.jpg",
+      "src": "/novels/wiegenlied-of-green/illustration-5.jpg",
       "alt": "Michaela and Clarith at the Freesis mansion"
     },
     "illustration-6": {
-      "src": "/wiegenlied-of-green/illustration-6.jpg",
+      "src": "/novels/wiegenlied-of-green/illustration-6.jpg",
       "alt": "Leaving the Freesis mansion as Lucifenia closes in"
     },
     "illustration-7": {
-      "src": "/wiegenlied-of-green/illustration-7.jpg",
+      "src": "/novels/wiegenlied-of-green/illustration-7.jpg",
       "alt": "Clarith at the Port Town monastery — refuge after the fall of Toragay"
     },
     "illustration-8": {
-      "src": "/wiegenlied-of-green/illustration-8.jpg",
+      "src": "/novels/wiegenlied-of-green/illustration-8.jpg",
       "alt": "Clarith and the blonde stranger at the seaside monastery"
     },
     "illustration-9": {
-      "src": "/wiegenlied-of-green/illustration-9.jpg",
+      "src": "/novels/wiegenlied-of-green/illustration-9.jpg",
       "alt": "The sapling planted on the unknown coast — Wooden Girl reborn"
     }
   }

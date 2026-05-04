@@ -59,15 +59,25 @@ export function makePagesBuilder(illustrations: Record<string, ImageAsset>) {
     });
 }
 
+// Every novel volume's static assets (chapter `.md`, manifest, images) live
+// under `public/novels/<slug>/`. Volume files keep referring to the bare
+// slug; the prefix is applied here so manifest keys and fetch URLs stay
+// consistent across the codebase.
+const NOVELS_PREFIX = "novels/";
+
+function manifestKey(prefix: string): string {
+  // Strip leading "./" and trailing "/" — volume `pages:` strings come in
+  // as e.g. "./cloture-of-yellow/chapters/01-ch1"; manifest keys are
+  // public-relative paths like "novels/cloture-of-yellow/chapters/01-ch1".
+  return NOVELS_PREFIX + prefix.replace(/^\.?\//, "").replace(/\/$/, "");
+}
+
 // Manifest-driven directory listing for chapter pages. The chapter `.md`
 // content lives in `public/` (served as static assets, not bundled). The
-// Vite plugin `chapterManifestPlugin` scans `public/<slug>/chapters/...md`
-// and serves the listing as `chapter-manifest.json`, fetched at boot.
+// Vite plugin `chapterManifestPlugin` scans the public tree and serves the
+// listing as `chapter-manifest.json`, fetched at boot.
 function pagesUnder(prefix: string): string[] {
-  // Strip leading "./" and trailing "/" — manifest keys are public-relative
-  // paths like "venomania/chapters/01-ch1".
-  const key = prefix.replace(/^\.?\//, "").replace(/\/$/, "");
-  return getChapterManifest()[key] ?? [];
+  return getChapterManifest()[manifestKey(prefix)] ?? [];
 }
 
 export function pageCountUnder(prefix: string): number {
@@ -78,7 +88,7 @@ export function pageCountUnder(prefix: string): number {
 // pre-fetcher and the reader fetcher pointed at identical URLs so the SW
 // cache key matches.
 function urlsUnder(prefix: string): string[] {
-  const dirKey = prefix.replace(/^\.?\//, "").replace(/\/$/, "");
+  const dirKey = manifestKey(prefix);
   return pagesUnder(prefix).map((name) => `${import.meta.env.BASE_URL}${dirKey}/${name}`);
 }
 
@@ -108,7 +118,7 @@ export async function Chapter({
   songIds,
   illustrations,
 }: ChapterProps): Promise<ChapterType> {
-  const dirKey = pages.replace(/^\.?\//, "").replace(/\/$/, "");
+  const dirKey = manifestKey(pages);
   const filenames = pagesUnder(pages);
   const ordered = await Promise.all(
     filenames.map(async (name) => {
@@ -156,9 +166,9 @@ export type VolumeSlim = {
   series: string;
 
   // Public asset directory for this volume — where `manifest.json`, cover,
-  // gallery, illustrations, and chapter `.md` files live under `public/`.
-  // Defaults to `slug` when omitted; set explicitly when slug and dir name
-  // diverge (e.g. slug `princess-sleep` ↔ dir `sleep-princess`).
+  // gallery, illustrations, and chapter `.md` files live under
+  // `public/novels/`. Defaults to `slug` when omitted; set explicitly when
+  // slug and dir name diverge (e.g. slug `princess-sleep` ↔ dir `sleep-princess`).
   publicDir?: string;
 
   chapter: VolumeChapter[];
@@ -303,7 +313,7 @@ export type VolumeBundle = {
   /**
    * Async volume metadata for the volume detail page — hero, poetry, gallery,
    * title page, plus the slim chapter list. Lazy-fetches the heavy manifest
-   * from `public/<publicDir>/manifest.json` and memoizes the result.
+   * from `public/novels/<publicDir>/manifest.json` and memoizes the result.
    */
   meta: () => Promise<VolumeMeta>;
   /** Lazy async resolver for one chapter's pages — single chapter's worth of fetches. */
@@ -327,13 +337,13 @@ export type VolumeBundle = {
 };
 
 function heavyManifestUrl(slim: VolumeSlim): string {
-  return `${import.meta.env.BASE_URL}${slim.publicDir ?? slim.slug}/manifest.json`;
+  return `${import.meta.env.BASE_URL}${NOVELS_PREFIX}${slim.publicDir ?? slim.slug}/manifest.json`;
 }
 
 /**
  * Volume factory — single source of truth for one volume. Returns a bundle
  * with three views derived from the slim TS object plus a lazily-fetched
- * heavy manifest from `public/<publicDir>/manifest.json`:
+ * heavy manifest from `public/novels/<publicDir>/manifest.json`:
  *
  *  - `slim` (sync) for catalogs that only need metadata + page-counts.
  *  - `meta()` (async) for the volume detail page — hero / poetry / gallery /

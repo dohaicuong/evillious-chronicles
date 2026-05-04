@@ -1,6 +1,6 @@
 {
   "cover": {
-    "src": "/cloture-of-yellow/cover.webp",
+    "src": "/novels/cloture-of-yellow/cover.webp",
     "alt": "Clôture of Yellow — twin protagonists framed by gears and a candlelit castle",
     "credit": "Cover Illustration by 一色",
     "width": 830,
@@ -164,31 +164,31 @@
   "openingGallery": [
     {
       "illustration": {
-        "src": "/cloture-of-yellow/artwork-1.jpg",
+        "src": "/novels/cloture-of-yellow/artwork-1.jpg",
         "alt": "Clôture of Yellow — opening artwork 1"
       }
     },
     {
       "illustration": {
-        "src": "/cloture-of-yellow/artwork-2.jpg",
+        "src": "/novels/cloture-of-yellow/artwork-2.jpg",
         "alt": "Clôture of Yellow — opening artwork 2"
       }
     },
     {
       "illustration": {
-        "src": "/cloture-of-yellow/artwork-3.jpg",
+        "src": "/novels/cloture-of-yellow/artwork-3.jpg",
         "alt": "Clôture of Yellow — opening artwork 3"
       }
     },
     {
       "illustration": {
-        "src": "/cloture-of-yellow/artwork-4.jpg",
+        "src": "/novels/cloture-of-yellow/artwork-4.jpg",
         "alt": "Clôture of Yellow — opening artwork 4"
       }
     },
     {
       "illustration": {
-        "src": "/cloture-of-yellow/artwork-5.jpg",
+        "src": "/novels/cloture-of-yellow/artwork-5.jpg",
         "alt": "Clôture of Yellow — opening artwork 5"
       }
     }
@@ -202,39 +202,39 @@
   },
   "chapterIllustration": {
     "illustration-1": {
-      "src": "/cloture-of-yellow/illustration-1.jpg",
+      "src": "/novels/cloture-of-yellow/illustration-1.jpg",
       "alt": "Chapter 1 illustration — the missing princess"
     },
     "illustration-2": {
-      "src": "/cloture-of-yellow/illustration-2.jpg",
+      "src": "/novels/cloture-of-yellow/illustration-2.jpg",
       "alt": "Allen's vow — \"I will become evil for you\""
     },
     "illustration-3": {
-      "src": "/cloture-of-yellow/illustration-3.jpg",
+      "src": "/novels/cloture-of-yellow/illustration-3.jpg",
       "alt": "The courtyard — two girls washing clothes by the pool"
     },
     "illustration-4": {
-      "src": "/cloture-of-yellow/illustration-4.jpg",
+      "src": "/novels/cloture-of-yellow/illustration-4.jpg",
       "alt": "Mariam stopping Elluka in the corridor"
     },
     "illustration-5": {
-      "src": "/cloture-of-yellow/illustration-5.jpg",
+      "src": "/novels/cloture-of-yellow/illustration-5.jpg",
       "alt": "Clarith and Germaine — the resistance proposal"
     },
     "illustration-6": {
-      "src": "/cloture-of-yellow/illustration-6.jpg",
+      "src": "/novels/cloture-of-yellow/illustration-6.jpg",
       "alt": "Allen and Gast — the locked gaze"
     },
     "illustration-7": {
-      "src": "/cloture-of-yellow/illustration-7.jpg",
+      "src": "/novels/cloture-of-yellow/illustration-7.jpg",
       "alt": "Riliane holding back tears"
     },
     "illustration-8": {
-      "src": "/cloture-of-yellow/illustration-8.jpg",
+      "src": "/novels/cloture-of-yellow/illustration-8.jpg",
       "alt": "Riliane sobbing"
     },
     "illustration-9": {
-      "src": "/cloture-of-yellow/illustration-9.jpg",
+      "src": "/novels/cloture-of-yellow/illustration-9.jpg",
       "alt": "The third bell — Allen's farewell"
     }
   }

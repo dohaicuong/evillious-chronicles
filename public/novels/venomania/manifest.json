@@ -1,6 +1,6 @@
 {
   "cover": {
-    "src": "/venomania/cover.webp",
+    "src": "/novels/venomania/cover.webp",
     "alt": "The Lunacy of Duke Venomania — cover (asset pending)"
   },
   "titlePage": {
@@ -11,19 +11,19 @@
   "openingGallery": [
     {
       "illustration": {
-        "src": "/venomania/artwork-1.jpg",
+        "src": "/novels/venomania/artwork-1.jpg",
         "alt": "The Lunacy of Duke Venomania — opening artwork 1"
       }
     },
     {
       "illustration": {
-        "src": "/venomania/artwork-2.jpg",
+        "src": "/novels/venomania/artwork-2.jpg",
         "alt": "The Lunacy of Duke Venomania — opening artwork 2"
       }
     },
     {
       "illustration": {
-        "src": "/venomania/artwork-3.jpg",
+        "src": "/novels/venomania/artwork-3.jpg",
         "alt": "The Lunacy of Duke Venomania — opening artwork 3"
       }
     }
@@ -37,11 +37,11 @@
   },
   "chapterIllustration": {
     "illustration-1": {
-      "src": "/venomania/illustration-1.jpg",
+      "src": "/novels/venomania/illustration-1.jpg",
       "alt": "The Lunacy of Duke Venomania — illustration 1"
     },
     "illustration-2": {
-      "src": "/venomania/illustration-2.png",
+      "src": "/novels/venomania/illustration-2.png",
       "alt": "The Lunacy of Duke Venomania — illustration 2"
     }
   }
