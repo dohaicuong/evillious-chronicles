@@ -77,32 +77,56 @@ Resolved at the using element via CSS variables, so any `[data-theme]` or `[data
 
 ```tsx preview
 () => {
-  const Swatch = ({ name, note }) => (
+  const Swatch = ({ name, note, fillClass }) => (
     <div className="flex flex-col gap-2 border border-border rounded-sm overflow-hidden">
-      <div className="h-16" style={{ background: `var(--color-${name})` }} />
+      <div className={`h-16 ${fillClass}`} />
       <div className="flex flex-col gap-0.5 px-3 pb-3">
         <code className="text-style-caption text-fg">{name}</code>
         <span className="text-style-caption text-fg-muted">{note}</span>
       </div>
     </div>
   );
+  // fillClass must be a literal Tailwind utility — Tailwind v4 only emits
+  // a `--color-*` variable to :root when the matching class is actually
+  // used somewhere, so an interpolated `var(--color-${name})` in a runtime
+  // style would resolve to nothing.
   const tokens = [
-    { name: "bg", note: "page background" },
-    { name: "surface", note: "raised cards / panels" },
-    { name: "fg", note: "primary text" },
-    { name: "fg-muted", note: "captions / metadata" },
-    { name: "border", note: "rules and dividers" },
-    { name: "accent", note: "candle-gold by default; sin-tinted under [data-sin]" },
-    { name: "accent-fg", note: "readable text on top of accent" },
-    { name: "accent-soft", note: "tinted hover background — accent at 18% over bg" },
-    { name: "accent-hover", note: "accent darkened toward accent-fg by 10%" },
-    { name: "accent-active", note: "accent darkened toward accent-fg by 20%" },
-    { name: "accent-strong", note: "accent pulled toward fg 45% — for body text on the page bg" },
+    { name: "bg", note: "page background", fillClass: "bg-bg" },
+    { name: "surface", note: "raised cards / panels", fillClass: "bg-surface" },
+    { name: "fg", note: "primary text", fillClass: "bg-fg" },
+    { name: "fg-muted", note: "captions / metadata", fillClass: "bg-fg-muted" },
+    { name: "border", note: "rules and dividers", fillClass: "bg-border" },
+    {
+      name: "accent",
+      note: "candle-gold by default; sin-tinted under [data-sin]",
+      fillClass: "bg-accent",
+    },
+    { name: "accent-fg", note: "readable text on top of accent", fillClass: "bg-accent-fg" },
+    {
+      name: "accent-soft",
+      note: "tinted hover background — accent at 18% over bg",
+      fillClass: "bg-accent-soft",
+    },
+    {
+      name: "accent-hover",
+      note: "accent darkened toward accent-fg by 10%",
+      fillClass: "bg-accent-hover",
+    },
+    {
+      name: "accent-active",
+      note: "accent darkened toward accent-fg by 20%",
+      fillClass: "bg-accent-active",
+    },
+    {
+      name: "accent-strong",
+      note: "accent pulled toward fg 45% — for body text on the page bg",
+      fillClass: "bg-accent-strong",
+    },
   ];
   return (
     <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 w-full">
       {tokens.map((t) => (
-        <Swatch key={t.name} name={t.name} note={t.note} />
+        <Swatch key={t.name} name={t.name} note={t.note} fillClass={t.fillClass} />
       ))}
     </div>
   );

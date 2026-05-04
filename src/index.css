@@ -1,5 +1,12 @@
 @import "tailwindcss";
 
+/*
+ * Markdown files under public/design-system/ aren't in Vite's module graph,
+ * so Tailwind's auto-detection misses class names used inside their `tsx
+ * preview` blocks. @source adds them to the scanner explicitly.
+ */
+@source "../public/design-system/**/*.md";
+
 /* =====================================================================
  * Evillious Chronicles — Design Tokens
  *
