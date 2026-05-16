@@ -93,6 +93,25 @@ export function pwaSetupPlugin() {
           },
         },
         {
+          // Per-volume heavy manifest at `public/novels/<slug>/manifest.json`
+          // — cover / gallery / illustration metadata that `Volume.getHeavy()`
+          // fetches before any chapter route can render. Without this rule
+          // the SW lets the request pass through to the network, so an
+          // offline refresh on a chapter route throws even when the volume
+          // has been explicitly downloaded. Reuses `ec-chapters` so the keys
+          // the offline downloader writes via `cache.put` align with the
+          // ones SWR reads — and so `wipeOfflineCaches()` still clears them.
+          urlPattern: ({ url, sameOrigin }) =>
+            sameOrigin &&
+            url.pathname.includes("/novels/") &&
+            url.pathname.endsWith("/manifest.json"),
+          handler: "StaleWhileRevalidate",
+          options: {
+            cacheName: "ec-chapters",
+            expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 90 },
+          },
+        },
+        {
           // Chapter listing JSON emitted by `chapterManifestPlugin`. Fetched
           // once at boot (see `src/lib/chapter-manifest.ts`); SWR so the
           // app boots offline against the last-seen listing while a fresh
