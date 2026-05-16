@@ -1,6 +1,8 @@
-import { createFileRoute, notFound } from "@tanstack/react-router";
+import { createFileRoute, notFound, useNavigate } from "@tanstack/react-router";
 import { Link } from "@src/components/primitives/link";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
+import { useDrag } from "@use-gesture/react";
+import { animated, useSpring } from "@react-spring/web";
 import {
   BookmarkSimpleIcon,
   CaretLeftIcon,
@@ -86,6 +88,79 @@ function PageReader() {
   const hasNote = !!note;
   const [editorOpen, setEditorOpen] = useState(false);
 
+  // Touch swipe → animated page turn powered by react-spring. The spring
+  // tracks the finger 1:1 while held (`immediate: true`), then settles via
+  // physics on release — either back to 0 (spring-back) or off-screen (commit
+  // + navigate). At chapter boundaries (`!prev` / `!next`) drag is rubber-
+  // banded to a quarter of the travel so the user feels resistance instead
+  // of a free slide into nothing.
+  const SWIPE_COMMIT_PX = 80;
+  const SWIPE_DISMISS_PX = 700;
+  const navigate = useNavigate();
+  const [{ x }, api] = useSpring(() => ({ x: 0 }));
+  const transitioningRef = useRef(false);
+
+  // Reset spring position on every successful page change. The route loader
+  // swaps loader data on the same component instance, so without a reset
+  // the next page would render at the dismissed-offscreen offset.
+  useEffect(() => {
+    api.set({ x: 0 });
+    transitioningRef.current = false;
+  }, [chapter.id, page.number, api]);
+
+  const bindSwipe = useDrag(
+    ({ active, movement: [mx], swipe: [swipeX] }) => {
+      // Lock out further drags while the commit animation is mid-flight —
+      // a follow-up gesture during that window would cancel the navigate.
+      if (transitioningRef.current) return;
+
+      const canPrev = !!prev;
+      const canNext = !!next;
+
+      if (active) {
+        // Rubber-band when there's no target in the requested direction.
+        let target = mx;
+        if (mx > 0 && !canPrev) target = mx * 0.25;
+        else if (mx < 0 && !canNext) target = mx * 0.25;
+        api.start({ x: target, immediate: true });
+        return;
+      }
+
+      // Pointer up. Decide: commit (spring off + navigate) or spring back.
+      const commitNext = (swipeX === -1 || mx < -SWIPE_COMMIT_PX) && canNext;
+      const commitPrev = (swipeX === 1 || mx > SWIPE_COMMIT_PX) && canPrev;
+
+      if (commitNext || commitPrev) {
+        transitioningRef.current = true;
+        const dismissTo = commitNext ? -SWIPE_DISMISS_PX : SWIPE_DISMISS_PX;
+        const target: PageTarget = commitNext ? next! : prev!;
+        api.start({
+          x: dismissTo,
+          immediate: false,
+          // A slightly heavier spring than the snap-back so the dismiss
+          // feels decisive rather than bouncy.
+          config: { tension: 220, friction: 32, clamp: true },
+          onRest: () => {
+            void navigate({
+              to: "/library/$seriesId/$volumeId/$chapterId/$pageNumber",
+              params: { seriesId: s.id, volumeId: volume.id, ...target },
+            });
+          },
+        });
+      } else {
+        // Under threshold — spring back to 0 with a snappier config.
+        api.start({ x: 0, immediate: false, config: { tension: 280, friction: 28 } });
+      }
+    },
+    { axis: "lock", filterTaps: true },
+  );
+
+  // Derived animated values — `x.to(...)` runs in react-spring's animation
+  // frame loop, so rotation/opacity stay perfectly in sync with translateX
+  // without a re-render per frame.
+  const rotate = x.to((v) => v * 0.01);
+  const opacity = x.to((v) => 1 - Math.min(Math.abs(v) / SWIPE_DISMISS_PX, 0.9));
+
   // Bump reading progress on every page-mount. `pageIdx + 1` is the 1-based
   // page reached, matching the deep-link page anchor.
   useEffect(() => {
@@ -104,9 +179,24 @@ function PageReader() {
   }, [cueId, setCue]);
 
   return (
-    <div
+    <animated.div
+      {...bindSwipe()}
       data-sin={volume.sin ?? undefined}
-      style={cssVars}
+      // `touch-action: pan-y` lets vertical scrolling pass through to the
+      // browser while still letting use-gesture capture horizontal drags
+      // for swipe detection. Without it, iOS Safari pre-empts the gesture
+      // and the swipe handler never fires.
+      //
+      // `x` / `rotate` / `opacity` are react-spring animated values — they
+      // update in the animation frame loop without re-rendering React.
+      style={{
+        ...cssVars,
+        touchAction: "pan-y",
+        x,
+        rotate,
+        opacity,
+        willChange: "transform, opacity",
+      }}
       className="mx-auto max-w-[var(--reader-max-width,42rem)] px-6 py-12 sm:py-16"
     >
       <Link
@@ -174,7 +264,7 @@ function PageReader() {
         open={editorOpen}
         onOpenChange={setEditorOpen}
       />
-    </div>
+    </animated.div>
   );
 }
 
@@ -197,6 +287,7 @@ function PageNav({
       {prev ? (
         <Button
           variant="ghost"
+          className="pl-0"
           render={
             <Link
               to="/library/$seriesId/$volumeId/$chapterId/$pageNumber"
@@ -212,7 +303,8 @@ function PageNav({
       )}
       {next ? (
         <Button
-          variant="primary"
+          variant="ghost"
+          className="pr-0 text-accent"
           render={
             <Link
               to="/library/$seriesId/$volumeId/$chapterId/$pageNumber"
