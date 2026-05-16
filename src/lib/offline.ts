@@ -249,18 +249,28 @@ export function useOfflineSync(volumeId: string): {
 
 // Online/offline tracking — drives the drawer's "you're offline, connect to
 // sync" hint and disables sync buttons when the device is offline.
+//
+// `online` / `offline` events are not reliable: some browsers (notably
+// Chromium on certain platforms, and DevTools' network throttle toggle)
+// don't fire `online` when connectivity returns mid-session, leaving the
+// banner stuck until the tab is closed and reopened. `navigator.onLine`
+// itself stays correct, so re-sync from it on visibility-change and on a
+// low-frequency poll as backstops.
 export function useOnlineStatus(): boolean {
   const [online, setOnline] = useState(() =>
     typeof navigator === "undefined" ? true : navigator.onLine,
   );
   useEffect(() => {
-    const on = () => setOnline(true);
-    const off = () => setOnline(false);
-    window.addEventListener("online", on);
-    window.addEventListener("offline", off);
+    const sync = () => setOnline(navigator.onLine);
+    window.addEventListener("online", sync);
+    window.addEventListener("offline", sync);
+    document.addEventListener("visibilitychange", sync);
+    const interval = window.setInterval(sync, 5000);
     return () => {
-      window.removeEventListener("online", on);
-      window.removeEventListener("offline", off);
+      window.removeEventListener("online", sync);
+      window.removeEventListener("offline", sync);
+      document.removeEventListener("visibilitychange", sync);
+      clearInterval(interval);
     };
   }, []);
   return online;

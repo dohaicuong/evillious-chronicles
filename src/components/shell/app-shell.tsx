@@ -21,6 +21,7 @@ import { ExternalLink, Link } from "@src/components/primitives/link";
 import { Menu } from "@src/components/primitives/menu";
 import { cn } from "@src/lib/cn";
 import { forceUpdate } from "@src/lib/pwa";
+import { useOnlineStatus } from "@src/lib/offline";
 import { useAudio } from "@src/lib/audio";
 import { asset } from "@src/lib/asset";
 import { ThemeToggle } from "./theme-toggle";
@@ -50,6 +51,10 @@ export function AppShell() {
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
   const { bgEnabled, setBgEnabled } = useAudio();
+  // Used to disable "Reload for updates" when offline — the nuclear path in
+  // `forceUpdate` unregisters the SW before reloading, so without a network
+  // the next navigation has nothing to fall back to and the app breaks.
+  const online = useOnlineStatus();
 
   // Detect macOS once at mount so the search-trigger hint reads "⌘K" on
   // Mac and "Ctrl K" everywhere else. SSR-safe via the typeof guard.
@@ -223,7 +228,7 @@ export function AppShell() {
                       Evillious Chronicles wiki
                     </Menu.Item>
                     <Menu.Separator />
-                    <Menu.Item onClick={hardReload}>
+                    <Menu.Item onClick={hardReload} disabled={!online}>
                       <ArrowClockwiseIcon
                         weight="light"
                         className="inline-block mr-2 align-[-2px]"
@@ -301,7 +306,7 @@ export function AppShell() {
                       Evillious Chronicles wiki
                     </Menu.Item>
                     <Menu.Separator />
-                    <Menu.Item onClick={hardReload}>
+                    <Menu.Item onClick={hardReload} disabled={!online}>
                       <ArrowClockwiseIcon
                         weight="light"
                         className="inline-block mr-2 align-[-2px]"
