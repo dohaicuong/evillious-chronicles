@@ -5,16 +5,25 @@ import { useOnlineStatus } from "@src/lib/offline";
 // Fires a small toast on online ↔ offline transitions so the user gets
 // non-blocking feedback when connectivity changes. Initial mount is skipped —
 // we only want a toast when the state actually changes, not on every page load.
+//
+// The `prevOnline` ref is load-bearing: `useToast()` returns a fresh manager
+// reference each render, and `toast.add()` triggers a Provider state update
+// that re-renders every consumer. Depending on `toast` alone would re-fire the
+// effect on its own state update → infinite "Maximum update depth" loop.
+// Gating on the previous value means the effect is a no-op unless `online`
+// actually transitioned.
 export function ConnectivityToast() {
   const online = useOnlineStatus();
   const toast = useToast();
-  const initialMount = useRef(true);
+  const prevOnline = useRef<boolean | null>(null);
 
   useEffect(() => {
-    if (initialMount.current) {
-      initialMount.current = false;
+    if (prevOnline.current === null) {
+      prevOnline.current = online;
       return;
     }
+    if (prevOnline.current === online) return;
+    prevOnline.current = online;
     if (online) {
       toast.add({ type: "success", title: "Back online" });
     } else {
