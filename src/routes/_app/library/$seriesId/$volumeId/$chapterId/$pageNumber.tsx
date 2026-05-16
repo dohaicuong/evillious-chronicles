@@ -122,7 +122,7 @@ function PageReader() {
         let target = mx;
         if (mx > 0 && !canPrev) target = mx * 0.25;
         else if (mx < 0 && !canNext) target = mx * 0.25;
-        api.start({ x: target, immediate: true });
+        void api.start({ x: target, immediate: true });
         return;
       }
 
@@ -134,7 +134,7 @@ function PageReader() {
         transitioningRef.current = true;
         const dismissTo = commitNext ? -SWIPE_DISMISS_PX : SWIPE_DISMISS_PX;
         const target: PageTarget = commitNext ? next! : prev!;
-        api.start({
+        void api.start({
           x: dismissTo,
           immediate: false,
           // A slightly heavier spring than the snap-back so the dismiss
@@ -149,7 +149,7 @@ function PageReader() {
         });
       } else {
         // Under threshold — spring back to 0 with a snappier config.
-        api.start({ x: 0, immediate: false, config: { tension: 280, friction: 28 } });
+        void api.start({ x: 0, immediate: false, config: { tension: 280, friction: 28 } });
       }
     },
     { axis: "lock", filterTaps: true },
