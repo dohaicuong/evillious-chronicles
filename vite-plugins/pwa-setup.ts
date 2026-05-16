@@ -72,24 +72,29 @@ export function pwaSetupPlugin() {
           // Cover art, opening galleries, in-prose illustrations, plus the
           // reader's audio dock files. Cache-first because they almost
           // never change once published.
+          //
+          // No `expiration` plugin: this cache holds user-downloaded offline
+          // reading content, and a workbox LRU ceiling silently evicting
+          // images during a multi-volume download fights the explicit
+          // Download / "Delete all offline content" contract in the UI.
+          // The drawer owns cache size — wipe via the footer button.
           urlPattern: ({ request, sameOrigin }) =>
             sameOrigin && (request.destination === "image" || request.destination === "audio"),
           handler: "CacheFirst",
           options: {
             cacheName: "ec-assets",
-            expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 30 },
           },
         },
         {
           // Chapter markdown lives at `public/<slug>/chapters/.../*.md` and
           // is fetched at runtime by the `Chapter()` factory. SWR so the
           // first read is offline-replayable and edits ship on the next
-          // online visit without a hard reload.
+          // online visit without a hard reload. No `expiration` for the
+          // same reason as `ec-assets` — user-managed offline content.
           urlPattern: ({ url, sameOrigin }) => sameOrigin && url.pathname.endsWith(".md"),
           handler: "StaleWhileRevalidate",
           options: {
             cacheName: "ec-chapters",
-            expiration: { maxEntries: 2000, maxAgeSeconds: 60 * 60 * 24 * 90 },
           },
         },
         {
@@ -108,7 +113,6 @@ export function pwaSetupPlugin() {
           handler: "StaleWhileRevalidate",
           options: {
             cacheName: "ec-chapters",
-            expiration: { maxEntries: 200, maxAgeSeconds: 60 * 60 * 24 * 90 },
           },
         },
         {
