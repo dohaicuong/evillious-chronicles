@@ -10,6 +10,7 @@ import {
   HeartIcon,
   ListIcon,
   MagnifyingGlassIcon,
+  MicrophoneIcon,
   NotebookIcon,
   PaletteIcon,
   SpeakerLowIcon,
@@ -32,6 +33,7 @@ import { NotesDrawer } from "@src/components/library/notes-drawer";
 import { OfflineDrawer } from "@src/components/library/offline-drawer";
 import { SearchDialog } from "@src/components/library/search-dialog";
 import { SettingsDrawer } from "@src/components/library/settings-drawer";
+import { TtsAuditionDrawer } from "@src/components/audio/tts-audition-drawer";
 
 // Drawers and dialogs are mounted alongside the app shell so the first open
 // has no JS-chunk fetch / `Suspense` fallback gap — base-ui's open animation
@@ -50,6 +52,7 @@ export function AppShell() {
   const [offlineOpen, setOfflineOpen] = useState(false);
   const [settingsOpen, setSettingsOpen] = useState(false);
   const [searchOpen, setSearchOpen] = useState(false);
+  const [ttsAuditionOpen, setTtsAuditionOpen] = useState(false);
   const { bgEnabled, setBgEnabled } = useAudio();
   // Used to disable "Reload for updates" when offline — the nuclear path in
   // `forceUpdate` unregisters the SW before reloading, so without a network
@@ -108,7 +111,7 @@ export function AppShell() {
       >
         Skip to main content
       </a>
-      <header className={cn("shrink-0", !isHome && "border-b border-border")}>
+      <header className={cn("shrink-0 rounded-b-sm", !isHome && "border-b border-border")}>
         <div className="mx-auto max-w-6xl px-6 h-16 flex items-center justify-between gap-6">
           <Link to="/" aria-label="Evillious Chronicles" className="flex items-center gap-3">
             <img src={asset("/icon-192.png")} alt="" aria-hidden className="h-8 w-8 rounded-sm" />
@@ -235,6 +238,10 @@ export function AppShell() {
                       />
                       Reload for updates
                     </Menu.Item>
+                    <Menu.Item onClick={() => setTtsAuditionOpen(true)}>
+                      <MicrophoneIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      TTS audition
+                    </Menu.Item>
                     <Menu.Item render={<Link to="/components" />}>
                       <PaletteIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                       Component library
@@ -313,6 +320,10 @@ export function AppShell() {
                       />
                       Reload for updates
                     </Menu.Item>
+                    <Menu.Item onClick={() => setTtsAuditionOpen(true)}>
+                      <MicrophoneIcon weight="light" className="inline-block mr-2 align-[-2px]" />
+                      TTS audition
+                    </Menu.Item>
                     <Menu.Item render={<Link to="/components" />}>
                       <PaletteIcon weight="light" className="inline-block mr-2 align-[-2px]" />
                       Component library
@@ -336,6 +347,7 @@ export function AppShell() {
       <OfflineDrawer open={offlineOpen} onOpenChange={setOfflineOpen} />
       <SettingsDrawer open={settingsOpen} onOpenChange={setSettingsOpen} />
       <SearchDialog open={searchOpen} onOpenChange={setSearchOpen} />
+      <TtsAuditionDrawer open={ttsAuditionOpen} onOpenChange={setTtsAuditionOpen} />
     </div>
   );
 }
