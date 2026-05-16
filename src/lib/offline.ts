@@ -1,15 +1,17 @@
 import { useCallback, useEffect, useRef, useState } from "react";
 import { getVolumeAssets } from "@app/library/-volumes";
+import { getCharacterPortraitUrls } from "@app/characters/-characters";
 
 /**
- * Pre-fetches everything a volume needs for offline reading: chapter
- * `.md` files **and** image assets (cover, opening / closing galleries,
- * chapter illustrations). Each URL is fetched and written to the
- * appropriate SW runtime cache so the on-page renderer (and the SW's
- * own cache-first / SWR strategies) find a cached response when the
- * browser is offline.
+ * Pre-fetches everything an offline-readable bundle needs into the SW runtime
+ * caches. Per-volume bundles cover chapter `.md` files + image assets (cover,
+ * opening / closing galleries, chapter illustrations) + the volume's heavy
+ * manifest. The characters bundle covers every character portrait. Each URL
+ * is fetched and written to the appropriate SW runtime cache so the on-page
+ * renderer (and the SW's own cache-first / SWR strategies) find a cached
+ * response when the browser is offline.
  *
- *  - Chapter markdown → `ec-chapters` (StaleWhileRevalidate at runtime).
+ *  - Chapter markdown + heavy manifest → `ec-chapters` (SWR at runtime).
  *  - Images → `ec-assets` (CacheFirst at runtime, keyed on the SW's
  *    `request.destination === "image"` rule).
  *
@@ -18,9 +20,9 @@ import { getVolumeAssets } from "@app/library/-volumes";
  * the SW is also active, both writes go to the same cache key so the
  * cost is one harmless overwrite per asset.
  *
- * `forceResyncVolume` deletes the volume's URLs from both caches before
- * walking, which guarantees the next fetch hits the network instead of
- * a stale cached copy. Useful when content was updated on the server.
+ * Resync deletes the bundle's URLs from both caches before walking, which
+ * guarantees the next fetch hits the network instead of a stale cached
+ * copy. Useful when content was updated on the server.
  */
 
 const CHAPTER_CACHE = "ec-chapters";
@@ -32,7 +34,7 @@ export type OfflineProgress = { done: number; total: number };
 export type OfflineStatus = {
   cached: number;
   total: number;
-  /** True when every URL — chapters and images — is present in cache. */
+  /** True when every URL in the bundle is present in cache. */
   complete: boolean;
 };
 
@@ -44,6 +46,10 @@ async function getVolumeTasks(volumeId: string): Promise<Task[]> {
     ...chapters.map((url) => ({ url, cacheName: CHAPTER_CACHE })),
     ...images.map((url) => ({ url, cacheName: ASSET_CACHE })),
   ];
+}
+
+async function getCharactersTasks(): Promise<Task[]> {
+  return getCharacterPortraitUrls().map((url) => ({ url, cacheName: ASSET_CACHE }));
 }
 
 async function openCaches(names: Iterable<string>): Promise<Map<string, Cache>> {
@@ -60,8 +66,7 @@ async function openCaches(names: Iterable<string>): Promise<Map<string, Cache>> 
   return map;
 }
 
-export async function getVolumeOfflineStatus(volumeId: string): Promise<OfflineStatus> {
-  const tasks = await getVolumeTasks(volumeId);
+async function getTasksStatus(tasks: Task[]): Promise<OfflineStatus> {
   if (tasks.length === 0) return { cached: 0, total: 0, complete: false };
   const caches = await openCaches(tasks.map((t) => t.cacheName));
   let cached = 0;
@@ -140,34 +145,21 @@ async function fetchAll(
   await Promise.all(Array.from({ length: Math.min(CONCURRENCY, total) }, worker));
 }
 
-export async function downloadVolume(
-  volumeId: string,
+async function runTasks(
+  tasks: Task[],
+  options: { resync: boolean },
   signal: AbortSignal,
   onProgress: (p: OfflineProgress) => void,
 ): Promise<void> {
-  const tasks = await getVolumeTasks(volumeId);
   if (tasks.length === 0) {
     onProgress({ done: 0, total: 0 });
     return;
   }
+  if (options.resync) await deleteTasksFromCaches(tasks);
   await fetchAll(tasks, signal, onProgress);
 }
 
-export async function forceResyncVolume(
-  volumeId: string,
-  signal: AbortSignal,
-  onProgress: (p: OfflineProgress) => void,
-): Promise<void> {
-  const tasks = await getVolumeTasks(volumeId);
-  if (tasks.length === 0) {
-    onProgress({ done: 0, total: 0 });
-    return;
-  }
-  await deleteTasksFromCaches(tasks);
-  await fetchAll(tasks, signal, onProgress);
-}
-
-// React state for one volume's sync. The drawer instantiates one of these
+// React state for one bundle's sync. The drawer instantiates one of these
 // per visible row so progress is per-row without leaking into a global.
 export type SyncState =
   | { kind: "idle"; status: OfflineStatus | null }
@@ -175,18 +167,26 @@ export type SyncState =
   | { kind: "complete"; status: OfflineStatus }
   | { kind: "error"; message: string; status: OfflineStatus | null };
 
-export function useOfflineSync(volumeId: string): {
+export type SyncHandle = {
   state: SyncState;
   download: () => void;
   resync: () => void;
   cancel: () => void;
   refreshStatus: () => Promise<void>;
-} {
+};
+
+// Generic sync core. `key` identifies the bundle for effect dependency
+// tracking; `getTasks` is read through a ref so callers can pass an
+// inline arrow without destabilizing the hook.
+function useTasksSync(key: string, getTasks: () => Promise<Task[]>): SyncHandle {
   const [state, setState] = useState<SyncState>({ kind: "idle", status: null });
   const controllerRef = useRef<AbortController | null>(null);
+  const getTasksRef = useRef(getTasks);
+  getTasksRef.current = getTasks;
 
   const refreshStatus = useCallback(async () => {
-    const status = await getVolumeOfflineStatus(volumeId);
+    const tasks = await getTasksRef.current();
+    const status = await getTasksStatus(tasks);
     setState((prev) =>
       // Don't clobber an in-flight download with a status read.
       prev.kind === "downloading"
@@ -195,46 +195,46 @@ export function useOfflineSync(volumeId: string): {
           ? { kind: "complete", status }
           : { kind: "idle", status },
     );
-  }, [volumeId]);
+  }, []);
 
-  // Initial status read on mount and whenever the volume changes.
   useEffect(() => {
     void refreshStatus();
     return () => {
       controllerRef.current?.abort();
       controllerRef.current = null;
     };
-  }, [refreshStatus]);
+    // `key` is the bundle identity. `refreshStatus` is stable.
+  }, [key, refreshStatus]);
 
-  const run = useCallback(
-    (mode: "download" | "resync") => {
-      controllerRef.current?.abort();
-      const controller = new AbortController();
-      controllerRef.current = controller;
-      setState({ kind: "downloading", progress: { done: 0, total: 0 } });
+  const run = useCallback((mode: "download" | "resync") => {
+    controllerRef.current?.abort();
+    const controller = new AbortController();
+    controllerRef.current = controller;
+    setState({ kind: "downloading", progress: { done: 0, total: 0 } });
 
-      const op = mode === "resync" ? forceResyncVolume : downloadVolume;
-      op(volumeId, controller.signal, (progress) => {
+    (async () => {
+      const tasks = await getTasksRef.current();
+      await runTasks(tasks, { resync: mode === "resync" }, controller.signal, (progress) => {
         if (controller.signal.aborted) return;
         setState({ kind: "downloading", progress });
+      });
+    })()
+      .then(async () => {
+        if (controller.signal.aborted) return;
+        const tasks = await getTasksRef.current();
+        const status = await getTasksStatus(tasks);
+        setState(status.complete ? { kind: "complete", status } : { kind: "idle", status });
       })
-        .then(async () => {
-          if (controller.signal.aborted) return;
-          const status = await getVolumeOfflineStatus(volumeId);
-          setState(status.complete ? { kind: "complete", status } : { kind: "idle", status });
-        })
-        .catch((err: unknown) => {
-          if (controller.signal.aborted) return;
-          const message = err instanceof Error ? err.message : "Sync failed";
-          setState((prev) => ({
-            kind: "error",
-            message,
-            status: prev.kind === "idle" || prev.kind === "complete" ? prev.status : null,
-          }));
-        });
-    },
-    [volumeId],
-  );
+      .catch((err: unknown) => {
+        if (controller.signal.aborted) return;
+        const message = err instanceof Error ? err.message : "Sync failed";
+        setState((prev) => ({
+          kind: "error",
+          message,
+          status: prev.kind === "idle" || prev.kind === "complete" ? prev.status : null,
+        }));
+      });
+  }, []);
 
   const download = useCallback(() => run("download"), [run]);
   const resync = useCallback(() => run("resync"), [run]);
@@ -245,6 +245,14 @@ export function useOfflineSync(volumeId: string): {
   }, [refreshStatus]);
 
   return { state, download, resync, cancel, refreshStatus };
+}
+
+export function useOfflineSync(volumeId: string): SyncHandle {
+  return useTasksSync(`volume:${volumeId}`, () => getVolumeTasks(volumeId));
+}
+
+export function useCharactersSync(): SyncHandle {
+  return useTasksSync("characters", getCharactersTasks);
 }
 
 // Online/offline tracking — drives the drawer's "you're offline, connect to

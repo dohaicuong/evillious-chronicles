@@ -1,3 +1,5 @@
+import { asset } from "@src/lib/asset";
+
 export type Affiliation = {
   name: string;
   note?: string; // e.g. "(formerly)", "(Held sect)"
@@ -3788,4 +3790,16 @@ const byId: Record<string, Character> = Object.fromEntries(characters.map((c) =>
 
 export function getCharacter(id: string): Character | undefined {
   return byId[id];
+}
+
+// Every defined portrait URL, resolved against Vite's BASE_URL so the keys
+// match exactly what `<img src={asset(...)}>` requests at render time —
+// keeps the offline-cache writer and the runtime fetcher pointed at the
+// same URL so the SW's `ec-assets` lookup hits.
+export function getCharacterPortraitUrls(): string[] {
+  const urls = new Set<string>();
+  for (const c of characters) {
+    if (c.portrait) urls.add(asset(c.portrait));
+  }
+  return Array.from(urls);
 }

@@ -5,6 +5,7 @@ import {
   CloudArrowDownIcon,
   CloudSlashIcon,
   TrashIcon,
+  UsersThreeIcon,
   XIcon,
 } from "@phosphor-icons/react";
 import { Badge } from "@src/components/primitives/badge";
@@ -18,7 +19,12 @@ import { SinGlyph } from "@src/components/thematic/sin-glyph";
 import { availableVolumeIds } from "@app/library/-volumes";
 import { series } from "@src/routes/_app/library/-library";
 import type { SlimVolume } from "@app/library/-volumes/_shared";
-import { useOfflineSync, useOnlineStatus, wipeOfflineCaches } from "@src/lib/offline";
+import {
+  useCharactersSync,
+  useOfflineSync,
+  useOnlineStatus,
+  wipeOfflineCaches,
+} from "@src/lib/offline";
 
 export function OfflineDrawer({
   open,
@@ -78,24 +84,25 @@ export function OfflineDrawer({
               </div>
             )}
 
-            {rows.length === 0 ? (
-              <p className="px-6 py-6 text-style-body text-fg-muted italic">
-                No volumes available to download yet.
-              </p>
-            ) : (
-              <ScrollArea className="flex-1">
-                <ul className="flex flex-col">
-                  {rows.map(({ slim, seriesTitle }) => (
+            <ScrollArea className="flex-1">
+              <ul className="flex flex-col">
+                <CharactersRow key={`characters:${nonce}`} online={online} />
+                {rows.length === 0 ? (
+                  <li className="px-6 py-6 text-style-body text-fg-muted italic">
+                    No volumes available to download yet.
+                  </li>
+                ) : (
+                  rows.map(({ slim, seriesTitle }) => (
                     <VolumeRow
                       key={`${slim.id}:${nonce}`}
                       slim={slim}
                       seriesTitle={seriesTitle}
                       online={online}
                     />
-                  ))}
-                </ul>
-              </ScrollArea>
-            )}
+                  ))
+                )}
+              </ul>
+            </ScrollArea>
 
             <footer className="border-t border-border px-6 py-4">
               <Button variant="secondary" size="sm" onClick={() => setClearOpen(true)}>
@@ -150,6 +157,37 @@ function collectVolumes(): { slim: SlimVolume; seriesTitle: string }[] {
     }
   }
   return rows;
+}
+
+function CharactersRow({ online }: { online: boolean }) {
+  const { state, download, resync, cancel } = useCharactersSync();
+
+  return (
+    <li className="flex flex-col gap-3 border-b border-border px-6 py-4">
+      <div className="flex items-start gap-3">
+        <div className="flex min-w-0 flex-1 flex-col gap-1">
+          <span className="text-style-eyebrow text-fg-muted">Reference</span>
+          <span className="text-style-body text-fg">Character portraits</span>
+          <span className="text-style-caption text-fg-muted">
+            All character profile images for offline browsing.
+          </span>
+        </div>
+        <Badge variant="soft" size="sm" icon={<UsersThreeIcon weight="light" />}>
+          characters
+        </Badge>
+      </div>
+
+      <RowStatus state={state} />
+
+      <RowActions
+        state={state}
+        online={online}
+        onDownload={download}
+        onResync={resync}
+        onCancel={cancel}
+      />
+    </li>
+  );
 }
 
 function VolumeRow({
