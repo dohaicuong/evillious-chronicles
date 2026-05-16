@@ -4,6 +4,8 @@ import { Button } from "@src/components/primitives/button";
 import { Drawer } from "@src/components/primitives/drawer";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
+import { Select } from "@src/components/primitives/select";
+import { Slider } from "@src/components/primitives/slider";
 
 // Temporary auditioning drawer for the Web Speech API. Lets the user hear
 // what each available OS voice sounds like before committing to a TTS
@@ -106,70 +108,77 @@ export function TtsAuditionDrawer({
                 </section>
 
                 <section className="flex flex-col gap-2">
-                  <label
-                    htmlFor="tts-voice"
-                    className="text-style-eyebrow text-fg-muted flex items-center justify-between"
-                  >
+                  <span className="text-style-eyebrow text-fg-muted flex items-center justify-between">
                     <span>Voice</span>
                     <span className="text-style-caption normal-case tracking-normal tabular-nums">
                       {voices.length} available
                     </span>
-                  </label>
-                  <select
-                    id="tts-voice"
+                  </span>
+                  <Select
                     value={voiceURI}
-                    onChange={(e) => setVoiceURI(e.target.value)}
+                    onValueChange={(v) => setVoiceURI(v as string)}
                     disabled={voices.length === 0}
-                    className="rounded-sm border border-border bg-bg px-2 py-2 text-style-body text-fg"
+                    // `items` is what lets `Select.Value` show the human
+                    // label after a pick — without it, the trigger would
+                    // fall back to the raw voiceURI string.
+                    items={voices.map((v) => ({
+                      value: v.voiceURI,
+                      label: `${v.name} (${v.lang})${v.default ? " · default" : ""}`,
+                    }))}
                   >
-                    {voices.length === 0 ? <option value="">No voices installed</option> : null}
-                    {voices.map((v) => (
-                      <option key={v.voiceURI} value={v.voiceURI}>
-                        {v.name} ({v.lang}){v.default ? " · default" : ""}
-                      </option>
-                    ))}
-                  </select>
+                    <Select.Trigger>
+                      <Select.Value placeholder="No voices installed" />
+                    </Select.Trigger>
+                    <Select.Portal>
+                      <Select.Positioner>
+                        <Select.Popup>
+                          <Select.List>
+                            {voices.map((v) => (
+                              <Select.Item key={v.voiceURI} value={v.voiceURI}>
+                                <Select.ItemIndicator />
+                                <Select.ItemText>
+                                  {v.name} ({v.lang}){v.default ? " · default" : ""}
+                                </Select.ItemText>
+                              </Select.Item>
+                            ))}
+                          </Select.List>
+                        </Select.Popup>
+                      </Select.Positioner>
+                    </Select.Portal>
+                  </Select>
                 </section>
 
                 <section className="flex flex-col gap-2">
-                  <label
-                    htmlFor="tts-rate"
-                    className="text-style-eyebrow text-fg-muted flex items-center justify-between"
-                  >
+                  <span className="text-style-eyebrow text-fg-muted flex items-center justify-between">
                     <span>Rate</span>
                     <span className="text-style-caption normal-case tracking-normal tabular-nums">
                       {rate.toFixed(2)}×
                     </span>
-                  </label>
-                  <input
-                    id="tts-rate"
-                    type="range"
+                  </span>
+                  <Slider
+                    value={rate}
+                    onValueChange={(v) => setRate(v as number)}
                     min={0.5}
                     max={2}
                     step={0.05}
-                    value={rate}
-                    onChange={(e) => setRate(Number.parseFloat(e.target.value))}
+                    aria-label="Speech rate"
                   />
                 </section>
 
                 <section className="flex flex-col gap-2">
-                  <label
-                    htmlFor="tts-pitch"
-                    className="text-style-eyebrow text-fg-muted flex items-center justify-between"
-                  >
+                  <span className="text-style-eyebrow text-fg-muted flex items-center justify-between">
                     <span>Pitch</span>
                     <span className="text-style-caption normal-case tracking-normal tabular-nums">
                       {pitch.toFixed(2)}
                     </span>
-                  </label>
-                  <input
-                    id="tts-pitch"
-                    type="range"
+                  </span>
+                  <Slider
+                    value={pitch}
+                    onValueChange={(v) => setPitch(v as number)}
                     min={0.5}
                     max={2}
                     step={0.05}
-                    value={pitch}
-                    onChange={(e) => setPitch(Number.parseFloat(e.target.value))}
+                    aria-label="Speech pitch"
                   />
                 </section>
 

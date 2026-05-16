@@ -31,6 +31,7 @@ import { Progress } from "@src/components/primitives/progress";
 import { QRCode } from "@src/components/primitives/qr-code";
 import { QRScanner } from "@src/components/primitives/qr-scanner";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
+import { Select } from "@src/components/primitives/select";
 import { Skeleton } from "@src/components/primitives/skeleton";
 import { Slider } from "@src/components/primitives/slider";
 import { Switch } from "@src/components/primitives/switch";
@@ -77,6 +78,7 @@ export const docPool: DocScope = {
   QRScanner,
   ScrollArea,
   SearchDialog,
+  Select,
   Skeleton,
   Slider,
   Switch,

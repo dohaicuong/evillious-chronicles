@@ -55,6 +55,7 @@ const primitivesGroup: NavGroupConfig = {
     { to: "/components/card", label: "Card" },
     { to: "/components/code", label: "Code" },
     { to: "/components/input", label: "Input" },
+    { to: "/components/select", label: "Select" },
     { to: "/components/menu", label: "Menu" },
     { to: "/components/tabs", label: "Tabs" },
     { to: "/components/tooltip", label: "Tooltip" },
