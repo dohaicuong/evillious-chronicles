@@ -8,6 +8,7 @@ import {
   CaretLeftIcon,
   CaretRightIcon,
   NotePencilIcon,
+  WaveformIcon,
 } from "@phosphor-icons/react";
 import { series } from "@src/routes/_app/library/-library";
 import { getVolumeChapter, getVolumeMeta } from "@app/library/-volumes";
@@ -22,6 +23,7 @@ import { toggleBookmark, useBookmark } from "@src/lib/bookmarks";
 import { useNote } from "@src/lib/notes";
 import { bumpChapterProgress } from "@src/lib/progress";
 import { readerSettingsCssVars, useReaderSettings } from "@src/lib/reader-settings";
+import { useTextToSpeech } from "@src/lib/tts";
 
 type PageTarget = { chapterId: string; pageNumber: string };
 
@@ -87,6 +89,12 @@ function PageReader() {
   const bookmarked = !!bookmark;
   const hasNote = !!note;
   const [editorOpen, setEditorOpen] = useState(false);
+
+  // Read-aloud — pulls text from prose / spread layouts. Illustration-only
+  // pages have nothing to read, so the button hides itself there.
+  const pageText = page.layout === "prose" || page.layout === "spread" ? page.text : "";
+  const tts = useTextToSpeech(pageText);
+  const speaking = tts.state === "speaking";
 
   // Touch swipe → animated page turn powered by react-spring. The spring
   // tracks the finger 1:1 while held (`immediate: true`), then settles via
@@ -221,6 +229,17 @@ function PageReader() {
             Page {page.number} of {totalPages}
           </span>
           <div className="flex items-center gap-0.5">
+            {pageText && tts.supported ? (
+              <IconButton
+                size="sm"
+                variant="ghost"
+                aria-label={speaking ? "Stop reading aloud" : "Read aloud"}
+                aria-pressed={speaking}
+                onClick={speaking ? tts.stop : tts.play}
+              >
+                <WaveformIcon weight={speaking ? "fill" : "light"} />
+              </IconButton>
+            ) : null}
             <IconButton
               size="sm"
               variant="ghost"

@@ -1,9 +1,10 @@
-import type { ReactNode } from "react";
-import { XIcon } from "@phosphor-icons/react";
+import { useEffect, useMemo, useState, type ReactNode } from "react";
+import { PlayIcon, StopIcon, XIcon } from "@phosphor-icons/react";
 import { Drawer } from "@src/components/primitives/drawer";
 import { Button } from "@src/components/primitives/button";
 import { IconButton } from "@src/components/primitives/icon-button";
 import { ScrollArea } from "@src/components/primitives/scroll-area";
+import { Select } from "@src/components/primitives/select";
 import { Slider } from "@src/components/primitives/slider";
 import { Switch } from "@src/components/primitives/switch";
 import {
@@ -134,6 +135,8 @@ export function SettingsDrawer({
                 />
               </div>
 
+              <TtsSection />
+
               <div className="border-t border-border pt-4 flex justify-end">
                 <Button variant="outline" size="sm" onClick={reset}>
                   Reset to defaults
@@ -163,6 +166,141 @@ function SettingRow({
         <span className="text-style-caption text-fg-muted tabular-nums">{value}</span>
       </div>
       {children}
+    </div>
+  );
+}
+
+const TTS_SAMPLE = "The clock at the heart of the chronicle ticked on, indifferent to her cruelty.";
+
+// Read-aloud (Web Speech API) controls — voice picker, rate, pitch, plus a
+// Test button that speaks a sample using the current settings. Stored on the
+// shared reader-settings context so the reader picks them up automatically.
+function TtsSection() {
+  const { settings, set } = useReaderSettings();
+  const supported = typeof window !== "undefined" && "speechSynthesis" in window;
+  const [voices, setVoices] = useState<SpeechSynthesisVoice[]>([]);
+  const [speaking, setSpeaking] = useState(false);
+
+  // `speechSynthesis.getVoices()` is async on most browsers — it may return
+  // an empty list initially and populate later via `voiceschanged`.
+  useEffect(() => {
+    if (!supported) return;
+    const load = () => setVoices(window.speechSynthesis.getVoices());
+    load();
+    window.speechSynthesis.addEventListener("voiceschanged", load);
+    return () => {
+      window.speechSynthesis.removeEventListener("voiceschanged", load);
+      window.speechSynthesis.cancel();
+    };
+  }, [supported]);
+
+  const items = useMemo(
+    () => [
+      { value: "", label: "System default" },
+      ...voices.map((v) => ({
+        value: v.voiceURI,
+        label: `${v.name} (${v.lang})${v.default ? " · default" : ""}`,
+      })),
+    ],
+    [voices],
+  );
+
+  function test() {
+    if (!supported) return;
+    window.speechSynthesis.cancel();
+    const u = new SpeechSynthesisUtterance(TTS_SAMPLE);
+    const voice = voices.find((v) => v.voiceURI === settings.ttsVoiceURI);
+    if (voice) u.voice = voice;
+    u.rate = settings.ttsRate;
+    u.pitch = settings.ttsPitch;
+    u.onend = () => setSpeaking(false);
+    u.onerror = () => setSpeaking(false);
+    window.speechSynthesis.speak(u);
+    setSpeaking(true);
+  }
+
+  function stop() {
+    window.speechSynthesis.cancel();
+    setSpeaking(false);
+  }
+
+  return (
+    <div className="border-t border-border pt-5 flex flex-col gap-4">
+      <span className="text-style-eyebrow text-fg-muted">Read aloud</span>
+
+      {!supported ? (
+        <p className="text-style-caption text-fg-muted italic">
+          Web Speech API isn't supported in this browser.
+        </p>
+      ) : (
+        <>
+          <SettingRow
+            label="Voice"
+            value={voices.length === 0 ? "None installed" : `${voices.length} available`}
+          >
+            <Select
+              value={settings.ttsVoiceURI ?? ""}
+              onValueChange={(v) => set("ttsVoiceURI", (v as string) || null)}
+              disabled={voices.length === 0}
+              items={items}
+            >
+              <Select.Trigger>
+                <Select.Value placeholder="System default" />
+              </Select.Trigger>
+              <Select.Portal>
+                <Select.Positioner>
+                  <Select.Popup>
+                    <Select.List>
+                      {items.map((item) => (
+                        <Select.Item key={item.value} value={item.value}>
+                          <Select.ItemIndicator />
+                          <Select.ItemText>{item.label}</Select.ItemText>
+                        </Select.Item>
+                      ))}
+                    </Select.List>
+                  </Select.Popup>
+                </Select.Positioner>
+              </Select.Portal>
+            </Select>
+          </SettingRow>
+
+          <SettingRow label="Rate" value={`${settings.ttsRate.toFixed(2)}×`}>
+            <Slider
+              aria-label="Speech rate"
+              value={settings.ttsRate}
+              onValueChange={(v) => set("ttsRate", v as number)}
+              min={READER_BOUNDS.ttsRate.min}
+              max={READER_BOUNDS.ttsRate.max}
+              step={READER_BOUNDS.ttsRate.step}
+            />
+          </SettingRow>
+
+          <SettingRow label="Pitch" value={settings.ttsPitch.toFixed(2)}>
+            <Slider
+              aria-label="Speech pitch"
+              value={settings.ttsPitch}
+              onValueChange={(v) => set("ttsPitch", v as number)}
+              min={READER_BOUNDS.ttsPitch.min}
+              max={READER_BOUNDS.ttsPitch.max}
+              step={READER_BOUNDS.ttsPitch.step}
+            />
+          </SettingRow>
+
+          <div className="flex">
+            {speaking ? (
+              <Button variant="secondary" size="sm" onClick={stop}>
+                <StopIcon weight="light" />
+                Stop
+              </Button>
+            ) : (
+              <Button variant="secondary" size="sm" onClick={test} disabled={voices.length === 0}>
+                <PlayIcon weight="light" />
+                Test
+              </Button>
+            )}
+          </div>
+        </>
+      )}
     </div>
   );
 }
