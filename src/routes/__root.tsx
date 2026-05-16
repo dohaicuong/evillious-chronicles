@@ -6,6 +6,7 @@ import { Toast } from "@src/components/primitives/toast";
 import { AudioProvider } from "@src/lib/audio";
 import { AudioDock } from "@src/components/audio/audio-dock";
 import { BackgroundAudio } from "@src/components/audio/background-audio";
+import { ConnectivityToast } from "@src/components/shell/connectivity-toast";
 import { PwaUpdateToast } from "@src/components/shell/pwa-update-toast";
 import { RouteError, RouteNotFound } from "@src/components/shell/route-error";
 import { ThemeProvider } from "@src/lib/theme";
@@ -31,6 +32,7 @@ function RootLayout() {
                 <AudioDock />
                 <BackgroundAudio />
                 <Toast.Viewport />
+                <ConnectivityToast />
                 <PwaUpdateToast />
                 <TanStackRouterDevtools />
               </IconContext.Provider>
