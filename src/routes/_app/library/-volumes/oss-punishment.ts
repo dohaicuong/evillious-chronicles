@@ -6,16 +6,18 @@ import { Volume } from "./_shared";
  *
  * Translation source: oss-punishment.tumblr.com (pricechecktranslations);
  * chapter directory at /directory, credits at /about. Chapter prose lives
- * under `public/original-sin-punishment/...` — cover only; the fan release
- * ships without artwork or chapter illustrations. The prose uses scene
+ * under `public/original-sin-punishment/...`. One illustration (壱加 / Ichika)
+ * sits in `openingGallery` in the manifest rather than pinned inline — its
+ * per-chapter placement isn't yet known; move it to `chapterIllustration` and
+ * add a `<!-- illustration: NAME -->` marker when it is. The prose uses scene
  * breaks (a lone "." line) rather than glyph POV markers.
  *
  * `publicDir` is set explicitly because the asset directory
  * (`original-sin-punishment`) is more descriptive than the URL slug
  * (`oss-punishment`).
  *
- * Heavy metadata (cover, title page, description, translation) lives in
- * `public/original-sin-punishment/manifest.json`.
+ * Heavy metadata (cover, title page, gallery, description, translation) lives
+ * in `public/original-sin-punishment/manifest.json`.
  */
 
 export const ossPunishment = Volume({

@@ -13,6 +13,50 @@
     ],
     "publisher": "the heavenly yard"
   },
+  "openingGallery": [
+    {
+      "illustration": {
+        "src": "/novels/original-sin-crime/illustration-01.jpg",
+        "alt": "Two figures in a sunlit corridor — a cloaked, sword-bearing man stands back as a robed figure rests a hand to his cheek, eyes closed.",
+        "credit": "Illustration by 壱加 (Ichika)"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/novels/original-sin-crime/illustration-02.png",
+        "alt": "A long-haired woman in a hooded cloak amid streaks of light, a fallen figure at her feet.",
+        "credit": "Illustration by 壱加 (Ichika)"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/novels/original-sin-crime/illustration-03.png",
+        "alt": "Two young men side by side — one holding an open notebook, the other in dark traveling gear with a sword.",
+        "credit": "Illustration by 壱加 (Ichika)"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/novels/original-sin-crime/illustration-04.png",
+        "alt": "A bespectacled man reaching out his hand, paired with a close profile of a young man gazing upward.",
+        "credit": "Illustration by 壱加 (Ichika)"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/novels/original-sin-crime/illustration-05.png",
+        "alt": "A sickroom scene — a bespectacled man seated on a bed beside a short-haired companion, a small box held between them.",
+        "credit": "Illustration by 壱加 (Ichika)"
+      }
+    },
+    {
+      "illustration": {
+        "src": "/novels/original-sin-crime/illustration-06.png",
+        "alt": "A man in suspenders embracing a weeping long-haired woman in a dress.",
+        "credit": "Illustration by 壱加 (Ichika)"
+      }
+    }
+  ],
   "description": "The first volume of the Original Sin Story — the genesis of every cycle that follows. Maria Moonlit, the prophet-queen renamed Alice Merry-Go-Round, conveys the gods' demand for vessels and sets Project 'Ma' in motion. Eve, Adam, and Seth are pulled into the experiment; Salmhofer the Witch flees with a forbidden secret; and in Held's forest a moonlit bear acts on a grief that will fracture into seven sins. Told from both Eve's and Adam's perspectives in its closing chapters.",
   "publishedYear": 2019,
   "translation": {

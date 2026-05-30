@@ -6,15 +6,18 @@ import { Volume } from "./_shared";
  *
  * Translation source: oss-crime.tumblr.com (pricechecktranslations); chapter
  * directory at /directory, credits at /about. Chapter prose lives under
- * `public/original-sin-crime/...` — cover only; the fan release ships
- * without artwork or chapter illustrations. The prose uses scene breaks
- * (a lone "." line) rather than glyph POV markers.
+ * `public/original-sin-crime/...`. Six illustrations (壱加 / Ichika) are
+ * grouped in `openingGallery` in the manifest rather than pinned inline —
+ * their per-chapter placement isn't yet known; move an entry to
+ * `chapterIllustration` and add a `<!-- illustration: NAME -->` marker when
+ * it is. The prose uses scene breaks (a lone "." line) rather than glyph POV
+ * markers.
  *
  * `publicDir` is set explicitly because the asset directory
  * (`original-sin-crime`) is more descriptive than the URL slug (`oss-crime`).
  *
- * Heavy metadata (cover, title page, description, translation) lives in
- * `public/original-sin-crime/manifest.json`.
+ * Heavy metadata (cover, title page, gallery, description, translation) lives
+ * in `public/original-sin-crime/manifest.json`.
  */
 
 export const ossCrime = Volume({
